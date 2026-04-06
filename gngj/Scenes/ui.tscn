@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://5p73ychobdgw"]
 
-[ext_resource type="Texture2D" uid="uid://d2rxlf0h386l0" path="res://static stone texture.png" id="2_nf4gj"]
-[ext_resource type="Script" uid="uid://cpubh6amks5vo" path="res://Scenes/MainMenu.gd" id="2_q7pk6"]
+[ext_resource type="Texture2D" uid="uid://c2qqou1d64vtn" path="res://light-blue-color-solid-background-1920x1080.png" id="1_jxero"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2246s"]
-texture = ExtResource("2_nf4gj")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxero"]
-texture = ExtResource("2_nf4gj")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wviqb"]
+bg_color = Color(0.30905545, 0.21911901, 0.10415764, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55558795, 0.3960532, 0.1916596, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 12
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -19,7 +25,8 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" type="Control" parent="." unique_id=475077163]
+[node name="MainMenu" type="Control" parent="." unique_id=1354610217]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -144,3 +151,117 @@ custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_jxero")
 text = "Credits"
+
+[node name="FrontRoom" type="Control" parent="." unique_id=1119590720]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NPC" type="Button" parent="FrontRoom" unique_id=1823482754]
+layout_mode = 0
+offset_left = 281.0
+offset_top = -421.0
+offset_right = 757.0
+offset_bottom = 275.0
+theme_override_font_sizes/font_size = 50
+text = "NPC"
+
+[node name="Dialogue" type="Button" parent="FrontRoom" unique_id=2111724142]
+layout_mode = 0
+offset_left = -796.0
+offset_top = -54.0
+offset_right = 183.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 60
+text = "Dialogue"
+
+[node name="potionHotbar" type="ScrollContainer" parent="FrontRoom" unique_id=772464404]
+layout_mode = 0
+offset_left = -897.0
+offset_top = 299.0
+offset_right = 652.0
+offset_bottom = 508.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FrontRoom/potionHotbar" unique_id=1244660138]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="FrontRoom/potionHotbar/HBoxContainer" unique_id=1609707167]
+layout_mode = 2
+texture = ExtResource("1_jxero")
+expand_mode = 2
+
+[node name="Button" type="Button" parent="FrontRoom/potionHotbar/HBoxContainer/TextureRect" unique_id=1904418421]
+layout_mode = 0
+offset_right = 208.0
+offset_bottom = 208.0
+
+[node name="goToBackroom" type="Button" parent="FrontRoom" unique_id=897616103]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 294.0
+offset_right = 934.0
+offset_bottom = 507.0
+theme_override_font_sizes/font_size = 25
+text = "To Back"
+
+[node name="BackRoom" type="Control" parent="." unique_id=1473907433]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ingredientShelf" type="Button" parent="BackRoom" unique_id=1413587714]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -246.0
+offset_right = 913.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 60
+text = "Ingredient Shelf"
+
+[node name="Bookshelf" type="Button" parent="BackRoom" unique_id=1118114461]
+layout_mode = 0
+offset_left = -237.0
+offset_top = -371.0
+offset_right = 931.0
+offset_bottom = -331.0
+theme_override_font_sizes/font_size = 25
+text = "bookshelf"
+
+[node name="Recipe Book" type="Button" parent="BackRoom" unique_id=1083868720]
+layout_mode = 0
+offset_left = 539.0
+offset_top = -10.0
+offset_right = 888.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 35
+text = "Recipe Book"
+
+[node name="Cauldron" type="Button" parent="BackRoom" unique_id=1727185499]
+layout_mode = 0
+offset_left = -921.0
+offset_top = 7.0
+offset_right = -421.0
+offset_bottom = 506.0
+theme_override_font_sizes/font_size = 60
+text = "Cauldron"
+
+[node name="MortarandPestle" type="Button" parent="BackRoom" unique_id=1731441912]
+layout_mode = 0
+offset_left = -76.0
+offset_top = 24.0
+offset_right = 250.0
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 25
+text = "Mortar & Pestle"
+
+[node name="toFrontRoom" type="Button" parent="BackRoom" unique_id=742675279]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 361.0
+offset_right = 915.0
+offset_bottom = 512.0
+theme_override_font_sizes/font_size = 28
+text = "To Front"
