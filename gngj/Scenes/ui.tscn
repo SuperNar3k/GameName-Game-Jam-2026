@@ -1,27 +1,10 @@
 [gd_scene format=3 uid="uid://5p73ychobdgw"]
 
-[ext_resource type="Texture2D" uid="uid://c2qqou1d64vtn" path="res://light-blue-color-solid-background-1920x1080.png" id="1_jxero"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wviqb"]
-bg_color = Color(0.30905545, 0.21911901, 0.10415764, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.55558795, 0.3960532, 0.1916596, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 12
-
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -30,7 +13,6 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_q7pk6")
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=968761228]
 layout_mode = 1
@@ -73,7 +55,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
 text = "Start Game"
 
 [node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/StartButton" unique_id=1754875438]
@@ -94,7 +75,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
 text = "Load Game"
 
 [node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/LoadButton" unique_id=296993922]
@@ -115,7 +95,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
 text = "Options"
 
 [node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/OptionsButton" unique_id=31945927]
@@ -136,7 +115,6 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
 text = "Exit"
 
 [node name="CenterContainer2" type="CenterContainer" parent="MainMenu" unique_id=1876333977]
@@ -149,7 +127,6 @@ offset_bottom = 543.0
 [node name="CreditsButton" type="Button" parent="MainMenu/CenterContainer2" unique_id=2000158525]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_jxero")
 text = "Credits"
 
 [node name="FrontRoom" type="Control" parent="." unique_id=1119590720]
@@ -189,7 +166,6 @@ size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="FrontRoom/potionHotbar/HBoxContainer" unique_id=1609707167]
 layout_mode = 2
-texture = ExtResource("1_jxero")
 expand_mode = 2
 
 [node name="Button" type="Button" parent="FrontRoom/potionHotbar/HBoxContainer/TextureRect" unique_id=1904418421]
@@ -207,7 +183,6 @@ theme_override_font_sizes/font_size = 25
 text = "To Back"
 
 [node name="BackRoom" type="Control" parent="." unique_id=1473907433]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
