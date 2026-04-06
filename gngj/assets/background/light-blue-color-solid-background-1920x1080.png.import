@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qaaryjuimfrp"
-path="res://.godot/imported/abspestos.png-6992b2ccaca968928a531b1387d5efc0.ctex"
+uid="uid://c2qqou1d64vtn"
+path="res://.godot/imported/light-blue-color-solid-background-1920x1080.png-282c3f915a592c1d7ea30220da104b34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/abspestos.png"
-dest_files=["res://.godot/imported/abspestos.png-6992b2ccaca968928a531b1387d5efc0.ctex"]
+source_file="res://assets/background/light-blue-color-solid-background-1920x1080.png"
+dest_files=["res://.godot/imported/light-blue-color-solid-background-1920x1080.png-282c3f915a592c1d7ea30220da104b34.ctex"]
 
 [params]
 
