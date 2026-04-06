@@ -1,5 +1,52 @@
 [gd_scene format=3 uid="uid://5p73ychobdgw"]
 
+[ext_resource type="Script" uid="uid://o213up71grc5" path="res://Scenes/handle.gd" id="3_nf4gj"]
+[ext_resource type="Script" uid="uid://dw6j2oodrgabb" path="res://Scenes/animation_player.gd" id="4_2246s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wviqb"]
+bg_color = Color(0.30905545, 0.21911901, 0.10415764, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55558795, 0.3960532, 0.1916596, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 12
+
+[sub_resource type="Animation" id="Animation_qdvrb"]
+resource_name = "Drawer_Open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(869.99994, -1), Vector2(-3, -1)]
+}
+
+[sub_resource type="Animation" id="Animation_nf4gj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(869.99994, -1)]
+}
+
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
 anchors_preset = 15
@@ -14,65 +61,41 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=968761228]
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=467546987]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = -560.0
-offset_right = 368.0
-offset_bottom = 520.0
+offset_left = -170.5
+offset_top = -143.5
+offset_right = 170.5
+offset_bottom = 143.5
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer" unique_id=1119697710]
-custom_minimum_size = Vector2(0, 1080)
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer" unique_id=1223087419]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Label" type="Label" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1285490688]
+[node name="Label" type="Label" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=944178882]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 56
 text = "Potion Seller"
 
-[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/Label" unique_id=1396290856]
-position = Vector2(-29, 12)
-points = PackedVector2Array(57, 65.5, 57, 96.5)
-width = 6.0
-default_color = Color(0.5657945, 0.4222468, 0.19625476, 1)
-
-[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/Label" unique_id=1023674476]
-position = Vector2(256, 10)
-points = PackedVector2Array(57, 65.5, 57, 96.5)
-width = 6.0
-default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
-
-[node name="StartButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1836054118]
-custom_minimum_size = Vector2(350, 65)
+[node name="Button (StartButton)" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1220384778]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Start Game"
 
-[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/StartButton" unique_id=1754875438]
-position = Vector2(0, -1)
-points = PackedVector2Array(57, 65.5, 57, 96.5)
-width = 6.0
-default_color = Color(0.5657945, 0.4222468, 0.19625476, 1)
-
-[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/StartButton" unique_id=2034592736]
-position = Vector2(220, -0.5)
-points = PackedVector2Array(57, 65.5, 57, 96.5)
-width = 6.0
-default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
-
-[node name="LoadButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=10126079]
-custom_minimum_size = Vector2(350, 65)
+[node name="Button (Load Game)" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=718331908]
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
-size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Load Game"
@@ -117,19 +140,27 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
-[node name="CenterContainer2" type="CenterContainer" parent="MainMenu" unique_id=1876333977]
-layout_mode = 0
-offset_left = 645.7886
-offset_top = 308.0664
-offset_right = 963.0
-offset_bottom = 543.0
+[node name="CenterContainer2" type="CenterContainer" parent="MainMenu" unique_id=811079465]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -40.0
+offset_right = 1530.0
+offset_bottom = 900.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="CreditsButton" type="Button" parent="MainMenu/CenterContainer2" unique_id=2000158525]
+[node name="Button" type="Button" parent="MainMenu/CenterContainer2" unique_id=296188561]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 text = "Credits"
 
 [node name="FrontRoom" type="Control" parent="." unique_id=1119590720]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -240,3 +271,121 @@ offset_right = 915.0
 offset_bottom = 512.0
 theme_override_font_sizes/font_size = 28
 text = "To Front"
+
+[node name="GrindingStation" type="Control" parent="." unique_id=1639595488]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="GrindingStation" unique_id=445165663]
+position = Vector2(869.99994, -1)
+scale = Vector2(1.6790394, 1.6723603)
+
+[node name="Button" type="Button" parent="GrindingStation/Sprite2D" unique_id=1539824660]
+offset_left = 67.300385
+offset_top = -309.74185
+offset_right = 181.05588
+offset_bottom = -156.06685
+
+[node name="Button2" type="Button" parent="GrindingStation/Sprite2D" unique_id=1781522856]
+offset_left = 193.56305
+offset_top = -308.54593
+offset_right = 307.31854
+offset_bottom = -154.87093
+
+[node name="Button3" type="Button" parent="GrindingStation/Sprite2D" unique_id=115122133]
+offset_left = 319.23013
+offset_top = -310.93777
+offset_right = 432.98563
+offset_bottom = -157.26277
+
+[node name="Button4" type="Button" parent="GrindingStation/Sprite2D" unique_id=1988152847]
+offset_left = 445.4928
+offset_top = -309.74185
+offset_right = 559.2483
+offset_bottom = -156.06685
+
+[node name="Button5" type="Button" parent="GrindingStation/Sprite2D" unique_id=1884154784]
+offset_left = 69.6827
+offset_top = -142.91179
+offset_right = 183.4382
+offset_bottom = -6.57753
+
+[node name="Button6" type="Button" parent="GrindingStation/Sprite2D" unique_id=1890386899]
+offset_left = 192.96747
+offset_top = -142.91179
+offset_right = 306.72296
+offset_bottom = -6.57753
+
+[node name="Button7" type="Button" parent="GrindingStation/Sprite2D" unique_id=210120152]
+offset_left = 319.23013
+offset_top = -144.1077
+offset_right = 432.98563
+offset_bottom = -7.7734375
+
+[node name="Button8" type="Button" parent="GrindingStation/Sprite2D" unique_id=1321987740]
+offset_left = 443.1105
+offset_top = -141.71588
+offset_right = 556.866
+offset_bottom = -5.3816223
+
+[node name="Button9" type="Button" parent="GrindingStation/Sprite2D" unique_id=459959927]
+offset_left = 71.46945
+offset_top = 7.175476
+offset_right = 185.22498
+offset_bottom = 143.50974
+
+[node name="Button10" type="Button" parent="GrindingStation/Sprite2D" unique_id=1259743663]
+offset_left = 195.94537
+offset_top = 8.37139
+offset_right = 309.7009
+offset_bottom = 144.70564
+
+[node name="Button11" type="Button" parent="GrindingStation/Sprite2D" unique_id=1261362122]
+offset_left = 319.82574
+offset_top = 7.175476
+offset_right = 433.58127
+offset_bottom = 143.50974
+
+[node name="Button12" type="Button" parent="GrindingStation/Sprite2D" unique_id=1994713825]
+offset_left = 441.91934
+offset_top = 5.979562
+offset_right = 555.67487
+offset_bottom = 142.31383
+
+[node name="Button13" type="Button" parent="GrindingStation/Sprite2D" unique_id=810259817]
+offset_left = 69.08713
+offset_top = 156.06683
+offset_right = 182.84265
+offset_bottom = 308.54596
+
+[node name="Button14" type="Button" parent="GrindingStation/Sprite2D" unique_id=2086015724]
+offset_left = 193.56305
+offset_top = 158.45866
+offset_right = 307.31857
+offset_bottom = 310.9378
+
+[node name="Button15" type="Button" parent="GrindingStation/Sprite2D" unique_id=1847921092]
+offset_left = 321.01688
+offset_top = 157.26274
+offset_right = 434.7724
+offset_bottom = 309.74188
+
+[node name="Button16" type="Button" parent="GrindingStation/Sprite2D" unique_id=300381306]
+offset_left = 442.51492
+offset_top = 157.26274
+offset_right = 556.27045
+offset_bottom = 309.74188
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GrindingStation/Sprite2D" unique_id=35142751]
+libraries/ = SubResource("AnimationLibrary_2246s")
+script = ExtResource("4_2246s")
+
+[node name="Handle" type="Button" parent="GrindingStation/Sprite2D" unique_id=1072961884]
+offset_left = 10.124924
+offset_top = -87.89971
+offset_right = 53.006638
+offset_bottom = 94.47724
+script = ExtResource("3_nf4gj")
+
+[connection signal="pressed" from="GrindingStation/Sprite2D/Handle" to="GrindingStation/Sprite2D/AnimationPlayer" method="_on_handle_pressed"]
