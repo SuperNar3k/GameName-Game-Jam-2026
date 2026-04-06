@@ -130,6 +130,7 @@ layout_mode = 2
 text = "Credits"
 
 [node name="FrontRoom" type="Control" parent="." unique_id=1119590720]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -183,6 +184,7 @@ theme_override_font_sizes/font_size = 25
 text = "To Back"
 
 [node name="BackRoom" type="Control" parent="." unique_id=1473907433]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

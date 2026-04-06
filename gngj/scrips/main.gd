@@ -27,7 +27,7 @@ func _ready() -> void:
 		"abspestos",
 		"this shit will kill you",
 		1000,
-		"res://assets/abspestos.png",
+		"res://assets/ingredients/abspestos.png",
 		3
 	)
 	ingredients.append(item)
@@ -38,7 +38,7 @@ func _ready() -> void:
 		"crushed abspestos",
 		"this shit will kill you, also its a powder now",
 		0,
-		"res://assets/crushed abspestos.png",
+		"res://assets/ingredients/crushed abspestos.jpg",
 		0
 	)
 	ingredients.append(item)
@@ -49,7 +49,7 @@ func _ready() -> void:
 		"beans",
 		"staight up beans nigga",
 		3,
-		"res://assets/beans.png",
+		"res://assets/ingredients/beans.png",
 		3
 	)
 	ingredients.append(item)
@@ -61,7 +61,7 @@ func _ready() -> void:
 		"cinnamon toast crunch milk",
 		"this shit yummy af",
 		0,
-		"res://assets/CTCBox.jpg",
+		"res://assets/potions/CTCBox.jpg",
 		[0,1],
 		0
 	)
