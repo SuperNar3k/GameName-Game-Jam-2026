@@ -1,17 +1,13 @@
 [gd_scene format=3 uid="uid://5p73ychobdgw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wviqb"]
-bg_color = Color(0.30905545, 0.21911901, 0.10415764, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.55558795, 0.3960532, 0.1916596, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 12
+[ext_resource type="Texture2D" uid="uid://d2rxlf0h386l0" path="res://static stone texture.png" id="2_nf4gj"]
+[ext_resource type="Script" uid="uid://cpubh6amks5vo" path="res://Scenes/MainMenu.gd" id="2_q7pk6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2246s"]
+texture = ExtResource("2_nf4gj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jxero"]
+texture = ExtResource("2_nf4gj")
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -23,73 +19,128 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" type="Control" parent="." unique_id=1354610217]
+[node name="MainMenu" type="Control" parent="." unique_id=475077163]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_q7pk6")
 
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=467546987]
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=968761228]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -170.5
-offset_top = -143.5
-offset_right = 170.5
-offset_bottom = 143.5
-grow_horizontal = 2
+offset_left = 20.0
+offset_top = -560.0
+offset_right = 368.0
+offset_bottom = 520.0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer" unique_id=1223087419]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer" unique_id=1119697710]
+custom_minimum_size = Vector2(0, 1080)
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Label" type="Label" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=944178882]
+[node name="Label" type="Label" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1285490688]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 56
 text = "Potion Seller"
 
-[node name="Button (StartButton)" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1220384778]
-custom_minimum_size = Vector2(300, 80)
+[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/Label" unique_id=1396290856]
+position = Vector2(-29, 12)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5657945, 0.4222468, 0.19625476, 1)
+
+[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/Label" unique_id=1023674476]
+position = Vector2(256, 10)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="StartButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1836054118]
+custom_minimum_size = Vector2(350, 65)
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_wviqb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
 text = "Start Game"
 
-[node name="Button (Load Game)" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=718331908]
-custom_minimum_size = Vector2(300, 80)
+[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/StartButton" unique_id=1754875438]
+position = Vector2(0, -1)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5657945, 0.4222468, 0.19625476, 1)
+
+[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/StartButton" unique_id=2034592736]
+position = Vector2(220, -0.5)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="LoadButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=10126079]
+custom_minimum_size = Vector2(350, 65)
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_wviqb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
 text = "Load Game"
 
-[node name="Button (ExitButton)" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=355370363]
-custom_minimum_size = Vector2(280, 70)
+[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/LoadButton" unique_id=296993922]
+position = Vector2(0, -1)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/LoadButton" unique_id=2104710165]
+position = Vector2(220, -0.5)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="OptionsButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1567556011]
+custom_minimum_size = Vector2(350, 65)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
+text = "Options"
+
+[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/OptionsButton" unique_id=31945927]
+position = Vector2(0, -1)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/OptionsButton" unique_id=730715106]
+position = Vector2(220, -0.5)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="ExitButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=770358189]
+custom_minimum_size = Vector2(350, 65)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_2246s")
 text = "Exit"
 
-[node name="CenterContainer2" type="CenterContainer" parent="MainMenu" unique_id=811079465]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -40.0
-offset_right = 1530.0
-offset_bottom = 900.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="CenterContainer2" type="CenterContainer" parent="MainMenu" unique_id=1876333977]
+layout_mode = 0
+offset_left = 645.7886
+offset_top = 308.0664
+offset_right = 963.0
+offset_bottom = 543.0
 
-[node name="Button" type="Button" parent="MainMenu/CenterContainer2" unique_id=296188561]
+[node name="CreditsButton" type="Button" parent="MainMenu/CenterContainer2" unique_id=2000158525]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_jxero")
 text = "Credits"
