@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://bilkv4kot3gai"]
 
+[ext_resource type="Script" uid="uid://d2a3vghik0wbo" path="res://scrips/quest.gd" id="1_nt16b"]
+
 [node name="quest" type="Node" unique_id=1041436733]
+script = ExtResource("1_nt16b")
