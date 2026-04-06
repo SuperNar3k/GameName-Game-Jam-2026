@@ -1,9 +1,73 @@
 extends Node2D
 
+#GLOBAL VARIABLES
+var currency = 0
+var day = 1
+var dayDuration = 60
+var numOfNpcs = 3
+
+var potions = []
+var ingredients = []
+var quests = []
+
+var activeQuests = []
+var pharmacy = []
+var storeQueue = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$dayDuration.set_wait_time(dayDuration)
+	
+	#Variable that will hold all of our objects
+	var item = preload("res://Scenes/item.tscn").instantiate()
+	
+	#Hardcoding all of our Ingredients here
+	item.createIngredient(
+		"abspestos",
+		"this shit will kill you",
+		1000,
+		"res://assets/abspestos.png",
+		3
+	)
+	ingredients.append(item)
+	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createIngredient(
+		"crushed abspestos",
+		"this shit will kill you, also its a powder now",
+		0,
+		"res://assets/crushed abspestos.png",
+		0
+	)
+	ingredients.append(item)
+	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createIngredient(
+		"beans",
+		"staight up beans nigga",
+		3,
+		"res://assets/beans.png",
+		3
+	)
+	ingredients.append(item)
+	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	#Hardcoding all of our Potions here
+	item.createPotion(
+		"cinnamon toast crunch milk",
+		"this shit yummy af",
+		0,
+		"res://assets/CTCBox.jpg",
+		[0,1],
+		0
+	)
+	potions.append(item)
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

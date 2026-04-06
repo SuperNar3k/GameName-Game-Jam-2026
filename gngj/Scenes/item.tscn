@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c416d00ce5vgk"]
+
+[ext_resource type="Script" uid="uid://mnxf70wcl1ry" path="res://scrips/item.gd" id="1_tnite"]
+
+[node name="item" type="Node" unique_id=553420569]
+script = ExtResource("1_tnite")

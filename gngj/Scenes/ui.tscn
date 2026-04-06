@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://5p73ychobdgw"]
 
-[ext_resource type="Texture2D" uid="uid://c2qqou1d64vtn" path="res://light-blue-color-solid-background-1920x1080.png" id="1_jxero"]
 [ext_resource type="Script" uid="uid://o213up71grc5" path="res://Scenes/handle.gd" id="3_nf4gj"]
 [ext_resource type="Script" uid="uid://dw6j2oodrgabb" path="res://Scenes/animation_player.gd" id="4_2246s"]
 
@@ -48,19 +47,11 @@ tracks/0/keys = {
 "values": [Vector2(869.99994, -1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2246s"]
-_data = {
-&"Drawer_Open": SubResource("Animation_qdvrb"),
-&"RESET": SubResource("Animation_nf4gj")
-}
-
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -100,7 +91,6 @@ custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_wviqb")
 text = "Start Game"
 
 [node name="Button (Load Game)" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=718331908]
@@ -108,13 +98,46 @@ custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_wviqb")
 text = "Load Game"
 
-[node name="Button (ExitButton)" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=355370363]
-custom_minimum_size = Vector2(280, 70)
+[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/LoadButton" unique_id=296993922]
+position = Vector2(0, -1)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/LoadButton" unique_id=2104710165]
+position = Vector2(220, -0.5)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="OptionsButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1567556011]
+custom_minimum_size = Vector2(350, 65)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/OptionsButton" unique_id=31945927]
+position = Vector2(0, -1)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/OptionsButton" unique_id=730715106]
+position = Vector2(220, -0.5)
+points = PackedVector2Array(57, 65.5, 57, 96.5)
+width = 6.0
+default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
+
+[node name="ExitButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=770358189]
+custom_minimum_size = Vector2(350, 65)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
 text = "Exit"
 
 [node name="CenterContainer2" type="CenterContainer" parent="MainMenu" unique_id=811079465]
@@ -174,7 +197,6 @@ size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="FrontRoom/potionHotbar/HBoxContainer" unique_id=1609707167]
 layout_mode = 2
-texture = ExtResource("1_jxero")
 expand_mode = 2
 
 [node name="Button" type="Button" parent="FrontRoom/potionHotbar/HBoxContainer/TextureRect" unique_id=1904418421]
@@ -192,7 +214,6 @@ theme_override_font_sizes/font_size = 25
 text = "To Back"
 
 [node name="BackRoom" type="Control" parent="." unique_id=1473907433]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
