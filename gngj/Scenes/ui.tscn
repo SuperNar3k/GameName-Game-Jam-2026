@@ -377,13 +377,9 @@ offset_top = 157.26274
 offset_right = 556.27045
 offset_bottom = 309.74188
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GrindingStation/Sprite2D" unique_id=35142751]
-libraries/ = SubResource("AnimationLibrary_2246s")
 
 [node name="Handle" type="Button" parent="GrindingStation/Sprite2D" unique_id=1072961884]
 offset_left = 10.124924
 offset_top = -87.89971
 offset_right = 53.006638
 offset_bottom = 94.47724
-
-[connection signal="pressed" from="GrindingStation/Sprite2D/Handle" to="GrindingStation/Sprite2D/AnimationPlayer" method="_on_handle_pressed"]
