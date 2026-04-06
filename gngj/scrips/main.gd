@@ -67,7 +67,14 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	
+	#sends references of these variables to the ui script for distribution over there
+	$ui.ref_storage(
+		potions,
+		ingredients,
+		quests,
+		activeQuests,
+		pharmacy,
+		storeQueue)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
