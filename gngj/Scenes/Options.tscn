@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dftvnlc0al120"]
 
-[ext_resource type="Script" uid="uid://douhp86xf67kb" path="res://Scenes/options.gd" id="1_qqnya"]
+[ext_resource type="Script" uid="uid://douhp86xf67kb" path="res://scrips/options.gd" id="1_qqnya"]
+[ext_resource type="AudioStream" uid="uid://pkl8xu438sfn" path="res://assets/sound/music/Elevator Music.mp3" id="2_hg628"]
 
 [node name="Options" type="Control" unique_id=953978234]
 layout_mode = 3
@@ -103,7 +104,7 @@ offset_left = 2.0
 offset_top = -26.0
 offset_right = 120.0
 offset_bottom = -3.0
-text = "SFXVolume"
+text = "SFX Volume"
 
 [node name="Label" type="Label" parent="TabContainer/Sound/SFXVolumeSlider3" unique_id=590274517]
 layout_mode = 0
@@ -125,10 +126,20 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="Label3" type="Label" parent="TabContainer/Display" unique_id=1237310964]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 22.0
+offset_right = 128.0
+offset_bottom = 45.0
+text = "Resolutions"
+
 [node name="Resolutions" type="OptionButton" parent="TabContainer/Display" unique_id=262572108]
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 20.0
+offset_left = 8.0
+offset_top = 49.0
+offset_right = 131.0
+offset_bottom = 80.0
 selected = 0
 item_count = 3
 popup/item_0/text = "1920 x 1080"
@@ -138,7 +149,90 @@ popup/item_1/id = 1
 popup/item_2/text = "1280 x 720"
 popup/item_2/id = 0
 
+[node name="Full Screen" type="CheckBox" parent="TabContainer/Display" unique_id=1064860869]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 80.0
+offset_right = 73.0
+offset_bottom = 111.0
+text = "Full Screen"
+
+[node name="Controls" type="Control" parent="TabContainer" unique_id=1588457959]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls" unique_id=2046969773]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = " [b][center]Keyboard and Mouse[/center][/b]
+[center]
++----------------------------------------+----------------------------------------+
+| Select Option                        |Left Click         						|
++----------------------------------------+----------------------------------------+
+| Interact                                  |Mouse (follow)                       |
++----------------------------------------+----------------------------------------+
+| In-Game Menu                     |Esc                                            |
++----------------------------------------+----------------------------------------+
+| Recipe List                             |R                                               |
++----------------------------------------+----------------------------------------+
+| Bookshelf                              |B                                                |
++----------------------------------------+----------------------------------------+
+|Conversation Progression  |Left Click / Space                   |
++----------------------------------------+----------------------------------------+
+[/center]
+ [b][center]Controller[/center][/b]
+[center]
++----------------------------------------+----------------------------------------+
+| Select Option                        |A                        						|
++----------------------------------------+----------------------------------------+
+| Interact                                  |Left Joystick                            |
++----------------------------------------+----------------------------------------+
+| In-Game Menu                     |Settings                                   |
++----------------------------------------+----------------------------------------+
+| Recipe List                             |X                                               |
++----------------------------------------+----------------------------------------+
+| Bookshelf                              |Y                                                |
++----------------------------------------+----------------------------------------+
+|Conversation Progression  |A / B                                          |
++----------------------------------------+----------------------------------------+
+[/center]
+
+
+
+"
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=781143972]
+stream = ExtResource("2_hg628")
+autoplay = true
+
+[node name="MainMenu" type="Button" parent="." unique_id=540465813]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 960.0
+offset_right = 108.0
+offset_bottom = 991.0
+text = "Main Menu"
+
+[node name="Exit" type="Button" parent="." unique_id=1031942189]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 999.0
+offset_right = 108.0
+offset_bottom = 1030.0
+text = "Exit"
+
 [connection signal="value_changed" from="TabContainer/Sound/MasterVolumeSlider" to="." method="_on_master_value_changed"]
+[connection signal="toggled" from="TabContainer/Sound/MasterVolumeSlider/CheckBox" to="." method="_on_master_mute_toggled"]
 [connection signal="value_changed" from="TabContainer/Sound/MusicVolumeSlider2" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="TabContainer/Sound/SFXVolumeSlider3" to="." method="_on_master_value_changed"]
 [connection signal="item_selected" from="TabContainer/Display/Resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="toggled" from="TabContainer/Display/Full Screen" to="." method="_on_full_screen_toggled"]
