@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dsdrgoqm38hy"]
+
+[node name="BackRoom" type="Control" unique_id=1422597810]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ingredientShelfBtn" type="Button" parent="." unique_id=701208056]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -246.0
+offset_right = 913.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 60
+text = "Ingredient Shelf"
+
+[node name="BookshelfBtn" type="Button" parent="." unique_id=919568061]
+layout_mode = 0
+offset_left = -237.0
+offset_top = -371.0
+offset_right = 931.0
+offset_bottom = -331.0
+theme_override_font_sizes/font_size = 25
+text = "bookshelf"
+
+[node name="RecipeBookBtn" type="Button" parent="." unique_id=1347499500]
+layout_mode = 0
+offset_left = 539.0
+offset_top = -10.0
+offset_right = 888.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 35
+text = "Recipe Book"
+
+[node name="CauldronBtn" type="Button" parent="." unique_id=248669530]
+layout_mode = 0
+offset_left = -921.0
+offset_top = 7.0
+offset_right = -421.0
+offset_bottom = 506.0
+theme_override_font_sizes/font_size = 60
+text = "Cauldron"
+
+[node name="MortarandPestleBtn" type="Button" parent="." unique_id=742361563]
+layout_mode = 0
+offset_left = -76.0
+offset_top = 24.0
+offset_right = 250.0
+offset_bottom = 327.0
+theme_override_font_sizes/font_size = 25
+text = "Mortar & Pestle"
+
+[node name="toFrontRoomBtn" type="Button" parent="." unique_id=385305503]
+layout_mode = 0
+offset_left = 659.0
+offset_top = 361.0
+offset_right = 915.0
+offset_bottom = 512.0
+theme_override_font_sizes/font_size = 28
+text = "To Front"
