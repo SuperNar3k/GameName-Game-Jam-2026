@@ -11,12 +11,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sb72h")
 
 [node name="MainMenu" type="Control" parent="." unique_id=343162974]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_sb72h")
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=2026833369]
 layout_mode = 1

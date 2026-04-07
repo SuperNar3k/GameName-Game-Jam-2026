@@ -61,7 +61,6 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="RecipeBook" parent="." unique_id=496628637 instance=ExtResource("2_nf4gj")]
-visible = false
 layout_mode = 1
 offset_left = -898.0
 offset_top = -476.0
@@ -69,8 +68,17 @@ offset_right = -897.9999
 offset_bottom = -476.0
 
 [node name="MainMenuScene" parent="." unique_id=1432645101 instance=ExtResource("6_m78vo")]
+visible = false
 layout_mode = 1
 
 [node name="CauldronStation" parent="." unique_id=520231267 instance=ExtResource("7_smcll")]
 visible = false
 layout_mode = 1
+
+[connection signal="toBackRoom" from="FrontRoom" to="." method="_on_front_room_to_back_room"]
+[connection signal="toCauldronStation" from="BackRoom" to="." method="_on_back_room_to_cauldron_station"]
+[connection signal="toFront" from="BackRoom" to="." method="_on_back_room_to_front"]
+[connection signal="toGrindStation" from="BackRoom" to="." method="_on_back_room_to_grind_station"]
+[connection signal="goBack" from="GrindingStation" to="." method="_on_grinding_station_go_back"]
+[connection signal="startGame" from="MainMenuScene" to="." method="_on_main_menu_scene_start_game"]
+[connection signal="goBack" from="CauldronStation" to="." method="_on_cauldron_station_go_back"]
