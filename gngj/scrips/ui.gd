@@ -9,6 +9,8 @@ var pharmacy
 var storeQueue
 
 func _ready() -> void:
+	#Custom Signals from children
+	$RecipeBook.enable_outside_buttons.connect(_enable_all_buttons.bind())
 	#FrontRoom Buttons
 	
 	#BackRoom Buttons
@@ -41,7 +43,7 @@ func _on_button_pressed(button_pressed: String) -> void:
 	if (button_pressed == "Bookshelf"):
 		pass
 	if (button_pressed == "RecipeBook"):
-		$BackRoom.hide()
+		_disable_all_buttons()
 		$RecipeBook._on_recipe_book_btn_pressed(potions, ingredients)
 	if (button_pressed == "Cauldron"):
 		pass
@@ -49,3 +51,17 @@ func _on_button_pressed(button_pressed: String) -> void:
 		pass
 	if (button_pressed == "toFrontRoom"):
 		pass
+
+func _disable_all_buttons() -> void:
+	for child in get_children():
+		if child != $RecipeBook:
+			for innerchild in child.get_children():
+				if innerchild is Button:
+					innerchild.disabled = true
+
+func _enable_all_buttons() -> void:
+	for child in get_children():
+		if child != $RecipeBook:
+			for innerchild in child.get_children():
+				if innerchild is Button:
+					innerchild.disabled = false

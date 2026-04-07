@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4g2huc0yueok" path="res://Scenes/frontRoom.tscn" id="2_q7pk6"]
 [ext_resource type="PackedScene" uid="uid://dsdrgoqm38hy" path="res://Scenes/backRoom.tscn" id="3_m78vo"]
 [ext_resource type="PackedScene" uid="uid://dx7onsvyh7cw8" path="res://Scenes/grindingStation.tscn" id="4_smcll"]
-[ext_resource type="PackedScene" uid="uid://csyrxpe3vdq07" path="res://Scenes/MainMenuScene.tscn" id="6_m78vo"]
+[ext_resource type="PackedScene" uid="uid://bnpmd2a31sief" path="res://Scenes/MainMenuScene.tscn" id="6_m78vo"]
 [ext_resource type="PackedScene" uid="uid://cuqlykmiso5qq" path="res://Scenes/cauldron_station.tscn" id="7_smcll"]
 
 [node name="ui" type="Control" unique_id=1513356]
@@ -35,7 +35,6 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="BackRoom" parent="." unique_id=1422597810 instance=ExtResource("3_m78vo")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -61,14 +60,17 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="RecipeBook" parent="." unique_id=496628637 instance=ExtResource("2_nf4gj")]
-visible = false
-layout_mode = 1
-offset_left = -898.0
-offset_top = -476.0
-offset_right = -897.9999
-offset_bottom = -476.0
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="MainMenuScene" parent="." unique_id=1432645101 instance=ExtResource("6_m78vo")]
+visible = false
 layout_mode = 1
 
 [node name="CauldronStation" parent="." unique_id=520231267 instance=ExtResource("7_smcll")]
