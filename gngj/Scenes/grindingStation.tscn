@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://dx7onsvyh7cw8"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5u62"]
+radius = 20.0
+height = 688.0
+
 [node name="GrindingStation" type="Control" unique_id=1247765081]
 layout_mode = 3
 anchors_preset = 8
@@ -14,108 +18,136 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=835483911]
+[node name="IngredientDrawer" type="Sprite2D" parent="." unique_id=835483911]
 position = Vector2(869.99994, -1)
 scale = Vector2(1.6790394, 1.6723603)
 
-[node name="Button" type="Button" parent="Sprite2D" unique_id=1421411846]
+[node name="Button" type="Button" parent="IngredientDrawer" unique_id=1421411846]
 offset_left = 67.300385
 offset_top = -309.74185
 offset_right = 181.05588
 offset_bottom = -156.06685
 
-[node name="Button2" type="Button" parent="Sprite2D" unique_id=1587790759]
+[node name="Button2" type="Button" parent="IngredientDrawer" unique_id=1587790759]
 offset_left = 193.56305
 offset_top = -308.54593
 offset_right = 307.31854
 offset_bottom = -154.87093
 
-[node name="Button3" type="Button" parent="Sprite2D" unique_id=1131852099]
+[node name="Button3" type="Button" parent="IngredientDrawer" unique_id=1131852099]
 offset_left = 319.23013
 offset_top = -310.93777
 offset_right = 432.98563
 offset_bottom = -157.26277
 
-[node name="Button4" type="Button" parent="Sprite2D" unique_id=1777275948]
+[node name="Button4" type="Button" parent="IngredientDrawer" unique_id=1777275948]
 offset_left = 445.4928
 offset_top = -309.74185
 offset_right = 559.2483
 offset_bottom = -156.06685
 
-[node name="Button5" type="Button" parent="Sprite2D" unique_id=1910489831]
+[node name="Button5" type="Button" parent="IngredientDrawer" unique_id=1910489831]
 offset_left = 69.6827
 offset_top = -142.91179
 offset_right = 183.4382
 offset_bottom = -6.57753
 
-[node name="Button6" type="Button" parent="Sprite2D" unique_id=185945185]
+[node name="Button6" type="Button" parent="IngredientDrawer" unique_id=185945185]
 offset_left = 192.96747
 offset_top = -142.91179
 offset_right = 306.72296
 offset_bottom = -6.57753
 
-[node name="Button7" type="Button" parent="Sprite2D" unique_id=1299202871]
+[node name="Button7" type="Button" parent="IngredientDrawer" unique_id=1299202871]
 offset_left = 319.23013
 offset_top = -144.1077
 offset_right = 432.98563
 offset_bottom = -7.7734375
 
-[node name="Button8" type="Button" parent="Sprite2D" unique_id=170727394]
+[node name="Button8" type="Button" parent="IngredientDrawer" unique_id=170727394]
 offset_left = 443.1105
 offset_top = -141.71588
 offset_right = 556.866
 offset_bottom = -5.3816223
 
-[node name="Button9" type="Button" parent="Sprite2D" unique_id=2038453985]
+[node name="Button9" type="Button" parent="IngredientDrawer" unique_id=2038453985]
 offset_left = 71.46945
 offset_top = 7.175476
 offset_right = 185.22498
 offset_bottom = 143.50974
 
-[node name="Button10" type="Button" parent="Sprite2D" unique_id=399579347]
+[node name="Button10" type="Button" parent="IngredientDrawer" unique_id=399579347]
 offset_left = 195.94537
 offset_top = 8.37139
 offset_right = 309.7009
 offset_bottom = 144.70564
 
-[node name="Button11" type="Button" parent="Sprite2D" unique_id=1762367430]
+[node name="Button11" type="Button" parent="IngredientDrawer" unique_id=1762367430]
 offset_left = 319.82574
 offset_top = 7.175476
 offset_right = 433.58127
 offset_bottom = 143.50974
 
-[node name="Button12" type="Button" parent="Sprite2D" unique_id=442993028]
+[node name="Button12" type="Button" parent="IngredientDrawer" unique_id=442993028]
 offset_left = 441.91934
 offset_top = 5.979562
 offset_right = 555.67487
 offset_bottom = 142.31383
 
-[node name="Button13" type="Button" parent="Sprite2D" unique_id=1746761103]
+[node name="Button13" type="Button" parent="IngredientDrawer" unique_id=1746761103]
 offset_left = 69.08713
 offset_top = 156.06683
 offset_right = 182.84265
 offset_bottom = 308.54596
 
-[node name="Button14" type="Button" parent="Sprite2D" unique_id=2113061612]
+[node name="Button14" type="Button" parent="IngredientDrawer" unique_id=2113061612]
 offset_left = 193.56305
 offset_top = 158.45866
 offset_right = 307.31857
 offset_bottom = 310.9378
 
-[node name="Button15" type="Button" parent="Sprite2D" unique_id=651236490]
+[node name="Button15" type="Button" parent="IngredientDrawer" unique_id=651236490]
 offset_left = 321.01688
 offset_top = 157.26274
 offset_right = 434.7724
 offset_bottom = 309.74188
 
-[node name="Button16" type="Button" parent="Sprite2D" unique_id=698026870]
+[node name="Button16" type="Button" parent="IngredientDrawer" unique_id=698026870]
 offset_left = 442.51492
 offset_top = 157.26274
 offset_right = 556.27045
 offset_bottom = 309.74188
 
-[node name="Handle" type="Button" parent="Sprite2D" unique_id=1622523041]
+[node name="Handle" type="Button" parent="IngredientDrawer" unique_id=1622523041]
 offset_left = 10.124924
 offset_top = -87.89971
 offset_right = 53.006638
 offset_bottom = 94.47724
+
+[node name="GrindingArea" type="Area2D" parent="." unique_id=1570226345]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrindingArea" unique_id=2059078509]
+position = Vector2(-399.00003, -19.999985)
+rotation = -0.6981317
+shape = SubResource("CapsuleShape2D_w5u62")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GrindingArea" unique_id=1728253235]
+position = Vector2(-397, -15)
+shape = SubResource("CapsuleShape2D_w5u62")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GrindingArea" unique_id=273747170]
+position = Vector2(-401, -16)
+rotation = -2.443461
+shape = SubResource("CapsuleShape2D_w5u62")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GrindingArea" unique_id=1837861230]
+position = Vector2(-399, -19)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_w5u62")
+
+[node name="BackButton" type="Button" parent="." unique_id=370372965]
+layout_mode = 0
+offset_left = -903.0
+offset_top = 398.0
+offset_right = -621.0
+offset_bottom = 525.0

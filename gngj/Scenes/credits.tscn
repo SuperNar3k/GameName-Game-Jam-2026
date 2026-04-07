@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dk2662um3to51"]
 
+[ext_resource type="Script" uid="uid://d36ndxk4xpewk" path="res://Scenes/CreditsNode.gd" id="1_gryuy"]
 [ext_resource type="Texture2D" uid="uid://b7v2h8fl6stf4" path="res://assets/background/latest.png" id="1_r18jl"]
 
 [node name="credits" type="Node2D" unique_id=1780825882]
@@ -17,11 +18,13 @@ offset_right = 960.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gryuy")
 
 [node name="CenterContainer" type="CenterContainer" parent="creditsNode" unique_id=1246269654]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="creditsNode/CenterContainer" unique_id=1314726937]
 layout_mode = 2
@@ -31,3 +34,14 @@ layout_mode = 2
 texture = ExtResource("1_r18jl")
 expand_mode = 2
 stretch_mode = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="creditsNode" unique_id=748597817]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 438.0
+offset_right = 844.0
+offset_bottom = 478.0
+
+[node name="BackButton" type="Button" parent="creditsNode/CenterContainer2" unique_id=160344821]
+layout_mode = 2
+text = "Back"
