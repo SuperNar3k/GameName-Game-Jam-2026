@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dsdrgoqm38hy"]
 
+[ext_resource type="Script" uid="uid://6oc5iudc0t7r" path="res://scrips/back_room.gd" id="1_aqhi3"]
+
 [node name="BackRoom" type="Control" unique_id=1422597810]
 layout_mode = 3
 anchors_preset = 8
@@ -9,6 +11,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_aqhi3")
 
 [node name="ingredientShelfBtn" type="Button" parent="." unique_id=701208056]
 layout_mode = 0

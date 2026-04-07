@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dx7onsvyh7cw8" path="res://Scenes/grindingStation.tscn" id="4_smcll"]
 [ext_resource type="PackedScene" uid="uid://csyrxpe3vdq07" path="res://Scenes/MainMenuScene.tscn" id="6_m78vo"]
 [ext_resource type="PackedScene" uid="uid://cuqlykmiso5qq" path="res://Scenes/cauldron_station.tscn" id="7_smcll"]
+[ext_resource type="PackedScene" uid="uid://dftvnlc0al120" path="res://Scenes/Options.tscn" id="8_ryf15"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -19,46 +20,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qdvrb")
 
+[node name="MainMenuScene" parent="." unique_id=1432645101 instance=ExtResource("6_m78vo")]
+visible = false
+layout_mode = 1
+
+[node name="Options" parent="." unique_id=953978234 instance=ExtResource("8_ryf15")]
+layout_mode = 1
+
 [node name="FrontRoom" parent="." unique_id=717244377 instance=ExtResource("2_q7pk6")]
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="BackRoom" parent="." unique_id=1422597810 instance=ExtResource("3_m78vo")]
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="GrindingStation" parent="." unique_id=1247765081 instance=ExtResource("4_smcll")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="RecipeBook" parent="." unique_id=496628637 instance=ExtResource("2_nf4gj")]
 visible = false
@@ -68,9 +43,20 @@ offset_top = -476.0
 offset_right = -897.9999
 offset_bottom = -476.0
 
-[node name="MainMenuScene" parent="." unique_id=1432645101 instance=ExtResource("6_m78vo")]
+[node name="GrindingStation" parent="." unique_id=1247765081 instance=ExtResource("4_smcll")]
+visible = false
 layout_mode = 1
 
 [node name="CauldronStation" parent="." unique_id=520231267 instance=ExtResource("7_smcll")]
 visible = false
 layout_mode = 1
+
+[connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]
+[connection signal="startGame" from="MainMenuScene" to="." method="_on_main_menu_scene_start_game"]
+[connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]
+[connection signal="toBackRoom" from="FrontRoom" to="." method="_on_front_room_to_back_room"]
+[connection signal="toCauldronStation" from="BackRoom" to="." method="_on_back_room_to_cauldron_station"]
+[connection signal="toFront" from="BackRoom" to="." method="_on_back_room_to_front"]
+[connection signal="toGrindStation" from="BackRoom" to="." method="_on_back_room_to_grind_station"]
+[connection signal="goBack" from="GrindingStation" to="." method="_on_grinding_station_go_back"]
+[connection signal="goBack" from="CauldronStation" to="." method="_on_cauldron_station_go_back"]

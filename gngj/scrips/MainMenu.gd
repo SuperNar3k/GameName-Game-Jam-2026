@@ -1,13 +1,16 @@
 extends Control
 
-@onready var start_button: Button = $CenterContainer/VBoxContainer/StartButton     # change paths to match your scene
-@onready var load_button: Button = $CenterContainer/VBoxContainer/LoadButton  
-@onready var options_button: Button = $CenterContainer/VBoxContainer/OptionsButton
-@onready var credits_button: Button = $CenterContainer2/CreditsButton
-@onready var exit_button: Button = $CenterContainer/VBoxContainer/ExitButton
+@onready var start_button: Button = $MainMenu/CenterContainer/VBoxContainer/StartButton     # change paths to match your scene
+@onready var load_button: Button = $MainMenu/CenterContainer/VBoxContainer/LoadButton  
+@onready var options_button: Button = $MainMenu/CenterContainer/VBoxContainer/OptionsButton
+@onready var credits_button: Button = $MainMenu/CenterContainer2/CreditsButton
+@onready var exit_button: Button = $MainMenu/CenterContainer/VBoxContainer/ExitButton
+
+signal startGame
+signal displayOptions
+signal displayCreadits
 
 func _ready() -> void:
-	# Connect each button and pass a unique string so we know which one was pressed
 	start_button.pressed.connect(_on_menu_button_pressed.bind("start"))
 	load_button.pressed.connect(_on_menu_button_pressed.bind("load"))
 	options_button.pressed.connect(_on_menu_button_pressed.bind("options"))
@@ -18,17 +21,14 @@ func _ready() -> void:
 func _on_menu_button_pressed(button_name: String) -> void:
 	match button_name:
 		"start":
-			print("Starting the game...")
-			get_tree().change_scene_to_file("res://Scenes/main.tscn")   # ← change to your actual game scene path
+			startGame.emit()
 		"load":
 			print("Opening load menu...")
-			# get_tree().change_scene_to_file("res://options_menu.tscn")  or show a popup
+			
 		"options":
-			print("Opening options menu...")
-			# get_tree().change_scene_to_file("res://options_menu.tscn")  or show a popup
+			displayOptions.emit()
 		"credits":
-			print("Opening credits...")
-			get_tree().change_scene_to_file("res://Scenes/credits.tscn")   # ← This opens your credits scene
+			pass
 		"exit":
 			print("Exiting the game...")
 			get_tree().quit()

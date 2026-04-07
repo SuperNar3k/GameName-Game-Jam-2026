@@ -1,10 +1,17 @@
 extends Control
 
+@onready var exitButton : Button = $Exit
+signal exitOptions
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	exitButton.pressed.connect(_on_exitButton_pressed)
+	
 	$TabContainer/Sound/MasterVolumeSlider.value = SettingsManager.settings.master_volume
 	$TabContainer/Sound/MasterVolumeSlider/Label.text = "%d%%" % int(round(SettingsManager.settings.master_volume * 100))
+
+func _on_exitButton_pressed() -> void: 
+	exitOptions.emit()
 
 #Change master volume
 func _on_master_value_changed(value: float):
