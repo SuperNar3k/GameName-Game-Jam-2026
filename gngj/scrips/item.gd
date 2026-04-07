@@ -7,7 +7,7 @@ var itemName = ""
 var description = ""
 var amountOwned = 0
 var unlocked = false
-var sprite = Sprite2D.new()
+var sprite = ""
 #FOR INGREDIENTS
 var value
 #FOR POTIONS
@@ -26,7 +26,7 @@ func createIngredient(
 	description = _description
 	amountOwned = _amountOwned
 	unlocked = false
-	sprite.set_texture(load(_sprite))
+	sprite = _sprite
 	value = _value
 	
 #Function used to create game potions. Will be overloaded to create dud potions.
@@ -41,7 +41,7 @@ func createPotion(
 	itemName = _itemName
 	description = _description
 	amountOwned = _amountOwned
-	sprite.set_texture(load(_sprite))
+	sprite = _sprite
 	recipe = _recipe
 	cookLevelNeeded = _cookLevelNeeded
 	

@@ -24,6 +24,11 @@ func _ready() -> void:
 	var quest = preload("res://Scenes/quest.tscn").instantiate()
 	
 	#Hardcoding all of our Ingredients here
+	#itemName
+	#description
+	#amountOwned
+	#sprite
+	#value
 	item.createIngredient(
 		"abspestos",									#ItemName
 		"this shit will kill you",						#Description
@@ -58,6 +63,12 @@ func _ready() -> void:
 	item = preload("res://Scenes/item.tscn").instantiate()
 	
 	#Hardcoding all of our Potions here
+	#itemName
+	#description
+	#amountOwned
+	#sprite
+	#recipe
+	#cookLevelNeeded
 	item.createPotion(
 		"cinnamon toast crunch milk",			#ItemName
 		"this shit yummy af",					#Description
@@ -68,6 +79,22 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createPotion(
+		"epic fucking monkey",
+		"curious af",
+		0,
+		"res://assets/potions/funny_monkey.jpg",
+		[1,1,2],
+		0
+	)
+	potions.append(item)
+	
+	#TEMP
+	#potions[0].unlocked = true
+	#potions[1].unlocked = true
+	#TEMP
 	#Hardcoding all of our Quests here:
 	quest.createQuest(
 		["Hi, can you make me", "some cinnamon milk?"],						#QuestStartDialog
