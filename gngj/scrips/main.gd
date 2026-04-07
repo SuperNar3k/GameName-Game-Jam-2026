@@ -23,6 +23,11 @@ func _ready() -> void:
 	var item = preload("res://Scenes/item.tscn").instantiate()
 	
 	#Hardcoding all of our Ingredients here
+	#itemName
+	#description
+	#amountOwned
+	#sprite
+	#value
 	item.createIngredient(
 		"abspestos",
 		"this shit will kill you",
@@ -57,6 +62,12 @@ func _ready() -> void:
 	item = preload("res://Scenes/item.tscn").instantiate()
 	
 	#Hardcoding all of our Potions here
+	#itemName
+	#description
+	#amountOwned
+	#sprite
+	#recipe
+	#cookLevelNeeded
 	item.createPotion(
 		"cinnamon toast crunch milk",
 		"this shit yummy af",
@@ -66,6 +77,23 @@ func _ready() -> void:
 		0
 	)
 	potions.append(item)
+	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createPotion(
+		"epic fucking monkey",
+		"curious af",
+		0,
+		"res://assets/potions/funny_monkey.jpg",
+		[1,1,2],
+		0
+	)
+	potions.append(item)
+	
+	#TEMP
+	#potions[0].unlocked = true
+	#potions[1].unlocked = true
+	#TEMP
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(

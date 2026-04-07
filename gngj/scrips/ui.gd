@@ -41,7 +41,8 @@ func _on_button_pressed(button_pressed: String) -> void:
 	if (button_pressed == "Bookshelf"):
 		pass
 	if (button_pressed == "RecipeBook"):
-		$RecipeBook._on_recipe_book_btn_pressed(potions)
+		$BackRoom.hide()
+		$RecipeBook._on_recipe_book_btn_pressed(potions, ingredients)
 	if (button_pressed == "Cauldron"):
 		pass
 	if (button_pressed == "MortarandPestle"):
