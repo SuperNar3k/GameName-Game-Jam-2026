@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c4g2huc0yueok"]
 
+[ext_resource type="Script" uid="uid://6niyjurcgd0l" path="res://scrips/front_room.gd" id="1_t5cqi"]
+
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3
 anchors_preset = 8
@@ -13,6 +15,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_t5cqi")
 
 [node name="NPC" type="Button" parent="." unique_id=197611622]
 layout_mode = 0
