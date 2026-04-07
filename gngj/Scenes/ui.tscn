@@ -25,6 +25,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+<<<<<<< Updated upstream
 [node name="MainMenu" type="Control" parent="." unique_id=1354610217]
 visible = false
 anchors_preset = 0
@@ -152,6 +153,8 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_jxero")
 text = "Credits"
 
+=======
+>>>>>>> Stashed changes
 [node name="FrontRoom" type="Control" parent="." unique_id=1119590720]
 anchors_preset = 0
 offset_right = 40.0
@@ -265,3 +268,126 @@ offset_right = 915.0
 offset_bottom = 512.0
 theme_override_font_sizes/font_size = 28
 text = "To Front"
+<<<<<<< Updated upstream
+=======
+
+[node name="GrindingStation" type="Control" parent="." unique_id=1639595488]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="GrindingStation" unique_id=445165663]
+position = Vector2(869.99994, -1)
+scale = Vector2(1.6790394, 1.6723603)
+
+[node name="Button" type="Button" parent="GrindingStation/Sprite2D" unique_id=1539824660]
+offset_left = 67.300385
+offset_top = -309.74185
+offset_right = 181.05588
+offset_bottom = -156.06685
+
+[node name="Button2" type="Button" parent="GrindingStation/Sprite2D" unique_id=1781522856]
+offset_left = 193.56305
+offset_top = -308.54593
+offset_right = 307.31854
+offset_bottom = -154.87093
+
+[node name="Button3" type="Button" parent="GrindingStation/Sprite2D" unique_id=115122133]
+offset_left = 319.23013
+offset_top = -310.93777
+offset_right = 432.98563
+offset_bottom = -157.26277
+
+[node name="Button4" type="Button" parent="GrindingStation/Sprite2D" unique_id=1988152847]
+offset_left = 445.4928
+offset_top = -309.74185
+offset_right = 559.2483
+offset_bottom = -156.06685
+
+[node name="Button5" type="Button" parent="GrindingStation/Sprite2D" unique_id=1884154784]
+offset_left = 69.6827
+offset_top = -142.91179
+offset_right = 183.4382
+offset_bottom = -6.57753
+
+[node name="Button6" type="Button" parent="GrindingStation/Sprite2D" unique_id=1890386899]
+offset_left = 192.96747
+offset_top = -142.91179
+offset_right = 306.72296
+offset_bottom = -6.57753
+
+[node name="Button7" type="Button" parent="GrindingStation/Sprite2D" unique_id=210120152]
+offset_left = 319.23013
+offset_top = -144.1077
+offset_right = 432.98563
+offset_bottom = -7.7734375
+
+[node name="Button8" type="Button" parent="GrindingStation/Sprite2D" unique_id=1321987740]
+offset_left = 443.1105
+offset_top = -141.71588
+offset_right = 556.866
+offset_bottom = -5.3816223
+
+[node name="Button9" type="Button" parent="GrindingStation/Sprite2D" unique_id=459959927]
+offset_left = 71.46945
+offset_top = 7.175476
+offset_right = 185.22498
+offset_bottom = 143.50974
+
+[node name="Button10" type="Button" parent="GrindingStation/Sprite2D" unique_id=1259743663]
+offset_left = 195.94537
+offset_top = 8.37139
+offset_right = 309.7009
+offset_bottom = 144.70564
+
+[node name="Button11" type="Button" parent="GrindingStation/Sprite2D" unique_id=1261362122]
+offset_left = 319.82574
+offset_top = 7.175476
+offset_right = 433.58127
+offset_bottom = 143.50974
+
+[node name="Button12" type="Button" parent="GrindingStation/Sprite2D" unique_id=1994713825]
+offset_left = 441.91934
+offset_top = 5.979562
+offset_right = 555.67487
+offset_bottom = 142.31383
+
+[node name="Button13" type="Button" parent="GrindingStation/Sprite2D" unique_id=810259817]
+offset_left = 69.08713
+offset_top = 156.06683
+offset_right = 182.84265
+offset_bottom = 308.54596
+
+[node name="Button14" type="Button" parent="GrindingStation/Sprite2D" unique_id=2086015724]
+offset_left = 193.56305
+offset_top = 158.45866
+offset_right = 307.31857
+offset_bottom = 310.9378
+
+[node name="Button15" type="Button" parent="GrindingStation/Sprite2D" unique_id=1847921092]
+offset_left = 321.01688
+offset_top = 157.26274
+offset_right = 434.7724
+offset_bottom = 309.74188
+
+[node name="Button16" type="Button" parent="GrindingStation/Sprite2D" unique_id=300381306]
+offset_left = 442.51492
+offset_top = 157.26274
+offset_right = 556.27045
+offset_bottom = 309.74188
+
+[node name="Handle" type="Button" parent="GrindingStation/Sprite2D" unique_id=1072961884]
+offset_left = 10.124924
+offset_top = -87.89971
+offset_right = 53.006638
+offset_bottom = 94.47724
+
+[node name="RecipeBook" parent="." unique_id=496628637 instance=ExtResource("2_nf4gj")]
+visible = false
+layout_mode = 1
+offset_left = -898.0
+offset_top = -476.0
+offset_right = -897.9999
+offset_bottom = -476.0
+>>>>>>> Stashed changes
