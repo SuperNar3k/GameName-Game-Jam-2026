@@ -91,7 +91,59 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createPotion(
+		"test name 3",
+		"test desc 3",
+		0,
+		"res://assets/potions/three.jpg",
+		[0,1,2],
+		0
+	)
+	potions.append(item)
+	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createPotion(
+		"test name 4",
+		"test desc 4",
+		0,
+		"res://assets/potions/four.jpg",
+		[0,2,2],
+		0
+	)
+	potions.append(item)
+	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createPotion(
+		"test name 5",
+		"test desc 5",
+		0,
+		"res://assets/potions/five.jpg",
+		[1,2,2],
+		0
+	)
+	potions.append(item)
+	
+	item = preload("res://Scenes/item.tscn").instantiate()
+	
+	item.createPotion(
+		"test name 6",
+		"test desc 6",
+		0,
+		"res://assets/potions/six.jpg",
+		[2,2,2],
+		0
+	)
+	potions.append(item)
+	
 	#TEMP
+	var i = 0
+	while i < potions.size():
+		potions[i].unlocked = true
+		i = i + 1
 	#potions[0].unlocked = true
 	#potions[1].unlocked = true
 	#TEMP
