@@ -16,6 +16,14 @@ config/auto_accept_quit=false
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bvhp71ua2iiax"
+
+[autoload]
+
+SettingsManager="*uid://dvay4lmhnucxm"
+
 [display]
 
 window/size/viewport_width=1920
