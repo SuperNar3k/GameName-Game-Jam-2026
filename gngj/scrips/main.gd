@@ -21,14 +21,15 @@ func _ready() -> void:
 	
 	#Variable that will hold all of our objects
 	var item = preload("res://Scenes/item.tscn").instantiate()
+	var quest = preload("res://Scenes/quest.tscn").instantiate()
 	
 	#Hardcoding all of our Ingredients here
 	item.createIngredient(
-		"abspestos",
-		"this shit will kill you",
-		1000,
-		"res://assets/ingredients/abspestos.png",
-		3
+		"abspestos",									#ItemName
+		"this shit will kill you",						#Description
+		1000,											#AmountOwned
+		"res://assets/ingredients/abspestos.png",		#Sprite
+		3												#Value
 	)
 	ingredients.append(item)
 	
@@ -58,14 +59,38 @@ func _ready() -> void:
 	
 	#Hardcoding all of our Potions here
 	item.createPotion(
-		"cinnamon toast crunch milk",
-		"this shit yummy af",
-		0,
-		"res://assets/potions/CTCBox.jpg",
-		[0,1],
-		0
+		"cinnamon toast crunch milk",			#ItemName
+		"this shit yummy af",					#Description
+		0,										#AmountOwned
+		"res://assets/potions/CTCBox.jpg",		#Sprite
+		[0,1],									#Recipe
+		0										#CookLevelNeeded
 	)
 	potions.append(item)
+	
+	#Hardcoding all of our Quests here:
+	quest.createQuest(
+		["Hi, can you make me", "some cinnamon milk?"],						#QuestStartDialog
+		["You got that milk yet?"],											#QuestReturningDialog
+		["That's okay bitch","I'll get my milk from somewhere else"],		#QuestRejectedDialog
+		["What a waste of my time", "DIe FUcker"],							#QuestFailedDialog
+		["holy fuck thank you!", "SLURP SLUR SLUP"],						#QuestSuccses
+		[0],																#Requirements
+		69,																	#RewardMoney
+		[],																	#RewardRecipes
+		[0,2],																#RewardIngredients
+		1,																	#DaysUntilDue
+		0,																	#DaysUntilReward
+		true																#IsRepeatable
+	)
+	quests.append(quest)
+	
+	quests[0].setNPC(0)
+	
+	
+	
+	
+	
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
@@ -74,7 +99,8 @@ func _ready() -> void:
 		quests,
 		activeQuests,
 		pharmacy,
-		storeQueue)
+		storeQueue
+	)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

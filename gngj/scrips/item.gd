@@ -14,6 +14,7 @@ var value
 var recipe = []
 var cookLevelNeeded = 0
 
+#Function explicitly for creating new Ingredients
 func createIngredient(
 	_itemName: Variant,
 	_description: Variant,
@@ -28,6 +29,7 @@ func createIngredient(
 	sprite.set_texture(load(_sprite))
 	value = _value
 	
+#Function used to create game potions. Will be overloaded to create dud potions.
 func createPotion(
 	_itemName: Variant,
 	_description: Variant,
