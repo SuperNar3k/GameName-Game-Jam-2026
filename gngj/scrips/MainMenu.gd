@@ -19,7 +19,7 @@ func _on_menu_button_pressed(button_name: String) -> void:
 	match button_name:
 		"start":
 			print("Starting the game...")
-			get_tree().change_scene_to_file("res://game_scene.tscn")   # ← change to your actual game scene path
+			get_tree().change_scene_to_file("res://Scenes/main.tscn")   # ← change to your actual game scene path
 		"load":
 			print("Opening load menu...")
 			# get_tree().change_scene_to_file("res://options_menu.tscn")  or show a popup
@@ -27,8 +27,8 @@ func _on_menu_button_pressed(button_name: String) -> void:
 			print("Opening options menu...")
 			# get_tree().change_scene_to_file("res://options_menu.tscn")  or show a popup
 		"credits":
-			print("Showing credits...")
-			# get_tree().change_scene_to_file("res://credits.tscn") or show a panel
+			print("Opening credits...")
+			get_tree().change_scene_to_file("res://Scenes/credits.tscn")   # ← This opens your credits scene
 		"exit":
 			print("Exiting the game...")
 			get_tree().quit()
