@@ -7,6 +7,8 @@ extends Control
 @onready var exit_button: Button = $MainMenu/CenterContainer/VBoxContainer/ExitButton
 
 signal startGame
+signal displayOptions
+signal displayCreadits
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_menu_button_pressed.bind("start"))
@@ -24,8 +26,7 @@ func _on_menu_button_pressed(button_name: String) -> void:
 			print("Opening load menu...")
 			
 		"options":
-			print("Opening options menu...")
-			
+			displayOptions.emit()
 		"credits":
 			pass
 		"exit":

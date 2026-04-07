@@ -81,3 +81,13 @@ func _on_grinding_station_go_back() -> void:
 func _on_cauldron_station_go_back() -> void:
 	$CauldronStation.hide()
 	$BackRoom.show()
+
+
+func _on_main_menu_scene_display_options() -> void:
+	$MainMenuScene.hide()
+	$Options.show()
+
+
+func _on_options_exit_options() -> void:
+	$Options.hide()
+	$MainMenuScene.show()
