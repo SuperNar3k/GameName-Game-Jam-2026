@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://4h7hv4qsaubq" path="res://scrips/ui.gd" id="1_qdvrb"]
 [ext_resource type="PackedScene" uid="uid://cuan7o4maj614" path="res://Scenes/recipeBook.tscn" id="2_nf4gj"]
-[ext_resource type="PackedScene" uid="uid://c4g2huc0yueok" path="res://Scenes/frontRoom.tscn" id="2_q7pk6"]
-[ext_resource type="PackedScene" uid="uid://dsdrgoqm38hy" path="res://Scenes/backRoom.tscn" id="3_m78vo"]
-[ext_resource type="PackedScene" uid="uid://dx7onsvyh7cw8" path="res://Scenes/grindingStation.tscn" id="4_smcll"]
+[ext_resource type="PackedScene" path="res://Scenes/frontRoom.tscn" id="2_q7pk6"]
+[ext_resource type="PackedScene" path="res://Scenes/backRoom.tscn" id="3_m78vo"]
+[ext_resource type="PackedScene" path="res://Scenes/grindingStation.tscn" id="4_smcll"]
+[ext_resource type="PackedScene" path="res://Scenes/MainMenuScene.tscn" id="6_m78vo"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -33,6 +34,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="BackRoom" parent="." unique_id=1422597810 instance=ExtResource("3_m78vo")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -58,8 +60,12 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="RecipeBook" parent="." unique_id=496628637 instance=ExtResource("2_nf4gj")]
+visible = false
 layout_mode = 1
 offset_left = -898.0
 offset_top = -476.0
 offset_right = -897.9999
 offset_bottom = -476.0
+
+[node name="MainMenuScene" parent="." unique_id=1432645101 instance=ExtResource("6_m78vo")]
+layout_mode = 1

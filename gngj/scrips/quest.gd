@@ -56,7 +56,7 @@ func createQuest(
 	isRepeatable = _isReapeatable
 
 
-	
+#Fucntion for setting a random npc. Will choose a random name and sprite. Handled by npc class
 func setNPC(index: Variant): 
 	NPC.setRandNPC()
 
