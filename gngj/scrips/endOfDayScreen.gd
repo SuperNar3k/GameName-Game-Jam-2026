@@ -11,10 +11,13 @@ var itemAmount
 
 var item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
 
-func displayShit(ingredients: Dictionary, potions: Dictionary):
+func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
 	
-	for k in ingredients.keys(): 
-		var ingredient = ingredients.get(k)
+	# Reverse the keys for order
+	var keysInReverse = allIngredients.keys()
+	keysInReverse.reverse()
+	for k:String in keysInReverse:
+		var ingredient = allIngredients.get(k)
 		
 		#ONLY FOR TESTING
 		ingredient.unlocked = true
@@ -27,8 +30,13 @@ func displayShit(ingredients: Dictionary, potions: Dictionary):
 			item.setItemAmount(ingredient.amountOwned)
 			
 			item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
-			
-	for potion in potions:
+	
+	# Reverse the keys for order
+	keysInReverse = allPotions.keys()
+	keysInReverse.reverse()
+	for k:String in keysInReverse:
+		k.reverse()
+		var potion = allPotions.get(k)
 		
 		#ONLY FOR TESTING
 		potion.unlocked = true
