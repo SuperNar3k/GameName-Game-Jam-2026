@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://l2bijuhga5i1"]
+
+[ext_resource type="Script" uid="uid://3mj2jpxl7v7e" path="res://Scenes/displayItemOnList.gd" id="1_n22ve"]
+[ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="1_ofr5u"]
+
+[node name="displayItemOnList" type="HBoxContainer" unique_id=110119318]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -725.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n22ve")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=360610233]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="itemSprite" type="TextureRect" parent="AspectRatioContainer" unique_id=1111635685]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_ofr5u")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="itemName" type="Label" parent="." unique_id=838400886]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "word 1"
+vertical_alignment = 1
+
+[node name="itemAmount" type="Label" parent="." unique_id=2009591534]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "word 2"
+horizontal_alignment = 1

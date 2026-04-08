@@ -22,6 +22,7 @@ var QuestCreator = Quest_Creator.new() # Used for creating quests
 func _ready() -> void:
 	$dayDuration.set_wait_time(dayDuration)
 	
+	
 	#Variable that will hold all of our objects
 	var item = preload("res://Scenes/item.tscn").instantiate()
 	
@@ -40,7 +41,7 @@ func _ready() -> void:
 	)
 	ingredients.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createIngredient(
 		"crushed abspestos",
@@ -51,7 +52,7 @@ func _ready() -> void:
 	)
 	ingredients.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createIngredient(
 		"beans",
@@ -81,7 +82,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"epic fucking monkey",
@@ -93,7 +94,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 3",
@@ -105,7 +106,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 4",
@@ -117,7 +118,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 5",
@@ -129,7 +130,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 6",
@@ -366,6 +367,8 @@ func _updateQueue():
 	
 	return topThree;
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+	

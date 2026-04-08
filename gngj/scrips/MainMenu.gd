@@ -6,9 +6,12 @@ extends Control
 @onready var credits_button: Button = $MainMenu/CenterContainer2/CreditsButton
 @onready var exit_button: Button = $MainMenu/CenterContainer/VBoxContainer/ExitButton
 
+@onready var testEndOfDayButton: Button = $testEndOfDay
+
 signal startGame
 signal displayOptions
 signal displayCredits
+signal testThatShit
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_menu_button_pressed.bind("start"))
@@ -16,6 +19,8 @@ func _ready() -> void:
 	options_button.pressed.connect(_on_menu_button_pressed.bind("options"))
 	credits_button.pressed.connect(_on_menu_button_pressed.bind("credits"))
 	exit_button.pressed.connect(_on_menu_button_pressed.bind("exit"))
+	
+	testEndOfDayButton.pressed.connect(_on_menu_button_pressed.bind("test"))
 
 
 func _on_menu_button_pressed(button_name: String) -> void:
@@ -32,3 +37,5 @@ func _on_menu_button_pressed(button_name: String) -> void:
 		"exit":
 			print("Exiting the game...")
 			get_tree().quit()
+		"test":
+			testThatShit.emit()
