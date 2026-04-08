@@ -146,11 +146,13 @@ func onIngredientGrinded(i: Item):
 	
 	return true
 
-func unlockPotion(i: Item):
+func unlockPotion(p: Item):
 	# If not unlocked, unlock it!
-	if !(i in potions):
-		potions.set(i.itemName, i)
-		i.unlocked = true
+	if !(p in potions):
+		potions.set(p.itemName, p)
+		p.unlocked = true
+		
+		# TO-DO: POPUP NEWITEM FOR NEW UNLOCKED POTION
 
 func giveIngredient(i: Item):
 	# If not unlocked, unlock it!
@@ -160,6 +162,34 @@ func giveIngredient(i: Item):
 
 	# Increase quantity by 1
 	i.amountOwned += 1
+
+func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
+	var potion:Item = null
+	
+	# Traverse the allPotions dictionary to get a match
+	for p:Item in ItemCreator.allPotions.values():
+
+		# Check if potion was found or not
+		if potion != null:
+			break # Exit the outer for-loop
+
+		# Check if cook level matches and if uses same number of ingredients
+		if p.cookLevelNeeded == cookedLevel and ingredientsUsed.size() == p.recipe.size():
+			for ingrName:String in ingredientsUsed:
+				if ingredientsUsed.count(ingrName) == p.recipe.count(ingrName):
+					# Match found
+					potion = p
+					# TO-DO: POPUP POTION MADE!
+					
+					break # Exit the inner for-loop
+
+	# Set to dud if recipe not found
+	if potion == null:
+		potion = ItemCreator.allPotions.get("dud")
+		
+	# Unlock if needed, and increase quantity
+	unlockPotion(potion)
+	potion.amountOwned += 1
 
 func end_of_day():
 	

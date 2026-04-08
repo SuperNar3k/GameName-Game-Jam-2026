@@ -9,14 +9,14 @@ var unlocked = false
 var itemName = ""
 var description = ""
 var sprite = ""
-var amountOwned
+var amountOwned : int
 
 #FOR INGREDIENTS
-var value
+var value : int
 
 #FOR POTIONS
-var recipe
-var cookLevelNeeded
+var recipe : Array[String]
+var cookLevelNeeded : int
 
 #Initiatize
 func __init__(
