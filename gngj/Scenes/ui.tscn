@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dftvnlc0al120" path="res://Scenes/Options.tscn" id="8_ryf15"]
 [ext_resource type="PackedScene" uid="uid://cwh72s7wbi4ye" path="res://Scenes/credits.tscn" id="9_mmixe"]
 [ext_resource type="PackedScene" uid="uid://db6uxsqamrixk" path="res://Scenes/endOfDayScreen.tscn" id="10_nt8jn"]
+[ext_resource type="PackedScene" uid="uid://bai0jtmapvbqk" path="res://Scenes/crowStore.tscn" id="11_g0wmg"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -63,6 +64,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="crowStore" parent="." unique_id=1546794494 instance=ExtResource("11_g0wmg")]
+visible = false
+layout_mode = 1
+
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]
 [connection signal="startGame" from="MainMenuScene" to="." method="_on_main_menu_scene_start_game"]
@@ -75,3 +80,5 @@ layout_mode = 1
 [connection signal="goBack" from="GrindingStation" to="." method="_on_grinding_station_go_back"]
 [connection signal="goBack" from="CauldronStation" to="." method="_on_cauldron_station_go_back"]
 [connection signal="goBack" from="credits" to="." method="_on_credits_go_back"]
+[connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
+[connection signal="newDay" from="crowStore" to="." method="newDay"]
