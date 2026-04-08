@@ -105,3 +105,12 @@ grow_vertical = 0
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 text = "Credits"
+
+[node name="testEndOfDay" type="Button" parent="." unique_id=797078144]
+layout_mode = 0
+offset_left = 462.0
+offset_top = -96.0
+offset_right = 592.0
+offset_bottom = 31.0
+text = "Test End Of Day
+"

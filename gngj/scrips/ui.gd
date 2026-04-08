@@ -106,3 +106,20 @@ func _on_main_menu_scene_display_options() -> void:
 func _on_options_exit_options() -> void:
 	$Options.hide()
 	$MainMenuScene.show()
+
+
+func _on_credits_go_back() -> void:
+	$credits.hide()
+	$MainMenuScene.show()
+
+
+func _on_main_menu_scene_display_credits() -> void:
+	$MainMenuScene.hide()
+	$credits.show()
+
+
+func _on_main_menu_scene_test_that_shit() -> void:
+	$MainMenuScene.hide()
+	$endOfDayScreen.show()
+	
+	$endOfDayScreen.displayShit(ingredients, potions)

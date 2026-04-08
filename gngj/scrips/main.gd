@@ -19,9 +19,11 @@ var storeQueue = []
 func _ready() -> void:
 	$dayDuration.set_wait_time(dayDuration)
 	
+	
 	#Variable that will hold all of our objects
-	var item = preload("res://Scenes/item.tscn").instantiate()
-	var quest = preload("res://Scenes/quest.tscn").instantiate()
+	var item = Item.new()
+	#var item = preload("res://Scenes/item.tscn").instantiate()
+	var quest = Quest.new()
 	
 	#Hardcoding all of our Ingredients here
 	#itemName
@@ -38,7 +40,7 @@ func _ready() -> void:
 	)
 	ingredients.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createIngredient(
 		"crushed abspestos",
@@ -49,7 +51,7 @@ func _ready() -> void:
 	)
 	ingredients.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createIngredient(
 		"beans",
@@ -79,7 +81,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"epic fucking monkey",
@@ -91,7 +93,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 3",
@@ -103,7 +105,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 4",
@@ -115,7 +117,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 5",
@@ -127,7 +129,7 @@ func _ready() -> void:
 	)
 	potions.append(item)
 	
-	item = preload("res://Scenes/item.tscn").instantiate()
+	item = Item.new()
 	
 	item.createPotion(
 		"test name 6",
@@ -167,10 +169,6 @@ func _ready() -> void:
 	quests[0].setNPC(0)
 	
 	
-	
-	
-	
-	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
 		potions,
@@ -182,6 +180,8 @@ func _ready() -> void:
 	)
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
