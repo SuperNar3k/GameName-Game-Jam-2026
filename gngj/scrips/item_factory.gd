@@ -18,7 +18,7 @@ func createIngredient(
 		_sprite,
 		_itemName,
 		_description,
-		"",
+		[],
 		_amountOwned,
 		0,
 		_value
