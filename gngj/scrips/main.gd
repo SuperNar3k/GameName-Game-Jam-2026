@@ -16,6 +16,7 @@ var storeQueue = []
 
 var NPCBirthingPod = npc_birthing_pod.new() # Used for giving birth to NPCs
 var QuestCreator = Quest_Creator.new() # Used for creating quests
+#@onready var bell_sfx = $BellSFX # Bell sound effect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -330,7 +331,41 @@ func _ready() -> void:
 		storeQueue
 	)
 
+func _onGenerateQuest():
+	# Choose a random quest from quest list
+	var newQuest = quests.pick_random()
+	# If the chosen quest is already in the activeQuests or pharmacy lists, pick a new random quest
+	while activeQuests.has(newQuest) or pharmacy.has(newQuest):
+		newQuest = quests.pick_random()
+		
+	# Add new quest to the queue
+	storeQueue.append(newQuest)
+	
+	# Trigger the bell sound effect
+	#bell_sfx.play()
+
+func _updateQueue():
+	# TO-DO: Disable button which allows NPC interaction
+	
+	var topThree = [];
+	if storeQueue.size() == 0:
+		return topThree;
+	elif storeQueue.size() == 1:
+		topThree = [storeQueue[0]]
+	elif storeQueue.size() == 2:
+		topThree = [storeQueue[0], storeQueue[1]]
+	else:
+		topThree = [storeQueue[0], storeQueue[1], storeQueue[2]]
+	
+	# TO-DO: Fade out already loaded NPCs
+	
+	# TO-DO: Fade in new NPCs based on topThree
+	
+	# TO-DO: Re-enable button which allows NPC interaction
+	
+	
+	return topThree;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

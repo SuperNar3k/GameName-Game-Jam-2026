@@ -8,7 +8,7 @@ extends Control
 
 signal startGame
 signal displayOptions
-signal displayCreadits
+signal displayCredits
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_menu_button_pressed.bind("start"))
@@ -28,7 +28,7 @@ func _on_menu_button_pressed(button_name: String) -> void:
 		"options":
 			displayOptions.emit()
 		"credits":
-			pass
+			displayCredits.emit()
 		"exit":
 			print("Exiting the game...")
 			get_tree().quit()

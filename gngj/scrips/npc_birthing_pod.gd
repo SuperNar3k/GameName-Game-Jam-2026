@@ -26,16 +26,13 @@ func Populate():
 	# print(allNPCs)
 
 func GetRandomChild():
-	var name = allChildren.pick_random()
-	return allNPCs.get(name)
+	return allNPCs.get(allChildren.pick_random())
 		
 func GetRandomTownsfolk():
-	var name = allTownsolk.pick_random()
-	return allNPCs.get(name)
+	return allNPCs.get(allTownsolk.pick_random())
 		
 func GetRandomAdventurer():
-	var name = allAdventurers.pick_random()
-	return allNPCs.get(name)
+	return allNPCs.get(allAdventurers.pick_random())
 		
 #The mircle of life
 func BirthNPC(_name: String):
