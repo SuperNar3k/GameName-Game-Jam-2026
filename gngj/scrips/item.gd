@@ -15,7 +15,7 @@ var amountOwned : int
 var value : int
 
 #FOR POTIONS
-var recipe : Array[String]
+var recipe : Array
 var cookLevelNeeded : int
 
 #Initiatize
