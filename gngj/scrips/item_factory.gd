@@ -33,7 +33,7 @@ func createPotion(
 	_description: String,
 	_amountOwned: int,
 	_sprite: String,
-	_recipe: Array,
+	_recipe: Array[String],
 	_cookLevelNeeded: int
 ):
 	var brandNewPart = Item.new()
@@ -93,11 +93,20 @@ func Populate():
 		#cookLevelNeeded
 	
 	createPotion(
+		"dud",									#ItemName
+		"a failed experiment",					#Description
+		0,										#AmountOwned
+		"",										#Sprite
+		[],										#Recipe
+		0										#CookLevelNeeded
+	)
+	
+	createPotion(
 		"cinnamon toast crunch milk",			#ItemName
 		"this shit yummy af",					#Description
 		0,										#AmountOwned
 		"res://assets/potions/CTCBox.jpg",		#Sprite
-		[0,1],									#Recipe
+		["asbestos", "crushed asbestos"],		#Recipe
 		0										#CookLevelNeeded
 	)
 	
@@ -106,7 +115,7 @@ func Populate():
 		"test desc 3",
 		0,
 		"res://assets/potions/three.jpg",
-		[0,1,2],
+		["asbestos","crushed asbestos","beans"],
 		0
 	)
 	
@@ -115,7 +124,7 @@ func Populate():
 		"curious af",
 		0,
 		"res://assets/potions/funny_monkey.jpg",
-		[1,1,2],
+		["crushed asbestos","crushed asbestos","beans"],
 		0
 	)
 	
@@ -124,7 +133,7 @@ func Populate():
 		"test desc 4",
 		0,
 		"res://assets/potions/four.jpg",
-		[0,2,2],
+		["asbestos","beans","beans"],
 		0
 	)
 	
@@ -133,7 +142,7 @@ func Populate():
 		"test desc 6",
 		0,
 		"res://assets/potions/six.jpg",
-		[2,2,2],
+		["beans","beans","beans"],
 		0
 	)
 	
@@ -142,7 +151,7 @@ func Populate():
 		"test desc 5",
 		0,
 		"res://assets/potions/five.jpg",
-		[1,2,2],
+		["crushed asbestos","beans","beans"],
 		0
 	)
 	
