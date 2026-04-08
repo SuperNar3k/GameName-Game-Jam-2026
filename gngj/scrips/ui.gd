@@ -1,7 +1,7 @@
 extends Control
 
-var potions
-var ingredients
+var allPotions
+var allIngredients
 var quests
 
 var activeQuests
@@ -23,15 +23,15 @@ func _ready() -> void:
 
 #called from main; saves references of the variables from main into these local (global?) variables
 func ref_storage(
-	_potions,
-	_ingredients,
+	_allPotions,
+	_allIngredients,
 	_quests,
 	_activeQuests,
 	_pharmacyQuests,
 	_storeQueue
 ) -> void:
-	potions = _potions
-	ingredients = _ingredients
+	allPotions = _allPotions
+	allIngredients = _allIngredients
 	quests = _quests
 	activeQuests = _activeQuests
 	pharmacyQuests = _pharmacyQuests
@@ -44,7 +44,7 @@ func _on_button_pressed(button_pressed: String) -> void:
 		pass
 	if (button_pressed == "RecipeBook"):
 		_disable_all_buttons()
-		$RecipeBook._on_recipe_book_btn_pressed(potions, ingredients)
+		$RecipeBook._on_recipe_book_btn_pressed(allPotions, allIngredients)
 	if (button_pressed == "Cauldron"):
 		pass
 	if (button_pressed == "MortarandPestle"):
@@ -123,7 +123,7 @@ func _on_main_menu_scene_test_that_shit() -> void:
 	$MainMenuScene.hide()
 	$endOfDayScreen.show()
 	
-	$endOfDayScreen.displayShit(ingredients, potions)
+	$endOfDayScreen.displayShit(allIngredients, allPotions)
 
 
 func _on_end_of_day_screen_show_store() -> void:

@@ -2,8 +2,8 @@ extends Control
 
 signal enable_outside_buttons
 
-var potions
-var ingredients
+var allPotions : Dictionary
+var allIngredients : Dictionary
 
 var i = 0
 
@@ -14,37 +14,37 @@ var fwdPressed = false
 func _ready() -> void:
 	hide()
 
-func _on_recipe_book_btn_pressed(_potions, _ingredients) -> void:
-	potions = _potions
-	ingredients = _ingredients
+func _on_recipe_book_btn_pressed(_potions: Dictionary, _ingredients: Dictionary) -> void:
+	allPotions = _potions
+	allIngredients = _ingredients
 	i = 0
 	#displays the first set of recipes
 	while i < 2:
-		if (potions[i].unlocked):
+		if (allPotions.values()[i].unlocked):
 			if (i % 2 == 0):
-				$LeftSprite.set_texture(load(potions[i].sprite))
-				$LeftSprite/LeftDesc.text = potions[i].description
-				$LeftSprite/LeftName.text = potions[i].itemName
-				for ingred in potions[i].recipe:
+				$LeftSprite.set_texture(load(allPotions.values()[i].sprite))
+				$LeftSprite/LeftDesc.text = allPotions.values()[i].description
+				$LeftSprite/LeftName.text = allPotions.values()[i].itemName
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = ingredients[ingred].itemName
+					newLabel.text = allIngredients.values()[j].itemName
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
-				$RightSprite.set_texture(load(potions[i].sprite))
-				$RightSprite/RightDesc.text = potions[i].description
-				$RightSprite/RightName.text = potions[i].itemName
-				for ingred in potions[i].recipe:
+				$RightSprite.set_texture(load(allPotions.values()[i].sprite))
+				$RightSprite/RightDesc.text = allPotions.values()[i].description
+				$RightSprite/RightName.text = allPotions.values()[i].itemName
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = ingredients[ingred].itemName
+					newLabel.text = allIngredients.values()[j].itemName
 					$RightSprite/RightRecipe.add_child(newLabel)
 		else:
 			if (i % 2 == 0):
 				$LeftSprite.set_texture(load("res://assets/icon.svg"))
 				$LeftSprite/LeftDesc.text = "???"
 				$LeftSprite/LeftName.text = "???"
-				for ingred in potions[i].recipe:
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
@@ -53,7 +53,7 @@ func _on_recipe_book_btn_pressed(_potions, _ingredients) -> void:
 				$RightSprite.set_texture(load("res://assets/icon.svg"))
 				$RightSprite/RightDesc.text = "???"
 				$RightSprite/RightName.text = "???"
-				for ingred in potions[i].recipe:
+				for ingred in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
@@ -76,26 +76,26 @@ func _on_fwd_btn_pressed() -> void:
 		backPressed = false
 	var iStore = i + 2
 	while i < iStore:
-		if (potions[i].unlocked):
+		if (allPotions.values()[i].unlocked):
 			if (i % 2 == 0):
-				$LeftSprite.set_texture(load(potions[i].sprite))
-				$LeftSprite/LeftDesc.text = potions[i].description
-				$LeftSprite/LeftName.text = potions[i].itemName
+				$LeftSprite.set_texture(load(allPotions.values()[i].sprite))
+				$LeftSprite/LeftDesc.text = allPotions.values()[i].description
+				$LeftSprite/LeftName.text = allPotions.values()[i].itemName
 
-				for ingred in potions[i].recipe:
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = ingredients[ingred].itemName
+					newLabel.text = allIngredients.values()[j].itemName
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
-				$RightSprite.set_texture(load(potions[i].sprite))
-				$RightSprite/RightDesc.text = potions[i].description
-				$RightSprite/RightName.text = potions[i].itemName
+				$RightSprite.set_texture(load(allPotions.values()[i].sprite))
+				$RightSprite/RightDesc.text = allPotions.values()[i].description
+				$RightSprite/RightName.text = allPotions.values()[i].itemName
 
-				for ingred in potions[i].recipe:
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = ingredients[ingred].itemName
+					newLabel.text = allIngredients.values()[j].itemName
 					$RightSprite/RightRecipe.add_child(newLabel)
 		else:
 			if (i % 2 == 0):
@@ -103,7 +103,7 @@ func _on_fwd_btn_pressed() -> void:
 				$LeftSprite/LeftDesc.text = "???"
 				$LeftSprite/LeftName.text = "???"
 
-				for ingred in potions[i].recipe:
+				for ingred in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
@@ -113,13 +113,13 @@ func _on_fwd_btn_pressed() -> void:
 				$RightSprite/RightDesc.text = "???"
 				$RightSprite/RightName.text = "???"
 
-				for ingred in potions[i].recipe:
+				for ingred in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
 					$RightSprite/RightRecipe.add_child(newLabel)
 		i = i + 1
-	if i == potions.size():
+	if i == allPotions.size():
 		$FwdBtn.hide()
 
 
@@ -138,31 +138,31 @@ func _on_back_btn_pressed() -> void:
 	var iStore = i - 2
 	while i > iStore:
 		i = i - 1
-		if (potions[i].unlocked):
+		if (allPotions.values()[i].unlocked):
 			if (i % 2 == 0):
-				$LeftSprite.set_texture(load(potions[i].sprite))
-				$LeftSprite/LeftDesc.text = potions[i].description
-				$LeftSprite/LeftName.text = potions[i].itemName
-				for ingred in potions[i].recipe:
+				$LeftSprite.set_texture(load(allPotions.values()[i].sprite))
+				$LeftSprite/LeftDesc.text = allPotions.values()[i].description
+				$LeftSprite/LeftName.text = allPotions.values()[i].itemName
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = ingredients[ingred].itemName
+					newLabel.text = allIngredients.values()[j].itemName
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
-				$RightSprite.set_texture(load(potions[i].sprite))
-				$RightSprite/RightDesc.text = potions[i].description
-				$RightSprite/RightName.text = potions[i].itemName
-				for ingred in potions[i].recipe:
+				$RightSprite.set_texture(load(allPotions.values()[i].sprite))
+				$RightSprite/RightDesc.text = allPotions.values()[i].description
+				$RightSprite/RightName.text = allPotions.values()[i].itemName
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = ingredients[ingred].itemName
+					newLabel.text = allIngredients.values()[j].itemName
 					$RightSprite/RightRecipe.add_child(newLabel)
 		else:
 			if (i % 2 == 0):
 				$LeftSprite.set_texture(load("res://assets/icon.svg"))
 				$LeftSprite/LeftDesc.text = "???"
 				$LeftSprite/LeftName.text = "???"
-				for ingred in potions[i].recipe:
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
@@ -171,7 +171,7 @@ func _on_back_btn_pressed() -> void:
 				$RightSprite.set_texture(load("res://assets/icon.svg"))
 				$RightSprite/RightDesc.text = "???"
 				$RightSprite/RightName.text = "???"
-				for ingred in potions[i].recipe:
+				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"

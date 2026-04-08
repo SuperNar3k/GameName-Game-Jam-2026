@@ -146,11 +146,12 @@ func Populate():
 		0
 	)
 	
+	# DEBUG ONLY, REMOVE LATER
 	print(allIngredients)
 	print(allPotions)
 
 # Unlocks default items at start of game
-func UnlockDefaultIngredients(_unlockedIngredients: Variant):
+func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
 	var newItem = allIngredients.get("beans") 
 	newItem.unlocked = true
 	_unlockedIngredients.set(newItem.itemName, newItem)
@@ -163,18 +164,10 @@ func UnlockDefaultIngredients(_unlockedIngredients: Variant):
 	newItem.unlocked = true
 	_unlockedIngredients.set(newItem.itemName, newItem)
 	
-func UnlockDefaultPotions(_unlockedPotions: Variant):
+func UnlockDefaultPotions(_unlockedPotions: Dictionary):
 	var a = allPotions.get("cinnamon toast crunch milk") 
 	a.unlocked = true
-	_unlockedPotions.append(a)
-	
-	var b = allPotions.get("epic fucking monkey") 
-	b.unlocked = true
-	_unlockedPotions.append(b)
-	
-	var c = allPotions.get("test name 4") 
-	c.unlocked = true
-	_unlockedPotions.append(c)
+	_unlockedPotions.set(a.itemName, a)
 
 # Unlock a new ingredient
 func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):
@@ -184,7 +177,7 @@ func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):
 
 # Unlock a new potion
 func UnlockPotion(_unlockedPotions: Array, _potName: String):
-	var pot = allIngredients.get(_potName) 
+	var pot = allPotions.get(_potName) 
 	pot.unlocked = true
 	_unlockedPotions.append(pot)
 	

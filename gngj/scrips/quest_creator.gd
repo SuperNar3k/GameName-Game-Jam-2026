@@ -45,7 +45,7 @@ func createQuest(
 	)
 	return newQuest
 	
-func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
+func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 	#Hardcoding all of our allQuests here:
 	allQuests.append(createQuest(
 		["Hi, can you make me", "some cinnamon milk?"],						#allQueststartDialog
@@ -55,8 +55,8 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["Oh my gosshhhh thank youuuuu!", "SLURP SLURP SLURP"],				#allQuestsuccses
 		[0],																#Requirements
 		69,																	#RewardMoney
-		[],																	#RewardRecipes
-		[0,2],																#RewardIngredients
+		["epic fucking monkey"],											#RewardRecipes
+		["beans", "asbestos"],												#RewardIngredients
 		1,																	#DaysUntilDue
 		0,																	#DaysUntilReward
 		true,																#IsRepeatable
@@ -71,9 +71,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["The stars weep for your incompetence."],  
 		["Marvelous! The cosmos sings!","I can't wait to hear the music!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -87,9 +87,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["Aww… I really wanted to sparkle…"],  
 		["YAY!! I’m gonna glow so bright!!", "SLURP!!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -104,9 +104,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["Great. Another day of headaches."],  
 		["Oh thank the stars!", "My mind finally feels quiet."],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -121,9 +121,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["A warrior denied their edge… disgraceful."],  
 		["Excellent!", "The fury burns within me once more!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -138,9 +138,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["I hope the nightmares don’t come back…"],  
 		["Yay!! I’ll sleep so good tonight!", "SLURP SLURP!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -155,9 +155,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["Wonderful. Just wonderful."],  
 		["YES! I feel brave already!", "Time to face that rat!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -172,9 +172,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["A warrior without armor… pathetic."],  
 		["Excellent!", "My body feels like granite!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -189,9 +189,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["Perfect. Just what I needed: more misfortune."],  
 		["Yes! Tonight’s my night!", "Down the hatch!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               
@@ -206,9 +206,9 @@ func Populate(allQuests: Variant, NPCBirthingPod: Npc_Birthing_Pod):
 		["I guess today stays gloomy…"],  
 		["YAY!! My heart feels warm again!", "SLURP!"],              
 		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
+		69,
+		["epic fucking monkey"],
+		["beans", "asbestos"],
 		1,                                                                  
 		0,                                                                  
 		true,                                                               

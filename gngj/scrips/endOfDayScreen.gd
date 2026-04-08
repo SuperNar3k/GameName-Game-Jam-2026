@@ -11,10 +11,8 @@ var itemAmount
 
 var item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
 
-func displayShit(ingredients: Variant, potions: Variant):
+func displayShit(ingredients: Dictionary, potions: Dictionary):
 	
-	ingredients.reverse()
-	potions.reverse()
 	for k in ingredients.keys(): 
 		var ingredient = ingredients.get(k)
 		
@@ -43,10 +41,7 @@ func displayShit(ingredients: Variant, potions: Variant):
 			item.setItemAmount(potion.amountOwned)
 			
 			item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
-			
-	ingredients.reverse()
-	potions.reverse()
-	
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

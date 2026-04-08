@@ -9,13 +9,13 @@ var numOfNpcs = 3
 var MAX_PHARMACY_QUESTS = 5 # Max number of repeatable quests
 var MAX_ACTIVE_QUESTS = 5 # Max number of active quests
 
-var potions = [] # Unlocked potions
-var ingredients = {} # Unlocked ingredients
-var quests = [] # List of ALL quests
+var potions = {} # Dictionary of unlocked potions
+var ingredients = {} # Dictionary of unlocked ingredients
+var quests = [] # Array of ALL quests
 
 var activeQuests = [] # Accepted quests
 var pharmacyQuests = [] # Repeatable quests
-var storeQueue = [] # Queue of customers (only first 3 are shown)
+var storeQueue = [] # Aray of customers (only first 3 are shown)
 
 var NPCBirthingPod = Npc_Birthing_Pod.new() # Used for giving birth to NPCs
 var QuestCreator = Quest_Creator.new() # Used for creating quests
@@ -36,8 +36,8 @@ func _ready() -> void:
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
-		potions,
-		ingredients,
+		ItemCreator.allPotions,
+		ItemCreator.allIngredients,
 		quests,
 		activeQuests,
 		pharmacyQuests,
@@ -59,10 +59,15 @@ func _onGenerateQuest():
 
 func _onAcceptQuest():
 	# If there's no space in the activeQuests list, do nothing
-	if activeQuests.size() <= MAX_ACTIVE_QUESTS:
+	if activeQuests.size() > MAX_ACTIVE_QUESTS:
 		return false
 		
-		# Take the first quest in the store queue
+	# If there's no quest in the store queue, do nothing
+	# Note: this should never happen, but is here to prevent an out-of-bounds exception
+	if storeQueue.size() == 0:
+		return false
+		
+	# Take the first quest in the store queue
 	var nextQuest = storeQueue[0]
 	storeQueue.remove_at(0)
 	activeQuests.append(nextQuest)
@@ -84,8 +89,20 @@ func _onQuestCompleted(_quest: Quest):
 	if _quest.isRepeatable and pharmacyQuests.size() <= MAX_PHARMACY_QUESTS:
 		pharmacyQuests.append(_quest)
 
-	# Update currency
-	currency += 1
+	### Give rewards
+	
+	# Reward money
+	currency += _quest.rewards[0]
+	
+	# Reward recipes (unlock them)
+	for r:String in _quest.rewards[1]:
+		var newPot:Item = ItemCreator.allPotions.get(r)
+		unlockPotion(newPot)
+	
+	# Reward ingredients
+	for r:String in _quest.rewards[2]:
+		var newIng:Item = ItemCreator.allIngredients.get(r)
+		giveIngredient(newIng)
 
 func _updateQueue():
 	# TO-DO: Disable button which allows NPC interaction
@@ -111,46 +128,61 @@ func _updateQueue():
 
 func onIngredientGrinded(i: Item):
 	# Check if object can be grinded
-	var crushedName = "crushed " + i.itemName
+	var crushedName:String = "crushed " + i.itemName
 	if !(crushedName in ItemCreator.allIngredients):
 		return false
 	
 	# If not unlocked, unlock it!
 	if !(crushedName in ingredients):
-		ingredients.set(crushedName, ItemCreator.allIngredients.get(crushedName))
+		var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
+		ingredients.set(crushedName, crushedObj)
+		crushedObj.unlocked = true
 	
 	# Increase crushed quantity by 1
 	ingredients.get(crushedName).amountOwned += 1
 	
 	# Decrease quantity by 1
-	var index = ingredients.find(i)
-	var iObj = ingredients[index]
-	iObj.amountOwned -= 1
+	i.amountOwned -= 1
 	
 	return true
-	
-	
+
+func unlockPotion(i: Item):
+	# If not unlocked, unlock it!
+	if !(i in potions):
+		potions.set(i.itemName, i)
+		i.unlocked = true
+
+func giveIngredient(i: Item):
+	# If not unlocked, unlock it!
+	if !(i in ingredients):
+		ingredients.set(i.itemName, i)
+		i.unlocked = true
+
+	# Increase quantity by 1
+	i.amountOwned += 1
 
 func end_of_day():
+	
+	# Increment day
 	day += 1;
 	
 	# Tick tock, time is running out!
-	for q in storeQueue:
+	for i in range(storeQueue.size() - 1, -1, -1):
+		var q = storeQueue[i]
 		q.daysUntilDue -= 1
 		if q.daysUntilDue == 0:
-			var i = storeQueue.find(q)
 			storeQueue.remove_at(i)
 			
-	for q in activeQuests:
+	for i in range(activeQuests.size() - 1, -1, -1):
+		var q = activeQuests[i]
 		q.daysUntilDue -= 1
 		if q.daysUntilDue == 0:
-			var i = activeQuests.find(q)
 			activeQuests.remove_at(i)
 			
-	for q in pharmacyQuests:
+	for i in range(pharmacyQuests.size() - 1, -1, -1):
+		var q = pharmacyQuests[i]
 		q.daysUntilDue -= 1
 		if q.daysUntilDue == 0:
-			var i = pharmacyQuests.find(q)
 			pharmacyQuests.remove_at(i)
 
 	# TO-DO: if grinding in-progress, pause the grinding timer
