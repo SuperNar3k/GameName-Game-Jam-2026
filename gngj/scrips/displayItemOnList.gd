@@ -4,8 +4,8 @@ extends HBoxContainer
 func setSprite(sprite : Variant):
 	$AspectRatioContainer/itemSprite.set_texture(load(sprite)) 
 	
-func setItemName(name: Variant):
-	$itemName.text = name
+func setItemName(_name: Variant):
+	$itemName.text = _name
 	
 func setItemAmount(amount: Variant):
 	$itemAmount.text = str(amount)
@@ -17,5 +17,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

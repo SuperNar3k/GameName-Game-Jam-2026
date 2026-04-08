@@ -5,7 +5,7 @@ var ingredients
 var quests
 
 var activeQuests
-var pharmacy
+var pharmacyQuests
 var storeQueue
 
 func _ready() -> void:
@@ -27,14 +27,14 @@ func ref_storage(
 	_ingredients,
 	_quests,
 	_activeQuests,
-	_pharmacy,
+	_pharmacyQuests,
 	_storeQueue
 ) -> void:
 	potions = _potions
 	ingredients = _ingredients
 	quests = _quests
 	activeQuests = _activeQuests
-	pharmacy = _pharmacy
+	pharmacyQuests = _pharmacyQuests
 	storeQueue = _storeQueue
 
 func _on_button_pressed(button_pressed: String) -> void:

@@ -15,7 +15,8 @@ func displayShit(ingredients: Variant, potions: Variant):
 	
 	ingredients.reverse()
 	potions.reverse()
-	for ingredient in ingredients: 
+	for k in ingredients.keys(): 
+		var ingredient = ingredients.get(k)
 		
 		#ONLY FOR TESTING
 		ingredient.unlocked = true
@@ -56,5 +57,5 @@ func _on_continueButton_pressed():
 	showStore.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

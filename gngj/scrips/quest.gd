@@ -12,8 +12,7 @@ var rewards = [[],[],[]]
 var daysUntilDue
 var daysUntilReward
 var isRepeatable
-
-var npcQuestGiver = npc.new()
+var npcQuestGiver
 
 func __init__(
 	_questStartDialog: Variant,

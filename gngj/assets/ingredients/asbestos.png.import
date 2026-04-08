@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qaaryjuimfrp"
-path="res://.godot/imported/abspestos.png-c4a8a53f5cc196f2abbe000dd7aa4c6e.ctex"
+path="res://.godot/imported/asbestos.png-35c2e2c0cb41383b9a1824be59ced4d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/abspestos.png"
-dest_files=["res://.godot/imported/abspestos.png-c4a8a53f5cc196f2abbe000dd7aa4c6e.ctex"]
+source_file="res://assets/ingredients/asbestos.png"
+dest_files=["res://.godot/imported/asbestos.png-35c2e2c0cb41383b9a1824be59ced4d7.ctex"]
 
 [params]
 
