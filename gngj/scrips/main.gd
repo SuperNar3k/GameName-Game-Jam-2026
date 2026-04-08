@@ -6,329 +6,41 @@ var day = 1
 var dayDuration = 60
 var numOfNpcs = 3
 
-var potions = []
-var ingredients = []
-var quests = []
+var MAX_PHARMACY_QUESTS = 5 # Max number of repeatable quests
+var MAX_ACTIVE_QUESTS = 5 # Max number of active quests
 
-var activeQuests = []
-var pharmacy = []
-var storeQueue = []
+var potions = {} # Dictionary of unlocked potions
+var ingredients = {} # Dictionary of unlocked ingredients
+var quests = [] # Array of ALL quests
 
-var NPCBirthingPod = npc_birthing_pod.new() # Used for giving birth to NPCs
+var activeQuests = [] # Accepted quests
+var pharmacyQuests = [] # Repeatable quests
+var storeQueue = [] # Aray of customers (only first 3 are shown)
+
+var NPCBirthingPod = Npc_Birthing_Pod.new() # Used for giving birth to NPCs
 var QuestCreator = Quest_Creator.new() # Used for creating quests
+var ItemCreator = Item_Factory.new() # Used for creating quests
+
 #@onready var bell_sfx = $BellSFX # Bell sound effect
 
-# Called when the node enters the scene tree for the first time.
+# Called when the game starts.
 func _ready() -> void:
 	$dayDuration.set_wait_time(dayDuration)
 	
-	
-	#Variable that will hold all of our objects
-	var item = preload("res://Scenes/item.tscn").instantiate()
-	
-	#Hardcoding all of our Ingredients here
-	#itemName
-	#description
-	#amountOwned
-	#sprite
-	#value
-	item.createIngredient(
-		"abspestos",									#ItemName
-		"this shit will kill you",						#Description
-		1000,											#AmountOwned
-		"res://assets/ingredients/abspestos.png",		#Sprite
-		3												#Value
-	)
-	ingredients.append(item)
-	
-	item = Item.new()
-	
-	item.createIngredient(
-		"crushed abspestos",
-		"this shit will kill you, also its a powder now",
-		0,
-		"res://assets/ingredients/crushed abspestos.jpg",
-		0
-	)
-	ingredients.append(item)
-	
-	item = Item.new()
-	
-	item.createIngredient(
-		"beans",
-		"staight up beans nigga",
-		3,
-		"res://assets/ingredients/beans.png",
-		3
-	)
-	ingredients.append(item)
-	
-	item = preload("res://Scenes/item.tscn").instantiate()
-	
-	#Hardcoding all of our Potions here
-	#itemName
-	#description
-	#amountOwned
-	#sprite
-	#recipe
-	#cookLevelNeeded
-	item.createPotion(
-		"cinnamon toast crunch milk",			#ItemName
-		"this shit yummy af",					#Description
-		0,										#AmountOwned
-		"res://assets/potions/CTCBox.jpg",		#Sprite
-		[0,1],									#Recipe
-		0										#CookLevelNeeded
-	)
-	potions.append(item)
-	
-	item = Item.new()
-	
-	item.createPotion(
-		"epic fucking monkey",
-		"curious af",
-		0,
-		"res://assets/potions/funny_monkey.jpg",
-		[1,1,2],
-		0
-	)
-	potions.append(item)
-	
-	item = Item.new()
-	
-	item.createPotion(
-		"test name 3",
-		"test desc 3",
-		0,
-		"res://assets/potions/three.jpg",
-		[0,1,2],
-		0
-	)
-	potions.append(item)
-	
-	item = Item.new()
-	
-	item.createPotion(
-		"test name 4",
-		"test desc 4",
-		0,
-		"res://assets/potions/four.jpg",
-		[0,2,2],
-		0
-	)
-	potions.append(item)
-	
-	item = Item.new()
-	
-	item.createPotion(
-		"test name 5",
-		"test desc 5",
-		0,
-		"res://assets/potions/five.jpg",
-		[1,2,2],
-		0
-	)
-	potions.append(item)
-	
-	item = Item.new()
-	
-	item.createPotion(
-		"test name 6",
-		"test desc 6",
-		0,
-		"res://assets/potions/six.jpg",
-		[2,2,2],
-		0
-	)
-	potions.append(item)
+	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
-	
-	#TEMP
-	var i = 0
-	while i < potions.size():
-		potions[i].unlocked = true
-		i = i + 1
-	#potions[0].unlocked = true
-	#potions[1].unlocked = true
-	#TEMP
-	#Hardcoding all of our Quests here:
-	quests.append(QuestCreator.createQuest(
-		["Hi, can you make me", "some cinnamon milk?"],						#QuestStartDialog
-		["Ugh, you got that milk yet?"],									#QuestReturningDialog
-		["Aw, that's okay bitch","I'll get my milk from somewhere else!"],	#QuestRejectedDialog
-		["What a waste of my time", "I hope you get eaten by a dragon"],	#QuestFailedDialog
-		["Oh my gosshhhh thank youuuuu!", "SLURP SLURP SLURP"],				#QuestSuccses
-		[0],																#Requirements
-		69,																	#RewardMoney
-		[],																	#RewardRecipes
-		[0,2],																#RewardIngredients
-		1,																	#DaysUntilDue
-		0,																	#DaysUntilReward
-		true,																#IsRepeatable
-		"Brenna Tallowmere",												#NpcTypeOrName
-		NPCBirthingPod														#Pass the birthing pod
-	))
-	
-	quests.append(QuestCreator.createQuest(
-		["Adventurer! I require", "a vial of destiny!"],                    
-		["Have you returned with the dew of destiny?"],                                 
-		["A tragedy! A cosmic failure!","I shall seek another hero."],  
-		["The stars weep for your incompetence."],  
-		["Marvelous! The cosmos sings!","I can't wait to hear the music!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Adventurer",
-		NPCBirthingPod
-	))
-	quests.append(QuestCreator.createQuest(
-		["Hi… um… can I buy a little Glow‑Up Potion?", "I wanna shine like the heroes!"],                    
-		["Did you make my Glow‑Up Potion yet?"],                                 
-		["Oh… okay…", "I guess I’ll stay normal today."],  
-		["Aww… I really wanted to sparkle…"],  
-		["YAY!! I’m gonna glow so bright!!", "SLURP!!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Child",
-		NPCBirthingPod
-	))
-
-	quests.append(QuestCreator.createQuest(
-		["Hey there, I need a Potion of Relief.", "Long day… brain’s buzzing."],                    
-		["Any chance that draught is ready?"],                                 
-		["Well… that’s unfortunate.", "Guess I’ll stay stressed."],  
-		["Great. Another day of headaches."],  
-		["Oh thank the stars!", "My mind finally feels quiet."],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Townsfolk",
-		NPCBirthingPod
-	))
-
-	quests.append(QuestCreator.createQuest(
-		["Potion‑maker!", "I require a Battle‑Fury Elixir before my next quest!"],                    
-		["Surely the elixir is complete by now?"],                                 
-		["Tch. Very well.", "I’ll fight without it."],  
-		["A warrior denied their edge… disgraceful."],  
-		["Excellent!", "The fury burns within me once more!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Adventurer",
-		NPCBirthingPod
-	))
-
-	quests.append(QuestCreator.createQuest(
-		["Hi… can I get a dreamy sleep syrup?", "I keep having scary dreams…"],                    
-		["Um… is my syrup done yet?"],                                 
-		["Oh… okay…", "I guess I’ll try to sleep without it."],  
-		["I hope the nightmares don’t come back…"],  
-		["Yay!! I’ll sleep so good tonight!", "SLURP SLURP!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Child",
-		NPCBirthingPod
-	))
-
-	quests.append(QuestCreator.createQuest(
-		["Hey… I need a Potion of Courage.", "There’s a rat in my basement and I’m terrified."],                    
-		["Please tell me you’ve got that tonic ready…"],                                 
-		["Of course not.", "Guess I’ll keep screaming at shadows."],  
-		["Wonderful. Just wonderful."],  
-		["YES! I feel brave already!", "Time to face that rat!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Townsfolk",
-		NPCBirthingPod
-	))
-
-	quests.append(QuestCreator.createQuest(
-		["Potion‑seller!", "I need a Potion of Stoneskin before I face the ogres."],                    
-		["Is the Potion of Stoneskin ready for battle?"],                                 
-		["Hmph. Then my skin shall remain soft today."],  
-		["A warrior without armor… pathetic."],  
-		["Excellent!", "My body feels like granite!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Adventurer",
-		NPCBirthingPod
-	))
-
-	quests.append(QuestCreator.createQuest(
-		["Hey there, I need a Potion of Luck.", "I’m gambling tonight and I need every edge."],                    
-		["Any update on that tincture?"],                                 
-		["Well, that’s my luck.", "Guess I’ll lose again."],  
-		["Perfect. Just what I needed: more misfortune."],  
-		["Yes! Tonight’s my night!", "Down the hatch!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Townsfolk",
-		NPCBirthingPod
-	))
-
-	quests.append(QuestCreator.createQuest(
-		["Hi… can I get a potion to make me happy?", "It makes sad days feel better."],                    
-		["Um… is my Happy‑Heart Potion done yet?"],                                 
-		["Oh… okay…", "I’ll try to cheer up on my own."],  
-		["I guess today stays gloomy…"],  
-		["YAY!! My heart feels warm again!", "SLURP!"],              
-		[0],                                                                
-		69,                                                                 
-		[],                                                                 
-		[0,2],                                                              
-		1,                                                                  
-		0,                                                                  
-		true,                                                               
-		"Child",
-		NPCBirthingPod
-	))
+	QuestCreator.Populate(quests, NPCBirthingPod)
+	ItemCreator.UnlockDefaultIngredients(ingredients)
+	ItemCreator.UnlockDefaultPotions(potions)
 
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
-		potions,
-		ingredients,
+		ItemCreator.allPotions,
+		ItemCreator.allIngredients,
 		quests,
 		activeQuests,
-		pharmacy,
+		pharmacyQuests,
 		storeQueue
 	)
 
@@ -336,7 +48,7 @@ func _onGenerateQuest():
 	# Choose a random quest from quest list
 	var newQuest = quests.pick_random()
 	# If the chosen quest is already in the activeQuests or pharmacy lists, pick a new random quest
-	while activeQuests.has(newQuest) or pharmacy.has(newQuest):
+	while activeQuests.has(newQuest) or pharmacyQuests.has(newQuest):
 		newQuest = quests.pick_random()
 		
 	# Add new quest to the queue
@@ -344,6 +56,53 @@ func _onGenerateQuest():
 	
 	# Trigger the bell sound effect
 	#bell_sfx.play()
+
+func _onAcceptQuest():
+	# If there's no space in the activeQuests list, do nothing
+	if activeQuests.size() > MAX_ACTIVE_QUESTS:
+		return false
+		
+	# If there's no quest in the store queue, do nothing
+	# Note: this should never happen, but is here to prevent an out-of-bounds exception
+	if storeQueue.size() == 0:
+		return false
+		
+	# Take the first quest in the store queue
+	var nextQuest = storeQueue[0]
+	storeQueue.remove_at(0)
+	activeQuests.append(nextQuest)
+
+	# Generate new quest and update queue
+	_onGenerateQuest()
+	_updateQueue()
+	return true
+
+func _onQuestCompleted(_quest: Quest):
+	# Mark as completed
+	_quest.questCompleted = true
+	
+	# Remove from active list
+	var i = activeQuests.find(_quest)
+	activeQuests.remove_at(i)
+	
+	# Add to pharmacyQuests list if there's space and if quest is repeatable
+	if _quest.isRepeatable and pharmacyQuests.size() <= MAX_PHARMACY_QUESTS:
+		pharmacyQuests.append(_quest)
+
+	### Give rewards
+	
+	# Reward money
+	currency += _quest.rewards[0]
+	
+	# Reward recipes (unlock them)
+	for r:String in _quest.rewards[1]:
+		var newPot:Item = ItemCreator.allPotions.get(r)
+		unlockPotion(newPot)
+	
+	# Reward ingredients
+	for r:String in _quest.rewards[2]:
+		var newIng:Item = ItemCreator.allIngredients.get(r)
+		giveIngredient(newIng)
 
 func _updateQueue():
 	# TO-DO: Disable button which allows NPC interaction
@@ -367,7 +126,71 @@ func _updateQueue():
 	
 	return topThree;
 
+func onIngredientGrinded(i: Item):
+	# Check if object can be grinded
+	var crushedName:String = "crushed " + i.itemName
+	if !(crushedName in ItemCreator.allIngredients):
+		return false
+	
+	# If not unlocked, unlock it!
+	if !(crushedName in ingredients):
+		var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
+		ingredients.set(crushedName, crushedObj)
+		crushedObj.unlocked = true
+	
+	# Increase crushed quantity by 1
+	ingredients.get(crushedName).amountOwned += 1
+	
+	# Decrease quantity by 1
+	i.amountOwned -= 1
+	
+	return true
 
+func unlockPotion(i: Item):
+	# If not unlocked, unlock it!
+	if !(i in potions):
+		potions.set(i.itemName, i)
+		i.unlocked = true
+
+func giveIngredient(i: Item):
+	# If not unlocked, unlock it!
+	if !(i in ingredients):
+		ingredients.set(i.itemName, i)
+		i.unlocked = true
+
+	# Increase quantity by 1
+	i.amountOwned += 1
+
+func end_of_day():
+	
+	# Increment day
+	day += 1;
+	
+	# Tick tock, time is running out!
+	for i in range(storeQueue.size() - 1, -1, -1):
+		var q = storeQueue[i]
+		q.daysUntilDue -= 1
+		if q.daysUntilDue == 0:
+			storeQueue.remove_at(i)
+			
+	for i in range(activeQuests.size() - 1, -1, -1):
+		var q = activeQuests[i]
+		q.daysUntilDue -= 1
+		if q.daysUntilDue == 0:
+			activeQuests.remove_at(i)
+			
+	for i in range(pharmacyQuests.size() - 1, -1, -1):
+		var q = pharmacyQuests[i]
+		q.daysUntilDue -= 1
+		if q.daysUntilDue == 0:
+			pharmacyQuests.remove_at(i)
+
+	# TO-DO: if grinding in-progress, pause the grinding timer
+	
+	# TO-DO: if potion making was in-progress, immediately complete the potion
+	
+	# TO-DO: show EndOfDay popup node (Store node)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dg37mdtsnol00" path="res://scrips/crowStore.gd" id="1_8fcnj"]
 [ext_resource type="Texture2D" uid="uid://u475tce0nn6j" path="res://assets/npcs/lil freak.jpg" id="2_udfp7"]
 [ext_resource type="Texture2D" uid="uid://dj4ctqv6c0iur" path="res://assets/ingredients/beans.png" id="3_wqklr"]
-[ext_resource type="Texture2D" uid="uid://qaaryjuimfrp" path="res://assets/ingredients/abspestos.png" id="4_8fcnj"]
+[ext_resource type="Texture2D" uid="uid://qaaryjuimfrp" path="res://assets/ingredients/asbestos.png" id="4_8fcnj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udfp7"]
 atlas = ExtResource("1_3v1el")

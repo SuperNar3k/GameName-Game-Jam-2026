@@ -11,11 +11,13 @@ var itemAmount
 
 var item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
 
-func displayShit(ingredients: Variant, potions: Variant):
+func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
 	
-	ingredients.reverse()
-	potions.reverse()
-	for ingredient in ingredients: 
+	# Reverse the keys for order
+	var keysInReverse = allIngredients.keys()
+	keysInReverse.reverse()
+	for k:String in keysInReverse:
+		var ingredient = allIngredients.get(k)
 		
 		#ONLY FOR TESTING
 		ingredient.unlocked = true
@@ -28,8 +30,13 @@ func displayShit(ingredients: Variant, potions: Variant):
 			item.setItemAmount(ingredient.amountOwned)
 			
 			item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
-			
-	for potion in potions:
+	
+	# Reverse the keys for order
+	keysInReverse = allPotions.keys()
+	keysInReverse.reverse()
+	for k:String in keysInReverse:
+		k.reverse()
+		var potion = allPotions.get(k)
 		
 		#ONLY FOR TESTING
 		potion.unlocked = true
@@ -42,10 +49,7 @@ func displayShit(ingredients: Variant, potions: Variant):
 			item.setItemAmount(potion.amountOwned)
 			
 			item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
-			
-	ingredients.reverse()
-	potions.reverse()
-	
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,5 +60,5 @@ func _on_continueButton_pressed():
 	showStore.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

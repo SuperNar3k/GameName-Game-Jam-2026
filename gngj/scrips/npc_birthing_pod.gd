@@ -1,4 +1,4 @@
-class_name npc_birthing_pod
+class_name Npc_Birthing_Pod
 extends Node
 
 #GLOBAL VARIABLES

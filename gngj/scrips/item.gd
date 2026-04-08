@@ -2,41 +2,31 @@ class_name Item
 extends Node
 
 #GLOBAL VARIABLES
+
 #FOR BOTH
+var unlocked = false
+
 var itemName = ""
 var description = ""
-var amountOwned = 0
-var unlocked = false
 var sprite = ""
+var amountOwned
+
 #FOR INGREDIENTS
 var value
-#FOR POTIONS
-var recipe = []
-var cookLevelNeeded = 0
 
-#Function explicitly for creating new Ingredients
-func createIngredient(
-	_itemName: Variant,
-	_description: Variant,
-	_amountOwned: Variant,
-	_sprite: Variant,
-	_value: Variant
-):
-	itemName = _itemName
-	description = _description
-	amountOwned = _amountOwned
-	unlocked = false
-	sprite = _sprite
-	value = _value
-	
-#Function used to create game potions. Will be overloaded to create dud potions.
-func createPotion(
-	_itemName: Variant,
-	_description: Variant,
-	_amountOwned: Variant,
-	_sprite: Variant,
-	_recipe: Variant,
-	_cookLevelNeeded: Variant
+#FOR POTIONS
+var recipe
+var cookLevelNeeded
+
+#Initiatize
+func __init__(
+	_sprite: String,
+	_itemName: String,
+	_description: String,
+	_recipe = [],
+	_amountOwned = 0,
+	_cookLevelNeeded = 0,
+	_value = 0
 ):
 	itemName = _itemName
 	description = _description
@@ -44,10 +34,8 @@ func createPotion(
 	sprite = _sprite
 	recipe = _recipe
 	cookLevelNeeded = _cookLevelNeeded
+	value = _value
 	
-
-
-
 
 
 # Called when the node enters the scene tree for the first time.
