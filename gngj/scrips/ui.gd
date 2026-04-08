@@ -66,6 +66,7 @@ func _enable_all_buttons() -> void:
 				if innerchild is Button:
 					innerchild.disabled = false
 
+
 func _on_main_menu_scene_start_game() -> void:
 	$MainMenuScene.hide()
 	$FrontRoom.show()
@@ -123,3 +124,13 @@ func _on_main_menu_scene_test_that_shit() -> void:
 	$endOfDayScreen.show()
 	
 	$endOfDayScreen.displayShit(ingredients, potions)
+
+
+func _on_end_of_day_screen_show_store() -> void:
+	$endOfDayScreen.hide()
+	$crowStore.show()
+
+
+func newDay() -> void:
+	$crowStore.hide()
+	$MainMenuScene.show()

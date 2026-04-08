@@ -33,3 +33,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "POTIONS"
 horizontal_alignment = 1
+
+[node name="continueButton" type="Button" parent="." unique_id=363319046]
+layout_mode = 0
+offset_left = 722.0
+offset_top = 378.0
+offset_right = 906.0
+offset_bottom = 493.0
+text = "Continue"
