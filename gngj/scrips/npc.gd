@@ -2,14 +2,13 @@ class_name npc
 extends Node
 
 #GLOBAL VARIABLES
-var npcName = ""
+var npcName = "DEFAULT NPC"
 var sprite = Sprite2D.new()
+var type = "CHILD" # CHILD, TOWNSFOLK, ADVENTURER
 
-#This array will hold all of our npc sprites. We can add an additions array or something if we wanna have one for
-#townspeople or adventurer's specifically. 
-var allSprites = ["res://assets/npcs/lil freak.jpg"]
-
-#Here's where the magic happens
-func setRandNPC(): 
-	sprite.set_texture(load(allSprites.pick_random()))
-	npcName = "lil freak"
+#Set params
+func setParams(_name: String, _spriteName: String, _type: String): 
+	if FileAccess.file_exists("res://assets/npcs/" + _spriteName):
+		sprite.set_texture(load("res://assets/npcs/" + _spriteName)) # Load sprite if the file exists
+	npcName = _name
+	type = _type

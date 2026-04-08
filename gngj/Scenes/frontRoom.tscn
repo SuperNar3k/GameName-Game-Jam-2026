@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4g2huc0yueok"]
 
-[ext_resource type="Script" uid="uid://6niyjurcgd0l" path="res://scrips/front_room.gd" id="1_t5cqi"]
+[ext_resource type="Script" path="res://scrips/front_room.gd" id="1_t5cqi"]
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3

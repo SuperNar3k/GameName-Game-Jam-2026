@@ -14,6 +14,8 @@ var activeQuests = []
 var pharmacy = []
 var storeQueue = []
 
+var NPCBirthingPod = npc_birthing_pod.new() # Used for giving birth to NPCs
+var QuestCreator = Quest_Creator.new() # Used for creating quests
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +23,6 @@ func _ready() -> void:
 	
 	#Variable that will hold all of our objects
 	var item = preload("res://Scenes/item.tscn").instantiate()
-	var quest = preload("res://Scenes/quest.tscn").instantiate()
 	
 	#Hardcoding all of our Ingredients here
 	#itemName
@@ -138,6 +139,7 @@ func _ready() -> void:
 		0
 	)
 	potions.append(item)
+	NPCBirthingPod.Populate()
 	
 	#TEMP
 	var i = 0
@@ -148,28 +150,175 @@ func _ready() -> void:
 	#potions[1].unlocked = true
 	#TEMP
 	#Hardcoding all of our Quests here:
-	quest.createQuest(
+	quests.append(QuestCreator.createQuest(
 		["Hi, can you make me", "some cinnamon milk?"],						#QuestStartDialog
-		["You got that milk yet?"],											#QuestReturningDialog
-		["That's okay bitch","I'll get my milk from somewhere else"],		#QuestRejectedDialog
-		["What a waste of my time", "DIe FUcker"],							#QuestFailedDialog
-		["holy fuck thank you!", "SLURP SLUR SLUP"],						#QuestSuccses
+		["Ugh, you got that milk yet?"],									#QuestReturningDialog
+		["Aw, that's okay bitch","I'll get my milk from somewhere else!"],	#QuestRejectedDialog
+		["What a waste of my time", "I hope you get eaten by a dragon"],	#QuestFailedDialog
+		["Oh my gosshhhh thank youuuuu!", "SLURP SLURP SLURP"],				#QuestSuccses
 		[0],																#Requirements
 		69,																	#RewardMoney
 		[],																	#RewardRecipes
 		[0,2],																#RewardIngredients
 		1,																	#DaysUntilDue
 		0,																	#DaysUntilReward
-		true																#IsRepeatable
-	)
-	quests.append(quest)
+		true,																#IsRepeatable
+		"Brenna Tallowmere",												#NpcTypeOrName
+		NPCBirthingPod														#Pass the birthing pod
+	))
 	
-	quests[0].setNPC(0)
-	
-	
-	
-	
-	
+	quests.append(QuestCreator.createQuest(
+		["Adventurer! I require", "a vial of destiny!"],                    
+		["Have you returned with the dew of destiny?"],                                 
+		["A tragedy! A cosmic failure!","I shall seek another hero."],  
+		["The stars weep for your incompetence."],  
+		["Marvelous! The cosmos sings!","I can't wait to hear the music!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Adventurer",
+		NPCBirthingPod
+	))
+	quests.append(QuestCreator.createQuest(
+		["Hi… um… can I buy a little Glow‑Up Potion?", "I wanna shine like the heroes!"],                    
+		["Did you make my Glow‑Up Potion yet?"],                                 
+		["Oh… okay…", "I guess I’ll stay normal today."],  
+		["Aww… I really wanted to sparkle…"],  
+		["YAY!! I’m gonna glow so bright!!", "SLURP!!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Child",
+		NPCBirthingPod
+	))
+
+	quests.append(QuestCreator.createQuest(
+		["Hey there, I need a Potion of Relief.", "Long day… brain’s buzzing."],                    
+		["Any chance that draught is ready?"],                                 
+		["Well… that’s unfortunate.", "Guess I’ll stay stressed."],  
+		["Great. Another day of headaches."],  
+		["Oh thank the stars!", "My mind finally feels quiet."],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Townsfolk",
+		NPCBirthingPod
+	))
+
+	quests.append(QuestCreator.createQuest(
+		["Potion‑maker!", "I require a Battle‑Fury Elixir before my next quest!"],                    
+		["Surely the elixir is complete by now?"],                                 
+		["Tch. Very well.", "I’ll fight without it."],  
+		["A warrior denied their edge… disgraceful."],  
+		["Excellent!", "The fury burns within me once more!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Adventurer",
+		NPCBirthingPod
+	))
+
+	quests.append(QuestCreator.createQuest(
+		["Hi… can I get a dreamy sleep syrup?", "I keep having scary dreams…"],                    
+		["Um… is my syrup done yet?"],                                 
+		["Oh… okay…", "I guess I’ll try to sleep without it."],  
+		["I hope the nightmares don’t come back…"],  
+		["Yay!! I’ll sleep so good tonight!", "SLURP SLURP!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Child",
+		NPCBirthingPod
+	))
+
+	quests.append(QuestCreator.createQuest(
+		["Hey… I need a Potion of Courage.", "There’s a rat in my basement and I’m terrified."],                    
+		["Please tell me you’ve got that tonic ready…"],                                 
+		["Of course not.", "Guess I’ll keep screaming at shadows."],  
+		["Wonderful. Just wonderful."],  
+		["YES! I feel brave already!", "Time to face that rat!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Townsfolk",
+		NPCBirthingPod
+	))
+
+	quests.append(QuestCreator.createQuest(
+		["Potion‑seller!", "I need a Potion of Stoneskin before I face the ogres."],                    
+		["Is the Potion of Stoneskin ready for battle?"],                                 
+		["Hmph. Then my skin shall remain soft today."],  
+		["A warrior without armor… pathetic."],  
+		["Excellent!", "My body feels like granite!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Adventurer",
+		NPCBirthingPod
+	))
+
+	quests.append(QuestCreator.createQuest(
+		["Hey there, I need a Potion of Luck.", "I’m gambling tonight and I need every edge."],                    
+		["Any update on that tincture?"],                                 
+		["Well, that’s my luck.", "Guess I’ll lose again."],  
+		["Perfect. Just what I needed: more misfortune."],  
+		["Yes! Tonight’s my night!", "Down the hatch!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Townsfolk",
+		NPCBirthingPod
+	))
+
+	quests.append(QuestCreator.createQuest(
+		["Hi… can I get a potion to make me happy?", "It makes sad days feel better."],                    
+		["Um… is my Happy‑Heart Potion done yet?"],                                 
+		["Oh… okay…", "I’ll try to cheer up on my own."],  
+		["I guess today stays gloomy…"],  
+		["YAY!! My heart feels warm again!", "SLURP!"],              
+		[0],                                                                
+		69,                                                                 
+		[],                                                                 
+		[0,2],                                                              
+		1,                                                                  
+		0,                                                                  
+		true,                                                               
+		"Child",
+		NPCBirthingPod
+	))
+
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
