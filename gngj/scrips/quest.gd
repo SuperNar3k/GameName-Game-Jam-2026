@@ -12,9 +12,10 @@ var rewards = [[],[],[]]
 var daysUntilDue
 var daysUntilReward
 var isRepeatable
-var NPC = npc.new()
 
-func createQuest(
+var npcQuestGiver = npc.new()
+
+func __init__(
 	_questStartDialog: Variant,
 	_questReturingDialog: Variant,
 	_questRejectedDialog: Variant,
@@ -26,7 +27,8 @@ func createQuest(
 	_rewardIngredients: Variant,
 	_daysUntilDue: Variant,
 	_daysUntilReward: Variant,
-	_isReapeatable: Variant
+	_isReapeatable: Variant,
+	_npc: npc
 ):
 	#Creating the dialog[][]
 	for dialog in _questStartDialog:
@@ -54,23 +56,6 @@ func createQuest(
 	daysUntilDue = _daysUntilDue
 	daysUntilReward = _daysUntilReward
 	isRepeatable = _isReapeatable
-
-
-#Fucntion for setting a random npc. Will choose a random name and sprite. Handled by npc class
-func setNPC(index: Variant): 
-	NPC.setRandNPC()
-
-
-
-
-
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	
+	# Set NPC class
+	npcQuestGiver = _npc

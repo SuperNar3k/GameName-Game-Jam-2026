@@ -23,8 +23,8 @@ func _ready() -> void:
 	grindStation.pressed.connect(_on_backRoomButton_pressed.bind("g"))
 	front.pressed.connect(_on_backRoomButton_pressed.bind("f"))
 	
-func _on_backRoomButton_pressed(name: String) -> void:
-	match name:
+func _on_backRoomButton_pressed(_name: String) -> void:
+	match _name:
 		"i":
 			toIngredientsShelf.emit()
 		"b":
@@ -41,5 +41,5 @@ func _on_backRoomButton_pressed(name: String) -> void:
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
