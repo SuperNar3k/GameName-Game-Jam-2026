@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ul05e01y00gs"]
+
+[ext_resource type="Script" uid="uid://df1pb00d0phn8" path="res://scrips/displayOnQuestList.gd" id="1_c0ud8"]
+[ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="1_c0355"]
+
+[node name="displayQuestOnList" type="HBoxContainer" unique_id=1256782349]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -544.0
+offset_right = 86.0
+offset_bottom = -420.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c0ud8")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=807029449]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="itemSprite" type="TextureRect" parent="AspectRatioContainer" unique_id=1321172911]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_c0355")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=621271167]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="potionNameLable" type="Label" parent="VBoxContainer" unique_id=1208371953]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "POTION NAME"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=921815192]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="npcName" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1137279697]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "TIMMY FUCKER"
+
+[node name="daysUntilDue" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=11665203]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "4!"
+horizontal_alignment = 1
