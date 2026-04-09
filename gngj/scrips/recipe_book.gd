@@ -28,7 +28,7 @@ func _on_recipe_book_btn_pressed(_potions: Dictionary, _ingredients: Dictionary)
 				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = allIngredients.values()[j].itemName
+					newLabel.text = j
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
 				$RightSprite.set_texture(load(allPotions.values()[i].sprite))
@@ -156,7 +156,7 @@ func _on_back_btn_pressed() -> void:
 				for j in allPotions.values()[i].recipe:
 					var newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = allIngredients.values()[j].itemName
+					newLabel.text = j
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
 				$RightSprite.set_texture(load(allPotions.values()[i].sprite))

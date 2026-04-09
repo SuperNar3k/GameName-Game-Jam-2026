@@ -107,7 +107,7 @@ func Populate():
 		"dud",									#ItemName
 		"a failed experiment",					#Description
 		0,										#AmountOwned
-		"",										#Sprite
+		"res://assets/npcs/lil freak.jpg",		#Sprite
 		[],										#Recipe
 		0										#CookLevelNeeded
 	)
