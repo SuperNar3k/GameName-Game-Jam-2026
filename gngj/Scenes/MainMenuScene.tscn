@@ -117,9 +117,10 @@ offset_bottom = 31.0
 text = "Test End Of Day
 "
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1794253041]
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("2_mxhvt")
-
-[node name="Node2D" parent="." unique_id=1086510356 instance=ExtResource("2_47sjk")]
-position = Vector2(299, -498)
+[node name="testQuestListScreen" type="Button" parent="." unique_id=1268009702]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 60.0
+offset_right = 597.0
+offset_bottom = 173.0
+text = "Test Quest Screen"

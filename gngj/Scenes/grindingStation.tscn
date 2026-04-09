@@ -1,10 +1,54 @@
 [gd_scene format=3 uid="uid://dx7onsvyh7cw8"]
 
 [ext_resource type="Script" uid="uid://cvr710tnvcl0" path="res://scrips/grinding_station.gd" id="1_pjki0"]
+[ext_resource type="Texture2D" uid="uid://dcq5uvinlp5kp" path="res://assets/background/ingredient tray .png" id="2_2lhsv"]
+[ext_resource type="Script" uid="uid://nb4nyvcixxeo" path="res://Scenes/grinding_area.gd" id="3_mnfot"]
+[ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://Scenes/pestle.gd" id="3_ohim2"]
+[ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="4_mnfot"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5u62"]
 radius = 20.0
 height = 688.0
+
+[sub_resource type="Animation" id="Animation_gfxa0"]
+resource_name = "Drawer_Slide"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IngredientDrawer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.55478406, 1),
+"update": 0,
+"values": [Vector2(887.99994, 20), Vector2(20, 18)]
+}
+
+[sub_resource type="Animation" id="Animation_ohim2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IngredientDrawer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(887.99994, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mnfot"]
+_data = {
+&"Drawer_Slide": SubResource("Animation_gfxa0"),
+&"RESET": SubResource("Animation_ohim2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b08lm"]
+size = Vector2(57, 60.5)
 
 [node name="GrindingStation" type="Control" unique_id=1247765081]
 layout_mode = 3
@@ -22,8 +66,9 @@ grow_vertical = 2
 script = ExtResource("1_pjki0")
 
 [node name="IngredientDrawer" type="Sprite2D" parent="." unique_id=835483911]
-position = Vector2(869.99994, -1)
+position = Vector2(887.99994, 20)
 scale = Vector2(1.6790394, 1.6723603)
+texture = ExtResource("2_2lhsv")
 
 [node name="Button" type="Button" parent="IngredientDrawer" unique_id=1421411846]
 offset_left = 67.300385
@@ -121,32 +166,54 @@ offset_top = 157.26274
 offset_right = 556.27045
 offset_bottom = 309.74188
 
-[node name="Handle" type="Button" parent="IngredientDrawer" unique_id=1622523041]
-offset_left = 10.124924
-offset_top = -87.89971
-offset_right = 53.006638
-offset_bottom = 94.47724
+[node name="Handle" type="Button" parent="IngredientDrawer" unique_id=731879883]
+offset_left = 15.485107
+offset_top = -68.765076
+offset_right = 50.028687
+offset_bottom = 67.56918
 
 [node name="GrindingArea" type="Area2D" parent="." unique_id=1570226345]
+script = ExtResource("3_mnfot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrindingArea" unique_id=2059078509]
 position = Vector2(-399.00003, -19.999985)
 rotation = -0.6981317
 shape = SubResource("CapsuleShape2D_w5u62")
 
+[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D" unique_id=1240140250]
+position = Vector2(-2.4682941, 5.845103)
+rotation = -1.5882496
+scale = Vector2(5.306539, 0.33045694)
+texture = ExtResource("4_mnfot")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GrindingArea" unique_id=1728253235]
 position = Vector2(-397, -15)
 shape = SubResource("CapsuleShape2D_w5u62")
+
+[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D2" unique_id=1351004682]
+position = Vector2(0.49998856, 3.5000103)
+scale = Vector2(0.32031268, 5.367188)
+texture = ExtResource("4_mnfot")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GrindingArea" unique_id=273747170]
 position = Vector2(-401, -16)
 rotation = -2.443461
 shape = SubResource("CapsuleShape2D_w5u62")
 
+[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D3" unique_id=771630933]
+position = Vector2(-1.7938175, 2.737671)
+scale = Vector2(0.31583968, 5.2954345)
+texture = ExtResource("4_mnfot")
+
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GrindingArea" unique_id=1837861230]
 position = Vector2(-399, -19)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_w5u62")
+
+[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D4" unique_id=2113447870]
+position = Vector2(-0.885767, 2.6573334)
+scale = Vector2(0.32182398, 5.3320208)
+texture = ExtResource("4_mnfot")
 
 [node name="BackButton" type="Button" parent="." unique_id=370372965]
 layout_mode = 0
@@ -155,3 +222,25 @@ offset_top = 398.0
 offset_right = -621.0
 offset_bottom = 525.0
 text = "Back"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=263874880]
+libraries/ = SubResource("AnimationLibrary_mnfot")
+
+[node name="Pestle" type="CharacterBody2D" parent="." unique_id=913269000 groups=["Pestle"]]
+input_pickable = true
+script = ExtResource("3_ohim2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Pestle" unique_id=1031160259]
+position = Vector2(49.74999, -40.500008)
+scale = Vector2(0.5039061, 3.2109375)
+texture = ExtResource("4_mnfot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pestle" unique_id=112924750]
+position = Vector2(49, 133.25)
+shape = SubResource("RectangleShape2D_b08lm")
+
+[node name="Marker2D" type="Marker2D" parent="Pestle" unique_id=1070179693]
+position = Vector2(-60, 274)
+
+[connection signal="pressed" from="IngredientDrawer/Handle" to="." method="_on_handle_pressed"]
+[connection signal="body_entered" from="GrindingArea" to="GrindingArea" method="_on_body_entered"]

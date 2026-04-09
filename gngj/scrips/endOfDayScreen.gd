@@ -5,13 +5,10 @@ extends Control
 
 signal showStore
 
-var itemSprite
-var itemName
-var itemAmount
-
 var item = preload("res://Scenes/displayItemOnList.tscn").instantiate()
 
 func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
+	$ScrollContainer.scroll_vertical = 0
 	
 	# Reverse the keys for order
 	var keysInReverse = allIngredients.keys()
@@ -23,7 +20,7 @@ func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
 		ingredient.unlocked = true
 		
 		if(ingredient.unlocked):
-			$VBoxContainer/ingredientLable.add_sibling(item)
+			$ScrollContainer/AspectRatioContainer/VBoxContainer/ingredientLable.add_sibling(item)
 			item.add_to_group("itemToDelete")
 			item.setSprite(ingredient.sprite)
 			item.setItemName(ingredient.itemName)
@@ -42,7 +39,7 @@ func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
 		potion.unlocked = true
 		
 		if(potion.unlocked):
-			$VBoxContainer/potionLable.add_sibling(item)
+			$ScrollContainer/AspectRatioContainer/VBoxContainer/potionLable.add_sibling(item)
 			item.add_to_group("itemToDelete")
 			item.setSprite(potion.sprite)
 			item.setItemName(potion.itemName)
