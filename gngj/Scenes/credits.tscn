@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cwh72s7wbi4ye"]
 
-[ext_resource type="Script" uid="uid://d313qrsadx0bv" path="res://scrips/credits.gd" id="1_gryuy"]
-[ext_resource type="Texture2D" uid="uid://b7v2h8fl6stf4" path="res://assets/background/latest.png" id="1_r18jl"]
+[ext_resource type="Script" path="res://scrips/credits.gd" id="1_gryuy"]
+[ext_resource type="Texture2D" uid="uid://b7v2h8fl6stf4" path="res://assets/background/temp/latest.png" id="1_r18jl"]
 
 [node name="credits" type="Control" unique_id=1866293905]
 layout_mode = 3
