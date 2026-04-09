@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://db6uxsqamrixk"]
+[gd_scene format=3 uid="uid://p73w6eq3dno8"]
 
-[ext_resource type="Script" uid="uid://cm216fmwdtd20" path="res://scrips/endOfDayScreen.gd" id="1_nu41p"]
+[ext_resource type="Script" uid="uid://c3ynsuonvghoj" path="res://scrips/questListScreen.gd" id="1_68nuj"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_68nuj"]
 
@@ -14,7 +14,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iq35i"]
 
-[sub_resource type="Theme" id="Theme_nu41p"]
+[sub_resource type="Theme" id="Theme_1dylo"]
 VScrollBar/icons/decrement = SubResource("ImageTexture_68nuj")
 VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_68nuj")
 VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_68nuj")
@@ -27,54 +27,54 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_54bui")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_0kfgu")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_iq35i")
 
-[node name="endOfDayScreen" type="Control" unique_id=1933692783]
+[node name="questListScreen" type="Control" unique_id=1878786823]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -4.0
-offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nu41p")
+script = ExtResource("1_68nuj")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=10108451]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1175606658]
 clip_contents = false
-layout_mode = 0
+layout_mode = 1
 offset_left = -961.0
-offset_top = -537.0
-offset_right = 960.0
-offset_bottom = 544.0
-theme = SubResource("Theme_nu41p")
+offset_top = -542.0
+offset_right = 956.0
+offset_bottom = 539.0
+theme = SubResource("Theme_1dylo")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ScrollContainer" unique_id=126831018]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="ScrollContainer" unique_id=1931945291]
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 alignment_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/AspectRatioContainer" unique_id=201923639]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/AspectRatioContainer" unique_id=899495278]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ingredientLable" type="Label" parent="ScrollContainer/AspectRatioContainer/VBoxContainer" unique_id=1895945021]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "INGREDIENTS"
-horizontal_alignment = 1
-
-[node name="potionLable" type="Label" parent="ScrollContainer/AspectRatioContainer/VBoxContainer" unique_id=2029568648]
+[node name="pharmacyLable" type="Label" parent="ScrollContainer/AspectRatioContainer/VBoxContainer" unique_id=694017133]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "POTIONS"
+text = "Pharmacy List: "
 horizontal_alignment = 1
 
-[node name="continueButton" type="Button" parent="." unique_id=363319046]
+[node name="questLable" type="Label" parent="ScrollContainer/AspectRatioContainer/VBoxContainer" unique_id=496355629]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quest List: "
+horizontal_alignment = 1
+
+[node name="returnButton" type="Button" parent="." unique_id=442347869]
 layout_mode = 0
-offset_left = 722.0
-offset_top = 378.0
-offset_right = 906.0
-offset_bottom = 493.0
-text = "Continue"
+offset_left = 615.0
+offset_top = 347.0
+offset_right = 887.0
+offset_bottom = 484.0
+text = "Return"

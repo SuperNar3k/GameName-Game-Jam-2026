@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cwh72s7wbi4ye" path="res://Scenes/credits.tscn" id="9_mmixe"]
 [ext_resource type="PackedScene" uid="uid://db6uxsqamrixk" path="res://Scenes/endOfDayScreen.tscn" id="10_nt8jn"]
 [ext_resource type="PackedScene" uid="uid://bai0jtmapvbqk" path="res://Scenes/crowStore.tscn" id="11_g0wmg"]
+[ext_resource type="PackedScene" uid="uid://p73w6eq3dno8" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -68,9 +69,14 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="questListScreen" parent="." unique_id=1878786823 instance=ExtResource("12_4vbiv")]
+visible = false
+layout_mode = 1
+
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]
 [connection signal="startGame" from="MainMenuScene" to="." method="_on_main_menu_scene_start_game"]
+[connection signal="testThatOtherShit" from="MainMenuScene" to="." method="_on_main_menu_scene_test_that_other_shit"]
 [connection signal="testThatShit" from="MainMenuScene" to="." method="_on_main_menu_scene_test_that_shit"]
 [connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]
 [connection signal="toBackRoom" from="FrontRoom" to="." method="_on_front_room_to_back_room"]
@@ -82,3 +88,4 @@ layout_mode = 1
 [connection signal="goBack" from="credits" to="." method="_on_credits_go_back"]
 [connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
 [connection signal="newDay" from="crowStore" to="." method="newDay"]
+[connection signal="returnToGame" from="questListScreen" to="." method="_on_quest_list_screen_return_to_game"]

@@ -33,6 +33,17 @@ func _ready() -> void:
 	ItemCreator.UnlockDefaultIngredients(ingredients)
 	ItemCreator.UnlockDefaultPotions(potions)
 
+	#FOR TESTING
+	var i = 0
+	var quest
+	while(i < 3):
+		quest = quests.pick_random()
+		pharmacyQuests.append(quest)
+		i = i + 1
+	while(i < 15):
+		quest = quests.pick_random()
+		activeQuests.append(quest)
+		i = i + 1
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(

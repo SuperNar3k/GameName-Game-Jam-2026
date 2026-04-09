@@ -92,14 +92,7 @@ func Populate():
 		#recipe
 		#cookLevelNeeded
 	
-	createPotion(
-		"dud",									#ItemName
-		"a failed experiment",					#Description
-		0,										#AmountOwned
-		"",										#Sprite
-		[],										#Recipe
-		0										#CookLevelNeeded
-	)
+	
 	
 	createPotion(
 		"cinnamon toast crunch milk",			#ItemName
@@ -107,6 +100,15 @@ func Populate():
 		0,										#AmountOwned
 		"res://assets/potions/CTCBox.jpg",		#Sprite
 		["asbestos", "crushed asbestos"],		#Recipe
+		0										#CookLevelNeeded
+	)
+	
+	createPotion(
+		"dud",									#ItemName
+		"a failed experiment",					#Description
+		0,										#AmountOwned
+		"",										#Sprite
+		[],										#Recipe
 		0										#CookLevelNeeded
 	)
 	

@@ -80,6 +80,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		"Adventurer",
 		NPCBirthingPod
 	))
+	
 	allQuests.append(createQuest(
 		["Hi… um… can I buy a little Glow‑Up Potion?", "I wanna shine like the heroes!"],                    
 		["Did you make my Glow‑Up Potion yet?"],                                 

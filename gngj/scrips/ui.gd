@@ -134,3 +134,15 @@ func _on_end_of_day_screen_show_store() -> void:
 func newDay() -> void:
 	$crowStore.hide()
 	$MainMenuScene.show()
+
+
+func _on_main_menu_scene_test_that_other_shit() -> void:
+	$MainMenuScene.hide()
+	$questListScreen.show()
+	
+	$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
+
+
+func _on_quest_list_screen_return_to_game() -> void:
+	$questListScreen.hide()
+	$MainMenuScene.show()
