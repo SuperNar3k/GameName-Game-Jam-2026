@@ -17,6 +17,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t5cqi")
 
+[node name="bg" type="Sprite2D" parent="." unique_id=1844677548]
+position = Vector2(18.484985, 22.835022)
+scale = Vector2(1.5, 1.51)
+
 [node name="NPC" type="Button" parent="." unique_id=197611622]
 layout_mode = 0
 offset_left = 281.0
@@ -64,3 +68,6 @@ offset_right = 934.0
 offset_bottom = 507.0
 theme_override_font_sizes/font_size = 25
 text = "To Back"
+
+[node name="desk" type="Sprite2D" parent="." unique_id=514847854]
+scale = Vector2(1.5, 1.5)

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://csyrxpe3vdq07"]
 
 [ext_resource type="Script" uid="uid://cpubh6amks5vo" path="res://scrips/MainMenu.gd" id="1_sb72h"]
+[ext_resource type="PackedScene" uid="uid://0nauyx3wsvbo" path="res://Scenes/mm_physics_buttons.tscn" id="2_47sjk"]
+[ext_resource type="Texture2D" uid="uid://c63lcd8pmcs04" path="res://assets/background/main menu/menu background.png" id="2_mxhvt"]
 
 [node name="MainMenuScene" type="Control" unique_id=1432645101]
 layout_mode = 3
@@ -114,3 +116,10 @@ offset_right = 592.0
 offset_bottom = 31.0
 text = "Test End Of Day
 "
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1794253041]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_mxhvt")
+
+[node name="Node2D" parent="." unique_id=1086510356 instance=ExtResource("2_47sjk")]
+position = Vector2(299, -498)

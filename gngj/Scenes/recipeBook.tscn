@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cuan7o4maj614"]
 
 [ext_resource type="Script" uid="uid://becqqtglmfle6" path="res://scrips/recipe_book.gd" id="1_72ecy"]
-[ext_resource type="Texture2D" uid="uid://c5hdkrs2yrnde" path="res://assets/background/recipe book.JPG" id="2_5ak3s"]
+[ext_resource type="Texture2D" uid="uid://c5hdkrs2yrnde" path="res://assets/background/temp/recipe book.JPG" id="2_5ak3s"]
 
 [sub_resource type="Animation" id="Animation_5ak3s"]
 length = 0.001

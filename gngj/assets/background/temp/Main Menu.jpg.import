@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7yoxdkryq0c1"
-path="res://.godot/imported/dragon's egg.png-adacec9dc4aa1543b83ff114021d00e6.ctex"
+uid="uid://bxwssh2ta0j6b"
+path="res://.godot/imported/Main Menu.jpg-1d156c3e8a6968f1f817109c6978aa3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/dragon's egg.png"
-dest_files=["res://.godot/imported/dragon's egg.png-adacec9dc4aa1543b83ff114021d00e6.ctex"]
+source_file="res://assets/background/temp/Main Menu.jpg"
+dest_files=["res://.godot/imported/Main Menu.jpg-1d156c3e8a6968f1f817109c6978aa3e.ctex"]
 
 [params]
 
