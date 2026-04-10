@@ -55,6 +55,7 @@ func _go_to_page(c : String):
 			_on_back_btn_pressed()
 			print(page_index)
 
+
 func _on_recipe_book_btn_pressed() -> void:
 	#Displays the first set of recipes
 	page_index =  0
