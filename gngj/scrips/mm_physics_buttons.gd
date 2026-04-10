@@ -15,11 +15,11 @@ func _ready() -> void:
 	$close/closebtn.mouse_entered.connect(got_hovered.bind("close", true))
 	$close/closebtn.mouse_exited.connect(got_hovered.bind("close", false))
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$follower.global_position = get_global_mouse_position()
 
 
-func _on_area_2d_body_entered(body: RigidBody2D) -> void:
+func _on_area_2d_body_entered(_body: RigidBody2D) -> void:
 	if $collisionTimer.is_stopped():
 		$collisionTimer.start(.2)
 

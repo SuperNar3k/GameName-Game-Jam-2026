@@ -36,6 +36,8 @@ func ref_storage(
 	activeQuests = _activeQuests
 	pharmacyQuests = _pharmacyQuests
 	storeQueue = _storeQueue
+	
+	$RecipeBook.__init__(_allPotions, _allIngredients)
 
 func _on_button_pressed(button_pressed: String) -> void:
 	if (button_pressed == "ingredientShelf"):
@@ -44,7 +46,7 @@ func _on_button_pressed(button_pressed: String) -> void:
 		pass
 	if (button_pressed == "RecipeBook"):
 		_disable_all_buttons()
-		$RecipeBook._on_recipe_book_btn_pressed(allPotions, allIngredients)
+		$RecipeBook._on_recipe_book_btn_pressed()
 	if (button_pressed == "Cauldron"):
 		pass
 	if (button_pressed == "MortarandPestle"):
