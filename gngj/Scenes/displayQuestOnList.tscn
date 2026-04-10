@@ -2,6 +2,16 @@
 
 [ext_resource type="Script" uid="uid://df1pb00d0phn8" path="res://scrips/displayOnQuestList.gd" id="1_c0ud8"]
 [ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="1_c0355"]
+[ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="3_yfkir"]
+[ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="4_o6lcf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yfkir"]
+font_size = 30
+font_color = Color(0.47058824, 0.49019608, 0.9019608, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6lcf"]
+font_size = 30
+font_color = Color(1, 0.15686275, 0.4, 1)
 
 [node name="displayQuestOnList" type="HBoxContainer" unique_id=1256782349]
 anchors_preset = 8
@@ -37,8 +47,10 @@ size_flags_horizontal = 3
 [node name="potionNameLable" type="Label" parent="VBoxContainer" unique_id=1208371953]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_yfkir")
 theme_override_font_sizes/font_size = 30
 text = "POTION NAME"
+label_settings = SubResource("LabelSettings_yfkir")
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=921815192]
@@ -49,6 +61,7 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_o6lcf")
 theme_override_font_sizes/font_size = 30
 text = "TIMMY FUCKER"
 
@@ -56,6 +69,8 @@ text = "TIMMY FUCKER"
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_o6lcf")
 theme_override_font_sizes/font_size = 30
 text = "4!"
+label_settings = SubResource("LabelSettings_o6lcf")
 horizontal_alignment = 1

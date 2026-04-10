@@ -8,9 +8,15 @@ var activeQuests
 var pharmacyQuests
 var storeQueue
 
+var gameStart = false
+var bookOpen = false
+
 func _ready() -> void:
 	#Custom Signals from children
 	$RecipeBook.enable_outside_buttons.connect(_enable_all_buttons.bind())
+	$Hud.recipe_pressed.connect(_on_button_pressed.bind("RecipeBook"))
+	$Hud.quest_pressed.connect(_on_button_pressed.bind("Quests"))
+	$Hud.options_pressed.connect(_on_button_pressed.bind("Options"))
 	#FrontRoom Buttons
 	
 	#BackRoom Buttons
@@ -20,6 +26,20 @@ func _ready() -> void:
 	$BackRoom/CauldronBtn.pressed.connect(_on_button_pressed.bind("Cauldron"))
 	$BackRoom/MortarandPestleBtn.pressed.connect(_on_button_pressed.bind("MortarandPestle"))
 	$BackRoom/toFrontRoomBtn.pressed.connect(_on_button_pressed.bind("toFrontRoom"))
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("options_btn"):
+		get_tree().quit()
+	
+	if Input.is_action_just_pressed("recipe_book_btn"):
+		if gameStart:
+			if $RecipeBook/AnimationPlayer.is_playing() == false:
+				if bookOpen == false:
+					bookOpen = true
+					_on_button_pressed("RecipeBook")
+				else:
+					bookOpen = false
+					$RecipeBook._on_exit_btn_pressed()
 
 #called from main; saves references of the variables from main into these local (global?) variables
 func ref_storage(
@@ -53,6 +73,11 @@ func _on_button_pressed(button_pressed: String) -> void:
 		pass
 	if (button_pressed == "toFrontRoom"):
 		pass
+	if (button_pressed == "Quests"):
+		$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
+		$questListScreen.show()
+	if (button_pressed == "Options"):
+		$Options.show()
 
 func _disable_all_buttons() -> void:
 	for child in get_children():
@@ -69,9 +94,12 @@ func _enable_all_buttons() -> void:
 					innerchild.disabled = false
 
 
+#IMPORTANT!
 func _on_main_menu_scene_start_game() -> void:
 	$MainMenuScene.hide()
 	$FrontRoom.show()
+	gameStart = true
+	$Hud.show()
 
 func _on_front_room_to_back_room() -> void:
 	$FrontRoom.hide()
