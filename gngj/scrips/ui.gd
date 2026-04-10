@@ -106,11 +106,17 @@ func _on_main_menu_scene_display_options() -> void:
 
 func _on_options_exit_options() -> void:
 	$Options.hide()
+	#used to re-enable the thing that hits the menu signs
+	$MainMenuScene/phys_buttons/collisionTimer.paused = false
+	$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
 	$MainMenuScene.show()
 
 
 func _on_credits_go_back() -> void:
 	$credits.hide()
+	#used to re-enable the thing that hits the menu signs
+	$MainMenuScene/phys_buttons/collisionTimer.paused = false
+	$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
 	$MainMenuScene.show()
 
 

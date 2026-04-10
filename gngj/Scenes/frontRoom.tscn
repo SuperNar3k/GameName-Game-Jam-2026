@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c4g2huc0yueok"]
 
 [ext_resource type="Script" uid="uid://6niyjurcgd0l" path="res://scrips/front_room.gd" id="1_t5cqi"]
+[ext_resource type="Texture2D" uid="uid://c0g1bjkejnpat" path="res://assets/background/front/frontempty.PNG" id="2_fixym"]
+[ext_resource type="Texture2D" uid="uid://dv8ebk8jjw4xv" path="res://assets/background/front/frontdesk.PNG" id="3_s0epr"]
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3
@@ -9,17 +11,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t5cqi")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=1844677548]
-position = Vector2(18.484985, 22.835022)
-scale = Vector2(1.5, 1.51)
+texture = ExtResource("2_fixym")
 
 [node name="NPC" type="Button" parent="." unique_id=197611622]
 layout_mode = 0
@@ -29,6 +30,9 @@ offset_right = 757.0
 offset_bottom = 275.0
 theme_override_font_sizes/font_size = 50
 text = "NPC"
+
+[node name="desk" type="Sprite2D" parent="." unique_id=514847854]
+texture = ExtResource("3_s0epr")
 
 [node name="Dialogue" type="Button" parent="." unique_id=288120605]
 layout_mode = 0
@@ -68,6 +72,3 @@ offset_right = 934.0
 offset_bottom = 507.0
 theme_override_font_sizes/font_size = 25
 text = "To Back"
-
-[node name="desk" type="Sprite2D" parent="." unique_id=514847854]
-scale = Vector2(1.5, 1.5)

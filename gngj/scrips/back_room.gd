@@ -22,6 +22,14 @@ func _ready() -> void:
 	cauldonStation.pressed.connect(_on_backRoomButton_pressed.bind("c"))
 	grindStation.pressed.connect(_on_backRoomButton_pressed.bind("g"))
 	front.pressed.connect(_on_backRoomButton_pressed.bind("f"))
+	$RecipeBookBtn.mouse_entered.connect(got_hovered.bind("recipe_book", true))
+	$RecipeBookBtn.mouse_exited.connect(got_hovered.bind("recipe_book", false))
+	$CauldronBtn.mouse_entered.connect(got_hovered.bind("cauldron", true))
+	$CauldronBtn.mouse_exited.connect(got_hovered.bind("cauldron", false))
+	$MortarandPestleBtn.mouse_entered.connect(got_hovered.bind("mp", true))
+	$MortarandPestleBtn.mouse_exited.connect(got_hovered.bind("mp", false))
+	$ingredientShelfBtn.mouse_entered.connect(got_hovered.bind("ingshelf", true))
+	$ingredientShelfBtn.mouse_exited.connect(got_hovered.bind("ingshelf", false))
 	
 func _on_backRoomButton_pressed(_name: String) -> void:
 	match _name:
@@ -37,9 +45,13 @@ func _on_backRoomButton_pressed(_name: String) -> void:
 			toGrindStation.emit()
 		"f":
 			toFront.emit()
-	
-	
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+
+func got_hovered(btn: String, hovered: bool):
+	if btn == "recipe_book":
+		$bookstandimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+	if btn == "cauldron":
+		$cauldronimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+	if btn == "mp":
+		$mpimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+	if btn == "ingshelf":
+		$ingshelfimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)

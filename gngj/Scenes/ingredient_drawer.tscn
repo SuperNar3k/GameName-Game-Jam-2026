@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://cqrxjuspqkdi0"]
+
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="1_2cnka"]
+[ext_resource type="Texture2D" uid="uid://cd1okxuxo1474" path="res://assets/background/cauldron-mp-top/igndrawer.PNG" id="2_msq4k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tl0jk"]
+shader = ExtResource("1_2cnka")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_diasw"]
+
+[node name="IngredientDrawer" type="Sprite2D" unique_id=1312653176]
+material = SubResource("ShaderMaterial_tl0jk")
+texture = ExtResource("2_msq4k")
+
+[node name="Button" type="Button" parent="." unique_id=1544897836]
+offset_left = 114.90991
+offset_top = -515.0
+offset_right = 301.9099
+offset_bottom = -265.0
+
+[node name="Button2" type="Button" parent="." unique_id=1465336959]
+offset_left = 321.90997
+offset_top = -515.0
+offset_right = 514.32495
+offset_bottom = -265.0
+
+[node name="Button3" type="Button" parent="." unique_id=2121171339]
+offset_left = 533.9099
+offset_top = -515.0
+offset_right = 725.6599
+offset_bottom = -265.0
+
+[node name="Button4" type="Button" parent="." unique_id=898171682]
+offset_left = 745.9098
+offset_top = -513.0
+offset_right = 931.1648
+offset_bottom = -263.0
+
+[node name="Button5" type="Button" parent="." unique_id=307145434]
+offset_left = 119.90988
+offset_top = -236.99998
+offset_right = 304.40988
+offset_bottom = -11.999985
+
+[node name="Button6" type="Button" parent="." unique_id=1986065387]
+offset_left = 322.90985
+offset_top = -237.99998
+offset_right = 513.21985
+offset_bottom = -12.999985
+
+[node name="Button7" type="Button" parent="." unique_id=986570025]
+offset_left = 534.9098
+offset_top = -236.0
+offset_right = 721.9098
+offset_bottom = -11.0
+
+[node name="Button8" type="Button" parent="." unique_id=460219651]
+offset_left = 746.9098
+offset_top = -236.0
+offset_right = 931.8548
+offset_bottom = -11.0
+
+[node name="Button9" type="Button" parent="." unique_id=1069071758]
+offset_left = 118.90988
+offset_top = 14.0
+offset_right = 305.90988
+offset_bottom = 239.0
+
+[node name="Button10" type="Button" parent="." unique_id=524116534]
+offset_left = 322.90997
+offset_top = 12.999991
+offset_right = 512.07996
+offset_bottom = 237.99998
+
+[node name="Button11" type="Button" parent="." unique_id=1359878132]
+offset_left = 535.91
+offset_top = 15.0
+offset_right = 722.91
+offset_bottom = 240.0
+
+[node name="Button12" type="Button" parent="." unique_id=1988608018]
+offset_left = 747.9098
+offset_top = 14.000009
+offset_right = 931.1898
+offset_bottom = 239.00002
+
+[node name="Button13" type="Button" parent="." unique_id=376366256]
+offset_left = 115.90988
+offset_top = 266.0
+offset_right = 302.90988
+offset_bottom = 516.0
+
+[node name="Button14" type="Button" parent="." unique_id=775491915]
+offset_left = 324.90997
+offset_top = 266.0
+offset_right = 511.90997
+offset_bottom = 516.0
+
+[node name="Button15" type="Button" parent="." unique_id=1965260041]
+offset_left = 535.9099
+offset_top = 265.0
+offset_right = 725.80493
+offset_bottom = 515.0
+
+[node name="Button16" type="Button" parent="." unique_id=1832918289]
+offset_left = 748.9099
+offset_top = 265.0
+offset_right = 931.9249
+offset_bottom = 515.0
+
+[node name="Handle" type="Button" parent="." unique_id=1624933379]
+offset_left = 15.485107
+offset_top = -152.0
+offset_right = 87.379105
+offset_bottom = 148.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_diasw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_diasw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_diasw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_diasw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_diasw")

@@ -18,6 +18,10 @@ signal testThatShit
 signal testThatOtherShit
 
 func _ready() -> void:
+	$phys_buttons.open_button_pressed.connect(_on_menu_button_pressed.bind("start"))
+	$phys_buttons.options_button_pressed.connect(_on_menu_button_pressed.bind("options"))
+	$phys_buttons.credits_button_pressed.connect(_on_menu_button_pressed.bind("credits"))
+	$phys_buttons.close_button_pressed.connect(_on_menu_button_pressed.bind("exit"))
 	start_button.pressed.connect(_on_menu_button_pressed.bind("start"))
 	load_button.pressed.connect(_on_menu_button_pressed.bind("load"))
 	options_button.pressed.connect(_on_menu_button_pressed.bind("options"))
@@ -47,3 +51,6 @@ func _on_menu_button_pressed(button_name: String) -> void:
 			testThatShit.emit()
 		"test2":
 			testThatOtherShit.emit()
+
+func phys_button_pressed():
+	pass

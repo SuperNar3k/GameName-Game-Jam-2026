@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://bai0jtmapvbqk"]
 
-[ext_resource type="Texture2D" uid="uid://c7yoxdkryq0c1" path="res://assets/ingredients/dragon's egg.png" id="1_3v1el"]
-[ext_resource type="Script" uid="uid://dg37mdtsnol00" path="res://scrips/crowStore.gd" id="1_8fcnj"]
+[ext_resource type="Script" path="res://scrips/crowStore.gd" id="1_8fcnj"]
+[ext_resource type="Texture2D" uid="uid://brn3bd48o24qf" path="res://assets/background/IMG_0646.PNG" id="2_8fcnj"]
 [ext_resource type="Texture2D" uid="uid://u475tce0nn6j" path="res://assets/npcs/lil freak.jpg" id="2_udfp7"]
 [ext_resource type="Texture2D" uid="uid://dj4ctqv6c0iur" path="res://assets/ingredients/beans.png" id="3_wqklr"]
 [ext_resource type="Texture2D" uid="uid://qaaryjuimfrp" path="res://assets/ingredients/asbestos.png" id="4_8fcnj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udfp7"]
-atlas = ExtResource("1_3v1el")
 region = Rect2(109, 80.09476, 155, 199.90524)
 
 [node name="crowStore" type="Control" unique_id=1546794494]
@@ -20,6 +19,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8fcnj")
+
+[node name="bg" type="Sprite2D" parent="." unique_id=1603159507]
+texture = ExtResource("2_8fcnj")
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=578353736]
 visible = false
