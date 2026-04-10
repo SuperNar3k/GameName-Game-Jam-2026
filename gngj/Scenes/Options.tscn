@@ -211,7 +211,6 @@ autowrap_trim_flags = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=781143972]
 autoplay = true
-bus = &"Music"
 
 [node name="MainMenu" type="Button" parent="." unique_id=540465813]
 visible = false
@@ -228,7 +227,7 @@ offset_left = 15.0
 offset_top = 325.0
 offset_right = 111.0
 offset_bottom = 356.0
-text = "Exit"
+text = "Back To Main Menu"
 
 [connection signal="value_changed" from="TabContainer/Sound/MasterVolumeSlider" to="." method="_on_master_value_changed"]
 [connection signal="toggled" from="TabContainer/Sound/MasterVolumeSlider/CheckBox" to="." method="_on_master_mute_toggled"]

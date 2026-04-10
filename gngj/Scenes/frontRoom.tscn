@@ -22,15 +22,6 @@ script = ExtResource("1_t5cqi")
 [node name="bg" type="Sprite2D" parent="." unique_id=1844677548]
 texture = ExtResource("2_fixym")
 
-[node name="NPC" type="Button" parent="." unique_id=197611622]
-layout_mode = 0
-offset_left = 281.0
-offset_top = -421.0
-offset_right = 757.0
-offset_bottom = 275.0
-theme_override_font_sizes/font_size = 50
-text = "NPC"
-
 [node name="desk" type="Sprite2D" parent="." unique_id=514847854]
 texture = ExtResource("3_s0epr")
 
@@ -72,3 +63,26 @@ offset_right = 934.0
 offset_bottom = 507.0
 theme_override_font_sizes/font_size = 25
 text = "To Back"
+
+[node name="customer3" type="TextureRect" parent="." unique_id=1683558473]
+layout_mode = 0
+offset_top = -528.0
+offset_right = 300.0
+offset_bottom = 72.0
+expand_mode = 1
+
+[node name="customer2" type="TextureRect" parent="." unique_id=2028137036]
+layout_mode = 0
+offset_left = 161.0
+offset_top = -471.0
+offset_right = 461.0
+offset_bottom = 129.0
+expand_mode = 1
+
+[node name="NPC" type="TextureButton" parent="." unique_id=1846388663]
+layout_mode = 0
+offset_left = 281.0
+offset_top = -421.0
+offset_right = 757.0
+offset_bottom = 275.0
+stretch_mode = 0
