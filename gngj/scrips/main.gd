@@ -64,9 +64,36 @@ func _onGenerateQuest():
 		
 	# Add new quest to the queue
 	storeQueue.append(newQuest)
-	
+	_updateQueue()
 	# Trigger the bell sound effect
 	#bell_sfx.play()
+
+
+func _updateQueue():
+	#Disable button which allows NPC interaction
+	$UI/FrontRoom/NPC.disabled = true
+	
+	# TO-DO: Fade out already loaded NPCs
+
+	#Updating the textures here. TO-DO :STILL HAVE TO FADE THEM IN
+	if storeQueue.size() >= 1:
+		$UI/FrontRoom/NPC.set_texture = load(storeQueue[0].npcQuestGiver.sprite)
+		if storeQueue.size() >= 2:
+			$UI/FrontRoom/customer2.set_texture = load(storeQueue[1].npcQuestGiver.sprite)
+			if storeQueue.size() >= 3:
+				$UI/FrontRoom/customer3.set_texture = load(storeQueue[2].npcQuestGiver.sprite)
+
+	#Re-enable button which allows NPC interaction
+	$UI/FrontRoom/NPC.disabled = false
+
+func _on_greetNPC():
+	var currentNPC = storeQueue.pop_front()
+	
+	#Checks if this quest is new or not
+	if activeQuests.has(currentNPC) or pharmacyQuests.has(currentNPC):
+		pass
+	
+
 
 func _onAcceptQuest():
 	# If there's no space in the activeQuests list, do nothing
@@ -115,27 +142,7 @@ func _onQuestCompleted(_quest: Quest):
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
 
-func _updateQueue():
-	# TO-DO: Disable button which allows NPC interaction
-	
-	var topThree = [];
-	if storeQueue.size() == 0:
-		return topThree;
-	elif storeQueue.size() == 1:
-		topThree = [storeQueue[0]]
-	elif storeQueue.size() == 2:
-		topThree = [storeQueue[0], storeQueue[1]]
-	else:
-		topThree = [storeQueue[0], storeQueue[1], storeQueue[2]]
-	
-	# TO-DO: Fade out already loaded NPCs
-	
-	# TO-DO: Fade in new NPCs based on topThree
-	
-	# TO-DO: Re-enable button which allows NPC interaction
-	
-	
-	return topThree;
+
 
 func onIngredientGrinded(i: Item):
 	# Check if object can be grinded
