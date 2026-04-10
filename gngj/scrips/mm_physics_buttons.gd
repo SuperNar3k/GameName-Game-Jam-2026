@@ -1,5 +1,10 @@
 extends Node2D
 
+signal open_button_pressed()
+signal options_button_pressed()
+signal credits_button_pressed()
+signal close_button_pressed()
+
 func _ready() -> void:
 	$open/openbtn.mouse_entered.connect(got_hovered.bind("open", true))
 	$open/openbtn.mouse_exited.connect(got_hovered.bind("open", false))
@@ -23,7 +28,6 @@ func _on_collision_timer_timeout() -> void:
 	if $follower/CollisionShape2D.disabled:
 		if $follower/Area2D.has_overlapping_bodies():
 			$collisionTimer.start(1)
-			print("hello")
 		else:
 			$follower/CollisionShape2D.set_deferred("disabled", false)
 	else:
@@ -40,3 +44,26 @@ func got_hovered(btn: String, hovered: bool):
 		$credits/creditsimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
 	if btn == "close":
 		$close/closeimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+
+
+func _on_openbtn_pressed() -> void:
+	open_button_pressed.emit()
+	queue_free()
+
+
+func _on_optionsbtn_pressed() -> void:
+	options_button_pressed.emit()
+	$follower/CollisionShape2D.set_deferred("disabled", true)
+	$collisionTimer.paused = true
+
+
+func _on_creditsbtn_pressed() -> void:
+	credits_button_pressed.emit()
+	$follower/CollisionShape2D.set_deferred("disabled", true)
+	$collisionTimer.paused = true
+
+
+func _on_closebtn_pressed() -> void:
+	close_button_pressed.emit()
+	$follower/CollisionShape2D.set_deferred("disabled", true)
+	$collisionTimer.paused = true

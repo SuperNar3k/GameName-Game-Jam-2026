@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dftvnlc0al120"]
 
 [ext_resource type="Script" uid="uid://douhp86xf67kb" path="res://scrips/options.gd" id="1_qqnya"]
-[ext_resource type="AudioStream" uid="uid://pkl8xu438sfn" path="res://assets/sound/music/Elevator Music.mp3" id="2_hg628"]
 
 [node name="Options" type="Control" unique_id=953978234]
 layout_mode = 3
@@ -211,7 +210,6 @@ autowrap_mode = 0
 autowrap_trim_flags = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=781143972]
-stream = ExtResource("2_hg628")
 autoplay = true
 
 [node name="MainMenu" type="Button" parent="." unique_id=540465813]

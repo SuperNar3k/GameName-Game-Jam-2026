@@ -1,6 +1,49 @@
 [gd_scene format=3 uid="uid://dsdrgoqm38hy"]
 
 [ext_resource type="Script" uid="uid://6oc5iudc0t7r" path="res://scrips/back_room.gd" id="1_aqhi3"]
+[ext_resource type="Texture2D" uid="uid://cpg1nuojx6en2" path="res://assets/background/back/bgempty.PNG" id="2_oddft"]
+[ext_resource type="Texture2D" uid="uid://cyi5os1qwbfdr" path="res://assets/background/back/ingshelf.PNG" id="3_8ly7a"]
+[ext_resource type="Texture2D" uid="uid://38rp5uw1xgwv" path="res://assets/background/back/cauldron.PNG" id="3_ligfe"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_j34kl"]
+[ext_resource type="Texture2D" uid="uid://cefjajvllyis8" path="res://assets/background/back/cobblecauld.PNG" id="6_njmsa"]
+[ext_resource type="Texture2D" uid="uid://bnqstwn4x68wd" path="res://assets/background/back/mp.PNG" id="7_rntc6"]
+[ext_resource type="Texture2D" uid="uid://d3dqs6v1ko65u" path="res://assets/background/back/mpscarf.PNG" id="8_o84pg"]
+[ext_resource type="Texture2D" uid="uid://cfqq766xl3rbt" path="res://assets/background/back/bookstand.PNG" id="9_y60a3"]
+[ext_resource type="Texture2D" uid="uid://cc2x00w4wvtpd" path="res://assets/background/back/bookshelf.PNG" id="10_j34kl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o84pg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y60a3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j34kl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njmsa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rntc6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8uso"]
+shader = ExtResource("4_j34kl")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ab26"]
+shader = ExtResource("4_j34kl")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o84pg"]
+shader = ExtResource("4_j34kl")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ly7a"]
+shader = ExtResource("4_j34kl")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="BackRoom" type="Control" unique_id=1422597810]
 layout_mode = 3
@@ -13,50 +56,73 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aqhi3")
 
+[node name="bg" type="Sprite2D" parent="." unique_id=273797908]
+texture = ExtResource("2_oddft")
+
 [node name="ingredientShelfBtn" type="Button" parent="." unique_id=701208056]
 layout_mode = 0
-offset_left = -200.0
-offset_top = -246.0
-offset_right = 913.0
-offset_bottom = 217.0
+offset_left = -219.0
+offset_top = -275.0
+offset_right = 961.04004
+offset_bottom = 275.0
 theme_override_font_sizes/font_size = 60
-text = "Ingredient Shelf"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o84pg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o84pg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o84pg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o84pg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o84pg")
 
 [node name="BookshelfBtn" type="Button" parent="." unique_id=919568061]
 layout_mode = 0
-offset_left = -237.0
-offset_top = -371.0
-offset_right = 931.0
-offset_bottom = -331.0
+offset_left = -85.0
+offset_top = -539.0
+offset_right = 959.53503
+offset_bottom = -339.0
 theme_override_font_sizes/font_size = 25
-text = "bookshelf"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y60a3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y60a3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y60a3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y60a3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y60a3")
 
 [node name="RecipeBookBtn" type="Button" parent="." unique_id=1347499500]
 layout_mode = 0
-offset_left = 539.0
-offset_top = -10.0
-offset_right = 888.0
-offset_bottom = 334.0
+offset_left = 553.0
+offset_top = -24.0
+offset_right = 953.0
+offset_bottom = 301.0
 theme_override_font_sizes/font_size = 35
-text = "Recipe Book"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j34kl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j34kl")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j34kl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j34kl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j34kl")
 
 [node name="CauldronBtn" type="Button" parent="." unique_id=248669530]
 layout_mode = 0
-offset_left = -921.0
+offset_left = -952.0
 offset_top = 7.0
-offset_right = -421.0
+offset_right = -452.0
 offset_bottom = 506.0
 theme_override_font_sizes/font_size = 60
-text = "Cauldron"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_njmsa")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_njmsa")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_njmsa")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_njmsa")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_njmsa")
 
 [node name="MortarandPestleBtn" type="Button" parent="." unique_id=742361563]
 layout_mode = 0
-offset_left = -76.0
-offset_top = 24.0
-offset_right = 250.0
-offset_bottom = 327.0
+offset_left = -98.0
+offset_top = 105.0
+offset_right = 102.0
+offset_bottom = 305.0
 theme_override_font_sizes/font_size = 25
-text = "Mortar & Pestle"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rntc6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rntc6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rntc6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rntc6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rntc6")
 
 [node name="toFrontRoomBtn" type="Button" parent="." unique_id=385305503]
 layout_mode = 0
@@ -66,3 +132,28 @@ offset_right = 915.0
 offset_bottom = 512.0
 theme_override_font_sizes/font_size = 28
 text = "To Front"
+
+[node name="ingshelfimg" type="Sprite2D" parent="." unique_id=214425391]
+material = SubResource("ShaderMaterial_k8uso")
+texture = ExtResource("3_8ly7a")
+
+[node name="cauldronimg" type="Sprite2D" parent="." unique_id=591737901]
+material = SubResource("ShaderMaterial_4ab26")
+texture = ExtResource("3_ligfe")
+
+[node name="cobblecauldimg" type="Sprite2D" parent="." unique_id=823232032]
+texture = ExtResource("6_njmsa")
+
+[node name="mpimg" type="Sprite2D" parent="." unique_id=818675302]
+material = SubResource("ShaderMaterial_o84pg")
+texture = ExtResource("7_rntc6")
+
+[node name="mpscarfimg" type="Sprite2D" parent="." unique_id=1808432728]
+texture = ExtResource("8_o84pg")
+
+[node name="bookstandimg" type="Sprite2D" parent="." unique_id=1764286306]
+material = SubResource("ShaderMaterial_8ly7a")
+texture = ExtResource("9_y60a3")
+
+[node name="bookshelfimg" type="Sprite2D" parent="." unique_id=439568673]
+texture = ExtResource("10_j34kl")
