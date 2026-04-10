@@ -30,6 +30,15 @@ layout_mode = 1
 [node name="Options" parent="." unique_id=953978234 instance=ExtResource("8_ryf15")]
 visible = false
 layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -951.0
+offset_top = -521.0
+offset_right = 955.0
+offset_bottom = 544.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="FrontRoom" parent="." unique_id=717244377 instance=ExtResource("2_q7pk6")]
 visible = false
