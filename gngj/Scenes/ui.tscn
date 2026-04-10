@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://db6uxsqamrixk" path="res://Scenes/endOfDayScreen.tscn" id="10_nt8jn"]
 [ext_resource type="PackedScene" uid="uid://bai0jtmapvbqk" path="res://Scenes/crowStore.tscn" id="11_g0wmg"]
 [ext_resource type="PackedScene" uid="uid://p73w6eq3dno8" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
+[ext_resource type="PackedScene" uid="uid://d3t56ho3lvi3a" path="res://Scenes/hud.tscn" id="13_3r70p"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -27,19 +28,6 @@ script = ExtResource("1_qdvrb")
 [node name="MainMenuScene" parent="." unique_id=1432645101 instance=ExtResource("6_m78vo")]
 layout_mode = 1
 
-[node name="Options" parent="." unique_id=953978234 instance=ExtResource("8_ryf15")]
-visible = false
-layout_mode = 1
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -951.0
-offset_top = -521.0
-offset_right = 955.0
-offset_bottom = 544.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="FrontRoom" parent="." unique_id=717244377 instance=ExtResource("2_q7pk6")]
 visible = false
 layout_mode = 1
@@ -47,16 +35,6 @@ layout_mode = 1
 [node name="BackRoom" parent="." unique_id=1422597810 instance=ExtResource("3_m78vo")]
 visible = false
 layout_mode = 1
-
-[node name="RecipeBook" parent="." unique_id=496628637 instance=ExtResource("2_nf4gj")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="GrindingStation" parent="." unique_id=1247765081 instance=ExtResource("4_smcll")]
 visible = false
@@ -78,16 +56,51 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="Hud" parent="." unique_id=203291146 instance=ExtResource("13_3r70p")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -960.0
+offset_bottom = -540.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="RecipeBook" parent="." unique_id=496628637 instance=ExtResource("2_nf4gj")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [node name="questListScreen" parent="." unique_id=1878786823 instance=ExtResource("12_4vbiv")]
 visible = false
 layout_mode = 1
+
+[node name="Options" parent="." unique_id=953978234 instance=ExtResource("8_ryf15")]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -951.0
+offset_top = -521.0
+offset_right = 955.0
+offset_bottom = 544.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]
 [connection signal="startGame" from="MainMenuScene" to="." method="_on_main_menu_scene_start_game"]
 [connection signal="testThatOtherShit" from="MainMenuScene" to="." method="_on_main_menu_scene_test_that_other_shit"]
 [connection signal="testThatShit" from="MainMenuScene" to="." method="_on_main_menu_scene_test_that_shit"]
-[connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]
 [connection signal="toBackRoom" from="FrontRoom" to="." method="_on_front_room_to_back_room"]
 [connection signal="toCauldronStation" from="BackRoom" to="." method="_on_back_room_to_cauldron_station"]
 [connection signal="toFront" from="BackRoom" to="." method="_on_back_room_to_front"]
@@ -98,3 +111,4 @@ layout_mode = 1
 [connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
 [connection signal="newDay" from="crowStore" to="." method="newDay"]
 [connection signal="returnToGame" from="questListScreen" to="." method="_on_quest_list_screen_return_to_game"]
+[connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]
