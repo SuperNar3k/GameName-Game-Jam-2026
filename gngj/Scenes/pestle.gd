@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var grabbed : bool = false
 
-func _process(delta):
+func _process(_delta):
 	if grabbed:
 		var mouse_pos = get_global_mouse_position()
 		global_position = lerp(global_position,mouse_pos,0.2)

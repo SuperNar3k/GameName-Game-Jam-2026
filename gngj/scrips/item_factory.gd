@@ -157,6 +157,15 @@ func Populate():
 		0
 	)
 	
+	createPotion(
+		"za heroin",
+		"zzzzzzzzzz",
+		0,
+		"res://assets/potions/five.jpg",
+		["beans","beans","beans","beans","beans"],
+		0
+	)
+	
 	# DEBUG ONLY, REMOVE LATER
 	print(allIngredients)
 	print(allPotions)
@@ -177,6 +186,10 @@ func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
 	
 func UnlockDefaultPotions(_unlockedPotions: Dictionary):
 	var a = allPotions.get("cinnamon toast crunch milk") 
+	a.unlocked = true
+	_unlockedPotions.set(a.itemName, a)
+	
+	a = allPotions.get("za heroin") 
 	a.unlocked = true
 	_unlockedPotions.set(a.itemName, a)
 
