@@ -1,5 +1,35 @@
 extends Control
 
+
+#makin every fuckin button work 
+@onready var aButton : Button = $Book/aButton
+@onready var bButton : Button = $Book/bButton
+@onready var cButton : Button = $Book/cButton
+@onready var dButton : Button = $Book/dButton
+@onready var eButton : Button = $Book/eButton
+@onready var fButton : Button = $Book/fButton
+@onready var gButton : Button = $Book/gButton
+@onready var hButton : Button = $Book/hButton
+@onready var iButton : Button = $Book/iButton
+@onready var jButton : Button = $Book/jButton
+@onready var kButton : Button = $Book/kButton
+@onready var lButton : Button = $Book/lButton
+@onready var mButton : Button = $Book/mButton
+@onready var nButton : Button = $Book/nButton
+@onready var oButton : Button = $Book/oButton
+@onready var pButton : Button = $Book/pButton
+@onready var qButton : Button = $Book/qButton
+@onready var rButton : Button = $Book/rButton
+@onready var sButton : Button = $Book/sButton
+@onready var tButton : Button = $Book/tButton
+@onready var uButton : Button = $Book/uButton
+@onready var vButton : Button = $Book/vButton
+@onready var wButton : Button = $Book/wButton
+@onready var xButton : Button = $Book/xButton
+@onready var yButton : Button = $Book/yButton
+@onready var zButton : Button = $Book/zButton
+
+
 signal enable_outside_buttons
 
 var allPotions : Dictionary # Dictionary of all potions
@@ -15,6 +45,33 @@ var fwdPressed = false
 
 func _ready() -> void:
 	hide()
+	
+	aButton.pressed.connect(_go_to_page.bind("a"))
+	bButton.pressed.connect(_go_to_page.bind("b"))
+	cButton.pressed.connect(_go_to_page.bind("c"))
+	dButton.pressed.connect(_go_to_page.bind("d"))
+	eButton.pressed.connect(_go_to_page.bind("e"))
+	fButton.pressed.connect(_go_to_page.bind("f"))
+	gButton.pressed.connect(_go_to_page.bind("g"))
+	hButton.pressed.connect(_go_to_page.bind("h"))
+	iButton.pressed.connect(_go_to_page.bind("i"))
+	jButton.pressed.connect(_go_to_page.bind("j"))
+	kButton.pressed.connect(_go_to_page.bind("k"))
+	lButton.pressed.connect(_go_to_page.bind("l"))
+	mButton.pressed.connect(_go_to_page.bind("m"))
+	nButton.pressed.connect(_go_to_page.bind("n"))
+	oButton.pressed.connect(_go_to_page.bind("o"))
+	pButton.pressed.connect(_go_to_page.bind("p"))
+	qButton.pressed.connect(_go_to_page.bind("q"))
+	rButton.pressed.connect(_go_to_page.bind("r"))
+	sButton.pressed.connect(_go_to_page.bind("s"))
+	tButton.pressed.connect(_go_to_page.bind("t"))
+	uButton.pressed.connect(_go_to_page.bind("u"))
+	vButton.pressed.connect(_go_to_page.bind("v"))
+	wButton.pressed.connect(_go_to_page.bind("w"))
+	xButton.pressed.connect(_go_to_page.bind("x"))
+	yButton.pressed.connect(_go_to_page.bind("y"))
+	zButton.pressed.connect(_go_to_page.bind("z"))
 
 func __init__(
 	_allPotions : Dictionary,
@@ -29,28 +86,37 @@ func __init__(
 	potionKeysSorted.sort()
 	
 	# Initialize tableOfContents array
+	
+	
+	
+	var lastIndex = 0
 	for c in range(ord("a"), ord("z") + 1):
-		var i = 0
 		var letter:String = String.chr(c)
-		for pot in potionKeysSorted:
-			if pot.begins_with(letter):
-				tableOfContents.set(letter, i)
-			i += 1
+		for p in range(lastIndex, potionKeysSorted.size()) :
+			if potionKeysSorted[p].begins_with(letter):
+				tableOfContents.set(letter, p)
+				lastIndex = p 
+				break
+		tableOfContents.set(letter, lastIndex)
+		
+
 
 func _go_to_page(c : String):
 	var indexToGoTo = tableOfContents.get(c)
 	
 	# If index is odd, make it even based on its relative positive to page_index
 	if indexToGoTo % 2 == 1:
-		if indexToGoTo > page_index:
-			indexToGoTo += 1
-		else:
-			indexToGoTo -= 1
+		indexToGoTo -= 1
+	
+	#	if indexToGoTo > page_index:
+	#		indexToGoTo += 1
+	#	else:
+	#		indexToGoTo -= 1
 	
 	while indexToGoTo != page_index:
 		if indexToGoTo > page_index:
 			_on_fwd_btn_pressed()
-			print(page_index)
+			page_index = page_index-1
 		else:
 			_on_back_btn_pressed()
 			print(page_index)
@@ -98,26 +164,39 @@ func _on_recipe_book_btn_pressed() -> void:
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
 					$RightSprite/RightRecipe.add_child(newLabel)
-		page_index =  page_index + 1
+		page_index = page_index + 1
+					
+	page_index = 0
 	$AnimationPlayer.play("slide_up")
 	show()
 
 
 func _on_fwd_btn_pressed() -> void:
 	fwdPressed = true
-	#delete previous recipe labels
+	
+	#delete previous page infos
 	for child in $LeftSprite/LeftRecipe.get_children():
 		child.queue_free()
 	for child in $RightSprite/RightRecipe.get_children():
 		child.queue_free()
+	$LeftSprite/LeftName.text = ""
+	$LeftSprite/LeftDesc.text = ""
+	$LeftSprite.set_texture(null)
+	$RightSprite/RightName.text = ""
+	$RightSprite/RightDesc.text = ""
+	$RightSprite.set_texture(null)
+	
+	
+	
 	$BackBtn.show()
-	if backPressed:
-		page_index += 2
-		backPressed = false
-
+	
+	if(page_index%2 == 0):
+		page_index += 1
+	
 	var iStore = page_index + 2
 	var newLabel
 	while page_index < iStore:
+		page_index += 1
 		if(page_index < potionKeysSorted.size()):
 			if (allPotions.get(potionKeysSorted[page_index]).unlocked):
 				if (page_index % 2 == 0):
@@ -163,9 +242,9 @@ func _on_fwd_btn_pressed() -> void:
 						$RightSprite/RightRecipe.add_child(newLabel)
 		else:
 			break
-			
-		page_index = page_index + 1
-	if page_index == allPotions.size():
+		
+	print(page_index)	
+	if page_index == allPotions.size() or page_index == allPotions.size()-1:
 		$FwdBtn.hide()
 
 
@@ -176,10 +255,15 @@ func _on_back_btn_pressed() -> void:
 		child.queue_free()
 	for child in $RightSprite/RightRecipe.get_children():
 		child.queue_free()
+	$LeftSprite/LeftName.text = ""
+	$LeftSprite/LeftDesc.text = ""
+	$LeftSprite.set_texture(null)
+	$RightSprite/RightName.text = ""
+	$RightSprite/RightDesc.text = ""
+	$RightSprite.set_texture(null)
+	
 	$FwdBtn.show()
-	if fwdPressed:
-		page_index -= 2
-		fwdPressed = false
+	
 	
 	if(page_index%2 != 0):
 		page_index = page_index-1 
@@ -189,7 +273,6 @@ func _on_back_btn_pressed() -> void:
 		
 	while page_index > iStore:
 		page_index = page_index-1
-			
 		if (allPotions.get(potionKeysSorted[page_index]).unlocked):
 			if (page_index % 2 == 0):
 				$LeftSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
@@ -229,6 +312,8 @@ func _on_back_btn_pressed() -> void:
 					newLabel.text = "???"
 					$RightSprite/RightRecipe.add_child(newLabel)
 		
+		
+	print(page_index)
 	if page_index == 0:
 		$BackBtn.hide()
 

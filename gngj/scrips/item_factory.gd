@@ -158,6 +158,15 @@ func Populate():
 	)
 	
 	createPotion(
+		"test name 7",
+		"test desc 7",
+		0,
+		"res://assets/potions/five.jpg",
+		["crushed asbestos"],
+		0
+	)
+	
+	createPotion(
 		"za heroin",
 		"zzzzzzzzzz",
 		0,

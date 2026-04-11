@@ -76,6 +76,213 @@ position = Vector2(-960, 540)
 texture = ExtResource("2_5ak3s")
 centered = false
 
+[node name="aButton" type="Button" parent="Book" unique_id=1604396408]
+offset_left = 308.0
+offset_top = 254.0
+offset_right = 408.0
+offset_bottom = 285.0
+text = "A"
+
+[node name="cButton" type="Button" parent="Book" unique_id=895789524]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 308.0
+offset_top = 353.0
+offset_right = 408.0
+offset_bottom = 384.0
+text = "C"
+
+[node name="eButton" type="Button" parent="Book" unique_id=1792829393]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 308.0
+offset_top = 448.0
+offset_right = 408.0
+offset_bottom = 479.0
+text = "E"
+
+[node name="gButton" type="Button" parent="Book" unique_id=1658091879]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 308.0
+offset_top = 543.0
+offset_right = 408.0
+offset_bottom = 574.0
+text = "G"
+
+[node name="iButton" type="Button" parent="Book" unique_id=531553461]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 308.0
+offset_top = 638.0
+offset_right = 408.0
+offset_bottom = 669.0
+text = "I"
+
+[node name="kButton" type="Button" parent="Book" unique_id=1090255797]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 308.0
+offset_top = 733.0
+offset_right = 408.0
+offset_bottom = 764.0
+text = "K"
+
+[node name="mButton" type="Button" parent="Book" unique_id=484328139]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 308.0
+offset_top = 828.0
+offset_right = 408.0
+offset_bottom = 859.0
+text = "M"
+
+[node name="bButton" type="Button" parent="Book" unique_id=97601598]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 319.0
+offset_top = 304.0
+offset_right = 419.0
+offset_bottom = 335.0
+text = "B"
+
+[node name="dButton" type="Button" parent="Book" unique_id=1753743962]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 319.0
+offset_top = 400.0
+offset_right = 419.0
+offset_bottom = 431.0
+text = "D"
+
+[node name="fButton" type="Button" parent="Book" unique_id=218492949]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 319.0
+offset_top = 496.0
+offset_right = 419.0
+offset_bottom = 527.0
+text = "F"
+
+[node name="hButton" type="Button" parent="Book" unique_id=68995857]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 319.0
+offset_top = 592.0
+offset_right = 419.0
+offset_bottom = 623.0
+text = "H"
+
+[node name="jButton" type="Button" parent="Book" unique_id=2089931873]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 319.0
+offset_top = 688.0
+offset_right = 419.0
+offset_bottom = 719.0
+text = "J"
+
+[node name="lButton" type="Button" parent="Book" unique_id=1014275540]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 319.0
+offset_top = 784.0
+offset_right = 419.0
+offset_bottom = 815.0
+text = "L"
+
+[node name="nButton" type="Button" parent="Book" unique_id=1571391042]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1503.0
+offset_top = 233.0
+offset_right = 1603.0
+offset_bottom = 264.0
+text = "N"
+
+[node name="oButton" type="Button" parent="Book" unique_id=1602853988]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1512.0
+offset_top = 282.0
+offset_right = 1607.0
+offset_bottom = 313.0
+text = "O"
+
+[node name="qButton" type="Button" parent="Book" unique_id=190431183]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1512.0
+offset_top = 372.0
+offset_right = 1607.0
+offset_bottom = 403.0
+text = "Q"
+
+[node name="sButton" type="Button" parent="Book" unique_id=1835267341]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1512.0
+offset_top = 478.0
+offset_right = 1607.0
+offset_bottom = 509.0
+text = "S"
+
+[node name="uButton" type="Button" parent="Book" unique_id=1293742698]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1512.0
+offset_top = 578.0
+offset_right = 1607.0
+offset_bottom = 609.0
+text = "U
+"
+
+[node name="wButton" type="Button" parent="Book" unique_id=31889247]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1512.0
+offset_top = 682.0
+offset_right = 1607.0
+offset_bottom = 713.0
+text = "W"
+
+[node name="yButton" type="Button" parent="Book" unique_id=374422617]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1512.0
+offset_top = 785.0
+offset_right = 1607.0
+offset_bottom = 816.0
+text = "Y"
+
+[node name="pButton" type="Button" parent="Book" unique_id=662264886]
+offset_left = 1501.0
+offset_top = 327.0
+offset_right = 1596.0
+offset_bottom = 358.0
+text = "P"
+
+[node name="rButton" type="Button" parent="Book" unique_id=1419175537]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1501.0
+offset_top = 422.0
+offset_right = 1596.0
+offset_bottom = 453.0
+text = "R"
+
+[node name="tButton" type="Button" parent="Book" unique_id=227993722]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1502.0
+offset_top = 530.0
+offset_right = 1597.0
+offset_bottom = 561.0
+text = "T"
+
+[node name="vButton" type="Button" parent="Book" unique_id=1885100100]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1502.0
+offset_top = 631.0
+offset_right = 1597.0
+offset_bottom = 662.0
+text = "V"
+
+[node name="xButton" type="Button" parent="Book" unique_id=592051667]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1502.0
+offset_top = 732.0
+offset_right = 1597.0
+offset_bottom = 763.0
+text = "X"
+
+[node name="zButton" type="Button" parent="Book" unique_id=2028177433]
+custom_minimum_size = Vector2(95, 0)
+offset_left = 1503.0
+offset_top = 828.0
+offset_right = 1598.0
+offset_bottom = 859.0
+text = "Z"
+
 [node name="BackBtn" type="Button" parent="." unique_id=795886714]
 layout_mode = 0
 offset_left = -758.0
@@ -101,7 +308,6 @@ offset_bottom = -451.0
 text = "Exit"
 
 [node name="LeftSprite" type="Sprite2D" parent="." unique_id=1479250762]
-visible = false
 position = Vector2(-400, 900)
 
 [node name="LeftDesc" type="Label" parent="LeftSprite" unique_id=1275169040]
@@ -159,171 +365,6 @@ theme = SubResource("Theme_nvrov")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1081624250]
 libraries/ = SubResource("AnimationLibrary_gfmpn")
-
-[node name="DiscoveredRecipeIndex Group A" type="VBoxContainer" parent="." unique_id=1912848791]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_left = -653.0
-offset_top = 791.0
-offset_right = -553.0
-offset_bottom = 1427.0
-theme_override_constants/separation = 64
-
-[node name="aButton" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=322887928]
-layout_mode = 2
-text = "A"
-
-[node name="cButton2" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=2025062260]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "C"
-
-[node name="eButton3" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=969771883]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "E"
-
-[node name="gButton4" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=903981222]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "G"
-
-[node name="iButton5" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=1993826108]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "I"
-
-[node name="kButton6" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=246765084]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "K"
-
-[node name="mButton6" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=673917754]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "M"
-
-[node name="DiscoveredRecipeIndex Group B" type="VBoxContainer" parent="." unique_id=1832053549]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_left = -645.0
-offset_top = 838.0
-offset_right = -545.0
-offset_bottom = 1489.0
-theme_override_constants/separation = 65
-
-[node name="bButton" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=1222654575]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "B"
-
-[node name="dButton2" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=58825481]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "D"
-
-[node name="fButton3" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=2018806253]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "F"
-
-[node name="hButton4" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=846206093]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "H"
-
-[node name="jButton5" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=1195215434]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "J"
-
-[node name="lButton6" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=1268726723]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "L"
-
-[node name="nButton7" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=21113666]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "N"
-
-[node name="DiscoveredRecipeIndex Group C" type="VBoxContainer" parent="." unique_id=1164954671]
-custom_minimum_size = Vector2(90, 0)
-layout_mode = 0
-offset_left = 543.0
-offset_top = 800.0
-offset_right = 638.0
-offset_bottom = 1436.0
-theme_override_constants/separation = 72
-
-[node name="oButton" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=783509621]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "O"
-
-[node name="qButton2" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=804484975]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "Q"
-
-[node name="sButton3" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=916831408]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "S"
-
-[node name="uButton4" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=101469317]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "U
-"
-
-[node name="wButton5" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=255081899]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "W"
-
-[node name="yButton6" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=1052892923]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "Y"
-
-[node name="DiscoveredRecipeIndex Group D" type="VBoxContainer" parent="." unique_id=1246026159]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_left = 549.0
-offset_top = 864.0
-offset_right = 664.0
-offset_bottom = 1500.0
-theme_override_constants/separation = 72
-
-[node name="pButton" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=1693915056]
-layout_mode = 2
-text = "P"
-
-[node name="rButton2" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=2135317455]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "R"
-
-[node name="tButton3" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=1497039573]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "T"
-
-[node name="vButton4" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=863029861]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "V"
-
-[node name="xButton5" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=2024560792]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "X"
-
-[node name="zButton6" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=741322885]
-custom_minimum_size = Vector2(95, 0)
-layout_mode = 2
-text = "Z"
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]
