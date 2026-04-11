@@ -284,6 +284,7 @@ offset_bottom = 859.0
 text = "Z"
 
 [node name="BackBtn" type="Button" parent="." unique_id=795886714]
+visible = false
 layout_mode = 0
 offset_left = -758.0
 offset_top = 351.0
@@ -292,6 +293,7 @@ offset_bottom = 382.0
 text = "Back"
 
 [node name="FwdBtn" type="Button" parent="." unique_id=342672085]
+visible = false
 layout_mode = 0
 offset_left = 690.0
 offset_top = 397.0
@@ -300,6 +302,7 @@ offset_bottom = 428.0
 text = "Forward"
 
 [node name="ExitBtn" type="Button" parent="." unique_id=757798167]
+visible = false
 layout_mode = 0
 offset_left = -898.0
 offset_top = -482.0
