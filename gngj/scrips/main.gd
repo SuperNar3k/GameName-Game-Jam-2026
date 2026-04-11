@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 0
 var day = 1
-var dayDuration = 60
+var dayDuration = 90
 var numOfNpcs = 3
 
 var MAX_PHARMACY_QUESTS = 5 # Max number of repeatable quests
@@ -25,9 +25,12 @@ var ItemCreator = Item_Factory.new() # Used for creating quests
 signal optionChosen
 var questAccepted
 
+var bellSFX = preload("res://assets/sound/vine-boom.mp3")
+
 # Called when the game starts.
 func _ready() -> void:
-	$dayDuration.set_wait_time(dayDuration)
+	$dayTimer.set_wait_time(dayDuration)
+	$dayTimer.timeout.connect(endOfDay)
 	
 	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
@@ -52,11 +55,6 @@ func _ready() -> void:
 	print("quest1 reset daysUntilDue: ", quest1.daysUntilDue)
 	
 	
-	#FOR TESTING updateQueue and on_greetNPC()
-	_onGenerateQuest()
-	_onGenerateQuest()
-	_onGenerateQuest()
-	
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
@@ -69,7 +67,37 @@ func _ready() -> void:
 	)
 	
 
+func startOfDay():
+	var t 
+	for n in range(0, numOfNpcs):
+		t = get_tree().create_timer(range(10,dayDuration-60).pick_random())
+		t.timeout.connect(_onGenerateQuest)
+		print("created timer!")
+		
+	#we only pop in quest we have not completed or quest who's rewards are due
+	for quest in activeQuests:
+		if(!quest.completed):
+			storeQueue.append(quest)
+		elif(quest.completed and quest.daysUntilReward == 0):
+			storeQueue.append(quest)			
+		else: 
+			quest.daysUntilReward = quest.daysUntilReward - 1
+		
+	for quest in pharmacyQuests:
+		if(quest.daysUntilDue == 0):
+			storeQueue.append(quest)
+		else: 
+			quest.daysUntilDue = quest.daysUntilDue - 1
+	
+	if(storeQueue.size() > 0):
+		$AudioStreamPlayer2D.stream = bellSFX
+		$AudioStreamPlayer2D.play()
+		_updateQueue()
+		
+	$dayTimer.start(dayDuration)
+	
 func _onGenerateQuest():
+	print("timer went off!")
 	# Choose a random quest from quest list
 	
 	
@@ -88,7 +116,8 @@ func _onGenerateQuest():
 	_updateQueue()
 	# Trigger the bell sound effect
 	#bell_sfx.play()
-
+	$AudioStreamPlayer2D.stream = bellSFX
+	$AudioStreamPlayer2D.play()
 
 func _updateQueue():
 	#Disable button which allows NPC interaction
@@ -118,7 +147,7 @@ func _updateQueue():
 	if(storeQueue.size() > 0):
 		$ui/FrontRoom/NPC.disabled = false
 		
-
+#STILL NEEDS TO HAVE LOGIC ADDED FOR DIALOGUES AND GIVING REWARDS
 func _on_greetNPC():
 	#Lock the player into the interaction
 	$ui/FrontRoom/NPC.disabled = true
@@ -271,7 +300,7 @@ func _on_greetNPC():
 func _on_ui_quest_accepted(option: Variant):
 	questAccepted = option
 	optionChosen.emit()
-			
+
 func _onAcceptQuest():
 	# If there's no space in the activeQuests list, do nothing
 	if activeQuests.size() > MAX_ACTIVE_QUESTS:
@@ -318,8 +347,6 @@ func _onQuestCompleted(_quest: Quest):
 	for r:String in _quest.rewards[2]:
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
-
-
 
 func onIngredientGrinded(i: Item):
 	# Check if object can be grinded
@@ -386,29 +413,24 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 	unlockPotion(potion)
 	potion.amountOwned += 1
 
-func end_of_day():
+func endOfDay():
 	
 	# Increment day
 	day += 1;
 	
-	# Tick tock, time is running out!
+	#Logic for handling quest still in the queue when the day ends
 	for i in range(storeQueue.size() - 1, -1, -1):
 		var q = storeQueue[i]
-		q.daysUntilDue -= 1
+		#Any npcs on their deadlines are removed from player quest. GET FUCKED
 		if q.daysUntilDue == 0:
-			storeQueue.remove_at(i)
+			activeQuests.erase(q)
+			pharmacyQuests.erase(q)
 			
-	for i in range(activeQuests.size() - 1, -1, -1):
-		var q = activeQuests[i]
-		q.daysUntilDue -= 1
-		if q.daysUntilDue == 0:
-			activeQuests.remove_at(i)
+		#all else will comeback the next day
+		else:
+			q.daysUntilDue -= 1
 			
-	for i in range(pharmacyQuests.size() - 1, -1, -1):
-		var q = pharmacyQuests[i]
-		q.daysUntilDue -= 1
-		if q.daysUntilDue == 0:
-			pharmacyQuests.remove_at(i)
+	storeQueue.clear()
 
 	# TO-DO: if grinding in-progress, pause the grinding timer
 	

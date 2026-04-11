@@ -8,11 +8,16 @@ var activeQuests
 var pharmacyQuests
 var storeQueue
 
-signal talkToNpc
-signal questAccepted(option)
-
 var gameStart = false
 var bookOpen = false
+
+var lastScreen
+
+signal talkToNpc
+signal questAccepted(option)
+signal startGame
+
+
 
 var lastScreen
 
@@ -109,6 +114,8 @@ func _on_main_menu_scene_start_game() -> void:
 	
 	$Hud.show()
 	lastScreen = $FrontRoom
+	
+	startGame.emit()
 
 func _on_front_room_to_back_room() -> void:
 	$FrontRoom.hide()

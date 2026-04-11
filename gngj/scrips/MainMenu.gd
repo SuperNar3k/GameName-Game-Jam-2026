@@ -14,7 +14,6 @@ signal displayOptions
 signal displayCredits
 
 signal testThatShit
-signal testThatOtherShit
 
 func _ready() -> void:
 	$phys_buttons.open_button_pressed.connect(_on_menu_button_pressed.bind("start"))

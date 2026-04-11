@@ -61,7 +61,7 @@ func Populate():
 		#value
 	
 	createIngredient(
-		"asbestos",									#ItemName
+		"asbestos",										#ItemName
 		"this shit will kill you",						#Description
 		1000,											#AmountOwned
 		"res://assets/ingredients/asbestos.png",		#Sprite
