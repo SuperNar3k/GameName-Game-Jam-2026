@@ -18,9 +18,6 @@ signal questAccepted(option)
 signal startGame
 
 
-
-var lastScreen
-
 func _ready() -> void:
 	#Custom Signals from children
 	$RecipeBook.enable_outside_buttons.connect(_enable_all_buttons.bind())

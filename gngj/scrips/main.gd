@@ -350,7 +350,7 @@ func _onQuestCompleted(_quest: Quest):
 
 func onIngredientGrinded(i: Item):
 	# Check if object can be grinded
-	var crushedName:String = "crushed " + i.itemName
+	var crushedName:String = i.itemName + " powder"
 	if !(crushedName in ItemCreator.allIngredients):
 		return false
 	
