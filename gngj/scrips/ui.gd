@@ -14,6 +14,8 @@ signal questAccepted(option)
 var gameStart = false
 var bookOpen = false
 
+var lastScreen
+
 func _ready() -> void:
 	#Custom Signals from children
 	$RecipeBook.enable_outside_buttons.connect(_enable_all_buttons.bind())
@@ -104,47 +106,64 @@ func _on_main_menu_scene_start_game() -> void:
 	$MainMenuScene.hide()
 	$FrontRoom.show()
 	gameStart = true
+	
 	$Hud.show()
+	lastScreen = $FrontRoom
 
 func _on_front_room_to_back_room() -> void:
 	$FrontRoom.hide()
 	$BackRoom.show()
+	
+	lastScreen = $BackRoom
 
 func _on_back_room_to_front() -> void:
 	$BackRoom.hide()
 	$FrontRoom.show()
+	
+	lastScreen = $FrontRoom
 
 func _on_back_room_to_grind_station() -> void:
 	$BackRoom.hide()
 	$GrindingStation.show()
+	
+	lastScreen = $GrindingStation
 
 
 func _on_back_room_to_cauldron_station() -> void:
 	$BackRoom.hide()
 	$CauldronStation.show()
+	
+	lastScreen = $CauldronStation
 
 
 func _on_grinding_station_go_back() -> void:
 	$GrindingStation.hide()
 	$BackRoom.show()
+	
+	lastScreen = $BackRoom
 
 
 func _on_cauldron_station_go_back() -> void:
 	$CauldronStation.hide()
 	$BackRoom.show()
+	
+	lastScreen = $BackRoom
 
 
 func _on_main_menu_scene_display_options() -> void:
 	$MainMenuScene.hide()
 	$Options.show()
 
+	lastScreen = $MainMenuScene
 
 func _on_options_exit_options() -> void:
 	$Options.hide()
-	#used to re-enable the thing that hits the menu signs
-	$MainMenuScene/phys_buttons/collisionTimer.paused = false
-	$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
-	$MainMenuScene.show()
+	#used to re-enable the thing that hits the menu signs ONLY if we were on the main menu
+	if(lastScreen == $MainMenuScene):
+		$MainMenuScene/phys_buttons/collisionTimer.paused = false
+		$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
+		
+	lastScreen.show()
 
 
 func _on_credits_go_back() -> void:
@@ -159,7 +178,24 @@ func _on_main_menu_scene_display_credits() -> void:
 	$MainMenuScene.hide()
 	$credits.show()
 
+func _on_hud_quest_pressed() -> void:
+	lastScreen.hide()
+	$questListScreen.show()
+	
+	$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
+	
+func _on_quest_list_screen_return_to_game() -> void:
+	$questListScreen.hide()
+	print("last screen")
+	lastScreen.show()
 
+func _on_hud_options_pressed() -> void:
+	lastScreen.hide()
+	$Options.show()
+	
+
+
+#TO-DO: Gotta fix this logic 
 func _on_main_menu_scene_test_that_shit() -> void:
 	$MainMenuScene.hide()
 	$endOfDayScreen.show()
@@ -175,18 +211,10 @@ func _on_end_of_day_screen_show_store() -> void:
 func newDay() -> void:
 	$crowStore.hide()
 	$MainMenuScene.show()
+		
 
 
-func _on_main_menu_scene_test_that_other_shit() -> void:
-	$MainMenuScene.hide()
-	$questListScreen.show()
-	
-	$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
 
-
-func _on_quest_list_screen_return_to_game() -> void:
-	$questListScreen.hide()
-	$MainMenuScene.show()
 
 
 func _on_front_room_quest_accepted(option: Variant) -> void:

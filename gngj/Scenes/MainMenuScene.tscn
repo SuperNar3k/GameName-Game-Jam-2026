@@ -122,14 +122,5 @@ offset_bottom = 31.0
 text = "Test End Of Day
 "
 
-[node name="testQuestListScreen" type="Button" parent="." unique_id=1268009702]
-visible = false
-layout_mode = 0
-offset_left = 460.0
-offset_top = 60.0
-offset_right = 597.0
-offset_bottom = 173.0
-text = "Test Quest Screen"
-
 [node name="phys_buttons" parent="." unique_id=1086510356 instance=ExtResource("2_47sjk")]
 position = Vector2(216, -529)

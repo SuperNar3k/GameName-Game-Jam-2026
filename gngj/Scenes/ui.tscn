@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://db6uxsqamrixk" path="res://Scenes/endOfDayScreen.tscn" id="10_nt8jn"]
 [ext_resource type="PackedScene" uid="uid://bai0jtmapvbqk" path="res://Scenes/crowStore.tscn" id="11_g0wmg"]
 [ext_resource type="PackedScene" uid="uid://p73w6eq3dno8" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
-[ext_resource type="PackedScene" uid="uid://d3t56ho3lvi3a" path="res://Scenes/hud.tscn" id="13_3r70p"]
+[ext_resource type="PackedScene" uid="uid://dejhrlp1mqime" path="res://Scenes/hud.tscn" id="13_3r70p"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -116,5 +116,7 @@ grow_vertical = 1
 [connection signal="goBack" from="credits" to="." method="_on_credits_go_back"]
 [connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
 [connection signal="newDay" from="crowStore" to="." method="newDay"]
+[connection signal="options_pressed" from="Hud" to="." method="_on_hud_options_pressed"]
+[connection signal="quest_pressed" from="Hud" to="." method="_on_hud_quest_pressed"]
 [connection signal="returnToGame" from="questListScreen" to="." method="_on_quest_list_screen_return_to_game"]
 [connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]
