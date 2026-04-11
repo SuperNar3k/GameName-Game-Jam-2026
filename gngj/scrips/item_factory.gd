@@ -83,6 +83,37 @@ func Populate():
 		"res://assets/ingredients/beans.png",
 		3
 	)
+	createIngredient("earth", "dirt", 0, "", 0)
+	createIngredient("a leaf of a thousand leaves", "fern", 0, "", 1)
+	createIngredient("a leaf of a thousand leaves powder", "crushed vern", 0, "", 1)
+	createIngredient("a thorny heart", "cactus", 0, "", 1)
+	createIngredient("a thorny heart powder", "crushed cactus", 0, "", 1)
+	createIngredient("tears of trees", "string of pearls", 0, "", 1)
+	createIngredient("tears of trees powder", "crushed string of pearls", 0, "", 1)
+	createIngredient("air's brevity", "feather", 0, "", 2)
+	createIngredient("desert calm", "aloe", 0, "", 2)
+	createIngredient("desert calm powder", "crushed aloe", 0, "", 2)
+	createIngredient("dried ocean", "sand", 0, "", 2)
+	createIngredient("ear of the sea", "conch shells", 0, "", 2)
+	createIngredient("ear of the sea powder", "crushed conch shells", 0, "", 2)
+	createIngredient("gaia's teeth", "pebbles", 0, "", 2)
+	createIngredient("gaia's teeth powder", "crushed pebbles", 0, "", 2)
+	createIngredient("dragon's egg", "dragon fruit", 0, "", 3)
+	createIngredient("dragon's egg powder", "crushed dragon fruit", 0, "", 3)
+	createIngredient("eyelashes powder", "crushed venus flytrap", 0, "", 3)
+	createIngredient("spring crystal", "pink crystal", 0, "", 3)
+	createIngredient("spring crystal powder", "crushed pink crystal", 0, "", 3)
+	createIngredient("string of lovers", "bleeding hearts", 0, "", 3)
+	createIngredient("string of lovers powder", "crushed bleeding hearts", 0, "", 3)
+	createIngredient("venus's eyelashes", "venus flytrap", 0, "", 3)
+	createIngredient("winter crystal", "blue crystal", 0, "", 3)
+	createIngredient("winter crystal powder", "crushed blue crystal", 0, "", 3)
+	createIngredient("psychic stone", "amethyst", 0, "", 4)
+	createIngredient("psychic stone powder", "crushed amethyst", 0, "", 4)
+	createIngredient("shattered sky", "obsidian", 0, "", 5)
+	createIngredient("shooting star", "star", 0, "", 6)
+	createIngredient("stardust", "stardust", 0, "", 6)
+
 	
 	#Hardcoding all of our Potions here
 		#itemName
@@ -221,4 +252,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	pass 
+	
