@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://dftvnlc0al120"]
 
 [ext_resource type="Script" uid="uid://douhp86xf67kb" path="res://scrips/options.gd" id="1_qqnya"]
+[ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="2_5hy3q"]
+[ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="3_cbhj7"]
+
+[sub_resource type="Theme" id="Theme_q4at1"]
+default_font = ExtResource("2_5hy3q")
+
+[sub_resource type="Theme" id="Theme_6f4k2"]
+default_font = ExtResource("3_cbhj7")
+
+[sub_resource type="Theme" id="Theme_bdxpv"]
 
 [node name="Options" type="Control" unique_id=953978234]
 layout_mode = 3
@@ -18,10 +28,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_5hy3q")
 current_tab = 0
 
 [node name="Sound" type="Control" parent="TabContainer" unique_id=284803208]
 layout_mode = 2
+theme = SubResource("Theme_q4at1")
 metadata/_tab_index = 0
 
 [node name="MasterVolumeSlider" type="HSlider" parent="TabContainer/Sound" unique_id=1534316843]
@@ -123,6 +135,7 @@ text = "Mute"
 [node name="Display" type="Control" parent="TabContainer" unique_id=1858137335]
 visible = false
 layout_mode = 2
+theme = SubResource("Theme_6f4k2")
 metadata/_tab_index = 1
 
 [node name="Label3" type="Label" parent="TabContainer/Display" unique_id=1237310964]
@@ -159,6 +172,7 @@ text = "Windowed"
 [node name="Controls" type="Control" parent="TabContainer" unique_id=1588457959]
 visible = false
 layout_mode = 2
+theme = SubResource("Theme_bdxpv")
 metadata/_tab_index = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Controls" unique_id=2046969773]
@@ -227,7 +241,8 @@ offset_left = 15.0
 offset_top = 325.0
 offset_right = 111.0
 offset_bottom = 356.0
-text = "Back To Main Menu"
+theme_override_fonts/font = ExtResource("3_cbhj7")
+text = "Exit"
 
 [connection signal="value_changed" from="TabContainer/Sound/MasterVolumeSlider" to="." method="_on_master_value_changed"]
 [connection signal="toggled" from="TabContainer/Sound/MasterVolumeSlider/CheckBox" to="." method="_on_master_mute_toggled"]

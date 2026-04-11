@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://cuan7o4maj614"]
 
 [ext_resource type="Script" uid="uid://becqqtglmfle6" path="res://scrips/recipe_book.gd" id="1_72ecy"]
-[ext_resource type="Texture2D" uid="uid://c5hdkrs2yrnde" path="res://assets/background/temp/recipe book.JPG" id="2_5ak3s"]
+[ext_resource type="Texture2D" uid="uid://c5hdkrs2yrnde" path="res://assets/background/recipe book.JPG" id="2_5ak3s"]
+[ext_resource type="FontFile" uid="uid://dttamm24jafgg" path="res://assets/fonts/Felipa-Regular.ttf" id="3_rxxfk"]
+
+[sub_resource type="Theme" id="Theme_gfmpn"]
+default_font = ExtResource("3_rxxfk")
+default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_nvrov"]
+default_font = ExtResource("3_rxxfk")
+default_font_size = 24
 
 [sub_resource type="Animation" id="Animation_5ak3s"]
 length = 0.001
@@ -67,13 +76,6 @@ position = Vector2(-960, 540)
 texture = ExtResource("2_5ak3s")
 centered = false
 
-[node name="aButton" type="Button" parent="Book" unique_id=1793769786]
-offset_left = 279.0
-offset_top = 219.0
-offset_right = 356.0
-offset_bottom = 271.0
-text = "A"
-
 [node name="BackBtn" type="Button" parent="." unique_id=795886714]
 layout_mode = 0
 offset_left = -758.0
@@ -108,6 +110,8 @@ offset_top = 510.0
 offset_right = 34.0
 offset_bottom = 533.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 24
 
 [node name="LeftName" type="Label" parent="LeftSprite" unique_id=2106939271]
 offset_left = -9.0
@@ -115,12 +119,15 @@ offset_top = -193.0
 offset_right = 31.0
 offset_bottom = -170.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 30
 
 [node name="LeftRecipe" type="VBoxContainer" parent="LeftSprite" unique_id=774158458]
 offset_left = -12.0
 offset_top = 262.0
 offset_right = 28.0
 offset_bottom = 302.0
+theme = SubResource("Theme_gfmpn")
 
 [node name="RightSprite" type="Sprite2D" parent="." unique_id=227578063]
 position = Vector2(300, 900)
@@ -131,6 +138,8 @@ offset_top = 519.0
 offset_right = 14.0
 offset_bottom = 542.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 24
 
 [node name="RightName" type="Label" parent="RightSprite" unique_id=241050334]
 offset_left = -24.0
@@ -138,15 +147,183 @@ offset_top = -191.0
 offset_right = 16.0
 offset_bottom = -168.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 30
 
 [node name="RightRecipe" type="VBoxContainer" parent="RightSprite" unique_id=98905427]
 offset_left = -28.0
 offset_top = 304.0
 offset_right = 12.0
 offset_bottom = 344.0
+theme = SubResource("Theme_nvrov")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1081624250]
 libraries/ = SubResource("AnimationLibrary_gfmpn")
+
+[node name="DiscoveredRecipeIndex Group A" type="VBoxContainer" parent="." unique_id=1912848791]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = -653.0
+offset_top = 791.0
+offset_right = -553.0
+offset_bottom = 1427.0
+theme_override_constants/separation = 64
+
+[node name="aButton" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=322887928]
+layout_mode = 2
+text = "A"
+
+[node name="cButton2" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=2025062260]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "C"
+
+[node name="eButton3" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=969771883]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "E"
+
+[node name="gButton4" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=903981222]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "G"
+
+[node name="iButton5" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=1993826108]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "I"
+
+[node name="kButton6" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=246765084]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "K"
+
+[node name="mButton6" type="Button" parent="DiscoveredRecipeIndex Group A" unique_id=673917754]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "M"
+
+[node name="DiscoveredRecipeIndex Group B" type="VBoxContainer" parent="." unique_id=1832053549]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = -645.0
+offset_top = 838.0
+offset_right = -545.0
+offset_bottom = 1489.0
+theme_override_constants/separation = 65
+
+[node name="bButton" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=1222654575]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "B"
+
+[node name="dButton2" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=58825481]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "D"
+
+[node name="fButton3" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=2018806253]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "F"
+
+[node name="hButton4" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=846206093]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "H"
+
+[node name="jButton5" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=1195215434]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "J"
+
+[node name="lButton6" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=1268726723]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "L"
+
+[node name="nButton7" type="Button" parent="DiscoveredRecipeIndex Group B" unique_id=21113666]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "N"
+
+[node name="DiscoveredRecipeIndex Group C" type="VBoxContainer" parent="." unique_id=1164954671]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 0
+offset_left = 543.0
+offset_top = 800.0
+offset_right = 638.0
+offset_bottom = 1436.0
+theme_override_constants/separation = 72
+
+[node name="oButton" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=783509621]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "O"
+
+[node name="qButton2" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=804484975]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Q"
+
+[node name="sButton3" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=916831408]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "S"
+
+[node name="uButton4" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=101469317]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "U
+"
+
+[node name="wButton5" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=255081899]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "W"
+
+[node name="yButton6" type="Button" parent="DiscoveredRecipeIndex Group C" unique_id=1052892923]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Y"
+
+[node name="DiscoveredRecipeIndex Group D" type="VBoxContainer" parent="." unique_id=1246026159]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 549.0
+offset_top = 864.0
+offset_right = 664.0
+offset_bottom = 1500.0
+theme_override_constants/separation = 72
+
+[node name="pButton" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=1693915056]
+layout_mode = 2
+text = "P"
+
+[node name="rButton2" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=2135317455]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "R"
+
+[node name="tButton3" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=1497039573]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "T"
+
+[node name="vButton4" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=863029861]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "V"
+
+[node name="xButton5" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=2024560792]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "X"
+
+[node name="zButton6" type="Button" parent="DiscoveredRecipeIndex Group D" unique_id=741322885]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Z"
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]
