@@ -4,6 +4,16 @@ signal recipe_pressed
 signal quest_pressed
 signal options_pressed
 
+
+
+#HUGE TO-DO: NEED TO MAKE SURE THAT NO OTHER BUTTONS CAN BE PRESSED UNDERNEATH
+#ALL THIS HUD SHIT. IT FUCKS THE GAME
+
+#ALSO NEED TO FINISH THE LOGIC FOR onGreetNpc()
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
