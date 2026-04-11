@@ -90,11 +90,6 @@ shape = SubResource("CapsuleShape2D_lc2wf")
 [node name="bg" type="Sprite2D" parent="." unique_id=243719930]
 texture = ExtResource("2_5pjoj")
 
-[node name="handleimg" type="Sprite2D" parent="." unique_id=1458355523]
-position = Vector2(-394, 24)
-texture = ExtResource("5_xrgj4")
-offset = Vector2(400, -21.35)
-
 [node name="IngredientDrawer" type="Sprite2D" parent="." unique_id=162790567]
 material = SubResource("ShaderMaterial_dcrpx")
 position = Vector2(887.99994, 20)
@@ -217,5 +212,8 @@ text = "back"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1586898431]
 libraries/ = SubResource("AnimationLibrary_dcrpx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1850734164]
+texture = ExtResource("5_xrgj4")
 
 [connection signal="pressed" from="IngredientDrawer/Handle" to="." method="_on_handle_pressed"]

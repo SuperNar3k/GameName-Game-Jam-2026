@@ -83,6 +83,7 @@ func _on_button_pressed(button_pressed: String) -> void:
 		$Options.show()
 
 func _disable_all_buttons() -> void:
+	bookOpen = true
 	for child in get_children():
 		if child != $RecipeBook:
 			for innerchild in child.get_children():
@@ -90,6 +91,7 @@ func _disable_all_buttons() -> void:
 					innerchild.disabled = true
 
 func _enable_all_buttons() -> void:
+	bookOpen = false
 	for child in get_children():
 		if child != $RecipeBook:
 			for innerchild in child.get_children():
