@@ -3,15 +3,15 @@ extends Node
 
 #GLOBAL VARIABLES
 var npcName = "DEFAULT NPC"
-var sprite = Sprite2D.new()
+var sprite = ""
 var type = "CHILD" # CHILD, TOWNSFOLK, ADVENTURER
 
 #Set params
 func setParams(_name: String, _spriteName: String, _type: String): 
 	if FileAccess.file_exists("res://assets/npcs/" + _spriteName):
-		sprite.set_texture(load("res://assets/npcs/" + _spriteName)) # Load sprite if the file exists
+		sprite = "res://assets/npcs/" + _spriteName # Load sprite if the file exists
 	else:
-		sprite.set_texture(load("res://assets/npcs/lil freak.jpg"))
+		sprite = "res://assets/npcs/lil freak.jpg"
 		
 	npcName = _name
 	type = _type

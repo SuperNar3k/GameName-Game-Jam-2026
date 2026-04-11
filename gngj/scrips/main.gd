@@ -22,6 +22,8 @@ var QuestCreator = Quest_Creator.new() # Used for creating quests
 var ItemCreator = Item_Factory.new() # Used for creating quests
 
 #@onready var bell_sfx = $BellSFX # Bell sound effect
+signal optionChosen
+var questAccepted
 
 # Called when the game starts.
 func _ready() -> void:
@@ -33,17 +35,28 @@ func _ready() -> void:
 	ItemCreator.UnlockDefaultIngredients(ingredients)
 	ItemCreator.UnlockDefaultPotions(potions)
 
-	#FOR TESTING
-	var i = 0
-	var quest
-	while(i < 3):
-		quest = quests.pick_random()
-		pharmacyQuests.append(quest)
-		i = i + 1
-	while(i < 15):
-		quest = quests.pick_random()
-		activeQuests.append(quest)
-		i = i + 1
+		
+	#FOR TESTING questReset()
+	var quest1 = quests[0]
+	
+	print("quest1 original npc name: ", quest1.npcQuestGiver.npcName)
+	print("quest1 original daysUntilDue: ", quest1.daysUntilDue)
+		
+	quest1.daysUntilDue = 0
+	
+	print("quest1 changed daysUntilDue: ", quest1.daysUntilDue)
+	
+	quest1.resetQuest()
+	
+	print("quest1 reset npc name: ", quest1.npcQuestGiver.npcName)
+	print("quest1 reset daysUntilDue: ", quest1.daysUntilDue)
+	
+	
+	#FOR TESTING updateQueue and on_greetNPC()
+	_onGenerateQuest()
+	_onGenerateQuest()
+	_onGenerateQuest()
+	
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
@@ -54,13 +67,22 @@ func _ready() -> void:
 		pharmacyQuests,
 		storeQueue
 	)
+	
+	
 
 func _onGenerateQuest():
 	# Choose a random quest from quest list
+	
+	
 	var newQuest = quests.pick_random()
+	
+	
 	# If the chosen quest is already in the activeQuests or pharmacy lists, pick a new random quest
-	while activeQuests.has(newQuest) or pharmacyQuests.has(newQuest):
+	while activeQuests.has(newQuest) or pharmacyQuests.has(newQuest) or storeQueue.has(newQuest):
 		newQuest = quests.pick_random()
+		print("help")
+		
+	
 		
 	# Add new quest to the queue
 	storeQueue.append(newQuest)
@@ -71,30 +93,186 @@ func _onGenerateQuest():
 
 func _updateQueue():
 	#Disable button which allows NPC interaction
-	$UI/FrontRoom/NPC.disabled = true
+	$ui/FrontRoom/NPC.disabled = true
 	
 	# TO-DO: Fade out already loaded NPCs
 
 	#Updating the textures here. TO-DO :STILL HAVE TO FADE THEM IN
-	if storeQueue.size() >= 1:
-		$UI/FrontRoom/NPC.set_texture = load(storeQueue[0].npcQuestGiver.sprite)
-		if storeQueue.size() >= 2:
-			$UI/FrontRoom/customer2.set_texture = load(storeQueue[1].npcQuestGiver.sprite)
-			if storeQueue.size() >= 3:
-				$UI/FrontRoom/customer3.set_texture = load(storeQueue[2].npcQuestGiver.sprite)
+	if storeQueue.size() == 0: 
+		$ui/FrontRoom/NPC.set_texture_normal(null)
+		$ui/FrontRoom/customer2.set_texture(null)
+		$ui/FrontRoom/customer3.set_texture(null)
+	elif storeQueue.size() == 1:
+		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		$ui/FrontRoom/customer2.set_texture(null)
+		$ui/FrontRoom/customer3.set_texture(null)
+	elif storeQueue.size() == 2:
+		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
+		$ui/FrontRoom/customer3.set_texture(null)
+	elif storeQueue.size() >= 3:
+		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
+		$ui/FrontRoom/customer3.set_texture(load(storeQueue[2].npcQuestGiver.sprite))
 
 	#Re-enable button which allows NPC interaction
-	$UI/FrontRoom/NPC.disabled = false
+	if(storeQueue.size() > 0):
+		$ui/FrontRoom/NPC.disabled = false
+		
 
 func _on_greetNPC():
-	var currentNPC = storeQueue.pop_front()
+	#Lock the player into the interaction
+	$ui/FrontRoom/NPC.disabled = true
+	$ui/FrontRoom/goToBackroom.disabled = true
+	$ui/FrontRoom/Dialogue.disabled = false
+	$ui/FrontRoom/Dialogue.visible = true
 	
-	#Checks if this quest is new or not
-	if activeQuests.has(currentNPC) or pharmacyQuests.has(currentNPC):
-		pass
+	var currentQuest = storeQueue.pop_front()
 	
+	#Logic for quest on the activeQuest[] and pharmacy[]
+	if (currentQuest.accepted && !currentQuest.questCompleted) :
+		
+		#Display Dialog for returning npc
+		for dialog in currentQuest.questDialog[1]:
+			$ui/FrontRoom/Dialogue.text = dialog
+			await $ui/FrontRoom/Dialogue.pressed
+	
+		#Check if we have the potion
+		var potionWeNeed = potions.values()[currentQuest.requirements[0]]
+		if(potionWeNeed.amountOwned > 0):
+			$ui/FrontRoom/potionHotBar.visible = true
+			
+			
+			#TO-DO: MORE LOGIC FOR BEING ABLE TO SELECT THE CORRECT POTION
+			#ONLY DISPLAY THE givePotionButton if the selceted potion is the 
+			#potion that the npc needs!
+			
+			#Wait to select the potion and reduce the amount we own
+			await $ui/FrontRoom/givePotionButton.pressed
+			potionWeNeed.amountOwned = potionWeNeed.amountOwned - 1
+ 		
+			#Dialog for quest success
+			for dialog in currentQuest.questDialog[4]:
+				$ui/FrontRoom/Dialogue.text = dialog
+				await $ui/FrontRoom/Dialogue.pressed
+				
+			#TO-DO: Add giving the player the reward logic
+			
+			
+			#reset the timer for when the pharmacy potion is due
+			if(currentQuest.isRepeatable):
+				currentQuest.daysUntilDue = currentQuest.daysUntilDueReset
+				
+			#mark the one time quest as complete so they can just come back to give the reward
+			else:
+				currentQuest.questCompleted = true
+				
+		#If we don't have the potion logic
+		else: 
+			
+			#Dialogue for quest failure
+			if(currentQuest.daysUntilDue == 0):
+				for dialog in currentQuest.questDialog[3]:
+					$ui/FrontRoom/Dialogue.text = dialog
+					await $ui/FrontRoom/Dialogue.pressed
+					
+				#Reset the quest and remove it from the list
+				currentQuest.resetQuest()
+				if(currentQuest.isRepeatable):
+					pharmacyQuests.erase(currentQuest)
+				else:
+					activeQuests.erase(currentQuest)
+					
+			else:
+				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1 
+			
+	#Logic if its a first time quest!
+	elif(!currentQuest.accepted):
+		#Display Dialog for starting quest
+		for dialog in currentQuest.questDialog[0]:
+			$ui/FrontRoom/Dialogue.text = dialog
+			await $ui/FrontRoom/Dialogue.pressed
+		
+		#Check if we have the potion 
+		var potionWeNeed = potions.values()[currentQuest.requirements[0]]
+		if(potionWeNeed.amountOwned > 0):
+			$ui/FrontRoom/potionHotBar.visible = true
+			
+			#TO-DO: MORE LOGIC FOR BEING ABLE TO SELECT THE CORRECT POTION
+			#ONLY DISPLAY THE givePotionButton if the selceted potion is the 
+			#potion that the npc needs!
+			
+			#Wait to select the potion and reduce the amount we own
+			await $ui/FrontRoom/givePotionButton.pressed
+			potionWeNeed.amountOwned = potionWeNeed.amountOwned - 1
+ 		
+			#Dialog for quest success
+			for dialog in currentQuest.questDialog[4]:
+				$ui/FrontRoom/Dialogue.text = dialog
+				await $ui/FrontRoom/Dialogue.pressed
+			
+			#logic for completing a pharmacy quest vs a one time quest
+			if(currentQuest.isRepeatable):
+				
+				#TO-DO: HAVE A DIALOG SHOW UP FOR ADDING THEM TO THE PHARMACY LIST
+				
+				currentQuest.accepted = true
+				pharmacyQuests.append(currentQuest)
+			
+			#Again, if it is a one time quest, we can just do logic so they 
+			#only come back to give player the rewards
+			else:
+				currentQuest.accepted = true
+				currentQuest.questCompleted = true
+				activeQuests.append(currentQuest)
+				
+			
+		#logic for either having them come back later or rejecting quest
+		else:
+			$ui/FrontRoom/acceptQuestButton.show()
+			$ui/FrontRoom/rejectQuestButton.show()
+			
+			await optionChosen
+			
+			$ui/FrontRoom/acceptQuestButton.hide()
+			$ui/FrontRoom/rejectQuestButton.hide()
+			
+			#If quest accepted
+			if(questAccepted):
+				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1 
+				currentQuest.accepted = true
+				activeQuests.append(currentQuest)
+				
+			#If quest is rejected
+			else:
+				for dialog in currentQuest.questDialog[2]:
+					$ui/FrontRoom/Dialogue.text = dialog
+					await $ui/FrontRoom/Dialogue.pressed
+			
+				currentQuest.resetQuest()
+				
+	#Logic for when the npc wants to give you rewards for completing a one time quest
+	elif(currentQuest.accepted && currentQuest.questCompleted):
+		
+		#TO-DO: Add the dialog for the npc saying that they came back to give more stuff
+		
+		#TO-DO: Logic for giving the rewards to the player
+		
+		#Reset the quest and remove it from activeQuest[]
+		currentQuest.resetQuest()
+		activeQuests.erase(currentQuest)
+	
+	#Unlock the player from the interaction
+	$ui/FrontRoom/goToBackroom.disabled = false
+	$ui/FrontRoom/Dialogue.disabled = true
+	$ui/FrontRoom/Dialogue.visible = false
+	
+	_updateQueue()
 
-
+func _on_ui_quest_accepted(option: Variant):
+	questAccepted = option
+	optionChosen.emit()
+			
 func _onAcceptQuest():
 	# If there's no space in the activeQuests list, do nothing
 	if activeQuests.size() > MAX_ACTIVE_QUESTS:

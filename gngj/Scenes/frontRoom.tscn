@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://6niyjurcgd0l" path="res://scrips/front_room.gd" id="1_t5cqi"]
 [ext_resource type="Texture2D" uid="uid://c0g1bjkejnpat" path="res://assets/background/front/frontempty.PNG" id="2_fixym"]
 [ext_resource type="Texture2D" uid="uid://dv8ebk8jjw4xv" path="res://assets/background/front/frontdesk.PNG" id="3_s0epr"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_w4gd2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pk1jc"]
+shader = ExtResource("4_w4gd2")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 2.42999994568464
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3
@@ -25,16 +32,8 @@ texture = ExtResource("2_fixym")
 [node name="desk" type="Sprite2D" parent="." unique_id=514847854]
 texture = ExtResource("3_s0epr")
 
-[node name="Dialogue" type="Button" parent="." unique_id=288120605]
-layout_mode = 0
-offset_left = -796.0
-offset_top = -54.0
-offset_right = 183.0
-offset_bottom = 267.0
-theme_override_font_sizes/font_size = 60
-text = "Dialogue"
-
 [node name="potionHotbar" type="ScrollContainer" parent="." unique_id=339280144]
+visible = false
 layout_mode = 0
 offset_left = -897.0
 offset_top = 299.0
@@ -46,14 +45,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="potionHotbar/HBoxContainer" unique_id=1697009589]
+[node name="potionInInventory" type="TextureButton" parent="potionHotbar/HBoxContainer" unique_id=1969259046]
 layout_mode = 2
-expand_mode = 2
-
-[node name="Button" type="Button" parent="potionHotbar/HBoxContainer/TextureRect" unique_id=901217085]
-layout_mode = 0
-offset_right = 208.0
-offset_bottom = 208.0
 
 [node name="goToBackroom" type="Button" parent="." unique_id=1735358139]
 layout_mode = 0
@@ -79,10 +72,51 @@ offset_right = 461.0
 offset_bottom = 129.0
 expand_mode = 1
 
+[node name="givePotionButton" type="Button" parent="." unique_id=971613698]
+visible = false
+layout_mode = 0
+offset_left = 264.0
+offset_top = 164.0
+offset_right = 637.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 25
+text = "Give Selected Potion"
+
+[node name="acceptQuestButton" type="Button" parent="." unique_id=1847298089]
+visible = false
+layout_mode = 0
+offset_left = -757.0
+offset_top = 307.0
+offset_right = -303.0
+offset_bottom = 447.0
+theme_override_font_sizes/font_size = 30
+text = "Come back tomorrow!"
+
+[node name="rejectQuestButton" type="Button" parent="." unique_id=136477528]
+visible = false
+layout_mode = 0
+offset_left = -252.0
+offset_top = 307.0
+offset_right = 232.0
+offset_bottom = 447.0
+theme_override_font_sizes/font_size = 30
+text = "I can't make this for you"
+
 [node name="NPC" type="TextureButton" parent="." unique_id=1846388663]
+material = SubResource("ShaderMaterial_pk1jc")
 layout_mode = 0
 offset_left = 281.0
 offset_top = -421.0
 offset_right = 757.0
 offset_bottom = 275.0
 stretch_mode = 0
+
+[node name="Dialogue" type="Button" parent="." unique_id=288120605]
+visible = false
+layout_mode = 0
+offset_left = -796.0
+offset_top = -54.0
+offset_right = 183.0
+offset_bottom = 267.0
+theme_override_font_sizes/font_size = 60
+text = "Dialogue"

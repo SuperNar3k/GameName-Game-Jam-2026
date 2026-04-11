@@ -8,6 +8,9 @@ var activeQuests
 var pharmacyQuests
 var storeQueue
 
+signal talkToNpc
+signal questAccepted(option)
+
 var gameStart = false
 var bookOpen = false
 
@@ -182,3 +185,11 @@ func _on_main_menu_scene_test_that_other_shit() -> void:
 func _on_quest_list_screen_return_to_game() -> void:
 	$questListScreen.hide()
 	$MainMenuScene.show()
+
+
+func _on_front_room_quest_accepted(option: Variant) -> void:
+	questAccepted.emit(option)
+
+
+func _on_front_room_talk_to_npc() -> void:
+	talkToNpc.emit()
