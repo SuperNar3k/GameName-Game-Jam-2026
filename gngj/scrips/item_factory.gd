@@ -11,7 +11,9 @@ func createIngredient(
 	_description: String,
 	_amountOwned: int,
 	_sprite: String,
-	_value: int
+	_value: int,
+	_isGrindable: bool
+
 ):
 	var brandNewPart = Item.new()
 	brandNewPart.__init__(
@@ -21,7 +23,8 @@ func createIngredient(
 		[],
 		_amountOwned,
 		0,
-		_value
+		_value,
+		_isGrindable
 	)
 	
 	allIngredients.set(_itemName, brandNewPart)
@@ -59,13 +62,15 @@ func Populate():
 		#amountOwned
 		#sprite
 		#value
+		#grindable
 	
 	createIngredient(
 		"asbestos",									#ItemName
 		"this shit will kill you",						#Description
 		1000,											#AmountOwned
 		"res://assets/ingredients/asbestos.png",		#Sprite
-		3												#Value
+		3,												#Value
+		true											#grindable
 	)
 	
 	createIngredient(
@@ -73,7 +78,8 @@ func Populate():
 		"this shit will kill you, also its a powder now",
 		0,
 		"res://assets/ingredients/crushed asbestos.jpg",
-		0
+		0,
+		false
 	)
 	
 	createIngredient(
@@ -81,7 +87,8 @@ func Populate():
 		"staight up beans nigga",
 		3,
 		"res://assets/ingredients/beans.png",
-		3
+		3,
+		true
 	)
 	
 	#Hardcoding all of our Potions here
