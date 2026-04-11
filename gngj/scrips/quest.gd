@@ -14,6 +14,10 @@ var daysUntilReward
 var isRepeatable
 var npcQuestGiver
 
+var daysUntilDueReset
+var daysUntilRewardReset
+
+
 func __init__(
 	_questStartDialog: Variant,
 	_questReturingDialog: Variant,
@@ -55,6 +59,35 @@ func __init__(
 	daysUntilDue = _daysUntilDue
 	daysUntilReward = _daysUntilReward
 	isRepeatable = _isReapeatable
+	daysUntilDueReset = _daysUntilDue
+	daysUntilRewardReset = _daysUntilReward
 	
 	# Set NPC class
 	npcQuestGiver = _npc
+	
+	
+func resetQuest(): 
+	daysUntilDue = daysUntilDueReset
+	daysUntilReward = daysUntilRewardReset
+	accepted = false
+	questCompleted = false
+	
+	var tempBirthPod = Npc_Birthing_Pod.new()
+	
+	
+	match npcQuestGiver.type: 
+		"Child":
+			npcQuestGiver.npcName = tempBirthPod.allChildren.pick_random()
+		"Townsfolk":
+			npcQuestGiver.npcName = tempBirthPod.allTownsolk.pick_random()
+		"Adventurer":
+			npcQuestGiver.npcName = tempBirthPod.allAdventurers.pick_random()
+	
+	var spriteName = npcQuestGiver.npcName.to_lower() + ".jpg"
+	
+	if FileAccess.file_exists("res://assets/npcs/" + spriteName):
+		npcQuestGiver.sprite ="res://assets/npcs/" + spriteName # Load sprite if the file exists
+	else:
+		npcQuestGiver.sprite = "res://assets/npcs/lil freak.jpg"
+	
+	print("Quest successfully reset!")
