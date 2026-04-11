@@ -68,7 +68,6 @@ func _ready() -> void:
 		storeQueue
 	)
 	
-	
 
 func _onGenerateQuest():
 	# Choose a random quest from quest list
