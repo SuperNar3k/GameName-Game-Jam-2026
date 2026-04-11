@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://lbk7i6yms55y" path="res://assets/background/cauldron-mp-top/mptop.PNG" id="2_b08lm"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="3_aj0c6"]
 [ext_resource type="Texture2D" uid="uid://cd1okxuxo1474" path="res://assets/background/cauldron-mp-top/igndrawer.PNG" id="3_diasw"]
-[ext_resource type="Script" uid="uid://nb4nyvcixxeo" path="res://Scenes/grinding_area.gd" id="3_mnfot"]
-[ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://Scenes/pestle.gd" id="3_ohim2"]
+[ext_resource type="Script" uid="uid://nb4nyvcixxeo" path="res://scrips/grinding_area.gd" id="3_mnfot"]
+[ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://scrips/pestle.gd" id="3_ohim2"]
 [ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="4_mnfot"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tl0jk"]
@@ -60,6 +60,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b08lm"]
 size = Vector2(57, 60.5)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj0c6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tl0jk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ng4e2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1yx5"]
+
 [node name="GrindingStation" type="Control" unique_id=1247765081]
 layout_mode = 3
 anchors_preset = 8
@@ -87,11 +95,15 @@ offset_top = -515.0
 offset_right = 301.9099
 offset_bottom = -265.0
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button" unique_id=460572484]
+
 [node name="Button2" type="Button" parent="IngredientDrawer" unique_id=1587790759]
 offset_left = 321.90997
 offset_top = -515.0
 offset_right = 514.32495
 offset_bottom = -265.0
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button2" unique_id=1378024709]
 
 [node name="Button3" type="Button" parent="IngredientDrawer" unique_id=1131852099]
 offset_left = 533.9099
@@ -99,11 +111,15 @@ offset_top = -515.0
 offset_right = 725.6599
 offset_bottom = -265.0
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button3" unique_id=1149021697]
+
 [node name="Button4" type="Button" parent="IngredientDrawer" unique_id=1777275948]
 offset_left = 745.9098
 offset_top = -513.0
 offset_right = 931.1648
 offset_bottom = -263.0
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button4" unique_id=1068370809]
 
 [node name="Button5" type="Button" parent="IngredientDrawer" unique_id=1910489831]
 offset_left = 119.90988
@@ -111,11 +127,15 @@ offset_top = -236.99998
 offset_right = 304.40988
 offset_bottom = -11.999985
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button5" unique_id=1203562735]
+
 [node name="Button6" type="Button" parent="IngredientDrawer" unique_id=185945185]
 offset_left = 322.90985
 offset_top = -237.99998
 offset_right = 513.21985
 offset_bottom = -12.999985
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button6" unique_id=1454120397]
 
 [node name="Button7" type="Button" parent="IngredientDrawer" unique_id=1299202871]
 offset_left = 534.9098
@@ -123,11 +143,15 @@ offset_top = -236.0
 offset_right = 721.9098
 offset_bottom = -11.0
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button7" unique_id=1973360001]
+
 [node name="Button8" type="Button" parent="IngredientDrawer" unique_id=170727394]
 offset_left = 746.9098
 offset_top = -236.0
 offset_right = 931.8548
 offset_bottom = -11.0
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button8" unique_id=868595243]
 
 [node name="Button9" type="Button" parent="IngredientDrawer" unique_id=2038453985]
 offset_left = 118.90988
@@ -135,11 +159,15 @@ offset_top = 14.0
 offset_right = 305.90988
 offset_bottom = 239.0
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button9" unique_id=1043900141]
+
 [node name="Button10" type="Button" parent="IngredientDrawer" unique_id=399579347]
 offset_left = 322.90997
 offset_top = 12.999991
 offset_right = 512.07996
 offset_bottom = 237.99998
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button10" unique_id=1169489250]
 
 [node name="Button11" type="Button" parent="IngredientDrawer" unique_id=1762367430]
 offset_left = 535.91
@@ -147,11 +175,15 @@ offset_top = 15.0
 offset_right = 722.91
 offset_bottom = 240.0
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button11" unique_id=357341004]
+
 [node name="Button12" type="Button" parent="IngredientDrawer" unique_id=442993028]
 offset_left = 747.9098
 offset_top = 14.000009
 offset_right = 931.1898
 offset_bottom = 239.00002
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button12" unique_id=1590680856]
 
 [node name="Button13" type="Button" parent="IngredientDrawer" unique_id=1746761103]
 offset_left = 115.90988
@@ -159,11 +191,15 @@ offset_top = 266.0
 offset_right = 302.90988
 offset_bottom = 516.0
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button13" unique_id=378399273]
+
 [node name="Button14" type="Button" parent="IngredientDrawer" unique_id=2113061612]
 offset_left = 324.90997
 offset_top = 266.0
 offset_right = 511.90997
 offset_bottom = 516.0
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button14" unique_id=2041900004]
 
 [node name="Button15" type="Button" parent="IngredientDrawer" unique_id=651236490]
 offset_left = 535.9099
@@ -171,11 +207,15 @@ offset_top = 265.0
 offset_right = 725.80493
 offset_bottom = 515.0
 
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button15" unique_id=1700879865]
+
 [node name="Button16" type="Button" parent="IngredientDrawer" unique_id=698026870]
 offset_left = 748.9099
 offset_top = 265.0
 offset_right = 931.9249
 offset_bottom = 515.0
+
+[node name="Sprite2D" type="Sprite2D" parent="IngredientDrawer/Button16" unique_id=581943792]
 
 [node name="Handle" type="Button" parent="IngredientDrawer" unique_id=731879883]
 offset_left = 15.485107
@@ -243,20 +283,43 @@ text = "Back"
 libraries/ = SubResource("AnimationLibrary_mnfot")
 
 [node name="Pestle" type="CharacterBody2D" parent="." unique_id=913269000 groups=["Pestle"]]
+position = Vector2(-37, 267)
 input_pickable = true
 script = ExtResource("3_ohim2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pestle" unique_id=1031160259]
-position = Vector2(49.74999, -40.500008)
+position = Vector2(0.99998856, 11)
 scale = Vector2(0.5039061, 3.2109375)
 texture = ExtResource("4_mnfot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pestle" unique_id=112924750]
-position = Vector2(49, 133.25)
+position = Vector2(2, 183)
 shape = SubResource("RectangleShape2D_b08lm")
 
-[node name="Marker2D" type="Marker2D" parent="Pestle" unique_id=1070179693]
-position = Vector2(-60, 274)
+[node name="pickUp" type="Button" parent="Pestle" unique_id=1990278975]
+offset_left = -45.0
+offset_top = -199.0
+offset_right = 58.0
+offset_bottom = 228.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aj0c6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tl0jk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ng4e2")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x1yx5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x1yx5")
+metadata/_edit_use_anchors_ = true
+
+[node name="DropSpot" type="Button" parent="." unique_id=967202033]
+layout_mode = 0
+offset_left = -722.0
+offset_top = -272.0
+offset_right = -183.0
+offset_bottom = 270.0
+
+[node name="fruitBowl" type="Sprite2D" parent="." unique_id=2061898976]
+position = Vector2(-482, 18)
 
 [connection signal="pressed" from="IngredientDrawer/Handle" to="." method="_on_handle_pressed"]
 [connection signal="body_entered" from="GrindingArea" to="GrindingArea" method="_on_body_entered"]
+[connection signal="button_down" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_down"]
+[connection signal="button_up" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_up"]
+[connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
