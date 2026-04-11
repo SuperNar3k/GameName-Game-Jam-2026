@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bv372f8mq87si" path="res://assets/background/main menu/just credits.png" id="5_el70q"]
 [ext_resource type="Texture2D" uid="uid://cpb04visqat2m" path="res://assets/background/main menu/just close.png" id="6_jxibw"]
 [ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="6_kfw0d"]
+[ext_resource type="Texture2D" uid="uid://cth4ukaqy54k7" path="res://assets/background/main menu/Untitled_Artwork.png" id="8_8nx21"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfw0d"]
 size = Vector2(400, 277.325)
@@ -130,7 +131,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="options" unique_id=743246795]
-position = Vector2(0.00030517578, 0.00033569336)
 shape = SubResource("RectangleShape2D_2cd7o")
 
 [node name="optionsbtn" type="Button" parent="options" unique_id=112147275]
@@ -193,6 +193,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hold" unique_id=617902733]
 shape = SubResource("CapsuleShape2D_kfw0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="hold" unique_id=158584280]
+position = Vector2(0, 32)
+texture = ExtResource("8_8nx21")
 
 [node name="hold2" type="StaticBody2D" parent="." unique_id=1587883533]
 position = Vector2(216, 0)
