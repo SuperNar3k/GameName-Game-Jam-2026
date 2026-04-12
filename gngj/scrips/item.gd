@@ -13,6 +13,7 @@ var amountOwned : int
 
 #FOR INGREDIENTS
 var value : int
+var isGrindable : bool
 
 #FOR POTIONS
 var recipe : Array
@@ -26,7 +27,9 @@ func __init__(
 	_recipe = [],
 	_amountOwned = 0,
 	_cookLevelNeeded = 0,
-	_value = 0
+	_value = 0,
+	_isGrindable = false
+
 ):
 	itemName = _itemName
 	description = _description
@@ -35,4 +38,5 @@ func __init__(
 	recipe = _recipe
 	cookLevelNeeded = _cookLevelNeeded
 	value = _value
+	isGrindable = _isGrindable
 	

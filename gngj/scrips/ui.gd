@@ -67,6 +67,8 @@ func ref_storage(
 	storeQueue = _storeQueue
 	
 	$RecipeBook.__init__(_allPotions, _allIngredients)
+	$GrindingStation.__init__(_allIngredients)
+	$CauldronStation.__init__(_allPotions, _allIngredients)
 
 func _on_button_pressed(button_pressed: String) -> void:
 	if (button_pressed == "ingredientShelf"):

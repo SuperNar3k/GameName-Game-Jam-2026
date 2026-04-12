@@ -11,7 +11,9 @@ func createIngredient(
 	_description: String,
 	_amountOwned: int,
 	_sprite: String,
-	_value: int
+	_value: int,
+	_isGrindable: bool
+
 ):
 	var brandNewPart = Item.new()
 	brandNewPart.__init__(
@@ -21,7 +23,8 @@ func createIngredient(
 		[],
 		_amountOwned,
 		0,
-		_value
+		_value,
+		_isGrindable
 	)
 	
 	allIngredients.set(_itemName, brandNewPart)
@@ -59,60 +62,64 @@ func Populate():
 		#amountOwned
 		#sprite
 		#value
-	
-	createIngredient(
-		"asbestos",										#ItemName
-		"this shit will kill you",						#Description
-		1000,											#AmountOwned
-		"res://assets/ingredients/asbestos.png",		#Sprite
-		3												#Value
-	)
-	
-	createIngredient(
-		"crushed asbestos",
-		"this shit will kill you, also its a powder now",
-		0,
-		"res://assets/ingredients/crushed asbestos.jpg",
-		0
-	)
-	
-	createIngredient(
-		"beans",
-		"staight up beans nigga",
-		3,
-		"res://assets/ingredients/beans.png",
-		3
-	)
-	createIngredient("earth", "dirt", 0, "", 0)
-	createIngredient("a leaf of a thousand leaves", "fern", 0, "", 1)
-	createIngredient("a leaf of a thousand leaves powder", "crushed vern", 0, "", 1)
-	createIngredient("a thorny heart", "cactus", 0, "", 1)
-	createIngredient("a thorny heart powder", "crushed cactus", 0, "", 1)
-	createIngredient("tears of trees", "string of pearls", 0, "", 1)
-	createIngredient("tears of trees powder", "crushed string of pearls", 0, "", 1)
-	createIngredient("air's brevity", "feather", 0, "", 2)
-	createIngredient("desert calm", "aloe", 0, "", 2)
-	createIngredient("desert calm powder", "crushed aloe", 0, "", 2)
-	createIngredient("dried ocean", "sand", 0, "", 2)
-	createIngredient("ear of the sea", "conch shells", 0, "", 2)
-	createIngredient("ear of the sea powder", "crushed conch shells", 0, "", 2)
-	createIngredient("gaia's teeth", "pebbles", 0, "", 2)
-	createIngredient("gaia's teeth powder", "crushed pebbles", 0, "", 2)
-	createIngredient("dragon's egg", "dragon fruit", 0, "", 3)
-	createIngredient("dragon's egg powder", "crushed dragon fruit", 0, "", 3)
-	createIngredient("eyelashes powder", "crushed venus flytrap", 0, "", 3)
-	createIngredient("spring crystal", "pink crystal", 0, "", 3)
-	createIngredient("spring crystal powder", "crushed pink crystal", 0, "", 3)
-	createIngredient("string of lovers", "bleeding hearts", 0, "", 3)
-	createIngredient("string of lovers powder", "crushed bleeding hearts", 0, "", 3)
-	createIngredient("venus's eyelashes", "venus flytrap", 0, "", 3)
-	createIngredient("winter crystal", "blue crystal", 0, "", 3)
-	createIngredient("winter crystal powder", "crushed blue crystal", 0, "", 3)
-	createIngredient("psychic stone", "amethyst", 0, "", 4)
-	createIngredient("psychic stone powder", "crushed amethyst", 0, "", 4)
-	createIngredient("shattered sky", "obsidian", 0, "", 5)
-	createIngredient("shooting star", "star", 0, "", 6)
-	createIngredient("stardust", "stardust", 0, "", 6)
+		#grindable
+	#
+	#createIngredient(
+		#"asbestos",										#ItemName
+		#"this shit will kill you",						#Description
+		#1000,											#AmountOwned
+		#"res://assets/ingredients/asbestos.png",		#Sprite
+		#3,												#Value
+		#true											#grindable
+	#)
+	#
+	#createIngredient(
+		#"crushed asbestos",
+		#"this shit will kill you, also its a powder now",
+		#0,
+		#"res://assets/ingredients/crushed asbestos.jpg",
+		#0,
+		#false
+	#)
+	#
+	#createIngredient(
+		#"beans",
+		#"staight up beans nigga",
+		#3,
+		#"res://assets/ingredients/beans.png",
+		#3,
+		#true
+	#)
+	createIngredient("earth", "dirt", 0, "res://assets/ingredients/IMG_0645.PNG", 0, false)
+	createIngredient("a leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/IMG_0634.PNG", 1, true)
+	createIngredient("a leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/IMG_0635.PNG", 1, false)
+	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/IMG_0628.PNG", 1, true)
+	createIngredient("a thorny heart powder", "crushed cactus", 0, "res://assets/ingredients/IMG_0629.PNG", 1, false)
+	createIngredient("tears of trees", "string of pearls", 0, "res://assets/ingredients/IMG_0626.PNG", 1, true)
+	createIngredient("tears of trees powder", "crushed string of pearls", 0, "res://assets/ingredients/IMG_0627.PNG", 1, false)
+	createIngredient("air's brevity", "feather", 0, "res://assets/ingredients/IMG_0616.PNG", 2, false)
+	createIngredient("desert calm", "aloe", 0, "res://assets/ingredients/IMG_0632.PNG", 2, true)
+	createIngredient("desert calm powder", "crushed aloe", 0, "res://assets/ingredients/IMG_0633.PNG", 2, false)
+	createIngredient("dried ocean", "sand", 0, "res://assets/ingredients/IMG_0644.PNG", 2, false)
+	createIngredient("ear of the sea", "conch shells", 0, "res://assets/ingredients/IMG_0624.PNG", 2, true)
+	createIngredient("ear of the sea powder", "crushed conch shells", 0, "res://assets/ingredients/IMG_0625.PNG", 2, false)
+	createIngredient("gaia's teeth", "pebbles", 0, "res://assets/ingredients/IMG_0617.PNG", 2, true)
+	createIngredient("gaia's teeth powder", "crushed pebbles", 0, "res://assets/ingredients/IMG_0618.PNG", 2, false)
+	createIngredient("dragon's egg", "dragon fruit", 0, "res://assets/ingredients/dragon's egg.PNG", 3, true)
+	createIngredient("dragon's egg powder", "crushed dragon fruit", 0, "res://assets/ingredients/IMG_0621.PNG", 3, false)
+	createIngredient("eyelashes powder", "crushed venus flytrap", 0, "res://assets/ingredients/IMG_0631.PNG", 3, false)
+	createIngredient("spring crystal", "pink crystal", 0, "res://assets/ingredients/IMG_0638.PNG", 3, true)
+	createIngredient("spring crystal powder", "crushed pink crystal", 0, "res://assets/ingredients/IMG_0639.PNG", 3, false)
+	createIngredient("string of lovers", "bleeding hearts", 0, "res://assets/ingredients/IMG_0622.PNG", 3, true)
+	createIngredient("string of lovers powder", "crushed bleeding hearts", 0, "res://assets/ingredients/IMG_0623.PNG", 3, false)
+	createIngredient("venus's eyelashes", "venus flytrap", 0, "res://assets/ingredients/IMG_0630.PNG", 3, true)
+	createIngredient("winter crystal", "blue crystal", 0, "res://assets/ingredients/IMG_0640.PNG", 3, true)
+	createIngredient("winter crystal powder", "crushed blue crystal", 0, "res://assets/ingredients/IMG_0641.PNG", 3, false)
+	createIngredient("psychic stone", "amethyst", 0, "res://assets/ingredients/IMG_0642.PNG", 4, true)
+	createIngredient("psychic stone powder", "crushed amethyst", 0, "res://assets/ingredients/IMG_0643.PNG", 4, false)
+	createIngredient("shattered sky", "obsidian", 0, "res://assets/ingredients/IMG_0619.PNG", 5, false)
+	createIngredient("shooting star", "star", 0, "res://assets/ingredients/IMG_0636.PNG", 6, true)
+	createIngredient("stardust", "stardust", 0, "res://assets/ingredients/IMG_0637.PNG", 6, false)
 
 	
 	#Hardcoding all of our Potions here
@@ -209,17 +216,18 @@ func Populate():
 
 # Unlocks default items at start of game
 func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
-	var newItem = allIngredients.get("beans") 
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
-	
-	newItem = allIngredients.get("asbestos") 
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
-	
-	newItem = allIngredients.get("crushed asbestos") 
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
+	#var newItem = allIngredients.get("beans") 
+	#newItem.unlocked = true
+	#_unlockedIngredients.set(newItem.itemName, newItem)
+	#
+	#newItem = allIngredients.get("asbestos") 
+	#newItem.unlocked = true
+	#_unlockedIngredients.set(newItem.itemName, newItem)
+	#
+	#newItem = allIngredients.get("crushed asbestos") 
+	#newItem.unlocked = true
+	#_unlockedIngredients.set(newItem.itemName, newItem)
+	pass
 	
 func UnlockDefaultPotions(_unlockedPotions: Dictionary):
 	var a = allPotions.get("cinnamon toast crunch milk") 

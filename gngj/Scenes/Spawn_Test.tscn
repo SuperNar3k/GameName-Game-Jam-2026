@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c51ct2jpm0vk3"]
+
+[ext_resource type="Texture2D" uid="uid://cpn5p65bfw2pb" path="res://assets/ingredients/dragon's egg.PNG" id="1_klp82"]
+[ext_resource type="Script" uid="uid://pgskssdt1qeo" path="res://Scenes/spawn_test.gd" id="2_ctqmk"]
+
+[node name="Sprite2D" type="Sprite2D" unique_id=588720357]
+texture = ExtResource("1_klp82")
+script = ExtResource("2_ctqmk")
