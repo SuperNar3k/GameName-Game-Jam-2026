@@ -19,6 +19,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_qqnya")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=501582258]
@@ -29,9 +31,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_5hy3q")
-current_tab = 0
+current_tab = 1
 
 [node name="Sound" type="Control" parent="TabContainer" unique_id=284803208]
+visible = false
 layout_mode = 2
 theme = SubResource("Theme_q4at1")
 metadata/_tab_index = 0
@@ -133,7 +136,6 @@ offset_bottom = 54.0
 text = "Mute"
 
 [node name="Display" type="Control" parent="TabContainer" unique_id=1858137335]
-visible = false
 layout_mode = 2
 theme = SubResource("Theme_6f4k2")
 metadata/_tab_index = 1

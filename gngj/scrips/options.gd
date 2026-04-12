@@ -13,6 +13,8 @@ func _ready() -> void:
 	$TabContainer/Sound/MusicVolumeSlider/MusicLabel.text = "%d%%" % int(round(SettingsManager.settings.music_volume * 100))
 	$TabContainer/Sound/SFXVolumeSlider.value = SettingsManager.settings.sfx_volume
 	$TabContainer/Sound/SFXVolumeSlider/Label.text = "%d%%" % int(round(SettingsManager.settings.sfx_volume * 100))
+	
+	
 
 func _on_exitButton_pressed() -> void: 
 	exitOptions.emit()
