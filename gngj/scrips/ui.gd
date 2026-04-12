@@ -16,6 +16,7 @@ var lastScreen
 signal talkToNpc
 signal questAccepted(option)
 signal startGame
+signal correctPotionSelected
 
 
 func _ready() -> void:
@@ -47,6 +48,7 @@ func _process(delta: float) -> void:
 				else:
 					bookOpen = false
 					$RecipeBook._on_exit_btn_pressed()
+					
 
 #called from main; saves references of the variables from main into these local (global?) variables
 func ref_storage(
@@ -82,8 +84,7 @@ func _on_button_pressed(button_pressed: String) -> void:
 	if (button_pressed == "toFrontRoom"):
 		pass
 	if (button_pressed == "Quests"):
-		$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
-		$questListScreen.show()
+		pass
 	if (button_pressed == "Options"):
 		$Options.show()
 
@@ -198,27 +199,22 @@ func _on_hud_options_pressed() -> void:
 	lastScreen.hide()
 	$Options.show()
 	
-
-
-#TO-DO: Gotta fix this logic 
-func _on_main_menu_scene_test_that_shit() -> void:
-	$MainMenuScene.hide()
+func _on_end_of_day() -> void:
+	lastScreen.hide()
 	$endOfDayScreen.show()
 	
-	$endOfDayScreen.displayShit(allIngredients, allPotions)
-
-
+	$endOfDayScreen.displayShit(allIngredients, allPotions)	
+	
 func _on_end_of_day_screen_show_store() -> void:
 	$endOfDayScreen.hide()
 	$crowStore.show()
 
-
 func newDay() -> void:
 	$crowStore.hide()
-	$MainMenuScene.show()
-		
-
-
+	$FrontRoom.show()
+	lastScreen = $FrontRoom
+	
+	startGame.emit()
 
 
 
@@ -228,3 +224,7 @@ func _on_front_room_quest_accepted(option: Variant) -> void:
 
 func _on_front_room_talk_to_npc() -> void:
 	talkToNpc.emit()
+
+
+func _on_front_room_correct_potion_selected() -> void:
+	correctPotionSelected.emit()

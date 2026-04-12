@@ -4,9 +4,9 @@ extends Node
 #GLOBAL VARIABLES
 
 var accepted = false
-var questCompleted = false
+var completed = false
 
-var questDialog = [[],[],[],[],[]]
+var questDialog = [[],[],[],[],[],[],[]]
 var requirements = []
 var rewards = [[],[],[]]
 var daysUntilDue
@@ -24,6 +24,8 @@ func __init__(
 	_questRejectedDialog: Variant,
 	_questFailedDialog: Variant,
 	_questSuccsesDialog: Variant,
+	_questJoiningPharmacyDialog: Variant,
+	_questGivingDelayedRewardDialog: Variant,
 	_requirements: Variant,
 	_rewardMoney: Variant,
 	_rewardRecipes: Variant,
@@ -44,6 +46,10 @@ func __init__(
 		questDialog[3].append(dialog)
 	for dialog in _questSuccsesDialog:
 		questDialog[4].append(dialog)
+	for dialog in _questJoiningPharmacyDialog:
+		questDialog[5].append(dialog)
+	for dialog in _questGivingDelayedRewardDialog:
+		questDialog[6].append(dialog)
 
 	#Filling in the requirements[]
 	for requirement in _requirements:
@@ -70,7 +76,7 @@ func resetQuest():
 	daysUntilDue = daysUntilDueReset
 	daysUntilReward = daysUntilRewardReset
 	accepted = false
-	questCompleted = false
+	completed = false
 	
 	var tempBirthPod = Npc_Birthing_Pod.new()
 	

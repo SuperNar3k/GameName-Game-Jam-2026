@@ -135,7 +135,7 @@ func Populate():
 	createPotion(
 		"cinnamon toast crunch milk",			#ItemName
 		"this shit yummy af",					#Description
-		0,										#AmountOwned
+		69,										#AmountOwned
 		"res://assets/potions/CTCBox.jpg",		#Sprite
 		["asbestos", "crushed asbestos"],		#Recipe
 		0										#CookLevelNeeded
@@ -247,10 +247,10 @@ func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):
 	_unlockedIngredients.set(_ingName, ing)
 
 # Unlock a new potion
-func UnlockPotion(_unlockedPotions: Array, _potName: String):
+func UnlockPotion(_unlockedPotions: Dictionary, _potName: String):
 	var pot = allPotions.get(_potName) 
 	pot.unlocked = true
-	_unlockedPotions.append(pot)
+	_unlockedPotions.set(_potName, pot)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
