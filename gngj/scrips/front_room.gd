@@ -18,17 +18,26 @@ func _ready() -> void:
 	rejectButton.pressed.connect(_on_questRejected_pressed)
 
 func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
-	var potionButton = preload("res://Scenes/PotionTexture.tscn").instantiate()
+	var potionButton = preload("res://Scenes/potionButton.tscn").instantiate()
+	var potionShader = ShaderMaterial.new()
+	potionShader.shader = load("res://assets/shaders/highlight.gdshader")
+	
 	potionForQuest = keyPotion
 	
 	for potion in potions: 
 		if(potion.amountOwned > 0 and potion.unlocked):
 			$potionHotbar/HBoxContainer.add_child(potionButton)
+			$potionHotbar/HBoxContainer.add_child(potionButton)
+			$potionHotbar/HBoxContainer.add_child(potionButton)
 			potionButton.set_texture_normal(load(potion.sprite))
+			potionButton.set_material(potionShader)
 			potionButton.pressed.connect(isCorrectPotion.bind(potion))
-			potionButton.add_to_group("buttonToDelete")
+			potionButton.add_to_group("stuffToDelete")
 		
-			potionButton = preload("res://Scenes/PotionTexture.tscn").instantiate()
+			potionButton = preload("res://Scenes/potionButton.tscn").instantiate()
+			potionShader = ShaderMaterial.new()
+			potionShader.shader = load("res://assets/shaders/highlight.gdshader")
+			
 
 func isCorrectPotion(selectedPotion: Variant):
 	
@@ -38,7 +47,7 @@ func isCorrectPotion(selectedPotion: Variant):
 		$givePotionButton.hide()
 
 func clearInventory():
-	get_tree().call_group("buttonToDelete","queue_free")
+	get_tree().call_group("stuffToDelete","queue_free")
 	
 func _on_backRoomButton_pressed() -> void:
 	toBackRoom.emit()
