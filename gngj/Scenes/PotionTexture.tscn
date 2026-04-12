@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cwi28q2qvisqe"]
+
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="1_oxdow"]
+[ext_resource type="Texture2D" uid="uid://dythmsqj3sahj" path="res://assets/ingredients/IMG_0636.PNG" id="2_83l8i"]
+[ext_resource type="Script" uid="uid://cc5bjoxj0wq8d" path="res://scrips/texture_button.gd" id="3_83l8i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otolt"]
+shader = ExtResource("1_oxdow")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[node name="PotionTexture" type="TextureButton" unique_id=1764766637]
+material = SubResource("ShaderMaterial_otolt")
+offset_right = 500.0
+offset_bottom = 500.0
+texture_normal = ExtResource("2_83l8i")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_83l8i")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
