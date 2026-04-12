@@ -44,9 +44,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="potionInInventory" type="TextureButton" parent="potionHotbar/HBoxContainer" unique_id=1969259046]
-layout_mode = 2
-
 [node name="goToBackroom" type="Button" parent="." unique_id=1735358139]
 layout_mode = 0
 offset_left = 719.0
