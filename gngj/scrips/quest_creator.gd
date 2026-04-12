@@ -59,7 +59,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		["Oh my gosshhhh thank youuuuu!", "SLURP SLURP SLURP"],										#allQuestsuccses
 		["You seem to know what you're doing!","I'll keep coming back everyday for some milk!"],	#Joining pharmacy dialog
 		[],
-		[0],																#Requirements
+		["cinnamon toast crunch milk"],																#Requirements
 		69,																	#RewardMoney
 		["epic fucking monkey"],																	#RewardRecipes
 		["beans", "asbestos"],												#RewardIngredients
@@ -78,7 +78,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		["Marvelous! The cosmos sings!","I can't wait to hear the music!"], 
 		[],
 		["Your milk was great!", "I was able to beat some monsters that I couldn't beat previously","Here's some extra loot for you!"],
-		[0],                                                                
+		["cinnamon toast crunch milk"],                                                                
 		69,
 		["epic fucking monkey"],
 		["beans", "asbestos"],
@@ -97,7 +97,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		["YAY!! I’m gonna glow so bright!!", "SLURP!!"],      
 		["I'll be back everyday!"],
 		[],        
-		[0],                                                                
+		["cinnamon toast crunch milk"],                                                                
 		69,
 		["epic fucking monkey"],
 		["beans", "asbestos"],
@@ -116,7 +116,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		["Oh thank the stars!", "My mind finally feels quiet."],   
 		[],
 		["Your milk was great!", "I was able to beat some monsters that I couldn't beat previously","Here's some extra loot for you!"],           
-		[0],                                                                
+		["epic fucking monkey"],                                                                
 		69,
 		["epic fucking monkey"],
 		["beans", "asbestos"],
@@ -135,7 +135,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		["Excellent!", "The fury burns within me once more!"],
 		["I'll come every 2 days for another potion!"],
 		[],              
-		[0],                                                                
+		["epic fucking monkey"],                                                                
 		69,
 		["epic fucking monkey"],
 		["beans", "asbestos"],
@@ -154,7 +154,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		["Yay!! I’ll sleep so good tonight!", "SLURP SLURP!"],   
 		[],
 		["Your milk was great!", "I was able to beat some monsters that I couldn't beat previously","Here's some extra loot for you!"],           
-		[0],                                                                
+		["epic fucking monkey"],                                                                
 		69,
 		["epic fucking monkey"],
 		["beans", "asbestos"],
@@ -173,7 +173,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod):
 		["YES! I feel brave already!", "Time to face that rat!"],
 		["I have more rats", "so I think I'll come back everyday for another"],
 		[],              
-		[0],                                                                
+		["epic fucking monkey"],                                                                
 		69,
 		["epic fucking monkey"],
 		["beans", "asbestos"],
