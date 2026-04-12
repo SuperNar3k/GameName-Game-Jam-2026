@@ -155,7 +155,7 @@ func Populate():
 	createPotion(
 		"epic fucking monkey",
 		"curious af",
-		0,
+		3,
 		"res://assets/potions/funny_monkey.jpg",
 		["crushed asbestos","crushed asbestos","beans"],
 		0
@@ -206,9 +206,6 @@ func Populate():
 		0
 	)
 	
-	# DEBUG ONLY, REMOVE LATER
-	print(allIngredients)
-	print(allPotions)
 
 # Unlocks default items at start of game
 func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
@@ -245,12 +242,5 @@ func UnlockPotion(_unlockedPotions: Dictionary, _potName: String):
 	pot.unlocked = true
 	_unlockedPotions.set(_potName, pot)
 	
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass 
 	

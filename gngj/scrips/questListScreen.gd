@@ -13,8 +13,8 @@ func displayShit(activeQuests : Array, pharmacyQuests : Array, allPotions: Dicti
 	for pQuest in pharmacyQuests: 
 		$ScrollContainer/AspectRatioContainer/VBoxContainer/pharmacyLable.add_sibling(quest)
 		quest.add_to_group("questToDelete")
-		quest.setSprite(allPotions.values()[pQuest.requirements[0]].sprite)
-		quest.setPotionName(allPotions.values()[pQuest.requirements[0]].itemName)
+		quest.setSprite(allPotions.get(pQuest.requirements[0]).sprite)
+		quest.setPotionName(allPotions.get(pQuest.requirements[0]).itemName)
 		quest.setNpcName(pQuest.npcQuestGiver.npcName)
 		quest.setDaysUntilDue(pQuest.daysUntilDue)
 		
@@ -25,8 +25,8 @@ func displayShit(activeQuests : Array, pharmacyQuests : Array, allPotions: Dicti
 			print("activeQuests: ", activeQuests)
 			$ScrollContainer/AspectRatioContainer/VBoxContainer/questLable.add_sibling(quest)
 			quest.add_to_group("questToDelete")
-			quest.setSprite(allPotions.values()[aQuest.requirements[0]].sprite)
-			quest.setPotionName(allPotions.values()[aQuest.requirements[0]].itemName)
+			quest.setSprite(allPotions.get(aQuest.requirements[0]).sprite)
+			quest.setPotionName(allPotions.get(aQuest.requirements[0]).itemName)
 			quest.setNpcName(aQuest.npcQuestGiver.npcName)
 			quest.setDaysUntilDue(aQuest.daysUntilDue)
 		
