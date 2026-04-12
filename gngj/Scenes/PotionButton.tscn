@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dplhg5kqru3ji"]
+
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="1_ndgoy"]
+[ext_resource type="Texture2D" uid="uid://dntyk7ouipryv" path="res://assets/potions/funny_monkey.jpg" id="2_gjmby"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otolt"]
+shader = ExtResource("1_ndgoy")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[node name="PotionButton" type="Node2D" unique_id=1473925039]
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1977877342]
+material = SubResource("ShaderMaterial_otolt")
+offset_right = 200.0
+offset_bottom = 200.0
+texture_normal = ExtResource("2_gjmby")
+ignore_texture_size = true
+stretch_mode = 0

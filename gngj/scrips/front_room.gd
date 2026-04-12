@@ -9,6 +9,7 @@ signal talkToNpc
 signal questAccepted(option)
 
 var potionForQuest
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	backRoomButton.pressed.connect(_on_backRoomButton_pressed)
@@ -17,7 +18,7 @@ func _ready() -> void:
 	rejectButton.pressed.connect(_on_questRejected_pressed)
 
 func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
-	var potionButton = TextureButton.new()
+	var potionButton = preload("res://Scenes/PotionTexture.tscn").instantiate()
 	potionForQuest = keyPotion
 	
 	for potion in potions: 
@@ -27,7 +28,7 @@ func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
 			potionButton.pressed.connect(isCorrectPotion.bind(potion))
 			potionButton.add_to_group("buttonToDelete")
 		
-			potionButton = TextureButton.new()
+			potionButton = preload("res://Scenes/PotionTexture.tscn").instantiate()
 
 func isCorrectPotion(selectedPotion: Variant):
 	
