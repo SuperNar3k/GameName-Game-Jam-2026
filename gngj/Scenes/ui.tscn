@@ -103,7 +103,7 @@ grow_vertical = 1
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]
 [connection signal="startGame" from="MainMenuScene" to="." method="_on_main_menu_scene_start_game"]
-[connection signal="testThatShit" from="MainMenuScene" to="." method="_on_main_menu_scene_test_that_shit"]
+[connection signal="testThatShit" from="MainMenuScene" to="." method="_on_end_of_day"]
 [connection signal="questAccepted" from="FrontRoom" to="." method="_on_front_room_quest_accepted"]
 [connection signal="talkToNpc" from="FrontRoom" to="." method="_on_front_room_talk_to_npc"]
 [connection signal="toBackRoom" from="FrontRoom" to="." method="_on_front_room_to_back_room"]

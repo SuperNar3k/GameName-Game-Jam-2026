@@ -1,6 +1,5 @@
 extends HBoxContainer
 
-
 func setSprite(sprite : Variant):
 	$AspectRatioContainer/itemSprite.set_texture(load(sprite)) 
 	

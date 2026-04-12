@@ -72,16 +72,6 @@ offset_right = 461.0
 offset_bottom = 129.0
 expand_mode = 1
 
-[node name="givePotionButton" type="Button" parent="." unique_id=971613698]
-visible = false
-layout_mode = 0
-offset_left = 264.0
-offset_top = 164.0
-offset_right = 637.0
-offset_bottom = 260.0
-theme_override_font_sizes/font_size = 25
-text = "Give Selected Potion"
-
 [node name="acceptQuestButton" type="Button" parent="." unique_id=1847298089]
 visible = false
 layout_mode = 0
@@ -109,7 +99,18 @@ offset_left = 281.0
 offset_top = -421.0
 offset_right = 757.0
 offset_bottom = 275.0
+disabled = true
 stretch_mode = 0
+
+[node name="givePotionButton" type="Button" parent="." unique_id=971613698]
+visible = false
+layout_mode = 0
+offset_left = 264.0
+offset_top = 164.0
+offset_right = 637.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 25
+text = "Give Selected Potion"
 
 [node name="Dialogue" type="Button" parent="." unique_id=288120605]
 visible = false
@@ -120,3 +121,4 @@ offset_right = 183.0
 offset_bottom = 267.0
 theme_override_font_sizes/font_size = 60
 text = "Dialogue"
+autowrap_mode = 1

@@ -37,22 +37,6 @@ func _ready() -> void:
 	QuestCreator.Populate(quests, NPCBirthingPod)
 	ItemCreator.UnlockDefaultIngredients(ingredients)
 	ItemCreator.UnlockDefaultPotions(potions)
-
-		
-	#FOR TESTING questReset()
-	var quest1 = quests[0]
-	
-	print("quest1 original npc name: ", quest1.npcQuestGiver.npcName)
-	print("quest1 original daysUntilDue: ", quest1.daysUntilDue)
-		
-	quest1.daysUntilDue = 0
-	
-	print("quest1 changed daysUntilDue: ", quest1.daysUntilDue)
-	
-	quest1.resetQuest()
-	
-	print("quest1 reset npc name: ", quest1.npcQuestGiver.npcName)
-	print("quest1 reset daysUntilDue: ", quest1.daysUntilDue)
 	
 	
 	
@@ -66,6 +50,13 @@ func _ready() -> void:
 		storeQueue
 	)
 	
+	
+#TO-DO: test that certain quests are being added to their proper list upon quest succsess 
+#also need to make sure player is getting rewards properly 
+
+
+#NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
+#(CANNOT SEE WHEN DAY ENDS IF YOU HAVE RECEPE BOOK OPEN)
 
 func startOfDay():
 	var t 
@@ -84,10 +75,9 @@ func startOfDay():
 			quest.daysUntilReward = quest.daysUntilReward - 1
 		
 	for quest in pharmacyQuests:
+		quest.daysUntilDue = quest.daysUntilDue - 1
 		if(quest.daysUntilDue == 0):
 			storeQueue.append(quest)
-		else: 
-			quest.daysUntilDue = quest.daysUntilDue - 1
 	
 	if(storeQueue.size() > 0):
 		$AudioStreamPlayer2D.stream = bellSFX
@@ -96,6 +86,7 @@ func startOfDay():
 		
 	$dayTimer.start(dayDuration)
 	
+	
 func _onGenerateQuest():
 	print("timer went off!")
 	# Choose a random quest from quest list
@@ -103,6 +94,9 @@ func _onGenerateQuest():
 	
 	var newQuest = quests.pick_random()
 	
+	
+	#TO-DO: Make this choosing logic better. As the player gets more quest in activeQuests
+	#or pharmacy quest, it will eventually cause the game to crash here
 	
 	# If the chosen quest is already in the activeQuests or pharmacy lists, pick a new random quest
 	while activeQuests.has(newQuest) or pharmacyQuests.has(newQuest) or storeQueue.has(newQuest):
@@ -155,10 +149,10 @@ func _on_greetNPC():
 	$ui/FrontRoom/Dialogue.disabled = false
 	$ui/FrontRoom/Dialogue.visible = true
 	
-	var currentQuest = storeQueue.pop_front()
+	var currentQuest = storeQueue[0]
 	
 	#Logic for quest on the activeQuest[] and pharmacy[]
-	if (currentQuest.accepted && !currentQuest.questCompleted) :
+	if (currentQuest.accepted && !currentQuest.completed) :
 		
 		#Display Dialog for returning npc
 		for dialog in currentQuest.questDialog[1]:
@@ -168,32 +162,54 @@ func _on_greetNPC():
 		#Check if we have the potion
 		var potionWeNeed = potions.values()[currentQuest.requirements[0]]
 		if(potionWeNeed.amountOwned > 0):
-			$ui/FrontRoom/potionHotBar.visible = true
 			
-			
-			#TO-DO: MORE LOGIC FOR BEING ABLE TO SELECT THE CORRECT POTION
-			#ONLY DISPLAY THE givePotionButton if the selceted potion is the 
-			#potion that the npc needs!
+			#Logic for potion inventory
+			$ui/FrontRoom/potionHotbar.show()
+			$ui/FrontRoom.displayPotionsInInventory(potions.values(), potionWeNeed)
 			
 			#Wait to select the potion and reduce the amount we own
 			await $ui/FrontRoom/givePotionButton.pressed
 			potionWeNeed.amountOwned = potionWeNeed.amountOwned - 1
+			
+			#Hide all the shit and clean it out
+			$ui/FrontRoom/potionHotbar.hide()
+			$ui/FrontRoom/givePotionButton.hide()
+			$ui/FrontRoom.clearInventory()
  		
 			#Dialog for quest success
 			for dialog in currentQuest.questDialog[4]:
 				$ui/FrontRoom/Dialogue.text = dialog
 				await $ui/FrontRoom/Dialogue.pressed
+			
+			#Giving player the reward
+			currency = currency + currentQuest.rewards[0][0]
+			if(currentQuest.daysUntilReward == 0):
+				for rewardRecipe in currentQuest.rewards[1]:
+					unlockPotion(ItemCreator.allPotions.get(rewardRecipe))
+						
+				for rewardIngredient in currentQuest.rewards[2]:
+					giveIngredient(ItemCreator.allIngredients.get(rewardIngredient))
 				
-			#TO-DO: Add giving the player the reward logic
-			
-			
-			#reset the timer for when the pharmacy potion is due
-			if(currentQuest.isRepeatable):
+			#If we complete a pharmacy quest for the first time
+			if(currentQuest.isRepeatable and !pharmacyQuests.has(currentQuest)):
+				
+				#Dialog for active quest becoming a pharmacy quest
+				for dialog in currentQuest.questDialog[5]:
+					$ui/FrontRoom/Dialogue.text = dialog
+					await $ui/FrontRoom/Dialogue.pressed
+					
+				activeQuests.erase(currentQuest)
+				pharmacyQuests.append(currentQuest)
+				
+			#If we complete a pharmacy quest 
+			if(currentQuest.isRepeatable and pharmacyQuests.has(currentQuest)):
 				currentQuest.daysUntilDue = currentQuest.daysUntilDueReset
-				
 			#mark the one time quest as complete so they can just come back to give the reward
+			elif(currentQuest.daysUntilReward > 0):
+				currentQuest.completed = true
 			else:
-				currentQuest.questCompleted = true
+				activeQuests.erase(currentQuest)
+				currentQuest.resetQuest()
 				
 		#If we don't have the potion logic
 		else: 
@@ -205,12 +221,11 @@ func _on_greetNPC():
 					await $ui/FrontRoom/Dialogue.pressed
 					
 				#Reset the quest and remove it from the list
+				pharmacyQuests.erase(currentQuest)
+				activeQuests.erase(currentQuest)
 				currentQuest.resetQuest()
-				if(currentQuest.isRepeatable):
-					pharmacyQuests.erase(currentQuest)
-				else:
-					activeQuests.erase(currentQuest)
-					
+				print("quest erased")
+				
 			else:
 				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1 
 			
@@ -224,35 +239,55 @@ func _on_greetNPC():
 		#Check if we have the potion 
 		var potionWeNeed = potions.values()[currentQuest.requirements[0]]
 		if(potionWeNeed.amountOwned > 0):
-			$ui/FrontRoom/potionHotBar.visible = true
 			
-			#TO-DO: MORE LOGIC FOR BEING ABLE TO SELECT THE CORRECT POTION
-			#ONLY DISPLAY THE givePotionButton if the selceted potion is the 
-			#potion that the npc needs!
+			#Logic for potion inventory
+			$ui/FrontRoom/potionHotbar.show()
+			$ui/FrontRoom.displayPotionsInInventory(potions.values(), potionWeNeed)
 			
 			#Wait to select the potion and reduce the amount we own
 			await $ui/FrontRoom/givePotionButton.pressed
 			potionWeNeed.amountOwned = potionWeNeed.amountOwned - 1
+			
+			#Hide all the shit and clean it out
+			$ui/FrontRoom/potionHotbar.hide()
+			$ui/FrontRoom/givePotionButton.hide()
+			$ui/FrontRoom.clearInventory()
+			
  		
 			#Dialog for quest success
 			for dialog in currentQuest.questDialog[4]:
 				$ui/FrontRoom/Dialogue.text = dialog
 				await $ui/FrontRoom/Dialogue.pressed
 			
-			#logic for completing a pharmacy quest vs a one time quest
+			#Logic for giving the player the reward
+			currency = currency + currentQuest.rewards[0][0]
+			if(currentQuest.daysUntilReward == 0):
+				for rewardRecipe in currentQuest.rewards[1]:
+					unlockPotion(ItemCreator.allPotions.get(rewardRecipe))
+						
+				for rewardIngredient in currentQuest.rewards[2]:
+					giveIngredient(ItemCreator.allIngredients.get(rewardIngredient))
+			
+			#Logic for completing a pharmacy quest vs a one time quest
 			if(currentQuest.isRepeatable):
 				
-				#TO-DO: HAVE A DIALOG SHOW UP FOR ADDING THEM TO THE PHARMACY LIST
+				#Dialog for adding quest to pharmacy
+				for dialog in currentQuest.questDialog[5]:
+					$ui/FrontRoom/Dialogue.text = dialog
+					await $ui/FrontRoom/Dialogue.pressed
 				
 				currentQuest.accepted = true
 				pharmacyQuests.append(currentQuest)
-			
+				
 			#Again, if it is a one time quest, we can just do logic so they 
 			#only come back to give player the rewards
-			else:
+			elif(currentQuest.daysUntilDue > 0):
 				currentQuest.accepted = true
-				currentQuest.questCompleted = true
+				currentQuest.completed = true
 				activeQuests.append(currentQuest)
+				
+			else:
+				currentQuest.resetQuest()
 				
 			
 		#logic for either having them come back later or rejecting quest
@@ -280,12 +315,20 @@ func _on_greetNPC():
 				currentQuest.resetQuest()
 				
 	#Logic for when the npc wants to give you rewards for completing a one time quest
-	elif(currentQuest.accepted && currentQuest.questCompleted):
+	elif(currentQuest.accepted && currentQuest.completed):
 		
-		#TO-DO: Add the dialog for the npc saying that they came back to give more stuff
-		
-		#TO-DO: Logic for giving the rewards to the player
-		
+		#Dialog for the npc saying that they came back to give more stuff
+		for dialog in currentQuest.questDialog[6]:
+					$ui/FrontRoom/Dialogue.text = dialog
+					await $ui/FrontRoom/Dialogue.pressed
+					
+		#Logic for giving the rewards to the player
+		for rewardRecipe in currentQuest.rewards[1]:
+			unlockPotion(ItemCreator.allPotions.get(rewardRecipe))
+		for rewardIngredient in currentQuest.rewards[2]:
+			giveIngredient(ItemCreator.allIngredients.get(rewardIngredient))
+			
+				
 		#Reset the quest and remove it from activeQuest[]
 		currentQuest.resetQuest()
 		activeQuests.erase(currentQuest)
@@ -295,6 +338,7 @@ func _on_greetNPC():
 	$ui/FrontRoom/Dialogue.disabled = true
 	$ui/FrontRoom/Dialogue.visible = false
 	
+	storeQueue.pop_front()
 	_updateQueue()
 
 func _on_ui_quest_accepted(option: Variant):
@@ -369,19 +413,28 @@ func onIngredientGrinded(i: Item):
 	return true
 
 func unlockPotion(p: Item):
+	
 	# If not unlocked, unlock it!
-	if !(p in potions):
+	if !(p.itemName in potions):
+		ItemCreator.UnlockPotion(potions, p.itemName)
 		potions.set(p.itemName, p)
 		p.unlocked = true
+		
+		print("potion: ", p.itemName, " unlocked")
 		
 		# TO-DO: POPUP NEWITEM FOR NEW UNLOCKED POTION
 
 func giveIngredient(i: Item):
 	# If not unlocked, unlock it!
-	if !(i in ingredients):
+	if !(i.itemName in ingredients):
+		ItemCreator.UnlockIngredient(ingredients,i.itemName)
 		ingredients.set(i.itemName, i)
 		i.unlocked = true
-
+		
+		print("ingredient: ", i.itemName, " unlocked")
+		
+		#TO-DO: ALSO NEED TO ADD POP UP HERE
+		
 	# Increase quantity by 1
 	i.amountOwned += 1
 
@@ -414,7 +467,7 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 	potion.amountOwned += 1
 
 func endOfDay():
-	
+	print("ending day")
 	# Increment day
 	day += 1;
 	
@@ -431,15 +484,14 @@ func endOfDay():
 			q.daysUntilDue -= 1
 			
 	storeQueue.clear()
+	_updateQueue()
+	
+	print("Active quest list: ", activeQuests)
 
 	# TO-DO: if grinding in-progress, pause the grinding timer
 	
 	# TO-DO: if potion making was in-progress, immediately complete the potion
 	
-	# TO-DO: show EndOfDay popup node (Store node)
+	$ui._on_end_of_day()
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
 	

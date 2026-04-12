@@ -8,6 +8,7 @@ signal toBackRoom
 signal talkToNpc
 signal questAccepted(option)
 
+var potionForQuest
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	backRoomButton.pressed.connect(_on_backRoomButton_pressed)
@@ -15,6 +16,29 @@ func _ready() -> void:
 	acceptButton.pressed.connect(_on_questAccepted_pressed)
 	rejectButton.pressed.connect(_on_questRejected_pressed)
 
+func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
+	var potionButton = TextureButton.new()
+	potionForQuest = keyPotion
+	
+	for potion in potions: 
+		if(potion.amountOwned > 0):
+			$potionHotbar/HBoxContainer.add_child(potionButton)
+			potionButton.set_texture_normal(load(potion.sprite))
+			potionButton.pressed.connect(isCorrectPotion.bind(potion))
+			potionButton.add_to_group("buttonToDelete")
+		
+			potionButton = TextureButton.new()
+
+func isCorrectPotion(selectedPotion: Variant):
+	
+	if(selectedPotion == potionForQuest):
+		$givePotionButton.show()
+	else: 
+		$givePotionButton.hide()
+
+func clearInventory():
+	get_tree().call_group("buttonToDelete","queue_free")
+	
 func _on_backRoomButton_pressed() -> void:
 	toBackRoom.emit()
 	
