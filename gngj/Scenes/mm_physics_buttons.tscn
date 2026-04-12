@@ -195,6 +195,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 28)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=409899956]
 shape = SubResource("CapsuleShape2D_klqoj")
@@ -207,6 +208,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 28)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2" unique_id=939815940]
 shape = SubResource("CapsuleShape2D_8nx21")
@@ -219,6 +221,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 54)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3" unique_id=998868530]
 shape = SubResource("CapsuleShape2D_el70q")
@@ -231,6 +234,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 54)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4" unique_id=190253130]
 shape = SubResource("CapsuleShape2D_jxibw")
@@ -243,6 +247,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 453)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5" unique_id=337880923]
 shape = SubResource("CapsuleShape2D_w6fws")
@@ -255,6 +260,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 453)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6" unique_id=910091016]
 shape = SubResource("CapsuleShape2D_rqxr1")
@@ -267,6 +273,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 586)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D7" unique_id=564278932]
 shape = SubResource("CapsuleShape2D_7nhf2")
@@ -279,6 +286,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 586)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D8" unique_id=892534403]
 shape = SubResource("CapsuleShape2D_u5eng")
@@ -291,6 +299,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 712)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D9" unique_id=1607993983]
 shape = SubResource("CapsuleShape2D_odl7m")
@@ -303,6 +312,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 712)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D10" unique_id=910571180]
 shape = SubResource("CapsuleShape2D_2cwcs")
@@ -315,6 +325,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 833)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D11" unique_id=1915756584]
 shape = SubResource("CapsuleShape2D_cgcti")
@@ -327,6 +338,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 833)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D12" unique_id=1993727329]
 shape = SubResource("CapsuleShape2D_t0s1q")
@@ -339,6 +351,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 82)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D13" unique_id=1876665737]
 shape = SubResource("CapsuleShape2D_774d0")
@@ -351,6 +364,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 82)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D14" unique_id=185997156]
 shape = SubResource("CapsuleShape2D_x4j0t")
@@ -363,6 +377,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 426)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D15" unique_id=1578762408]
 shape = SubResource("CapsuleShape2D_tn2ke")
@@ -375,6 +390,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 426)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D16" unique_id=99295492]
 shape = SubResource("CapsuleShape2D_cth3y")
@@ -387,6 +403,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 398)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D17" unique_id=1750628158]
 shape = SubResource("CapsuleShape2D_bqp27")
@@ -399,6 +416,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 398)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D18" unique_id=1729218616]
 shape = SubResource("CapsuleShape2D_yjk15")
@@ -411,6 +429,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(0, 371)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D19" unique_id=1377955171]
 shape = SubResource("CapsuleShape2D_feowu")
@@ -423,6 +442,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(216, 371)
 collision_layer = 2
 collision_mask = 2
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D20" unique_id=24679490]
 shape = SubResource("CapsuleShape2D_bjdkm")
@@ -435,6 +455,7 @@ texture = ExtResource("8_8nx21")
 position = Vector2(107, 254)
 collision_layer = 0
 collision_mask = 0
+linear_damp = 2.453
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="logo" unique_id=1370700812]
 position = Vector2(0, -20)

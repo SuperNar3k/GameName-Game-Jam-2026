@@ -63,36 +63,36 @@ func Populate():
 		#sprite
 		#value
 		#grindable
-	
-	createIngredient(
-		"asbestos",										#ItemName
-		"this shit will kill you",						#Description
-		1000,											#AmountOwned
-		"res://assets/ingredients/asbestos.png",		#Sprite
-		3,												#Value
-		true											#grindable
-	)
-	
-	createIngredient(
-		"crushed asbestos",
-		"this shit will kill you, also its a powder now",
-		0,
-		"res://assets/ingredients/crushed asbestos.jpg",
-		0,
-		false
-	)
-	
-	createIngredient(
-		"beans",
-		"staight up beans nigga",
-		3,
-		"res://assets/ingredients/beans.png",
-		3,
-		true
-	)
+	#
+	#createIngredient(
+		#"asbestos",										#ItemName
+		#"this shit will kill you",						#Description
+		#1000,											#AmountOwned
+		#"res://assets/ingredients/asbestos.png",		#Sprite
+		#3,												#Value
+		#true											#grindable
+	#)
+	#
+	#createIngredient(
+		#"crushed asbestos",
+		#"this shit will kill you, also its a powder now",
+		#0,
+		#"res://assets/ingredients/crushed asbestos.jpg",
+		#0,
+		#false
+	#)
+	#
+	#createIngredient(
+		#"beans",
+		#"staight up beans nigga",
+		#3,
+		#"res://assets/ingredients/beans.png",
+		#3,
+		#true
+	#)
 	createIngredient("earth", "dirt", 0, "res://assets/ingredients/IMG_0645.PNG", 0, false)
 	createIngredient("a leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/IMG_0634.PNG", 1, true)
-	createIngredient("a leaf of a thousand leaves powder", "crushed vern", 0, "res://assets/ingredients/IMG_0635.PNG", 1, false)
+	createIngredient("a leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/IMG_0635.PNG", 1, false)
 	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/IMG_0628.PNG", 1, true)
 	createIngredient("a thorny heart powder", "crushed cactus", 0, "res://assets/ingredients/IMG_0629.PNG", 1, false)
 	createIngredient("tears of trees", "string of pearls", 0, "res://assets/ingredients/IMG_0626.PNG", 1, true)
@@ -219,17 +219,18 @@ func Populate():
 
 # Unlocks default items at start of game
 func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
-	var newItem = allIngredients.get("beans") 
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
-	
-	newItem = allIngredients.get("asbestos") 
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
-	
-	newItem = allIngredients.get("crushed asbestos") 
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
+	#var newItem = allIngredients.get("beans") 
+	#newItem.unlocked = true
+	#_unlockedIngredients.set(newItem.itemName, newItem)
+	#
+	#newItem = allIngredients.get("asbestos") 
+	#newItem.unlocked = true
+	#_unlockedIngredients.set(newItem.itemName, newItem)
+	#
+	#newItem = allIngredients.get("crushed asbestos") 
+	#newItem.unlocked = true
+	#_unlockedIngredients.set(newItem.itemName, newItem)
+	pass
 	
 func UnlockDefaultPotions(_unlockedPotions: Dictionary):
 	var a = allPotions.get("cinnamon toast crunch milk") 
