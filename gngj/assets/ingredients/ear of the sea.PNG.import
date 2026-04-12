@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhxnw4sw1nx5t"
-path="res://.godot/imported/IMG_0631.PNG-4bbd158c03c3150ae9bb44cfad8c70ce.ctex"
+uid="uid://bdnoyasc61ce8"
+path="res://.godot/imported/ear of the sea.PNG-8d436fcbd299944b05d9175e181a490a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0631.PNG"
-dest_files=["res://.godot/imported/IMG_0631.PNG-4bbd158c03c3150ae9bb44cfad8c70ce.ctex"]
+source_file="res://assets/ingredients/ear of the sea.PNG"
+dest_files=["res://.godot/imported/ear of the sea.PNG-8d436fcbd299944b05d9175e181a490a.ctex"]
 
 [params]
 

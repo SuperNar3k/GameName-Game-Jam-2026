@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daja3i8mkle21"
-path="res://.godot/imported/IMG_0619.PNG-ec14bf3c2e710333bcf5a86bdac7ebc2.ctex"
+uid="uid://cbt0wg6eqtnm8"
+path="res://.godot/imported/spring crystal powder.PNG-8abdf832390c2198ff0111112232efec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0619.PNG"
-dest_files=["res://.godot/imported/IMG_0619.PNG-ec14bf3c2e710333bcf5a86bdac7ebc2.ctex"]
+source_file="res://assets/ingredients/spring crystal powder.PNG"
+dest_files=["res://.godot/imported/spring crystal powder.PNG-8abdf832390c2198ff0111112232efec.ctex"]
 
 [params]
 

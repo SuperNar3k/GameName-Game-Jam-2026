@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdnoyasc61ce8"
-path="res://.godot/imported/IMG_0624.PNG-0a615ba7397e3a147e39b9cff3017584.ctex"
+uid="uid://dybfpaqwdy4pa"
+path="res://.godot/imported/winter crystal powder.PNG-6bc062194d1d0699fa6944d0f496d29e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0624.PNG"
-dest_files=["res://.godot/imported/IMG_0624.PNG-0a615ba7397e3a147e39b9cff3017584.ctex"]
+source_file="res://assets/ingredients/winter crystal powder.PNG"
+dest_files=["res://.godot/imported/winter crystal powder.PNG-6bc062194d1d0699fa6944d0f496d29e.ctex"]
 
 [params]
 

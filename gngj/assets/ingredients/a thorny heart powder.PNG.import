@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcco3vfxmm6ib"
-path="res://.godot/imported/IMG_0617.PNG-93360d79b264977e9e7d7b088a9af2e4.ctex"
+uid="uid://bhqemx8g86cgt"
+path="res://.godot/imported/a thorny heart powder.PNG-092ec1c42c48606ddb54f0ff4b3107d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0617.PNG"
-dest_files=["res://.godot/imported/IMG_0617.PNG-93360d79b264977e9e7d7b088a9af2e4.ctex"]
+source_file="res://assets/ingredients/a thorny heart powder.PNG"
+dest_files=["res://.godot/imported/a thorny heart powder.PNG-092ec1c42c48606ddb54f0ff4b3107d2.ctex"]
 
 [params]
 

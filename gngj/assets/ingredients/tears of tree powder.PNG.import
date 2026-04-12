@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dupo3xjafm3wb"
-path="res://.godot/imported/IMG_0632.PNG-37feddd46b7dd6fc8703bac3bc2566bc.ctex"
+uid="uid://pjq54lrtm1gt"
+path="res://.godot/imported/tears of tree powder.PNG-a9fbcf58d3f493c95146630c6abc784f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0632.PNG"
-dest_files=["res://.godot/imported/IMG_0632.PNG-37feddd46b7dd6fc8703bac3bc2566bc.ctex"]
+source_file="res://assets/ingredients/tears of tree powder.PNG"
+dest_files=["res://.godot/imported/tears of tree powder.PNG-a9fbcf58d3f493c95146630c6abc784f.ctex"]
 
 [params]
 
