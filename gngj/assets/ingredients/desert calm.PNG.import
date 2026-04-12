@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5mj0yvablpvi"
-path="res://.godot/imported/IMG_0626.PNG-941508a07d83c76f39f2a536362307b1.ctex"
+uid="uid://dupo3xjafm3wb"
+path="res://.godot/imported/desert calm.PNG-286e8886920408d14ee2d1f4b6d8e405.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0626.PNG"
-dest_files=["res://.godot/imported/IMG_0626.PNG-941508a07d83c76f39f2a536362307b1.ctex"]
+source_file="res://assets/ingredients/desert calm.PNG"
+dest_files=["res://.godot/imported/desert calm.PNG-286e8886920408d14ee2d1f4b6d8e405.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1tefwjdvksc2"
-path="res://.godot/imported/IMG_0621.PNG-40ea5e0359efcc558e1998bdfe49c9e3.ctex"
+uid="uid://brlbuxjym65wb"
+path="res://.godot/imported/spring crystal.PNG-c3927effbc164b85712c8e1385e38200.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0621.PNG"
-dest_files=["res://.godot/imported/IMG_0621.PNG-40ea5e0359efcc558e1998bdfe49c9e3.ctex"]
+source_file="res://assets/ingredients/spring crystal.PNG"
+dest_files=["res://.godot/imported/spring crystal.PNG-c3927effbc164b85712c8e1385e38200.ctex"]
 
 [params]
 

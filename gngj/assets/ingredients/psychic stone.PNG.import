@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx0xa3ye42f87"
-path="res://.godot/imported/IMG_0623.PNG-53c6ce35da786d4abd2f4a86bdeada35.ctex"
+uid="uid://batofbki0yyny"
+path="res://.godot/imported/psychic stone.PNG-1720e0cdb6f0952a05e20080bf7e7987.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0623.PNG"
-dest_files=["res://.godot/imported/IMG_0623.PNG-53c6ce35da786d4abd2f4a86bdeada35.ctex"]
+source_file="res://assets/ingredients/psychic stone.PNG"
+dest_files=["res://.godot/imported/psychic stone.PNG-1720e0cdb6f0952a05e20080bf7e7987.ctex"]
 
 [params]
 

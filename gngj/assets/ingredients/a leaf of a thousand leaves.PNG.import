@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgy4mp5jd6swi"
-path="res://.godot/imported/IMG_0616.PNG-6d8a6ce33be519c60650fc3ac28ae8f7.ctex"
+uid="uid://cm6ipfkxr6gj2"
+path="res://.godot/imported/a leaf of a thousand leaves.PNG-36deda50d11d6129f55c64bee2bd32a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0616.PNG"
-dest_files=["res://.godot/imported/IMG_0616.PNG-6d8a6ce33be519c60650fc3ac28ae8f7.ctex"]
+source_file="res://assets/ingredients/a leaf of a thousand leaves.PNG"
+dest_files=["res://.godot/imported/a leaf of a thousand leaves.PNG-36deda50d11d6129f55c64bee2bd32a2.ctex"]
 
 [params]
 

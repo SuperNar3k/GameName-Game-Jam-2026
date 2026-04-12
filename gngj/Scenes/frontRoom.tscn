@@ -33,12 +33,11 @@ texture = ExtResource("2_fixym")
 texture = ExtResource("3_s0epr")
 
 [node name="potionHotbar" type="ScrollContainer" parent="." unique_id=339280144]
-visible = false
 layout_mode = 0
 offset_left = -897.0
 offset_top = 299.0
 offset_right = 652.0
-offset_bottom = 508.0
+offset_bottom = 509.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="potionHotbar" unique_id=321086834]
 layout_mode = 2

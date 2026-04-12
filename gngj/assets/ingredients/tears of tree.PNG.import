@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b23opicsko4f"
-path="res://.godot/imported/IMG_0628.PNG-ef56db3e628272a6958807990f5dd9b5.ctex"
+uid="uid://b5mj0yvablpvi"
+path="res://.godot/imported/tears of tree.PNG-3d501cf857a94abb70a2502b3830ea90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0628.PNG"
-dest_files=["res://.godot/imported/IMG_0628.PNG-ef56db3e628272a6958807990f5dd9b5.ctex"]
+source_file="res://assets/ingredients/tears of tree.PNG"
+dest_files=["res://.godot/imported/tears of tree.PNG-3d501cf857a94abb70a2502b3830ea90.ctex"]
 
 [params]
 

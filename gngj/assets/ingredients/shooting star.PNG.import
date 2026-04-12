@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pjq54lrtm1gt"
-path="res://.godot/imported/IMG_0627.PNG-806c2f78876a4fe3f2a502c95631044c.ctex"
+uid="uid://dythmsqj3sahj"
+path="res://.godot/imported/shooting star.PNG-2535e17d662b56f4372e86fe7075ec35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/IMG_0627.PNG"
-dest_files=["res://.godot/imported/IMG_0627.PNG-806c2f78876a4fe3f2a502c95631044c.ctex"]
+source_file="res://assets/ingredients/shooting star.PNG"
+dest_files=["res://.godot/imported/shooting star.PNG-2535e17d662b56f4372e86fe7075ec35.ctex"]
 
 [params]
 
