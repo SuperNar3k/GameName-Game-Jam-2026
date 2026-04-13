@@ -14,7 +14,7 @@ var potions = {} # Dictionary of unlocked potions
 var ingredients = {} # Dictionary of unlocked ingredients
 var quests = [] # Array of ALL quests
 
-var availableQuests = [] #Array of quests that are availble
+var availableNPCS = [] #Array of quests that are availble
 var activeQuests = [] # Accepted quests
 var pharmacyQuests = [] # Repeatable quests
 var storeQueue = [] # Aray of customers (only first 3 are shown)
@@ -39,7 +39,6 @@ var buySFX = preload("res://assets/sound/cha-ching.mp3")
 
 # Called when the game starts.
 func _ready() -> void:
-	
 	
 	
 	
@@ -88,10 +87,10 @@ func startOfDay():
 		
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
 		
-		QuestCreator.Populate(quests, NPCBirthingPod, potions)
+		#QuestCreator.Populate(quests, NPCBirthingPod, potions)
 		
-		for quest in quests:
-			availableQuests.append(quest)
+		for NPC in NPCBirthingPod.allNPCs.values():
+			availableNPCS.append(NPC)
 	else:
 		var ingredient = ingredients.get("leaf of a thousand leaves")
 		ingredient.amountOwned = ingredient.amountOwned + 2
@@ -138,11 +137,11 @@ func _onGenerateQuest():
 	print("Generating quest!")
 
 	# Choose a random quest from availble quest list
-	if(availableQuests.size() > 0):
-		var newQuest = availableQuests.pick_random()
+	if(availableNPCS.size() > 0):
+		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions) 
 		# Add new quest to the queue
 		storeQueue.append(newQuest)
-		availableQuests.erase(newQuest)
+		availableNPCS.erase(newQuest)
 		_updateQueue()
 		
 		# Trigger the bell sound effect
@@ -252,7 +251,8 @@ func _on_greetNPC():
 			else:
 				activeQuests.erase(currentQuest)
 				currentQuest.resetQuest()
-				availableQuests.append(currentQuest)
+				availableNPCS.append(currentQuest.npcQuestGiver)
+			
 				
 		#If we don't have the potion logic
 		else: 
@@ -267,7 +267,7 @@ func _on_greetNPC():
 				pharmacyQuests.erase(currentQuest)
 				activeQuests.erase(currentQuest)
 				currentQuest.resetQuest()
-				availableQuests.append(currentQuest)
+				availableNPCS.append(currentQuest.npcQuestGiver)
 				print("quest erased")
 				
 			else:
@@ -333,7 +333,7 @@ func _on_greetNPC():
 				
 			else:
 				currentQuest.resetQuest()
-				availableQuests.append(currentQuest)
+				availableNPCS.append(currentQuest.npcQuestGiver)
 				
 			
 		#logic for either having them come back later or rejecting quest
@@ -359,7 +359,7 @@ func _on_greetNPC():
 					await $ui/FrontRoom/Dialogue.pressed
 			
 				currentQuest.resetQuest()
-				availableQuests.append(currentQuest)
+				availableNPCS.append(currentQuest.npcQuestGiver)
 				
 	#Logic for when the npc wants to give you rewards for completing a one time quest
 	elif(currentQuest.accepted && currentQuest.completed):
@@ -379,7 +379,7 @@ func _on_greetNPC():
 		#Reset the quest and remove it from activeQuest[]
 		currentQuest.resetQuest()
 		activeQuests.erase(currentQuest)
-		availableQuests.append(currentQuest)
+		availableNPCS.append(currentQuest.npcQuestGiver)
 	
 	#Unlock the player from the interaction
 	$ui/FrontRoom/goToBackroom.disabled = false
