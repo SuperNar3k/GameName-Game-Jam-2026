@@ -21,6 +21,7 @@ signal startGame
 signal correctPotionSelected
 signal buyItem(cost, item)
 signal cookingDone(heldIngredients, cookedLevel)
+signal finishedNotifying
 
 
 func _ready() -> void:
@@ -201,7 +202,6 @@ func _on_hud_quest_pressed() -> void:
 	
 func _on_quest_list_screen_return_to_game() -> void:
 	$questListScreen.hide()
-	print("last screen")
 	lastScreen.show()
 
 func _on_hud_options_pressed() -> void:
@@ -250,3 +250,7 @@ func _on_crow_store_buy(cost: Variant, item: Variant):
 
 func _on_cauldron_station_cooking_done(held_ingredients: Variant) -> void:
 	cookingDone.emit(held_ingredients, 0)
+
+
+func _on_notification_finished_playing() -> void:
+	finishedNotifying.emit()

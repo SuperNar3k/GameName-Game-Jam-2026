@@ -21,6 +21,7 @@ position = Vector2(960, 540)
 
 [connection signal="buyItem" from="ui" to="." method="buyIngredient"]
 [connection signal="cookingDone" from="ui" to="." method="onCreatePotion"]
+[connection signal="finishedNotifying" from="ui" to="." method="notifcationFinished"]
 [connection signal="questAccepted" from="ui" to="." method="_on_ui_quest_accepted"]
 [connection signal="startGame" from="ui" to="." method="startOfDay"]
 [connection signal="talkToNpc" from="ui" to="." method="_on_greetNPC"]

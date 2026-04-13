@@ -84,11 +84,7 @@ func __init__(
 	# Sort the keys
 	potionKeysSorted = allPotions.keys()
 	potionKeysSorted.sort()
-	
-	#TESTING ONLY CODE WILL BREAK SHIT
-	for potion in allPotions.values():
-		potion.unlocked = true
-	
+		
 	
 	# Initialize tableOfContents array
 	var lastIndex = 0
@@ -100,8 +96,6 @@ func __init__(
 				lastIndex = p 
 				break
 		tableOfContents.set(letter, lastIndex)
-		
-	print("table of contents created")
 
 
 func _go_to_page(c : String):
@@ -122,7 +116,6 @@ func _go_to_page(c : String):
 			page_index = page_index-1
 		else:
 			_on_back_btn_pressed()
-			print(page_index)
 
 
 func _on_recipe_book_btn_pressed() -> void:
@@ -246,7 +239,6 @@ func _on_fwd_btn_pressed() -> void:
 		else:
 			break
 		
-	print(page_index)	
 	if page_index == allPotions.size() or page_index == allPotions.size()-1:
 		$FwdBtn.hide()
 
@@ -315,8 +307,6 @@ func _on_back_btn_pressed() -> void:
 					newLabel.text = "???"
 					$RightSprite/RightRecipe.add_child(newLabel)
 		
-		
-	print(page_index)
 	if page_index == 0:
 		$BackBtn.hide()
 

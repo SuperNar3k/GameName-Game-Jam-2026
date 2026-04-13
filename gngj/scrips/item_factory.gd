@@ -82,7 +82,7 @@ func Populate():
 		#false
 	#)
 	
-	createIngredient("earth", "dirt", 69, "res://assets/ingredients/earth.PNG", 0, false)
+	createIngredient("earth", "dirt", 9223372036854775807, "res://assets/ingredients/earth.PNG", 0, false)
 	createIngredient("leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/a leaf of a thousand leaves.PNG", 1, true)
 	createIngredient("leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/a leaf of a thousand leaves powder.PNG", 1, false)
 	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/a thorny heart.PNG", 1, true)
@@ -467,19 +467,9 @@ func Populate():
 		0															#CookLevelNeeded
 	)
 	
-	# DEBUG ONLY, REMOVE LATER
-	print(allIngredients)
-	print(allPotions)
 
 # Unlocks default items at start of game
 func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
-	var newItem = allIngredients.get("earth")
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
-	
-	newItem = allIngredients.get("tears of trees")
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
 	
 	#var newItem = allIngredients.get("beans") 
 	#newItem.unlocked = true
