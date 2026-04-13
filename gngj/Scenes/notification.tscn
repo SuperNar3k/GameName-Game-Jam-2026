@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctbfso3nbohqd"]
 
 [ext_resource type="Script" uid="uid://drhbnblhm3b6s" path="res://scrips/popup.gd" id="1_0gtv2"]
+[ext_resource type="Script" uid="uid://b0c6ktdl2l8y6" path="res://Scenes/notification.gd" id="1_dygbd"]
 [ext_resource type="Texture2D" uid="uid://u6c8vebjwgcm" path="res://assets/ui/parchment.PNG" id="2_wohpn"]
 [ext_resource type="Texture2D" uid="uid://cgy4mp5jd6swi" path="res://assets/ingredients/air's brevity.PNG" id="3_cmct2"]
 [ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="4_dygbd"]
@@ -71,6 +72,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4419807, 1.4419807)
+script = ExtResource("1_dygbd")
 
 [node name="Popup" type="Control" parent="." unique_id=1744936356]
 anchors_preset = 0
@@ -125,5 +127,6 @@ label_settings = ExtResource("5_kxtsc")
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[connection signal="finishedPlaying" from="Popup" to="." method="_on_popup_finished_playing"]
 [connection signal="timeout" from="Popup/popupTimer" to="Popup" method="onTimerTimeout"]
 [connection signal="animation_finished" from="Popup/popupAnimation" to="Popup" method="onPopupAnimationFinished"]

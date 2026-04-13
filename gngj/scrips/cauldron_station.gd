@@ -65,7 +65,7 @@ func _on_drop_spot_pressed() -> void:
 		$IngredientDrawer.instance.queue_free()
 		$IngredientDrawer.held = null
 		$IngredientDrawer.show_buttons()
-		print(held_ingredients)
+		print("ingredients in cauldron: ", held_ingredients)
 		
 
 func hide_buttons():

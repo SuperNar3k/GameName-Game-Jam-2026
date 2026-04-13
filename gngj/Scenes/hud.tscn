@@ -43,6 +43,15 @@ offset_right = 97.0
 offset_bottom = 185.0
 text = "Options"
 
+[node name="currencyLable" type="Label" parent="." unique_id=1472623530]
+layout_mode = 0
+offset_left = 1610.0
+offset_top = 11.0
+offset_right = 1829.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 40
+text = "Currency: 0"
+
 [connection signal="pressed" from="Recipes" to="." method="_on_recipes_pressed"]
 [connection signal="pressed" from="Quests" to="." method="_on_quests_pressed"]
 [connection signal="pressed" from="Bookshelf" to="." method="_on_bookshelf_pressed"]
