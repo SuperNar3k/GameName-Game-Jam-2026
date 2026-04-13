@@ -622,7 +622,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 	
 func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary):
 	var randomPotion = potions.keys().pick_random()
-	var quest 
+	var quest = null
 	
 	match npcName:
 		"Ambitious Lady In Waiting":
@@ -1044,4 +1044,6 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		NPCBirthingPod														#Pass the birthing pod
 	)
 	
+	if(quest == null):
+		print("Could not find npc: ", npcName)
 	return quest
