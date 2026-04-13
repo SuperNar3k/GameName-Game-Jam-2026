@@ -17,6 +17,7 @@ signal talkToNpc
 signal questAccepted(option)
 signal startGame
 signal correctPotionSelected
+signal buyItem(cost, item)
 
 
 func _ready() -> void:
@@ -57,7 +58,7 @@ func ref_storage(
 	_quests,
 	_activeQuests,
 	_pharmacyQuests,
-	_storeQueue
+	_storeQueue,
 ) -> void:
 	allPotions = _allPotions
 	allIngredients = _allIngredients
@@ -229,3 +230,9 @@ func _on_front_room_talk_to_npc() -> void:
 
 func _on_front_room_correct_potion_selected() -> void:
 	correctPotionSelected.emit()
+
+
+func _on_crow_store_buy(cost: Variant, item: Variant):
+	var ingredient = allIngredients.get(item)
+	buyItem.emit(cost,ingredient)
+	

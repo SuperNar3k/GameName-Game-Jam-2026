@@ -20,7 +20,6 @@ func apply_all():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(settings.sfx_volume))
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if settings.windowed else DisplayServer.WINDOW_MODE_FULLSCREEN)
 	DisplayServer.window_set_size(settings.resolution)
-	
 
 #Saves settings
 func save_settings():

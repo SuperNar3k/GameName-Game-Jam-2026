@@ -369,6 +369,8 @@ theme = SubResource("Theme_nvrov")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1081624250]
 libraries/ = SubResource("AnimationLibrary_gfmpn")
 
+
+
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]

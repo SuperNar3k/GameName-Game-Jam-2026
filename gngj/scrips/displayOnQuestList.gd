@@ -11,8 +11,3 @@ func setNpcName(_name: Variant):
 	
 func setDaysUntilDue(days: Variant):
 	$VBoxContainer/HBoxContainer/daysUntilDue.text = str(days)
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.

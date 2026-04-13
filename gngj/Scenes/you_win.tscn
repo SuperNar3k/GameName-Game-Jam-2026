@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cja876420ua6a"]
+
+[node name="YouWin" type="Control" unique_id=402555098]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=775685263]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.74868923, 0.6217816, 0.9255484, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1687535503]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -407.0
+offset_top = -251.0
+offset_right = 407.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 131
+bbcode_enabled = true
+text = "[color=#274C77][center]You Win![/center][/color]"
+fit_content = true
+horizontal_alignment = 1

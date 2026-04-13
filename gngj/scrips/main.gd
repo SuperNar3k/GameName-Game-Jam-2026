@@ -1,7 +1,7 @@
 extends Node2D
 
 #GLOBAL VARIABLES
-var currency = 0
+var currency = 50
 var day = 1
 var dayDuration = 90
 var numOfNpcs = 3
@@ -13,6 +13,7 @@ var potions = {} # Dictionary of unlocked potions
 var ingredients = {} # Dictionary of unlocked ingredients
 var quests = [] # Array of ALL quests
 
+var availableQuests = [] #Array of quests that are availble
 var activeQuests = [] # Accepted quests
 var pharmacyQuests = [] # Repeatable quests
 var storeQueue = [] # Aray of customers (only first 3 are shown)
@@ -23,14 +24,17 @@ var ItemCreator = Item_Factory.new() # Used for creating quests
 
 #@onready var bell_sfx = $BellSFX # Bell sound effect
 signal optionChosen
+signal noLongerInConverstation
 var questAccepted
+var inConverstation = false
 
 var bellSFX = preload("res://assets/sound/vine-boom.mp3")
+var buySFX = preload("res://assets/sound/cha-ching.mp3")
 
 # Called when the game starts.
 func _ready() -> void:
 	$dayTimer.set_wait_time(dayDuration)
-	$dayTimer.timeout.connect(endOfDay)
+	#$dayTimer.timeout.connect(endOfDay)
 	
 	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
@@ -50,6 +54,9 @@ func _ready() -> void:
 		storeQueue
 	)
 	
+	for quest in quests:
+		availableQuests.append(quest)
+	
 	
 #TO-DO: test that certain quests are being added to their proper list upon quest succsess 
 #also need to make sure player is getting rewards properly 
@@ -63,7 +70,6 @@ func startOfDay():
 	for n in range(0, numOfNpcs):
 		t = get_tree().create_timer(range(10,dayDuration-60).pick_random())
 		t.timeout.connect(_onGenerateQuest)
-		print("created timer!")
 		
 	#we only pop in quest we have not completed or quest who's rewards are due
 	for quest in activeQuests:
@@ -88,31 +94,24 @@ func startOfDay():
 	
 	
 func _onGenerateQuest():
-	print("timer went off!")
-	# Choose a random quest from quest list
-	
-	
-	var newQuest = quests.pick_random()
-	
-	
-	#TO-DO: Make this choosing logic better. As the player gets more quest in activeQuests
-	#or pharmacy quest, it will eventually cause the game to crash here
-	
-	# If the chosen quest is already in the activeQuests or pharmacy lists, pick a new random quest
-	while activeQuests.has(newQuest) or pharmacyQuests.has(newQuest) or storeQueue.has(newQuest):
-		newQuest = quests.pick_random()
-		print("help")
-		
-	
-		
-	# Add new quest to the queue
-	storeQueue.append(newQuest)
-	_updateQueue()
-	# Trigger the bell sound effect
-	#bell_sfx.play()
-	$AudioStreamPlayer2D.stream = bellSFX
-	$AudioStreamPlayer2D.play()
+	print("Generating quest!")
 
+	# Choose a random quest from availble quest list
+	if(availableQuests.size() > 0):
+		var newQuest = availableQuests.pick_random()
+		# Add new quest to the queue
+		storeQueue.append(newQuest)
+		availableQuests.erase(newQuest)
+		_updateQueue()
+		
+		# Trigger the bell sound effect
+		#bell_sfx.play()
+		$AudioStreamPlayer2D.stream = bellSFX
+		$AudioStreamPlayer2D.play()
+	else: 
+		print("No more quest available for player")
+	
+#TO-DO: ADD LOGIC FOR FADING OUT AND FADING IN NPCS
 func _updateQueue():
 	#Disable button which allows NPC interaction
 	$ui/FrontRoom/NPC.disabled = true
@@ -138,16 +137,17 @@ func _updateQueue():
 		$ui/FrontRoom/customer3.set_texture(load(storeQueue[2].npcQuestGiver.sprite))
 
 	#Re-enable button which allows NPC interaction
-	if(storeQueue.size() > 0):
+	if(storeQueue.size() > 0 && !inConverstation):
 		$ui/FrontRoom/NPC.disabled = false
 		
-#STILL NEEDS TO HAVE LOGIC ADDED FOR DIALOGUES AND GIVING REWARDS
+#TO-DO: Maybe add sound effect for getting the reward?
 func _on_greetNPC():
 	#Lock the player into the interaction
 	$ui/FrontRoom/NPC.disabled = true
 	$ui/FrontRoom/goToBackroom.disabled = true
 	$ui/FrontRoom/Dialogue.disabled = false
 	$ui/FrontRoom/Dialogue.visible = true
+	inConverstation = true
 	
 	var currentQuest = storeQueue[0]
 	
@@ -160,8 +160,8 @@ func _on_greetNPC():
 			await $ui/FrontRoom/Dialogue.pressed
 	
 		#Check if we have the potion
-		var potionWeNeed = potions.values()[currentQuest.requirements[0]]
-		if(potionWeNeed.amountOwned > 0):
+		var potionWeNeed = ItemCreator.allPotions.get(currentQuest.requirements[0])
+		if(potionWeNeed.amountOwned > 0 && potionWeNeed.unlocked):
 			
 			#Logic for potion inventory
 			$ui/FrontRoom/potionHotbar.show()
@@ -191,7 +191,7 @@ func _on_greetNPC():
 					giveIngredient(ItemCreator.allIngredients.get(rewardIngredient))
 				
 			#If we complete a pharmacy quest for the first time
-			if(currentQuest.isRepeatable and !pharmacyQuests.has(currentQuest)):
+			if(currentQuest.isRepeatable && !pharmacyQuests.has(currentQuest)):
 				
 				#Dialog for active quest becoming a pharmacy quest
 				for dialog in currentQuest.questDialog[5]:
@@ -210,6 +210,7 @@ func _on_greetNPC():
 			else:
 				activeQuests.erase(currentQuest)
 				currentQuest.resetQuest()
+				availableQuests.append(currentQuest)
 				
 		#If we don't have the potion logic
 		else: 
@@ -224,6 +225,7 @@ func _on_greetNPC():
 				pharmacyQuests.erase(currentQuest)
 				activeQuests.erase(currentQuest)
 				currentQuest.resetQuest()
+				availableQuests.append(currentQuest)
 				print("quest erased")
 				
 			else:
@@ -237,8 +239,8 @@ func _on_greetNPC():
 			await $ui/FrontRoom/Dialogue.pressed
 		
 		#Check if we have the potion 
-		var potionWeNeed = potions.values()[currentQuest.requirements[0]]
-		if(potionWeNeed.amountOwned > 0):
+		var potionWeNeed = ItemCreator.allPotions.get(currentQuest.requirements[0])
+		if(potionWeNeed.amountOwned > 0 and potionWeNeed.unlocked):
 			
 			#Logic for potion inventory
 			$ui/FrontRoom/potionHotbar.show()
@@ -288,6 +290,7 @@ func _on_greetNPC():
 				
 			else:
 				currentQuest.resetQuest()
+				availableQuests.append(currentQuest)
 				
 			
 		#logic for either having them come back later or rejecting quest
@@ -313,6 +316,7 @@ func _on_greetNPC():
 					await $ui/FrontRoom/Dialogue.pressed
 			
 				currentQuest.resetQuest()
+				availableQuests.append(currentQuest)
 				
 	#Logic for when the npc wants to give you rewards for completing a one time quest
 	elif(currentQuest.accepted && currentQuest.completed):
@@ -332,11 +336,14 @@ func _on_greetNPC():
 		#Reset the quest and remove it from activeQuest[]
 		currentQuest.resetQuest()
 		activeQuests.erase(currentQuest)
+		availableQuests.append(currentQuest)
 	
 	#Unlock the player from the interaction
 	$ui/FrontRoom/goToBackroom.disabled = false
 	$ui/FrontRoom/Dialogue.disabled = true
 	$ui/FrontRoom/Dialogue.visible = false
+	inConverstation = false
+	noLongerInConverstation.emit()
 	
 	storeQueue.pop_front()
 	_updateQueue()
@@ -365,6 +372,7 @@ func _onAcceptQuest():
 	_updateQueue()
 	return true
 
+#Never used this lol!
 func _onQuestCompleted(_quest: Quest):
 	# Mark as completed
 	_quest.questCompleted = true
@@ -392,6 +400,8 @@ func _onQuestCompleted(_quest: Quest):
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
 
+
+#TO-DO: TESTING NEEDS TO BE DONE ON THIS FUNCTION
 func onIngredientGrinded(i: Item):
 	# Check if object can be grinded
 	var crushedName:String = i.itemName + " powder"
@@ -424,6 +434,15 @@ func unlockPotion(p: Item):
 		
 		# TO-DO: POPUP NEWITEM FOR NEW UNLOCKED POTION
 
+func buyIngredient(cost: int, ingredient: Item):
+	if(cost <= currency):
+		currency -= cost
+		$ui/crowStore.currency = currency
+		$AudioStreamPlayer2D.stream = buySFX
+		$AudioStreamPlayer2D.play()
+		giveIngredient(ingredient)
+		
+
 func giveIngredient(i: Item):
 	# If not unlocked, unlock it!
 	if !(i.itemName in ingredients):
@@ -437,7 +456,10 @@ func giveIngredient(i: Item):
 		
 	# Increase quantity by 1
 	i.amountOwned += 1
+	
+	
 
+#TO-DO: TESTING NEEDS TO BE DONE ON THIS FUCNTION
 func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 	var potion:Item = null
 	
@@ -466,8 +488,15 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 	unlockPotion(potion)
 	potion.amountOwned += 1
 
+#TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():
 	print("ending day")
+	
+	if(inConverstation):
+		print("cant end day because in convestation")
+		await noLongerInConverstation
+	
+	
 	# Increment day
 	day += 1;
 	
@@ -487,11 +516,14 @@ func endOfDay():
 	_updateQueue()
 	
 	print("Active quest list: ", activeQuests)
+		
 
 	# TO-DO: if grinding in-progress, pause the grinding timer
 	
 	# TO-DO: if potion making was in-progress, immediately complete the potion
 	
+	$ui/crowStore.currency = currency
+	$ui/crowStore.checkIfTooBroke()
 	$ui._on_end_of_day()
 	
 	

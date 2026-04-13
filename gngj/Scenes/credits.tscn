@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://cwh72s7wbi4ye"]
 
-[ext_resource type="Script" path="res://scrips/credits.gd" id="1_gryuy"]
-[ext_resource type="Texture2D" uid="uid://b7v2h8fl6stf4" path="res://assets/background/temp/latest.png" id="1_r18jl"]
+[ext_resource type="Script" uid="uid://d313qrsadx0bv" path="res://scrips/credits.gd" id="1_gryuy"]
+[ext_resource type="Texture2D" uid="uid://bnfyxdhaxsp7" path="res://assets/background/main menu/mainbg.PNG" id="2_1bamb"]
+[ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="3_1bamb"]
+[ext_resource type="Texture2D" uid="uid://c1qv7dfowrdpv" path="res://assets/background/UI/Wide Parchment.png" id="3_xelri"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xelri"]
 
 [node name="credits" type="Control" unique_id=1866293905]
 layout_mode = 3
@@ -15,9 +19,8 @@ grow_vertical = 2
 script = ExtResource("1_gryuy")
 
 [node name="Latest" type="Sprite2D" parent="." unique_id=1464057022]
-position = Vector2(-136, -60)
-scale = Vector2(2.6375, 2.9210038)
-texture = ExtResource("1_r18jl")
+position = Vector2(-7.402897e-05, 7.6293945e-06)
+texture = ExtResource("2_1bamb")
 
 [node name="backButton" type="Button" parent="." unique_id=1121910015]
 layout_mode = 0
@@ -26,3 +29,57 @@ offset_top = 343.0
 offset_right = 877.0
 offset_bottom = 473.0
 text = "Back"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=811555559]
+texture_filter = 5
+material = SubResource("CanvasItemMaterial_xelri")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -675.00006
+offset_top = -429.00003
+offset_right = 1245.0
+offset_bottom = 651.0
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_xelri")
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1929667542]
+layout_mode = 0
+offset_left = 904.7143
+offset_top = 177.14284
+offset_right = 1041.7144
+offset_bottom = 298.14282
+theme_override_fonts/font = ExtResource("3_1bamb")
+theme_override_font_sizes/font_size = 40
+text = "Credits
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TextureRect" unique_id=179511284]
+layout_mode = 0
+offset_left = 735.7143
+offset_top = 251.4286
+offset_right = 1209.7142
+offset_bottom = 1112.4286
+theme_override_fonts/font = ExtResource("3_1bamb")
+theme_override_font_sizes/font_size = 28
+text = "Artists:
+Violet Pope (@vititami_)
+
+Sound Design:
+Vince Furlin
+
+Programmers:
+Luis Pelayo (@luis-pelayo-e314)
+Eric Zukowski (@shpleebus_haha)
+Narek Ohanyan (@supernar3k)
+Carter Layton (carmr)
+Jason Kress
+Johnny Blin (gti.jonny)
+Philip Skalski (@fartfisticuffs)
+
+
+"
+horizontal_alignment = 1

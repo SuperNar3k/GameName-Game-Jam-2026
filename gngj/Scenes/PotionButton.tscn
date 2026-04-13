@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dnjoxqp0ssy3o"]
+
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="1_jhe2c"]
+[ext_resource type="Script" uid="uid://cc5bjoxj0wq8d" path="res://scrips/potionButton.gd" id="3_hippx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otolt"]
+shader = ExtResource("1_jhe2c")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[node name="potionButton" type="TextureButton" unique_id=1764766637]
+material = SubResource("ShaderMaterial_otolt")
+custom_minimum_size = Vector2(200, 200)
+offset_right = 200.0
+offset_bottom = 200.0
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_hippx")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

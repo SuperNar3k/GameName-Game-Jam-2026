@@ -114,6 +114,7 @@ grow_vertical = 1
 [connection signal="goBack" from="CauldronStation" to="." method="_on_cauldron_station_go_back"]
 [connection signal="goBack" from="credits" to="." method="_on_credits_go_back"]
 [connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
+[connection signal="buy" from="crowStore" to="." method="_on_crow_store_buy"]
 [connection signal="newDay" from="crowStore" to="." method="newDay"]
 [connection signal="options_pressed" from="Hud" to="." method="_on_hud_options_pressed"]
 [connection signal="quest_pressed" from="Hud" to="." method="_on_hud_quest_pressed"]
