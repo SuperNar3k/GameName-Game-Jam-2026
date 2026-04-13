@@ -117,6 +117,7 @@ offset_bottom = -700.0
 [connection signal="toFront" from="BackRoom" to="." method="_on_back_room_to_front"]
 [connection signal="toGrindStation" from="BackRoom" to="." method="_on_back_room_to_grind_station"]
 [connection signal="goBack" from="GrindingStation" to="." method="_on_grinding_station_go_back"]
+[connection signal="cookingDone" from="CauldronStation" to="." method="_on_cauldron_station_cooking_done"]
 [connection signal="goBack" from="CauldronStation" to="." method="_on_cauldron_station_go_back"]
 [connection signal="goBack" from="credits" to="." method="_on_credits_go_back"]
 [connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]

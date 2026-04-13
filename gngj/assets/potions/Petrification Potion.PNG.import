@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bch4dixgsqao3"
-path="res://.godot/imported/Petrication Potion.PNG-b7189db0296d1710288ac692d7035dc9.ctex"
+path="res://.godot/imported/Petrification Potion.PNG-c4c1cb9db04487bf909a08bec4cd3f2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Petrication Potion.PNG"
-dest_files=["res://.godot/imported/Petrication Potion.PNG-b7189db0296d1710288ac692d7035dc9.ctex"]
+source_file="res://assets/potions/Petrification Potion.PNG"
+dest_files=["res://.godot/imported/Petrification Potion.PNG-c4c1cb9db04487bf909a08bec4cd3f2d.ctex"]
 
 [params]
 
