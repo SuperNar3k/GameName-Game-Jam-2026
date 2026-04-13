@@ -3,13 +3,8 @@
 [ext_resource type="Script" uid="uid://6niyjurcgd0l" path="res://scrips/front_room.gd" id="1_t5cqi"]
 [ext_resource type="Texture2D" uid="uid://c0g1bjkejnpat" path="res://assets/background/front/frontempty.PNG" id="2_fixym"]
 [ext_resource type="Texture2D" uid="uid://dv8ebk8jjw4xv" path="res://assets/background/front/frontdesk.PNG" id="3_s0epr"]
-[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_w4gd2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pk1jc"]
-shader = ExtResource("4_w4gd2")
-shader_parameter/allow_out_of_bounds = true
-shader_parameter/outline_thickness = 2.42999994568464
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+[ext_resource type="Texture2D" uid="uid://r6mb22v4q3he" path="res://assets/npcs/dirt covered field hand.PNG" id="3_w4gd2"]
+[ext_resource type="Texture2D" uid="uid://6p28lcmelgek" path="res://assets/npcs/wisened dwarf.PNG" id="4_pk1jc"]
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3
@@ -30,6 +25,7 @@ script = ExtResource("1_t5cqi")
 texture = ExtResource("2_fixym")
 
 [node name="customer3" type="TextureRect" parent="." unique_id=1683558473]
+visible = false
 layout_mode = 0
 offset_top = -528.0
 offset_right = 300.0
@@ -37,21 +33,25 @@ offset_bottom = 72.0
 expand_mode = 1
 
 [node name="customer2" type="TextureRect" parent="." unique_id=2028137036]
+visible = false
 layout_mode = 0
-offset_left = 161.0
-offset_top = -471.0
-offset_right = 461.0
+offset_left = -544.0
+offset_top = -512.0
+offset_right = 442.0
 offset_bottom = 129.0
+texture = ExtResource("3_w4gd2")
 expand_mode = 1
 
 [node name="NPC" type="TextureButton" parent="." unique_id=1846388663]
-material = SubResource("ShaderMaterial_pk1jc")
 layout_mode = 0
-offset_left = 281.0
-offset_top = -421.0
-offset_right = 757.0
-offset_bottom = 275.0
+offset_left = -665.0
+offset_top = -396.0
+offset_right = 964.39966
+offset_bottom = 469.50464
+scale = Vector2(1.0206213, 1.0206213)
 disabled = true
+texture_normal = ExtResource("4_pk1jc")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="desk" type="Sprite2D" parent="." unique_id=514847854]

@@ -7,6 +7,9 @@ var accepted = false
 var completed = false
 
 var questDialog = [[],[],[],[],[],[],[]]
+
+
+
 var requirements = []
 var rewards = [[],[],[]]
 var daysUntilDue

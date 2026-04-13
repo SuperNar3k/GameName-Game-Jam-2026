@@ -36,8 +36,13 @@ var notificationQueue = []
 var bellSFX = preload("res://assets/sound/vine-boom.mp3")
 var buySFX = preload("res://assets/sound/cha-ching.mp3")
 
+
 # Called when the game starts.
 func _ready() -> void:
+	
+	
+	
+	
 	$dayTimer.set_wait_time(dayDuration)
 	#$dayTimer.timeout.connect(endOfDay)
 	
@@ -45,8 +50,6 @@ func _ready() -> void:
 	NPCBirthingPod.Populate()
 	ItemCreator.UnlockDefaultIngredients(ingredients)
 	ItemCreator.UnlockDefaultPotions(potions)
-	
-	
 	
 	
 	#sends references of these variables to the ui script for distribution over there
@@ -61,11 +64,7 @@ func _ready() -> void:
 		potions
 	)
 	
-	for quest in quests:
-		availableQuests.append(quest)
-	
-	
-func _process(delta: float):
+func _process(_delta: float):
 	notificationQueueHandler()
 
 
@@ -90,6 +89,9 @@ func startOfDay():
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
 		
 		QuestCreator.Populate(quests, NPCBirthingPod, potions)
+		
+		for quest in quests:
+			availableQuests.append(quest)
 	else:
 		var ingredient = ingredients.get("leaf of a thousand leaves")
 		ingredient.amountOwned = ingredients.amountOwned + 2
