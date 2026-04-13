@@ -129,6 +129,7 @@ func _on_recipe_book_btn_pressed() -> void:
 				$LeftSprite/LeftName.text = allPotions.get(potionKeysSorted[page_index]).itemName
 				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
 					var newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = j
 					$LeftSprite/LeftRecipe.add_child(newLabel)
@@ -138,6 +139,7 @@ func _on_recipe_book_btn_pressed() -> void:
 				$RightSprite/RightName.text = allPotions.get(potionKeysSorted[page_index]).itemName
 				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
 					var newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = j
 					$RightSprite/RightRecipe.add_child(newLabel)
@@ -148,6 +150,7 @@ func _on_recipe_book_btn_pressed() -> void:
 				$LeftSprite/LeftName.text = "???"
 				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
 					var newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
 					$LeftSprite/LeftRecipe.add_child(newLabel)
@@ -157,6 +160,7 @@ func _on_recipe_book_btn_pressed() -> void:
 				$RightSprite/RightName.text = "???"
 				for ingred in allPotions.get(potionKeysSorted[page_index]).recipe:
 					var newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
 					$RightSprite/RightRecipe.add_child(newLabel)
@@ -202,6 +206,7 @@ func _on_fwd_btn_pressed() -> void:
 
 					for j in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
+						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = allIngredients.get(j).itemName
 						$LeftSprite/LeftRecipe.add_child(newLabel)
@@ -212,6 +217,7 @@ func _on_fwd_btn_pressed() -> void:
 
 					for j in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
+						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = allIngredients.get(j).itemName
 						$RightSprite/RightRecipe.add_child(newLabel)
@@ -223,6 +229,7 @@ func _on_fwd_btn_pressed() -> void:
 
 					for ingred in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
+						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = "???"
 						$LeftSprite/LeftRecipe.add_child(newLabel)
@@ -233,6 +240,7 @@ func _on_fwd_btn_pressed() -> void:
 
 					for ingred in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
+						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = "???"
 						$RightSprite/RightRecipe.add_child(newLabel)
@@ -275,6 +283,7 @@ func _on_back_btn_pressed() -> void:
 				$LeftSprite/LeftName.text = allPotions.values()[page_index].itemName
 				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = j
 					$LeftSprite/LeftRecipe.add_child(newLabel)
@@ -284,6 +293,7 @@ func _on_back_btn_pressed() -> void:
 				$RightSprite/RightName.text = allPotions.values()[page_index].itemName
 				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = j
 					$RightSprite/RightRecipe.add_child(newLabel)
@@ -294,6 +304,7 @@ func _on_back_btn_pressed() -> void:
 				$LeftSprite/LeftName.text = "???"
 				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
 					$LeftSprite/LeftRecipe.add_child(newLabel)
@@ -303,6 +314,7 @@ func _on_back_btn_pressed() -> void:
 				$RightSprite/RightName.text = "???"
 				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
+					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
 					$RightSprite/RightRecipe.add_child(newLabel)

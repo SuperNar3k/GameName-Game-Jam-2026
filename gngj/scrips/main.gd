@@ -92,13 +92,13 @@ func startOfDay():
 		QuestCreator.Populate(quests, NPCBirthingPod, potions)
 	else:
 		var ingredient = ingredients.get("leaf of a thousand leaves")
-		ingredient.amountOwned = ingredients.amountOwned + 2
+		ingredient.amountOwned = ingredient.amountOwned + 2
 		
 		ingredient = ingredients.get("a thorny heart")
-		ingredient.amountOwned = ingredients.amountOwned + 2
+		ingredient.amountOwned = ingredient.amountOwned + 2
 		
 		ingredient = ingredients.get("tears of trees")
-		ingredient.amountOwned = ingredients.amountOwned + 2
+		ingredient.amountOwned = ingredient.amountOwned + 2
 		
 		
 	
@@ -575,6 +575,8 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 #TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():
 	print("End of day: ", day)
+	
+	$ui.endDay()
 	
 	if(inConverstation):
 		print("cant end day because in convestation")
