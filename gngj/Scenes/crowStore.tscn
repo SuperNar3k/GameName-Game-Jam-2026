@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://dg37mdtsnol00" path="res://scrips/crowStore.gd" id="1_8fcnj"]
 [ext_resource type="Texture2D" uid="uid://brn3bd48o24qf" path="res://assets/background/IMG_0646.PNG" id="2_8fcnj"]
 [ext_resource type="Texture2D" uid="uid://cpn5p65bfw2pb" path="res://assets/ingredients/dragon's egg.PNG" id="3_17j76"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="3_jsb4s"]
 [ext_resource type="Texture2D" uid="uid://cgy4mp5jd6swi" path="res://assets/ingredients/air's brevity.PNG" id="3_p75mv"]
 [ext_resource type="Texture2D" uid="uid://dupo3xjafm3wb" path="res://assets/ingredients/desert calm.PNG" id="4_jsb4s"]
+[ext_resource type="Texture2D" uid="uid://cm6ipfkxr6gj2" path="res://assets/ingredients/a leaf of a thousand leaves.PNG" id="4_qditd"]
+[ext_resource type="Texture2D" uid="uid://b23opicsko4f" path="res://assets/ingredients/a thorny heart.PNG" id="5_gveli"]
 [ext_resource type="Texture2D" uid="uid://b6rgy2m1veu3i" path="res://assets/ingredients/dried ocean.PNG" id="5_xqpvb"]
+[ext_resource type="Texture2D" uid="uid://b5mj0yvablpvi" path="res://assets/ingredients/tears of trees.PNG" id="6_t5j08"]
 [ext_resource type="Texture2D" uid="uid://bdnoyasc61ce8" path="res://assets/ingredients/ear of the sea.PNG" id="6_yc1ru"]
 [ext_resource type="Texture2D" uid="uid://dcco3vfxmm6ib" path="res://assets/ingredients/gaia's teeth.PNG" id="7_qditd"]
 [ext_resource type="Texture2D" uid="uid://brlbuxjym65wb" path="res://assets/ingredients/spring crystal.PNG" id="9_gveli"]
@@ -15,6 +19,102 @@
 [ext_resource type="Texture2D" uid="uid://batofbki0yyny" path="res://assets/ingredients/psychic stone.PNG" id="13_8pm8u"]
 [ext_resource type="Texture2D" uid="uid://daja3i8mkle21" path="res://assets/ingredients/shattered sky.PNG" id="14_i7vvm"]
 [ext_resource type="Texture2D" uid="uid://dythmsqj3sahj" path="res://assets/ingredients/shooting star.PNG" id="15_uys6e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lovfp"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nuwj8"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77pko"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqpvb"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc1ru"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qditd"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gveli"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5j08"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81ba1"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gi5n"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pm8u"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7vvm"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uys6e"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8r7ne"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob14f"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vsqv"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="crowStore" type="Control" unique_id=1546794494]
 layout_mode = 3
@@ -35,22 +135,92 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="shopOption1" type="TextureButton" parent="allButtons" unique_id=682271607]
+[node name="shopOption14" type="TextureButton" parent="allButtons" unique_id=2001540534]
+material = SubResource("ShaderMaterial_lovfp")
 layout_mode = 0
-offset_left = -403.0
-offset_top = -157.0
-offset_right = -285.0
-offset_bottom = -28.0
+offset_left = -438.0
+offset_top = -191.0
+offset_right = -238.0
+offset_bottom = 9.0
+texture_normal = ExtResource("4_qditd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="optionCost" type="Label" parent="allButtons/shopOption14" unique_id=1255423408]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 27.0
+offset_right = 198.0
+offset_bottom = 61.0
+rotation = 0.7522377
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 2
+
+[node name="shopOption15" type="TextureButton" parent="allButtons" unique_id=1645065735]
+material = SubResource("ShaderMaterial_nuwj8")
+layout_mode = 0
+offset_left = -211.0
+offset_top = -190.0
+offset_right = -11.0
+offset_bottom = 10.0
+texture_normal = ExtResource("5_gveli")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="optionCost" type="Label" parent="allButtons/shopOption15" unique_id=1264706441]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 27.0
+offset_right = 204.0
+offset_bottom = 61.0
+rotation = 0.7522377
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 2
+
+[node name="shopOption16" type="TextureButton" parent="allButtons" unique_id=620469344]
+material = SubResource("ShaderMaterial_77pko")
+layout_mode = 0
+offset_left = 9.0
+offset_top = -190.0
+offset_right = 209.0
+offset_bottom = 10.0
+texture_normal = ExtResource("6_t5j08")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="optionCost" type="Label" parent="allButtons/shopOption16" unique_id=1625524883]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 19.0
+offset_right = 208.0
+offset_bottom = 53.0
+rotation = 0.7522377
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 2
+
+[node name="shopOption1" type="TextureButton" parent="allButtons" unique_id=682271607]
+material = SubResource("ShaderMaterial_xqpvb")
+layout_mode = 0
+offset_left = 242.0
+offset_top = -185.0
+offset_right = 442.0
+offset_bottom = 15.0
 texture_normal = ExtResource("3_p75mv")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption1" unique_id=368785283]
 layout_mode = 0
-offset_left = 126.0
-offset_top = -6.0
-offset_right = 164.0
-offset_bottom = 28.0
+offset_left = 156.0
+offset_top = 15.0
+offset_right = 194.0
+offset_bottom = 49.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -58,21 +228,22 @@ text = "2"
 horizontal_alignment = 2
 
 [node name="shopOption2" type="TextureButton" parent="allButtons" unique_id=1064348784]
+material = SubResource("ShaderMaterial_yc1ru")
 layout_mode = 0
-offset_left = -199.0
-offset_top = -155.0
-offset_right = -82.0
-offset_bottom = -31.0
+offset_left = -448.0
+offset_top = -34.0
+offset_right = -248.0
+offset_bottom = 166.0
 texture_normal = ExtResource("4_jsb4s")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption2" unique_id=1816333417]
 layout_mode = 0
-offset_left = 151.0
-offset_top = -11.0
-offset_right = 189.0
-offset_bottom = 23.0
+offset_left = 185.0
+offset_top = 17.0
+offset_right = 223.0
+offset_bottom = 51.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -80,21 +251,22 @@ text = "2"
 horizontal_alignment = 2
 
 [node name="shopOption3" type="TextureButton" parent="allButtons" unique_id=2133172698]
+material = SubResource("ShaderMaterial_qditd")
 layout_mode = 0
-offset_left = 41.0
-offset_top = -158.0
-offset_right = 159.0
-offset_bottom = -29.0
+offset_left = -204.0
+offset_top = -32.0
+offset_right = -4.0
+offset_bottom = 168.0
 texture_normal = ExtResource("5_xqpvb")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption3" unique_id=1730856342]
 layout_mode = 0
-offset_left = 135.0
-offset_top = -14.0
-offset_right = 173.0
-offset_bottom = 20.0
+offset_left = 169.0
+offset_top = 11.0
+offset_right = 207.0
+offset_bottom = 45.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -102,21 +274,22 @@ text = "2"
 horizontal_alignment = 2
 
 [node name="shopOption4" type="TextureButton" parent="allButtons" unique_id=1254622732]
+material = SubResource("ShaderMaterial_gveli")
 layout_mode = 0
-offset_left = 260.0
-offset_top = -157.0
-offset_right = 378.0
-offset_bottom = -28.0
+offset_left = 25.0
+offset_top = -31.0
+offset_right = 225.0
+offset_bottom = 169.0
 texture_normal = ExtResource("6_yc1ru")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption4" unique_id=2134028288]
 layout_mode = 0
-offset_left = 135.0
-offset_top = -13.0
-offset_right = 173.0
-offset_bottom = 21.0
+offset_left = 166.0
+offset_top = 12.0
+offset_right = 204.0
+offset_bottom = 46.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -124,21 +297,22 @@ text = "2"
 horizontal_alignment = 2
 
 [node name="shopOption5" type="TextureButton" parent="allButtons" unique_id=365999277]
+material = SubResource("ShaderMaterial_t5j08")
 layout_mode = 0
-offset_left = -421.0
-offset_top = -7.0
-offset_right = -287.0
-offset_bottom = 134.0
+offset_left = 223.0
+offset_top = -33.0
+offset_right = 423.0
+offset_bottom = 167.0
 texture_normal = ExtResource("7_qditd")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption5" unique_id=1404953114]
 layout_mode = 0
-offset_left = 157.0
-offset_top = -7.0
-offset_right = 195.0
-offset_bottom = 27.0
+offset_left = 190.0
+offset_top = 17.0
+offset_right = 228.0
+offset_bottom = 51.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -146,21 +320,22 @@ text = "2"
 horizontal_alignment = 2
 
 [node name="shopOption6" type="TextureButton" parent="allButtons" unique_id=1393485409]
+material = SubResource("ShaderMaterial_81ba1")
 layout_mode = 0
-offset_left = -194.0
-offset_top = -3.0
-offset_right = -60.0
-offset_bottom = 136.0
+offset_left = -461.0
+offset_top = 136.0
+offset_right = -261.0
+offset_bottom = 336.0
 texture_normal = ExtResource("3_17j76")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption6" unique_id=1052780178]
 layout_mode = 0
-offset_left = 159.0
-offset_top = -16.0
-offset_right = 197.0
-offset_bottom = 18.0
+offset_left = 193.0
+offset_top = 8.0
+offset_right = 231.0
+offset_bottom = 42.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -168,21 +343,22 @@ text = "3"
 horizontal_alignment = 2
 
 [node name="shopOption7" type="TextureButton" parent="allButtons" unique_id=851729064]
+material = SubResource("ShaderMaterial_2gi5n")
 layout_mode = 0
-offset_left = 48.0
-offset_top = -9.0
-offset_right = 172.0
-offset_bottom = 129.0
+offset_left = -206.0
+offset_top = 134.0
+offset_right = -6.0
+offset_bottom = 334.0
 texture_normal = ExtResource("9_gveli")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption7" unique_id=2091861285]
 layout_mode = 0
-offset_left = 142.0
-offset_top = -10.0
-offset_right = 180.0
-offset_bottom = 24.0
+offset_left = 174.0
+offset_top = 13.0
+offset_right = 212.0
+offset_bottom = 47.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -190,21 +366,22 @@ text = "3"
 horizontal_alignment = 2
 
 [node name="shopOption8" type="TextureButton" parent="allButtons" unique_id=1963318064]
+material = SubResource("ShaderMaterial_8pm8u")
 layout_mode = 0
-offset_left = 258.0
-offset_top = -9.0
-offset_right = 388.0
-offset_bottom = 137.0
+offset_left = 13.0
+offset_top = 133.0
+offset_right = 213.0
+offset_bottom = 333.0
 texture_normal = ExtResource("10_t5j08")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption8" unique_id=467960719]
 layout_mode = 0
-offset_left = 150.0
-offset_top = -8.0
-offset_right = 188.0
-offset_bottom = 26.0
+offset_left = 183.0
+offset_top = 16.0
+offset_right = 221.0
+offset_bottom = 50.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -212,21 +389,22 @@ text = "3"
 horizontal_alignment = 2
 
 [node name="shopOption9" type="TextureButton" parent="allButtons" unique_id=2130515913]
+material = SubResource("ShaderMaterial_i7vvm")
 layout_mode = 0
-offset_left = -428.0
-offset_top = 153.0
-offset_right = -287.0
-offset_bottom = 311.0
+offset_left = 244.0
+offset_top = 140.0
+offset_right = 444.0
+offset_bottom = 340.0
 texture_normal = ExtResource("11_81ba1")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption9" unique_id=1508097362]
 layout_mode = 0
-offset_left = 158.0
-offset_top = -9.0
-offset_right = 196.0
-offset_bottom = 25.0
+offset_left = 168.0
+offset_top = 9.0
+offset_right = 206.0
+offset_bottom = 43.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -234,21 +412,22 @@ text = "3"
 horizontal_alignment = 2
 
 [node name="shopOption10" type="TextureButton" parent="allButtons" unique_id=727306122]
+material = SubResource("ShaderMaterial_uys6e")
 layout_mode = 0
-offset_left = -202.0
-offset_top = 156.0
-offset_right = -56.0
-offset_bottom = 313.0
+offset_left = -456.0
+offset_top = 310.0
+offset_right = -256.0
+offset_bottom = 510.0
 texture_normal = ExtResource("12_2gi5n")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption10" unique_id=1787349208]
 layout_mode = 0
-offset_left = 170.0
-offset_top = -12.0
-offset_right = 208.0
-offset_bottom = 22.0
+offset_left = 186.0
+offset_top = 13.0
+offset_right = 224.0
+offset_bottom = 47.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -256,21 +435,22 @@ text = "3"
 horizontal_alignment = 2
 
 [node name="shopOption11" type="TextureButton" parent="allButtons" unique_id=595709835]
+material = SubResource("ShaderMaterial_8r7ne")
 layout_mode = 0
-offset_left = 31.0
-offset_top = 156.0
-offset_right = 175.0
-offset_bottom = 313.0
+offset_left = -211.0
+offset_top = 316.0
+offset_right = -11.0
+offset_bottom = 516.0
 texture_normal = ExtResource("13_8pm8u")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption11" unique_id=1839084078]
 layout_mode = 0
-offset_left = 162.0
-offset_top = -11.0
-offset_right = 200.0
-offset_bottom = 23.0
+offset_left = 179.0
+offset_top = 10.0
+offset_right = 217.0
+offset_bottom = 44.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -278,21 +458,22 @@ text = "4"
 horizontal_alignment = 2
 
 [node name="shopOption12" type="TextureButton" parent="allButtons" unique_id=2075266694]
+material = SubResource("ShaderMaterial_ob14f")
 layout_mode = 0
-offset_left = 259.0
-offset_top = 162.0
-offset_right = 392.0
-offset_bottom = 309.0
+offset_left = 10.0
+offset_top = 314.0
+offset_right = 210.0
+offset_bottom = 514.0
 texture_normal = ExtResource("14_i7vvm")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption12" unique_id=99826271]
 layout_mode = 0
-offset_left = 153.0
-offset_top = -13.0
-offset_right = 191.0
-offset_bottom = 21.0
+offset_left = 184.0
+offset_top = 12.0
+offset_right = 222.0
+offset_bottom = 46.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
@@ -300,88 +481,26 @@ text = "5"
 horizontal_alignment = 2
 
 [node name="shopOption13" type="TextureButton" parent="allButtons" unique_id=1542363426]
+material = SubResource("ShaderMaterial_3vsqv")
 layout_mode = 0
-offset_left = -411.0
-offset_top = 335.0
-offset_right = -291.0
-offset_bottom = 470.0
+offset_left = 236.0
+offset_top = 303.0
+offset_right = 436.0
+offset_bottom = 503.0
 texture_normal = ExtResource("15_uys6e")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="optionCost" type="Label" parent="allButtons/shopOption13" unique_id=1698418394]
 layout_mode = 0
-offset_left = 140.0
-offset_top = -10.0
-offset_right = 178.0
-offset_bottom = 24.0
+offset_left = 175.0
+offset_top = 25.0
+offset_right = 213.0
+offset_bottom = 59.0
 rotation = 0.7522377
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "6"
-horizontal_alignment = 2
-
-[node name="shopOption14" type="TextureButton" parent="allButtons" unique_id=2001540534]
-layout_mode = 0
-offset_left = -193.0
-offset_top = 337.0
-offset_right = -55.0
-offset_bottom = 479.0
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="optionCost" type="Label" parent="allButtons/shopOption14" unique_id=1255423408]
-layout_mode = 0
-offset_left = 161.0
-offset_top = -13.0
-offset_right = 199.0
-offset_bottom = 21.0
-rotation = 0.7522377
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "0"
-horizontal_alignment = 2
-
-[node name="shopOption15" type="TextureButton" parent="allButtons" unique_id=1645065735]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 335.0
-offset_right = 171.0
-offset_bottom = 478.0
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="optionCost" type="Label" parent="allButtons/shopOption15" unique_id=1264706441]
-layout_mode = 0
-offset_left = 154.0
-offset_top = -8.0
-offset_right = 192.0
-offset_bottom = 26.0
-rotation = 0.7522377
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "0"
-horizontal_alignment = 2
-
-[node name="shopOption16" type="TextureButton" parent="allButtons" unique_id=620469344]
-layout_mode = 0
-offset_left = 261.0
-offset_top = 337.0
-offset_right = 389.0
-offset_bottom = 478.0
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="optionCost" type="Label" parent="allButtons/shopOption16" unique_id=1625524883]
-layout_mode = 0
-offset_left = 150.0
-offset_top = -10.0
-offset_right = 188.0
-offset_bottom = 24.0
-rotation = 0.7522377
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
-text = "0"
 horizontal_alignment = 2
 
 [node name="continueButton" type="Button" parent="." unique_id=653705216]
