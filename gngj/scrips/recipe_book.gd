@@ -46,32 +46,32 @@ var fwdPressed = false
 func _ready() -> void:
 	hide()
 	
-	aButton.pressed.connect(_go_to_page.bind("a"))
-	bButton.pressed.connect(_go_to_page.bind("b"))
-	cButton.pressed.connect(_go_to_page.bind("c"))
-	dButton.pressed.connect(_go_to_page.bind("d"))
-	eButton.pressed.connect(_go_to_page.bind("e"))
-	fButton.pressed.connect(_go_to_page.bind("f"))
-	gButton.pressed.connect(_go_to_page.bind("g"))
-	hButton.pressed.connect(_go_to_page.bind("h"))
-	iButton.pressed.connect(_go_to_page.bind("i"))
-	jButton.pressed.connect(_go_to_page.bind("j"))
-	kButton.pressed.connect(_go_to_page.bind("k"))
-	lButton.pressed.connect(_go_to_page.bind("l"))
-	mButton.pressed.connect(_go_to_page.bind("m"))
-	nButton.pressed.connect(_go_to_page.bind("n"))
-	oButton.pressed.connect(_go_to_page.bind("o"))
-	pButton.pressed.connect(_go_to_page.bind("p"))
-	qButton.pressed.connect(_go_to_page.bind("q"))
-	rButton.pressed.connect(_go_to_page.bind("r"))
-	sButton.pressed.connect(_go_to_page.bind("s"))
-	tButton.pressed.connect(_go_to_page.bind("t"))
-	uButton.pressed.connect(_go_to_page.bind("u"))
-	vButton.pressed.connect(_go_to_page.bind("v"))
-	wButton.pressed.connect(_go_to_page.bind("w"))
-	xButton.pressed.connect(_go_to_page.bind("x"))
-	yButton.pressed.connect(_go_to_page.bind("y"))
-	zButton.pressed.connect(_go_to_page.bind("z"))
+	aButton.pressed.connect(_go_to_page.bind("A"))
+	bButton.pressed.connect(_go_to_page.bind("B"))
+	cButton.pressed.connect(_go_to_page.bind("C"))
+	dButton.pressed.connect(_go_to_page.bind("D"))
+	eButton.pressed.connect(_go_to_page.bind("E"))
+	fButton.pressed.connect(_go_to_page.bind("F"))
+	gButton.pressed.connect(_go_to_page.bind("G"))
+	hButton.pressed.connect(_go_to_page.bind("H"))
+	iButton.pressed.connect(_go_to_page.bind("I"))
+	jButton.pressed.connect(_go_to_page.bind("J"))
+	kButton.pressed.connect(_go_to_page.bind("K"))
+	lButton.pressed.connect(_go_to_page.bind("L"))
+	mButton.pressed.connect(_go_to_page.bind("M"))
+	nButton.pressed.connect(_go_to_page.bind("N"))
+	oButton.pressed.connect(_go_to_page.bind("O"))
+	pButton.pressed.connect(_go_to_page.bind("P"))
+	qButton.pressed.connect(_go_to_page.bind("Q"))
+	rButton.pressed.connect(_go_to_page.bind("R"))
+	sButton.pressed.connect(_go_to_page.bind("S"))
+	tButton.pressed.connect(_go_to_page.bind("T"))
+	uButton.pressed.connect(_go_to_page.bind("U"))
+	vButton.pressed.connect(_go_to_page.bind("V"))
+	wButton.pressed.connect(_go_to_page.bind("W"))
+	xButton.pressed.connect(_go_to_page.bind("X"))
+	yButton.pressed.connect(_go_to_page.bind("Y"))
+	zButton.pressed.connect(_go_to_page.bind("Z"))
 
 func __init__(
 	_allPotions : Dictionary,
@@ -85,13 +85,15 @@ func __init__(
 	potionKeysSorted = allPotions.keys()
 	potionKeysSorted.sort()
 	
+	#TESTING ONLY CODE WILL BREAK SHIT
+	for potion in allPotions.values():
+		potion.unlocked = true
+	
+	
 	# Initialize tableOfContents array
-	
-	
-	
 	var lastIndex = 0
 	for c in range(ord("a"), ord("z") + 1):
-		var letter:String = String.chr(c)
+		var letter:String = String.chr(c).to_upper()
 		for p in range(lastIndex, potionKeysSorted.size()) :
 			if potionKeysSorted[p].begins_with(letter):
 				tableOfContents.set(letter, p)
@@ -99,6 +101,7 @@ func __init__(
 				break
 		tableOfContents.set(letter, lastIndex)
 		
+	print("table of contents created")
 
 
 func _go_to_page(c : String):
@@ -197,24 +200,24 @@ func _on_fwd_btn_pressed() -> void:
 	var newLabel
 	while page_index < iStore:
 		page_index += 1
-		if(page_index < potionKeysSorted.size()):
-			if (allPotions.get(potionKeysSorted[page_index]).unlocked):
+		if(page_index < allPotions.size()):
+			if (allPotions.values()[page_index].unlocked):
 				if (page_index % 2 == 0):
-					$LeftSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
-					$LeftSprite/LeftDesc.text = allPotions.get(potionKeysSorted[page_index]).description
-					$LeftSprite/LeftName.text = allPotions.get(potionKeysSorted[page_index]).itemName
+					$LeftSprite.set_texture(load(allPotions.values()[page_index].sprite))
+					$LeftSprite/LeftDesc.text = allPotions.values()[page_index].description
+					$LeftSprite/LeftName.text = allPotions.values()[page_index].itemName
 
-					for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+					for j in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = allIngredients.get(j).itemName
 						$LeftSprite/LeftRecipe.add_child(newLabel)
 				else:
-					$RightSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
-					$RightSprite/RightDesc.text = allPotions.get(potionKeysSorted[page_index]).description
-					$RightSprite/RightName.text = allPotions.get(potionKeysSorted[page_index]).itemName
+					$RightSprite.set_texture(load(allPotions.values()[page_index].sprite))
+					$RightSprite/RightDesc.text = allPotions.values()[page_index].description
+					$RightSprite/RightName.text = allPotions.values()[page_index].itemName
 
-					for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+					for j in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = allIngredients.get(j).itemName
@@ -225,7 +228,7 @@ func _on_fwd_btn_pressed() -> void:
 					$LeftSprite/LeftDesc.text = "???"
 					$LeftSprite/LeftName.text = "???"
 
-					for ingred in allPotions.get(potionKeysSorted[page_index]).recipe:
+					for ingred in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = "???"
@@ -235,7 +238,7 @@ func _on_fwd_btn_pressed() -> void:
 					$RightSprite/RightDesc.text = "???"
 					$RightSprite/RightName.text = "???"
 
-					for ingred in allPotions.get(potionKeysSorted[page_index]).recipe:
+					for ingred in allPotions.values()[page_index].recipe:
 						newLabel = Label.new()
 						newLabel.add_theme_color_override("font_color", "black")
 						newLabel.text = "???"
@@ -273,21 +276,21 @@ func _on_back_btn_pressed() -> void:
 		
 	while page_index > iStore:
 		page_index = page_index-1
-		if (allPotions.get(potionKeysSorted[page_index]).unlocked):
+		if allPotions.values()[page_index].unlocked:
 			if (page_index % 2 == 0):
-				$LeftSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
-				$LeftSprite/LeftDesc.text = allPotions.get(potionKeysSorted[page_index]).description
-				$LeftSprite/LeftName.text = allPotions.get(potionKeysSorted[page_index]).itemName
-				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+				$LeftSprite.set_texture(load(allPotions.values()[page_index].sprite))
+				$LeftSprite/LeftDesc.text = allPotions.values()[page_index].description
+				$LeftSprite/LeftName.text = allPotions.values()[page_index].itemName
+				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = j
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
-				$RightSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
-				$RightSprite/RightDesc.text = allPotions.get(potionKeysSorted[page_index]).description
-				$RightSprite/RightName.text = allPotions.get(potionKeysSorted[page_index]).itemName
-				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+				$RightSprite.set_texture(load(allPotions.values()[page_index].sprite))
+				$RightSprite/RightDesc.text = allPotions.values()[page_index].description
+				$RightSprite/RightName.text = allPotions.values()[page_index].itemName
+				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = j
@@ -297,7 +300,7 @@ func _on_back_btn_pressed() -> void:
 				$LeftSprite.set_texture(load("res://assets/icon.svg"))
 				$LeftSprite/LeftDesc.text = "???"
 				$LeftSprite/LeftName.text = "???"
-				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
@@ -306,7 +309,7 @@ func _on_back_btn_pressed() -> void:
 				$RightSprite.set_texture(load("res://assets/icon.svg"))
 				$RightSprite/RightDesc.text = "???"
 				$RightSprite/RightName.text = "???"
-				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+				for j in allPotions.values()[page_index].recipe:
 					newLabel = Label.new()
 					newLabel.add_theme_color_override("font_color", "black")
 					newLabel.text = "???"
