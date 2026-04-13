@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c0g1bjkejnpat" path="res://assets/background/front/frontempty.PNG" id="2_fixym"]
 [ext_resource type="Texture2D" uid="uid://dv8ebk8jjw4xv" path="res://assets/background/front/frontdesk.PNG" id="3_s0epr"]
 [ext_resource type="Texture2D" uid="uid://r6mb22v4q3he" path="res://assets/npcs/dirt covered field hand.PNG" id="3_w4gd2"]
-[ext_resource type="Texture2D" uid="uid://6p28lcmelgek" path="res://assets/npcs/wisened dwarf.PNG" id="4_pk1jc"]
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3
@@ -50,7 +49,6 @@ offset_right = 964.39966
 offset_bottom = 469.50464
 scale = Vector2(1.0206213, 1.0206213)
 disabled = true
-texture_normal = ExtResource("4_pk1jc")
 ignore_texture_size = true
 stretch_mode = 0
 
