@@ -213,6 +213,18 @@ func Populate():
 		0
 	)
 	
+	createPotion(
+		"another test",
+		"abcd",
+		0,
+		"res://assets/potions/five.jpg",
+		["earth","tears of trees","earth"],
+		0
+	)
+	
+	# DEBUG ONLY, REMOVE LATER
+	print(allIngredients)
+	print(allPotions)
 
 # Unlocks default items at start of game
 func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):

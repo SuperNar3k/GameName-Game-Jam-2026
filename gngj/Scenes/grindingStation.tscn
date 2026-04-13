@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cvr710tnvcl0" path="res://scrips/grinding_station.gd" id="1_pjki0"]
 [ext_resource type="Texture2D" uid="uid://lbk7i6yms55y" path="res://assets/background/cauldron-mp-top/mptop.PNG" id="2_b08lm"]
 [ext_resource type="PackedScene" uid="uid://cqrxjuspqkdi0" path="res://Scenes/ingredient_drawer.tscn" id="3_b08lm"]
-[ext_resource type="Script" uid="uid://nb4nyvcixxeo" path="res://scrips/grinding_area.gd" id="3_mnfot"]
 [ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://scrips/pestle.gd" id="3_ohim2"]
 [ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="4_mnfot"]
 
@@ -21,6 +20,8 @@ size = Vector2(57, 60.5)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ng4e2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1yx5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mnfot"]
 
 [node name="GrindingStation" type="Control" unique_id=1247765081]
 layout_mode = 3
@@ -41,47 +42,26 @@ texture = ExtResource("2_b08lm")
 [node name="IngredientDrawer" parent="." unique_id=1675254955 instance=ExtResource("3_b08lm")]
 
 [node name="GrindingArea" type="Area2D" parent="." unique_id=1570226345]
-script = ExtResource("3_mnfot")
+position = Vector2(-49, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrindingArea" unique_id=2059078509]
 position = Vector2(-399.00003, -19.999985)
 rotation = -0.6981317
 shape = SubResource("CapsuleShape2D_w5u62")
 
-[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D" unique_id=1240140250]
-position = Vector2(-2.4682941, 5.845103)
-rotation = -1.5882496
-scale = Vector2(5.306539, 0.33045694)
-texture = ExtResource("4_mnfot")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GrindingArea" unique_id=1728253235]
 position = Vector2(-397, -15)
 shape = SubResource("CapsuleShape2D_w5u62")
-
-[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D2" unique_id=1351004682]
-position = Vector2(0.49998856, 3.5000103)
-scale = Vector2(0.32031268, 5.367188)
-texture = ExtResource("4_mnfot")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GrindingArea" unique_id=273747170]
 position = Vector2(-401, -16)
 rotation = -2.443461
 shape = SubResource("CapsuleShape2D_w5u62")
 
-[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D3" unique_id=771630933]
-position = Vector2(-1.7938175, 2.737671)
-scale = Vector2(0.31583968, 5.2954345)
-texture = ExtResource("4_mnfot")
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GrindingArea" unique_id=1837861230]
 position = Vector2(-399, -19)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_w5u62")
-
-[node name="Sprite2D" type="Sprite2D" parent="GrindingArea/CollisionShape2D4" unique_id=2113447870]
-position = Vector2(-0.885767, 2.6573334)
-scale = Vector2(0.32182398, 5.3320208)
-texture = ExtResource("4_mnfot")
 
 [node name="BackButton" type="Button" parent="." unique_id=370372965]
 layout_mode = 0
@@ -90,6 +70,9 @@ offset_top = 398.0
 offset_right = -621.0
 offset_bottom = 525.0
 text = "Back"
+
+[node name="fruitBowl" type="Sprite2D" parent="." unique_id=2061898976]
+position = Vector2(-451, -15)
 
 [node name="Pestle" type="CharacterBody2D" parent="." unique_id=913269000 groups=["Pestle"]]
 position = Vector2(-37, 267)
@@ -123,11 +106,13 @@ offset_left = -722.0
 offset_top = -272.0
 offset_right = -183.0
 offset_bottom = 270.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mnfot")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mnfot")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mnfot")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mnfot")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mnfot")
 
-[node name="fruitBowl" type="Sprite2D" parent="." unique_id=2061898976]
-position = Vector2(-482, 18)
-
-[connection signal="body_entered" from="GrindingArea" to="GrindingArea" method="_on_body_entered"]
+[connection signal="body_entered" from="GrindingArea" to="." method="_on_grinding_area_body_entered"]
 [connection signal="button_down" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_down"]
 [connection signal="button_up" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_up"]
 [connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]

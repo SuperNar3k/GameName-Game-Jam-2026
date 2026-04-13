@@ -1,12 +1,17 @@
 extends Sprite2D
 
+signal parent_buttons_hide
+signal parent_buttons_show
+
 var huh = 0
 var held = null
 var spawn_test = preload("res://Scenes/Spawn_Test.tscn")
 var instance
 var allIngredients
-
+var wantGrinded : bool
+var grabbingAllowed = true
 var nextPressed = false
+var showOnCompleted = false
 var page = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -64,25 +69,68 @@ func _ready() -> void:
 	$Button15.pressed.connect(_on_drawer_button_pressed.bind(14))
 	$Button16.pressed.connect(_on_drawer_button_pressed.bind(15))
 	
-func __init__(_allIngredients : Dictionary) -> void:
+func __init__(_allIngredients : Dictionary, _wantGrinded : bool) -> void:
 	# Set global dictionaries
 	allIngredients = _allIngredients
+	wantGrinded = _wantGrinded
 	
 func _on_drawer_button_pressed(pressed : int) -> void:
-	if(held == null):
-		if page != 1:
-			if pressed + 16 < 30:
-				if allIngredients.get(allIngredients.keys()[pressed+16]).isGrindable:
-					instance = spawn_test.instantiate()
-					add_child(instance)
-					instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed+16]).sprite))  
-					held = 1
+	if grabbingAllowed:
+		if(held == null):
+			if page != 1:
+				if pressed + 16 < 30:
+					if (allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned > 0):
+						if (wantGrinded):
+							instance = spawn_test.instantiate()
+							add_child(instance)
+							instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed+16]).sprite))  
+							held = allIngredients.keys()[pressed+16]
+							hide_buttons()
+							allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
+						else:
+							if (allIngredients.get(allIngredients.keys()[pressed+16]).isGrindable):
+								instance = spawn_test.instantiate()
+								add_child(instance)
+								instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed+16]).sprite))  
+								held = allIngredients.keys()[pressed+16]
+								hide_buttons()
+								allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
+						if (allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned == 0):
+							get_child(pressed).get_child(0).set_texture(Texture2D)
+			else:
+				if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned > 0):
+						if (wantGrinded):
+							instance = spawn_test.instantiate()
+							add_child(instance)
+							instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed]).sprite))  
+							held = allIngredients.keys()[pressed]
+							hide_buttons()
+							allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
+						else:
+							if (allIngredients.get(allIngredients.keys()[pressed]).isGrindable):
+								instance = spawn_test.instantiate()
+								add_child(instance)
+								instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed]).sprite))  
+								held = allIngredients.keys()[pressed]
+								hide_buttons()
+								allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
+						if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned == 0):
+							get_child(pressed).get_child(0).set_texture(Texture2D)
 		else:
-			if allIngredients.get(allIngredients.keys()[pressed]).isGrindable:
-				instance = spawn_test.instantiate()
-				add_child(instance)
-				instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed]).sprite))  
-				held = 1
+			if page != 1:
+				if held == allIngredients.keys()[pressed+16]:
+					held = null
+					instance.queue_free()
+					allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned += 1
+					_redraw()
+					show_buttons()
+			else:
+				if held == allIngredients.keys()[pressed]:
+					held = null
+					instance.queue_free()
+					allIngredients.get(allIngredients.keys()[pressed]).amountOwned += 1
+					_redraw()
+					show_buttons()
 
 #func inst(pos):
 	
@@ -99,30 +147,34 @@ func _on_handle_pressed() -> void:
 		huh = huh + 1
 		page = 1
 		
-		var i = 0
-		for ingred in allIngredients.keys():
-			if i <= 15:
-				get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
-			i = i + 1
+		_redraw()
 	else:
 		$AnimationPlayer.play_backwards("Drawer_Slide")
 		huh = huh + 1
 
 func _on_hovered(hovered: bool, ref) -> void:
-	ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
+	if held == null:
+		ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
+	else:
+		ref.material.set_shader_parameter("outline_thickness", 0.0)
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName):
-	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length:
+	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and held == null:
 		$nextBtn.show()
 	
 	if nextPressed:
+		var delete = 0
+		while delete < 16:
+			get_child(delete).get_child(0).set_texture(Texture2D)
+			delete = delete + 1
 		if page != 1:
 			page = 1
 			var i = 0
 			for ingred in allIngredients.keys():
 				if i <= 15:
-					get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
+					if allIngredients.get(ingred).amountOwned > 0:
+						get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 				i = i + 1
 		else:
 			page = 2
@@ -131,16 +183,51 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 				if i <= 15:
 					pass
 				else:
-					get_child(i-16).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
+					if allIngredients.get(ingred).amountOwned > 0:
+						get_child(i-16).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 				i = i + 1
-			$Button15/Sprite2D.set_texture(Texture2D)
-			$Button16/Sprite2D.set_texture(Texture2D)
-		$AnimationPlayer.play("Drawer_Slide", -1, 2.0)
+		$AnimationPlayer.play("Drawer_Slide")
 		nextPressed = false
+	if showOnCompleted:
+		show_buttons()
+		showOnCompleted = false
 
 
 func _on_next_btn_pressed() -> void:
 	$nextBtn.hide()
 	$AnimationPlayer.play_backwards("Drawer_Slide")
 	nextPressed = true
-	
+
+func _redraw() -> void:
+	var delete = 0
+	while delete < 16:
+		get_child(delete).get_child(0).set_texture(Texture2D)
+		delete = delete + 1
+	if page == 1:
+		var i = 0
+		for ingred in allIngredients.keys():
+			if i <= 15:
+				if allIngredients.get(ingred).amountOwned > 0:
+					get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
+			i = i + 1
+	else:
+		var i = 0
+		for ingred in allIngredients.keys():
+			if i <= 15:
+				pass
+			else:
+				if allIngredients.get(ingred).amountOwned > 0:
+					get_child(i-16).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
+			i = i + 1
+
+func hide_buttons():
+	$nextBtn.hide()
+	$Handle.hide()
+	parent_buttons_hide.emit()
+func show_buttons():
+	if $AnimationPlayer.is_playing():
+		showOnCompleted = true
+	else:
+		$nextBtn.show()
+		$Handle.show()
+		parent_buttons_show.emit()

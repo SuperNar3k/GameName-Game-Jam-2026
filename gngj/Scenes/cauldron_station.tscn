@@ -2,49 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cq3wnl4qijuqj" path="res://scrips/cauldron_station.gd" id="1_o3xxe"]
 [ext_resource type="Texture2D" uid="uid://cjdlqjm0yslvh" path="res://assets/background/cauldron-mp-top/cauldempty_bgcolor.PNG" id="2_5pjoj"]
+[ext_resource type="Texture2D" uid="uid://c288m7eou85u0" path="res://assets/background/cauldron-mp-top/new/IMG_0720.PNG" id="3_dcrpx"]
 [ext_resource type="PackedScene" uid="uid://cqrxjuspqkdi0" path="res://Scenes/ingredient_drawer.tscn" id="3_hhgs4"]
-[ext_resource type="Texture2D" uid="uid://c2t8ub1hfdata" path="res://assets/background/cauldron-mp-top/cauldhandbroth.PNG" id="5_xrgj4"]
+[ext_resource type="Texture2D" uid="uid://domohosdor27e" path="res://assets/background/cauldron-mp-top/new/IMG_0719.PNG" id="4_x1ou3"]
+[ext_resource type="Texture2D" uid="uid://tujpsa6dikab" path="res://assets/background/cauldron-mp-top/new/IMG_0721.PNG" id="5_4t13b"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="5_x1ou3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lc2wf"]
 radius = 41.225906
 height = 914.0
 
-[sub_resource type="Animation" id="Animation_gfxa0"]
-resource_name = "Drawer_Slide"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IngredientDrawer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.55478406, 1),
-"update": 0,
-"values": [Vector2(860, 0), Vector2(0, 0)]
-}
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1ou3"]
 
-[sub_resource type="Animation" id="Animation_ohim2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IngredientDrawer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(887.99994, 20)]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4t13b"]
+shader = ExtResource("5_x1ou3")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dcrpx"]
-_data = {
-&"Drawer_Slide": SubResource("Animation_gfxa0"),
-&"RESET": SubResource("Animation_ohim2")
-}
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4t13b"]
 
 [node name="CauldronStation" type="Control" unique_id=520231267]
 layout_mode = 3
@@ -81,8 +57,44 @@ shape = SubResource("CapsuleShape2D_lc2wf")
 [node name="bg" type="Sprite2D" parent="." unique_id=243719930]
 texture = ExtResource("2_5pjoj")
 
+[node name="DropSpot" type="Button" parent="." unique_id=467628411]
+layout_mode = 0
+offset_left = -819.0
+offset_top = -401.0
+offset_right = 11.0
+offset_bottom = 431.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x1ou3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x1ou3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1ou3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x1ou3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x1ou3")
+
+[node name="liquid" type="Sprite2D" parent="." unique_id=1835417309]
+position = Vector2(-401.5, 11)
+texture = ExtResource("3_dcrpx")
+
+[node name="waves" type="Sprite2D" parent="liquid" unique_id=1778106494]
+modulate = Color(0.573, 0.675, 0.737, 1)
+rotation = 0.77823955
+texture = ExtResource("4_x1ou3")
+
+[node name="handle" type="Sprite2D" parent="liquid" unique_id=1234661561]
+material = SubResource("ShaderMaterial_4t13b")
+rotation = 0.77823955
+texture = ExtResource("5_4t13b")
+
+[node name="Button" type="Button" parent="liquid" unique_id=765800098]
+offset_left = 411.5
+offset_top = -28.0
+offset_right = 553.71
+offset_bottom = 72.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4t13b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4t13b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4t13b")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4t13b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4t13b")
+
 [node name="IngredientDrawer" parent="." unique_id=1675254955 instance=ExtResource("3_hhgs4")]
-position = Vector2(887.99994, 20)
 
 [node name="BackButton" type="Button" parent="." unique_id=524424745]
 layout_mode = 0
@@ -92,8 +104,6 @@ offset_right = -621.0
 offset_bottom = 525.0
 text = "back"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1586898431]
-libraries/ = SubResource("AnimationLibrary_dcrpx")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1850734164]
-texture = ExtResource("5_xrgj4")
+[connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
+[connection signal="button_down" from="liquid/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="liquid/Button" to="." method="_on_button_button_up"]
