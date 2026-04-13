@@ -45,7 +45,7 @@ func _ready() -> void:
 	NPCBirthingPod.Populate()
 	ItemCreator.UnlockDefaultIngredients(ingredients)
 	ItemCreator.UnlockDefaultPotions(potions)
-	QuestCreator.Populate(quests, NPCBirthingPod, potions)
+	
 	
 	
 	
@@ -86,6 +86,10 @@ func startOfDay():
 	
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
+		
+		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
+		
+		QuestCreator.Populate(quests, NPCBirthingPod, potions)
 	else:
 		var ingredient = ingredients.get("leaf of a thousand leaves")
 		ingredient.amountOwned = ingredients.amountOwned + 2

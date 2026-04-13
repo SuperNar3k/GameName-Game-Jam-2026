@@ -51,7 +51,7 @@ func createQuest(
 	
 func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary):
 	#Hardcoding all of our allQuests here:
-	var randomPotion = potions.keys()[randi_range(0, potions.size()) - 1]
+	var randomPotion = potions.keys()[randi_range(0, potions.size()) -1]
 	#allQuests.append(createQuest(
 		#["Hi, can you make me", randomPotion],												#allQueststartDialog
 		#["Ugh, you got that milk yet?"],															#QuestReturningDialog
