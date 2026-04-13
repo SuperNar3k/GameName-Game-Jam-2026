@@ -4,8 +4,12 @@ extends Control
 
 signal goBack
 
+var ItemCreator
 var allPotions
 var allIngredients
+var potions
+
+var numOfDuds = 1
 
 var held_ingredients : Array
 var followMouse = false
@@ -21,10 +25,12 @@ func _ready() -> void:
 	$IngredientDrawer.parent_buttons_show.connect(show_buttons)
 	backButton.pressed.connect(_on_backButton_pressed)
 
-func __init__(_allPotions : Dictionary, _allIngredients : Dictionary) -> void:
+func __init__(_ItemCreator, _allPotions : Dictionary, _allIngredients : Dictionary, _potions : Dictionary) -> void:
 	# Set global dictionaries
+	ItemCreator = _ItemCreator
 	allPotions = _allPotions
 	allIngredients = _allIngredients
+	potions = _potions
 	$IngredientDrawer.__init__(_allIngredients, true)
 
 func _on_backButton_pressed() -> void:
@@ -35,13 +41,14 @@ func _process(delta: float) -> void:
 	if followMouse:
 		if done == false:
 			$liquid.look_at(get_global_mouse_position())
-			if recordRot < $liquid.rotation_degrees:
-				addedCook += delta
-				$liquid/waves.modulate = lerp(Color(0.573, 0.675, 0.737, 1.0), Color(0.725, 0.388, 0.141, 1.0), addedCook / 3)
-			recordRot = $liquid.rotation_degrees
-			if $liquid/waves.modulate.b <= .141:
-				done = true
-				_cooking_done()
+			if held_ingredients.size() > 0:
+				if recordRot < $liquid.rotation_degrees:
+					addedCook += delta
+					$liquid/waves.modulate = lerp(Color(0.573, 0.675, 0.737, 1.0), Color(0.725, 0.388, 0.141, 1.0), addedCook / 3)
+				recordRot = $liquid.rotation_degrees
+				if $liquid/waves.modulate.b <= .141:
+					done = true
+					_cooking_done()
 			
 func _on_hovered(hovered: bool, ref) -> void:
 	if $IngredientDrawer.held == null:
@@ -74,6 +81,20 @@ func _cooking_done():
 			allPotions.get(allPotions.keys()[i]).amountOwned += 1
 			break
 		i = i + 1
+	if i == allPotions.size():
+		var pName = "dud" + str(numOfDuds)
+		#var potion = allPotions.createPotion(
+			#pName,
+			#"This potion does nothing but taste bad",
+			#1,
+			#"res://assets/potions/CTCBox.jpg",
+			#held_ingredients,
+			#0
+			#)
+		ItemCreator.UnlockPotion(potions, pName, held_ingredients)
+		numOfDuds += 1
+	print(i)
+	$AnimationPlayer.play_backwards("revert_color")
 
 func _on_button_button_down() -> void:
 	if $IngredientDrawer.held == null:
@@ -83,3 +104,9 @@ func _on_button_button_down() -> void:
 func _on_button_button_up() -> void:
 	if $IngredientDrawer.held == null:
 		followMouse = false
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	done = false
+	held_ingredients.clear()
+	addedCook = 0

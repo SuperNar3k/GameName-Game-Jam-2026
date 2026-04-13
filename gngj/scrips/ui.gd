@@ -1,5 +1,6 @@
 extends Control
 
+var ItemCreator
 var allPotions
 var allIngredients
 var quests
@@ -7,6 +8,7 @@ var quests
 var activeQuests
 var pharmacyQuests
 var storeQueue
+var potions
 
 var gameStart = false
 var bookOpen = false
@@ -53,23 +55,27 @@ func _process(delta: float) -> void:
 
 #called from main; saves references of the variables from main into these local (global?) variables
 func ref_storage(
+	_ItemCreator,
 	_allPotions,
 	_allIngredients,
 	_quests,
 	_activeQuests,
 	_pharmacyQuests,
 	_storeQueue,
+	_potions
 ) -> void:
+	ItemCreator = _ItemCreator
 	allPotions = _allPotions
 	allIngredients = _allIngredients
 	quests = _quests
 	activeQuests = _activeQuests
 	pharmacyQuests = _pharmacyQuests
 	storeQueue = _storeQueue
+	potions = _potions
 	
 	$RecipeBook.__init__(_allPotions, _allIngredients)
 	$GrindingStation.__init__(_allIngredients)
-	$CauldronStation.__init__(_allPotions, _allIngredients)
+	$CauldronStation.__init__(_ItemCreator, _allPotions, _allIngredients, _potions)
 
 func _on_button_pressed(button_pressed: String) -> void:
 	if (button_pressed == "ingredientShelf"):

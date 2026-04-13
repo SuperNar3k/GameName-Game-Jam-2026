@@ -36,7 +36,7 @@ func createPotion(
 	_description: String,
 	_amountOwned: int,
 	_sprite: String,
-	_recipe: Array[String],
+	_recipe: Array,
 	_cookLevelNeeded: int
 ):
 	var brandNewPart = Item.new()
@@ -257,8 +257,19 @@ func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):
 	_unlockedIngredients.set(_ingName, ing)
 
 # Unlock a new potion
-func UnlockPotion(_unlockedPotions: Dictionary, _potName: String):
+func UnlockPotion(_unlockedPotions: Dictionary, _potName: String, ing):
 	var pot = allPotions.get(_potName) 
+	if pot == null:
+		var potion = createPotion(
+			_potName,
+			"This potion does nothing but taste bad",
+			1,
+			"res://assets/potions/CTCBox.jpg",
+			ing,
+			0
+			)
+		allPotions.set(_potName, potion)
+		pot = allPotions.get(_potName) 
 	pot.unlocked = true
 	_unlockedPotions.set(_potName, pot)
 	
