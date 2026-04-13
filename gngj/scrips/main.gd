@@ -437,7 +437,7 @@ func unlockPotion(p: Item):
 		
 		print("potion: ", p.itemName, " unlocked")
 		
-		# TO-DO: POPUP NEWITEM FOR NEW UNLOCKED POTION
+		$ui/Notification/Popup.newItemUnlocked(p, "Potion")
 
 func buyIngredient(cost: int, ingredient: Item):
 	if(cost <= currency):
@@ -457,7 +457,8 @@ func giveIngredient(i: Item):
 		
 		print("ingredient: ", i.itemName, " unlocked")
 		
-		#TO-DO: ALSO NEED TO ADD POP UP HERE
+		$ui/Notification/Popup.newItemUnlocked(i, "Ingredient")
+
 		
 	# Increase quantity by 1
 	i.amountOwned += 1
