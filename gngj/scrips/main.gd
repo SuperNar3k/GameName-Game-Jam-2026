@@ -5,6 +5,7 @@ var currency = 50
 var day = 1
 var dayDuration = 90
 var numOfNpcs = 3
+var dudCounter = 1
 
 var MAX_PHARMACY_QUESTS = 5 # Max number of repeatable quests
 var MAX_ACTIVE_QUESTS = 5 # Max number of active quests
@@ -436,7 +437,7 @@ func unlockPotion(p: Item):
 		
 		print("potion: ", p.itemName, " unlocked")
 		
-		# TO-DO: POPUP NEWITEM FOR NEW UNLOCKED POTION
+		$ui/Notification/Popup.newItemUnlocked(p, "Potion")
 
 func buyIngredient(cost: int, ingredient: Item):
 	if(cost <= currency):
@@ -456,7 +457,8 @@ func giveIngredient(i: Item):
 		
 		print("ingredient: ", i.itemName, " unlocked")
 		
-		#TO-DO: ALSO NEED TO ADD POP UP HERE
+		$ui/Notification/Popup.newItemUnlocked(i, "Ingredient")
+
 		
 	# Increase quantity by 1
 	i.amountOwned += 1
@@ -476,20 +478,38 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 
 		# Check if cook level matches and if uses same number of ingredients
 		if p.cookLevelNeeded == cookedLevel and ingredientsUsed.size() == p.recipe.size():
-			for ingrName:String in ingredientsUsed:
-				if ingredientsUsed.count(ingrName) == p.recipe.count(ingrName):
-					# Match found
-					potion = p
-					# TO-DO: POPUP POTION MADE!
-					
-					break # Exit the inner for-loop
+			if(ingredientsUsed == p.recipe):
+				potion = p
+				break
 
 	# Set to dud if recipe not found
 	if potion == null:
-		pass
-		
-		
-		
+		var potionName = "Dud " + str(dudCounter)
+		var potionSprite
+		if(dudCounter%4 == 0):
+			potionSprite = "res://assets/potions/Dud Potion Large Round Bottle.PNG"
+		elif(dudCounter%4 == 1):
+			potionSprite = "res://assets/potions/Dud Potion round bottle long neck.PNG"
+		elif(dudCounter%4 == 2):
+			potionSprite = "res://assets/potions/Dud Potion Square Bottle.PNG"
+		else: 
+			potionSprite = "res://assets/potions/Dud Potion Vial.PNG"
+			
+		var potionRecipe = []
+			
+		for ingredient in ingredientsUsed:
+			potionRecipe.append(ingredient)
+			
+		potion = ItemCreator.createPotion(
+			potionName,
+			"This potion does nothing but taste bad",
+			0,
+			potionSprite,
+			potionRecipe,
+			0
+		)
+		dudCounter = dudCounter + 1
+		print("new dud created")
 	# Unlock if needed, and increase quantity
 	unlockPotion(potion)
 	potion.amountOwned += 1
