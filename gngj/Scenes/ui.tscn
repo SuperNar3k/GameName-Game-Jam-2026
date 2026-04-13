@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bai0jtmapvbqk" path="res://Scenes/crowStore.tscn" id="11_g0wmg"]
 [ext_resource type="PackedScene" uid="uid://p73w6eq3dno8" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
 [ext_resource type="PackedScene" uid="uid://dejhrlp1mqime" path="res://Scenes/hud.tscn" id="13_3r70p"]
+[ext_resource type="PackedScene" uid="uid://ctbfso3nbohqd" path="res://Scenes/notification.tscn" id="14_8fs27"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -99,6 +100,11 @@ offset_right = 955.0
 offset_bottom = 544.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="Notification" parent="." unique_id=1275692138 instance=ExtResource("14_8fs27")]
+layout_mode = 1
+offset_top = -700.0
+offset_bottom = -700.0
 
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]

@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://ctbfso3nbohqd"]
+
+[ext_resource type="Script" uid="uid://drhbnblhm3b6s" path="res://scrips/popup.gd" id="1_0gtv2"]
+[ext_resource type="Texture2D" uid="uid://u6c8vebjwgcm" path="res://assets/ui/parchment.PNG" id="2_wohpn"]
+[ext_resource type="Texture2D" uid="uid://cgy4mp5jd6swi" path="res://assets/ingredients/IMG_0616.PNG" id="3_cmct2"]
+[ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="4_dygbd"]
+[ext_resource type="LabelSettings" uid="uid://db2wsf8o6vw76" path="res://assets/fonts/label_settings/titleText.tres" id="5_kxtsc"]
+
+[sub_resource type="Animation" id="Animation_wohpn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6kda2"]
+resource_name = "moveIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 215)]
+}
+
+[sub_resource type="Animation" id="Animation_lk1ln"]
+resource_name = "moveOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 215), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmct2"]
+_data = {
+&"RESET": SubResource("Animation_wohpn"),
+&"moveIn": SubResource("Animation_6kda2"),
+&"moveOut": SubResource("Animation_lk1ln")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_dbje5"]
+font = ExtResource("4_dygbd")
+font_size = 20
+font_color = Color(0, 0, 0.11764706, 0.58431375)
+
+[node name="Notification" type="Control" unique_id=1275692138]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=306234997]
+layout_mode = 0
+offset_left = -700.0
+offset_top = 400.0
+offset_right = -483.0
+offset_bottom = 496.0
+text = "notification"
+
+[node name="Popup" type="Control" parent="." unique_id=1744936356]
+anchors_preset = 0
+script = ExtResource("1_0gtv2")
+
+[node name="parchment" type="Sprite2D" parent="Popup" unique_id=691351669]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_wohpn")
+flip_h = true
+
+[node name="popupTimer" type="Timer" parent="Popup" unique_id=1316981783]
+
+[node name="popupAnimation" type="AnimationPlayer" parent="Popup" unique_id=486587680]
+libraries/ = SubResource("AnimationLibrary_cmct2")
+
+[node name="Sprite2D" type="TextureRect" parent="Popup" unique_id=898404669]
+layout_mode = 0
+offset_left = -200.0
+offset_top = -50.0
+offset_bottom = 150.0
+texture = ExtResource("3_cmct2")
+expand_mode = 1
+
+[node name="contTitle" type="CenterContainer" parent="Popup" unique_id=1706173725]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = -150.0
+offset_top = -45.0
+offset_right = 150.0
+offset_bottom = 5.0
+
+[node name="titleLabel" type="Label" parent="Popup/contTitle" unique_id=457213967]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "New thingamajig Unlocked"
+label_settings = SubResource("LabelSettings_dbje5")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="contName" type="CenterContainer" parent="Popup" unique_id=734220691]
+layout_mode = 0
+offset_left = -55.0
+offset_top = -8.0
+offset_right = 145.0
+offset_bottom = 81.0
+
+[node name="nameLabel" type="Label" parent="Popup/contName" unique_id=1675335421]
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+text = "Potion/Ingredient Name"
+label_settings = ExtResource("5_kxtsc")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Button" to="Popup" method="_on_button_pressed"]
+[connection signal="timeout" from="Popup/popupTimer" to="Popup" method="onTimerTimeout"]
+[connection signal="animation_finished" from="Popup/popupAnimation" to="Popup" method="onPopupAnimationFinished"]
