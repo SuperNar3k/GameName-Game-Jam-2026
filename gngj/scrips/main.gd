@@ -1,7 +1,7 @@
 extends Node2D
 
 #GLOBAL VARIABLES
-var currency = 0
+var currency = 50
 var day = 1
 var dayDuration = 90
 var numOfNpcs = 3
@@ -29,11 +29,12 @@ var questAccepted
 var inConverstation = false
 
 var bellSFX = preload("res://assets/sound/vine-boom.mp3")
+var buySFX = preload("res://assets/sound/cha-ching.mp3")
 
 # Called when the game starts.
 func _ready() -> void:
 	$dayTimer.set_wait_time(dayDuration)
-	$dayTimer.timeout.connect(endOfDay)
+	#$dayTimer.timeout.connect(endOfDay)
 	
 	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
@@ -371,6 +372,7 @@ func _onAcceptQuest():
 	_updateQueue()
 	return true
 
+#Never used this lol!
 func _onQuestCompleted(_quest: Quest):
 	# Mark as completed
 	_quest.questCompleted = true
@@ -397,6 +399,7 @@ func _onQuestCompleted(_quest: Quest):
 	for r:String in _quest.rewards[2]:
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
+
 
 #TO-DO: TESTING NEEDS TO BE DONE ON THIS FUNCTION
 func onIngredientGrinded(i: Item):
@@ -431,6 +434,15 @@ func unlockPotion(p: Item):
 		
 		# TO-DO: POPUP NEWITEM FOR NEW UNLOCKED POTION
 
+func buyIngredient(cost: int, ingredient: Item):
+	if(cost <= currency):
+		currency -= cost
+		$ui/crowStore.currency = currency
+		$AudioStreamPlayer2D.stream = buySFX
+		$AudioStreamPlayer2D.play()
+		giveIngredient(ingredient)
+		
+
 func giveIngredient(i: Item):
 	# If not unlocked, unlock it!
 	if !(i.itemName in ingredients):
@@ -444,6 +456,8 @@ func giveIngredient(i: Item):
 		
 	# Increase quantity by 1
 	i.amountOwned += 1
+	
+	
 
 #TO-DO: TESTING NEEDS TO BE DONE ON THIS FUCNTION
 func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
@@ -508,6 +522,8 @@ func endOfDay():
 	
 	# TO-DO: if potion making was in-progress, immediately complete the potion
 	
+	$ui/crowStore.currency = currency
+	$ui/crowStore.checkIfTooBroke()
 	$ui._on_end_of_day()
 	
 	

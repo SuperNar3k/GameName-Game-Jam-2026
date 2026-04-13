@@ -19,6 +19,7 @@ one_shot = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1574595219]
 position = Vector2(960, 540)
 
+[connection signal="buyItem" from="ui" to="." method="buyIngredient"]
 [connection signal="questAccepted" from="ui" to="." method="_on_ui_quest_accepted"]
 [connection signal="startGame" from="ui" to="." method="startOfDay"]
 [connection signal="talkToNpc" from="ui" to="." method="_on_greetNPC"]
