@@ -7,7 +7,6 @@ extends Control
 @onready var exit_button: Button = $MainMenu/CenterContainer/VBoxContainer/ExitButton
 
 @onready var testEndOfDayButton: Button = $testEndOfDay
-@onready var testQuestListScreenButton: Button = $testQuestListScreen
 
 
 signal startGame
@@ -15,7 +14,6 @@ signal displayOptions
 signal displayCredits
 
 signal testThatShit
-signal testThatOtherShit
 
 func _ready() -> void:
 	$phys_buttons.open_button_pressed.connect(_on_menu_button_pressed.bind("start"))
@@ -29,7 +27,6 @@ func _ready() -> void:
 	exit_button.pressed.connect(_on_menu_button_pressed.bind("exit"))
 	
 	testEndOfDayButton.pressed.connect(_on_menu_button_pressed.bind("test1"))
-	testQuestListScreenButton.pressed.connect(_on_menu_button_pressed.bind("test2"))
 	
 
 
@@ -49,8 +46,6 @@ func _on_menu_button_pressed(button_name: String) -> void:
 			get_tree().quit()
 		"test1":
 			testThatShit.emit()
-		"test2":
-			testThatOtherShit.emit()
 
 func phys_button_pressed():
 	pass

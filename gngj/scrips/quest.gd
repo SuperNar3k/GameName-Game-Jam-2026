@@ -4,9 +4,9 @@ extends Node
 #GLOBAL VARIABLES
 
 var accepted = false
-var questCompleted = false
+var completed = false
 
-var questDialog = [[],[],[],[],[]]
+var questDialog = [[],[],[],[],[],[],[]]
 var requirements = []
 var rewards = [[],[],[]]
 var daysUntilDue
@@ -14,12 +14,18 @@ var daysUntilReward
 var isRepeatable
 var npcQuestGiver
 
+var daysUntilDueReset
+var daysUntilRewardReset
+
+
 func __init__(
 	_questStartDialog: Variant,
 	_questReturingDialog: Variant,
 	_questRejectedDialog: Variant,
 	_questFailedDialog: Variant,
 	_questSuccsesDialog: Variant,
+	_questJoiningPharmacyDialog: Variant,
+	_questGivingDelayedRewardDialog: Variant,
 	_requirements: Variant,
 	_rewardMoney: Variant,
 	_rewardRecipes: Variant,
@@ -40,6 +46,10 @@ func __init__(
 		questDialog[3].append(dialog)
 	for dialog in _questSuccsesDialog:
 		questDialog[4].append(dialog)
+	for dialog in _questJoiningPharmacyDialog:
+		questDialog[5].append(dialog)
+	for dialog in _questGivingDelayedRewardDialog:
+		questDialog[6].append(dialog)
 
 	#Filling in the requirements[]
 	for requirement in _requirements:
@@ -55,6 +65,35 @@ func __init__(
 	daysUntilDue = _daysUntilDue
 	daysUntilReward = _daysUntilReward
 	isRepeatable = _isReapeatable
+	daysUntilDueReset = _daysUntilDue
+	daysUntilRewardReset = _daysUntilReward
 	
 	# Set NPC class
 	npcQuestGiver = _npc
+	
+	
+func resetQuest(): 
+	daysUntilDue = daysUntilDueReset
+	daysUntilReward = daysUntilRewardReset
+	accepted = false
+	completed = false
+	
+	var tempBirthPod = Npc_Birthing_Pod.new()
+	
+	
+	match npcQuestGiver.type: 
+		"Child":
+			npcQuestGiver.npcName = tempBirthPod.allChildren.pick_random()
+		"Townsfolk":
+			npcQuestGiver.npcName = tempBirthPod.allTownsolk.pick_random()
+		"Adventurer":
+			npcQuestGiver.npcName = tempBirthPod.allAdventurers.pick_random()
+	
+	var spriteName = npcQuestGiver.npcName.to_lower() + ".jpg"
+	
+	if FileAccess.file_exists("res://assets/npcs/" + spriteName):
+		npcQuestGiver.sprite ="res://assets/npcs/" + spriteName # Load sprite if the file exists
+	else:
+		npcQuestGiver.sprite = "res://assets/npcs/lil freak.jpg"
+	
+	print("Quest successfully reset!")

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3t56ho3lvi3a"]
+[gd_scene format=3 uid="uid://dejhrlp1mqime"]
 
 [ext_resource type="Script" uid="uid://cagttvbuwiivb" path="res://scrips/hud.gd" id="1_e0onf"]
 
@@ -27,32 +27,23 @@ offset_right = 78.0
 offset_bottom = 87.0
 text = "Quests"
 
-[node name="Pharmacy" type="Button" parent="." unique_id=1688041043]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 103.0
-offset_right = 99.0
-offset_bottom = 134.0
-text = "Pharmacy"
-
 [node name="Bookshelf" type="Button" parent="." unique_id=983928136]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 150.0
+offset_top = 105.0
 offset_right = 98.0
-offset_bottom = 181.0
+offset_bottom = 136.0
 text = "Bookshelf"
 
 [node name="Options" type="Button" parent="." unique_id=2119365602]
 layout_mode = 0
 offset_left = 11.0
-offset_top = 199.0
+offset_top = 154.0
 offset_right = 97.0
-offset_bottom = 230.0
+offset_bottom = 185.0
 text = "Options"
 
 [connection signal="pressed" from="Recipes" to="." method="_on_recipes_pressed"]
 [connection signal="pressed" from="Quests" to="." method="_on_quests_pressed"]
-[connection signal="pressed" from="Pharmacy" to="." method="_on_pharmacy_pressed"]
 [connection signal="pressed" from="Bookshelf" to="." method="_on_bookshelf_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]

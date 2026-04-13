@@ -16,9 +16,6 @@ func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
 	for k:String in keysInReverse:
 		var ingredient = allIngredients.get(k)
 		
-		#ONLY FOR TESTING
-		ingredient.unlocked = true
-		
 		if(ingredient.unlocked):
 			$ScrollContainer/AspectRatioContainer/VBoxContainer/ingredientLable.add_sibling(item)
 			item.add_to_group("itemToDelete")
@@ -34,9 +31,6 @@ func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
 	for k:String in keysInReverse:
 		k.reverse()
 		var potion = allPotions.get(k)
-		
-		#ONLY FOR TESTING
-		potion.unlocked = true
 		
 		if(potion.unlocked):
 			$ScrollContainer/AspectRatioContainer/VBoxContainer/potionLable.add_sibling(item)

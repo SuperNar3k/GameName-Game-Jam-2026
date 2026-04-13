@@ -13,4 +13,13 @@ offset_right = 960.0
 offset_bottom = 540.0
 metadata/_edit_use_anchors_ = true
 
-[node name="dayDuration" type="Timer" parent="." unique_id=1554891449]
+[node name="dayTimer" type="Timer" parent="." unique_id=1554891449]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1574595219]
+position = Vector2(960, 540)
+
+[connection signal="questAccepted" from="ui" to="." method="_on_ui_quest_accepted"]
+[connection signal="startGame" from="ui" to="." method="startOfDay"]
+[connection signal="talkToNpc" from="ui" to="." method="_on_greetNPC"]
+[connection signal="timeout" from="dayTimer" to="." method="endOfDay"]

@@ -13,6 +13,7 @@ var amountOwned : int
 
 #FOR INGREDIENTS
 var value : int
+var isGrindable : bool
 
 #FOR POTIONS
 var recipe : Array
@@ -26,7 +27,9 @@ func __init__(
 	_recipe = [],
 	_amountOwned = 0,
 	_cookLevelNeeded = 0,
-	_value = 0
+	_value = 0,
+	_isGrindable = false
+
 ):
 	itemName = _itemName
 	description = _description
@@ -35,14 +38,5 @@ func __init__(
 	recipe = _recipe
 	cookLevelNeeded = _cookLevelNeeded
 	value = _value
+	isGrindable = _isGrindable
 	
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass

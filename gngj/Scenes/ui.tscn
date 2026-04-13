@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://db6uxsqamrixk" path="res://Scenes/endOfDayScreen.tscn" id="10_nt8jn"]
 [ext_resource type="PackedScene" uid="uid://bai0jtmapvbqk" path="res://Scenes/crowStore.tscn" id="11_g0wmg"]
 [ext_resource type="PackedScene" uid="uid://p73w6eq3dno8" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
-[ext_resource type="PackedScene" uid="uid://d3t56ho3lvi3a" path="res://Scenes/hud.tscn" id="13_3r70p"]
+[ext_resource type="PackedScene" uid="uid://dejhrlp1mqime" path="res://Scenes/hud.tscn" id="13_3r70p"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -31,6 +31,10 @@ layout_mode = 1
 [node name="FrontRoom" parent="." unique_id=717244377 instance=ExtResource("2_q7pk6")]
 visible = false
 layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="BackRoom" parent="." unique_id=1422597810 instance=ExtResource("3_m78vo")]
 visible = false
@@ -99,8 +103,9 @@ grow_vertical = 1
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]
 [connection signal="startGame" from="MainMenuScene" to="." method="_on_main_menu_scene_start_game"]
-[connection signal="testThatOtherShit" from="MainMenuScene" to="." method="_on_main_menu_scene_test_that_other_shit"]
-[connection signal="testThatShit" from="MainMenuScene" to="." method="_on_main_menu_scene_test_that_shit"]
+[connection signal="testThatShit" from="MainMenuScene" to="." method="_on_end_of_day"]
+[connection signal="questAccepted" from="FrontRoom" to="." method="_on_front_room_quest_accepted"]
+[connection signal="talkToNpc" from="FrontRoom" to="." method="_on_front_room_talk_to_npc"]
 [connection signal="toBackRoom" from="FrontRoom" to="." method="_on_front_room_to_back_room"]
 [connection signal="toCauldronStation" from="BackRoom" to="." method="_on_back_room_to_cauldron_station"]
 [connection signal="toFront" from="BackRoom" to="." method="_on_back_room_to_front"]
@@ -110,5 +115,7 @@ grow_vertical = 1
 [connection signal="goBack" from="credits" to="." method="_on_credits_go_back"]
 [connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
 [connection signal="newDay" from="crowStore" to="." method="newDay"]
+[connection signal="options_pressed" from="Hud" to="." method="_on_hud_options_pressed"]
+[connection signal="quest_pressed" from="Hud" to="." method="_on_hud_quest_pressed"]
 [connection signal="returnToGame" from="questListScreen" to="." method="_on_quest_list_screen_return_to_game"]
 [connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]

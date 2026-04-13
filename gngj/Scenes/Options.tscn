@@ -19,6 +19,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_qqnya")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=501582258]
@@ -251,3 +253,4 @@ text = "Exit"
 [connection signal="toggled" from="TabContainer/Sound/SFXVolumeSlider/CheckBox" to="." method="_on_sfx_mute_toggled"]
 [connection signal="item_selected" from="TabContainer/Display/Resolutions" to="." method="_on_resolutions_item_selected"]
 [connection signal="toggled" from="TabContainer/Display/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
