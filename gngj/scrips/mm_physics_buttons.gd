@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_2d_body_entered(_body: RigidBody2D) -> void:
 	if $collisionTimer.is_stopped():
-		$collisionTimer.start(.2)
+		$collisionTimer.start(.1)
 
 
 func _on_collision_timer_timeout() -> void:
