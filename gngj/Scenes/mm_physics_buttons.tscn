@@ -86,6 +86,14 @@ size = Vector2(400, 277.325)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klqoj"]
 size = Vector2(24.19, 23.095)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nx21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el70q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yddm0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dc0gd"]
+
 [node name="phys_buttons" type="Node2D" unique_id=1086510356]
 script = ExtResource("1_2cd7o")
 
@@ -630,8 +638,52 @@ shape = SubResource("RectangleShape2D_klqoj")
 shape = SubResource("RectangleShape2D_klqoj")
 
 [node name="collisionTimer" type="Timer" parent="." unique_id=1252048251]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1612524306]
+position = Vector2(0, 990)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1048337602]
+shape = SubResource("RectangleShape2D_8nx21")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1599717282]
+position = Vector2(216, 990)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1393086533]
+shape = SubResource("RectangleShape2D_el70q")
+
+[node name="RigidBody2D21" type="RigidBody2D" parent="." unique_id=1720430506]
+position = Vector2(0, 967)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D21" unique_id=1762372286]
+shape = SubResource("CapsuleShape2D_yddm0")
+
+[node name="RigidBody2D22" type="RigidBody2D" parent="." unique_id=1476717256]
+position = Vector2(216, 967)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D22" unique_id=822232238]
+shape = SubResource("CapsuleShape2D_dc0gd")
+
+[node name="PinJoint2D31" type="PinJoint2D" parent="." unique_id=1621480079]
+position = Vector2(0, 954)
+node_a = NodePath("../close")
+node_b = NodePath("../RigidBody2D21")
+
+[node name="PinJoint2D32" type="PinJoint2D" parent="." unique_id=757534262]
+position = Vector2(0, 981)
+node_a = NodePath("../RigidBody2D21")
+node_b = NodePath("../StaticBody2D")
+
+[node name="PinJoint2D33" type="PinJoint2D" parent="." unique_id=181967013]
+position = Vector2(216, 954)
+node_a = NodePath("../close")
+node_b = NodePath("../RigidBody2D22")
+
+[node name="PinJoint2D34" type="PinJoint2D" parent="." unique_id=2053020681]
+position = Vector2(216, 981)
+node_a = NodePath("../RigidBody2D22")
+node_b = NodePath("../StaticBody2D2")
 
 [connection signal="pressed" from="open/openbtn" to="." method="_on_openbtn_pressed"]
 [connection signal="pressed" from="options/optionsbtn" to="." method="_on_optionsbtn_pressed"]

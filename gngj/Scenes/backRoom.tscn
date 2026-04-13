@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cyi5os1qwbfdr" path="res://assets/background/back/ingshelf.PNG" id="3_8ly7a"]
 [ext_resource type="Texture2D" uid="uid://38rp5uw1xgwv" path="res://assets/background/back/cauldron.PNG" id="3_ligfe"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_j34kl"]
+[ext_resource type="Texture2D" uid="uid://dfr2x343vw6fg" path="res://assets/background/back/IMG_0703.PNG" id="5_njmsa"]
 [ext_resource type="Texture2D" uid="uid://cefjajvllyis8" path="res://assets/background/back/cobblecauld.PNG" id="6_njmsa"]
 [ext_resource type="Texture2D" uid="uid://bnqstwn4x68wd" path="res://assets/background/back/mp.PNG" id="7_rntc6"]
 [ext_resource type="Texture2D" uid="uid://d3dqs6v1ko65u" path="res://assets/background/back/mpscarf.PNG" id="8_o84pg"]
@@ -136,6 +137,9 @@ text = "To Front"
 [node name="ingshelfimg" type="Sprite2D" parent="." unique_id=214425391]
 material = SubResource("ShaderMaterial_k8uso")
 texture = ExtResource("3_8ly7a")
+
+[node name="overlayscarfimg" type="Sprite2D" parent="." unique_id=2119618885]
+texture = ExtResource("5_njmsa")
 
 [node name="cauldronimg" type="Sprite2D" parent="." unique_id=591737901]
 material = SubResource("ShaderMaterial_4ab26")
