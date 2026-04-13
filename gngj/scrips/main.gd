@@ -46,12 +46,14 @@ func _ready() -> void:
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
+		ItemCreator,
 		ItemCreator.allPotions,
 		ItemCreator.allIngredients,
 		quests,
 		activeQuests,
 		pharmacyQuests,
-		storeQueue
+		storeQueue,
+		potions
 	)
 	
 	for quest in quests:
@@ -428,7 +430,7 @@ func unlockPotion(p: Item):
 	
 	# If not unlocked, unlock it!
 	if !(p.itemName in potions):
-		ItemCreator.UnlockPotion(potions, p.itemName)
+		ItemCreator.UnlockPotion(potions, p.itemName, null)
 		potions.set(p.itemName, p)
 		p.unlocked = true
 		

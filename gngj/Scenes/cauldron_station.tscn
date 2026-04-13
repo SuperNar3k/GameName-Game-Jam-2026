@@ -22,6 +22,42 @@ shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4t13b"]
 
+[sub_resource type="Animation" id="Animation_x1ou3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("liquid/waves:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.573, 0.675, 0.737, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4t13b"]
+resource_name = "revert_color"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("liquid/waves:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1.3660401, 1),
+"update": 0,
+"values": [Color(0.573, 0.675, 0.737, 1), Color(0.725, 0.388, 0.141, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pg281"]
+_data = {
+&"RESET": SubResource("Animation_x1ou3"),
+&"revert_color": SubResource("Animation_4t13b")
+}
+
 [node name="CauldronStation" type="Control" unique_id=520231267]
 layout_mode = 3
 anchors_preset = 8
@@ -104,6 +140,10 @@ offset_right = -621.0
 offset_bottom = 525.0
 text = "back"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2129075205]
+libraries/ = SubResource("AnimationLibrary_pg281")
+
 [connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
 [connection signal="button_down" from="liquid/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="liquid/Button" to="." method="_on_button_button_up"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
