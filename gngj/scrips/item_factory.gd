@@ -134,24 +134,6 @@ func Populate():
 	)
 	
 	createPotion(
-		"dud",									#ItemName
-		"a failed experiment",					#Description
-		0,										#AmountOwned
-		"res://assets/npcs/lil freak.jpg",		#Sprite
-		[],										#Recipe
-		0										#CookLevelNeeded
-	)
-	
-	createPotion(
-		"test name 3",
-		"test desc 3",
-		0,
-		"res://assets/potions/three.jpg",
-		["asbestos","crushed asbestos","beans"],
-		0
-	)
-	
-	createPotion(
 		"epic fucking monkey",
 		"curious af",
 		3,
@@ -159,52 +141,6 @@ func Populate():
 		["crushed asbestos","crushed asbestos","beans"],
 		0
 	)
-	
-	createPotion(
-		"test name 4",
-		"test desc 4",
-		0,
-		"res://assets/potions/four.jpg",
-		["asbestos","beans","beans"],
-		0
-	)
-	
-	createPotion(
-		"test name 6",
-		"test desc 6",
-		0,
-		"res://assets/potions/six.jpg",
-		["beans","beans","beans"],
-		0
-	)
-	
-	createPotion(
-		"test name 5",
-		"test desc 5",
-		0,
-		"res://assets/potions/five.jpg",
-		["crushed asbestos","beans","beans"],
-		0
-	)
-	
-	createPotion(
-		"test name 7",
-		"test desc 7",
-		0,
-		"res://assets/potions/five.jpg",
-		["crushed asbestos"],
-		0
-	)
-	
-	createPotion(
-		"za heroin",
-		"zzzzzzzzzz",
-		0,
-		"res://assets/potions/five.jpg",
-		["beans","beans","beans","beans","beans"],
-		0
-	)
-	
 	createPotion(
 		"another test",
 		"abcd",
@@ -212,6 +148,330 @@ func Populate():
 		"res://assets/potions/five.jpg",
 		["earth","tears of trees","earth"],
 		0
+	)
+	
+	createPotion(
+		"Animal Shape Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Animal Shape Potion.PNG",				#Sprite
+		["dragon's egg","earth","venus's eyelashes"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Beuty Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Beauty Potion.PNG",				#Sprite
+		["ear of the sea powder","string of lovers powder","venus's eyelashes"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Charm Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Charm Potion.PNG",				#Sprite
+		["a thorny heart", "string of lovers", "venus's eyelashes"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Clairvoyance Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Clairvoiancy Potion.PNG",				#Sprite
+		["air's brevity", "ear of the sea", "psychic stone powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Cold Resistance Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Cold Resist Potion.PNG",				#Sprite
+		["dragon's egg powder", "gaia's teeth powder", "winter crystal powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Courage Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Courage Potion.PNG",				#Sprite
+		["a thorny heart", "gaia's teeth", "psychic stone"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Cure All Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Cure All Potion.PNG",				#Sprite
+		["gaia's teeth", "leaf of a thousand leaves", "stardust"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Darkness Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Darkness Potion.PNG",				#Sprite
+		["leaf of a thousand leaves powder", "tears of trees", "shattered sky"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Demon Conjuration Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Demon Conjuration Potion.PNG",				#Sprite
+		["a thorny heart", "desert calm powder", "earth"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Dragon's Breath Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Dragon's Breath Potion.PNG",				#Sprite
+		["a thorny heart", "air's brevity", "dragon's egg powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"False Death Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/False Death Potion.PNG",				#Sprite
+		["earth", "leaf of a thousand leaves powder", "winter crystal powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Fire Resistance Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Fire Resistance Potion.PNG",				#Sprite
+		["a thorny heart powder", "desert calm", "dried ocean"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Flying Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Flying Potion.PNG",				#Sprite
+		["air's brevity", "dragon's egg powder", "stardust"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Fog in a Bottle",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Fog in a bottle.PNG",				#Sprite
+		["a thorny heart", "dried ocean", "shattered sky"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Friendship Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Friendship Potion.PNG",				#Sprite
+		["desert calm", "psychic stone powder", "spring crystal powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Growth Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Growth Potion.PNG",				#Sprite
+		["earth", "gaia's teeth powder", "spring crystal"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Healing Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Healing Potion.PNG",				#Sprite
+		["desert calm", "earth", "string of lovers"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Heat Resistance Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Heat Resistance Potion.PNG",				#Sprite
+		["a thorny heart", "earth", "tears of trees"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Invincibility Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Invincibility Potion.PNG",				#Sprite
+		["gaia's teeth", "shattered sky", "stardust"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Invisibility Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Invisibility Potion.PNG",				#Sprite
+		["air's brevity", "dried ocean", "winter crystal"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Love Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Love Potion.PNG",				#Sprite
+		["psychic stone powder", "string of lovers powder", "venus's eyelashes powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Luck Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Luck Potion.PNG",				#Sprite
+		["air's brevity", "psychic stone powder", "shooting star"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Mind Reading Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Mind Reading Potion.PNG",				#Sprite
+		["ear of the sea", "psychic stone powder", "psychic stone"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Ooze Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Ooze Potion.PNG",				#Sprite
+		["desert calm", "spring crystal powder", "tears of trees powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Petrification Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Petrification Potion.PNG",				#Sprite
+		["a thorny heart powder", "gaia's teeth powder", "winter crystal"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Randomization Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Randomization Potion.PNG",				#Sprite
+		["air's brevity", "earth", "spring crystal powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Relaxation Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Relaxation Potion.PNG",				#Sprite
+		["desert calm", "dried ocean", "ear of the sea powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Sill Perfection Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Skill PerfectionPotion.PNG",				#Sprite
+		["gaia's teeth", "leaf of a thousand leaves powder", "psychic stone"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Speak With Animals Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Speak With Animals Potion.PNG",				#Sprite
+		["desert calm", "earth", "tears of trees"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Stone Skin Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Stone Skin Potion.PNG",				#Sprite
+		["dragon's egg","dried ocean", "gaia's teeth"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Storm In A Bottle",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Storm In a Bottle.PNG",				#Sprite
+		["air's brevity", "dragon's egg powder", "ear of the sea powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Strength Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Strength Potion.PNG",				#Sprite
+		["dragon's egg powder", "gaia's teeth", "tears of trees powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Time In A Bottle",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Time In a Bottle.PNG",				#Sprite
+		["shattered sky", "spring crystal powder", "winter crystal powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Toxic Resistance Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Toxic Resist Potion.PNG",				#Sprite
+		["a thorny heart powder", "desert calm powder", "ear of the sea powder"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Water Breathing Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Water Breathing Potion.PNG",				#Sprite
+		["air's brevity", "dried ocean", "ear of the sea"],							#Recipe
+		0															#CookLevelNeeded
+	)
+	
+	createPotion(
+		"Water Walking Potion",										#ItemName
+		"I'll do it later, you'll just have to give me a second",		#Description
+		0,															#AmountOwned
+		"res://assets/potions/Water Walking Potion.PNG",				#Sprite
+		["air's brevity", "dried ocean", "winter crystal"],							#Recipe
+		0															#CookLevelNeeded
 	)
 	
 	# DEBUG ONLY, REMOVE LATER

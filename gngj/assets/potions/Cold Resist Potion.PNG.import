@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dden1eqn312l2"
-path="res://.godot/imported/Invincibility.PNG-c895efac2e7e2b311152fb62a84279b8.ctex"
+uid="uid://slqjvwfy3k7o"
+path="res://.godot/imported/Cold Resist Potion.PNG-affa64bfdf55c12901324232663fa599.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Invincibility.PNG"
-dest_files=["res://.godot/imported/Invincibility.PNG-c895efac2e7e2b311152fb62a84279b8.ctex"]
+source_file="res://assets/potions/Cold Resist Potion.PNG"
+dest_files=["res://.godot/imported/Cold Resist Potion.PNG-affa64bfdf55c12901324232663fa599.ctex"]
 
 [params]
 
