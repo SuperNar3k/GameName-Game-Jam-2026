@@ -65,7 +65,7 @@ func Populate():
 		#grindable
 	#
 	#createIngredient(
-		#"asbestos",										#ItemName
+		#"asbestos",										#itemName
 		#"this shit will kill you",						#Description
 		#1000,											#AmountOwned
 		#"res://assets/ingredients/asbestos.png",		#Sprite
@@ -90,12 +90,12 @@ func Populate():
 		#3,
 		#true
 	#)
-	createIngredient("earth", "dirt", 0, "res://assets/ingredients/IMG_0645.PNG", 0, false)
+	createIngredient("earth", "dirt", 10000, "res://assets/ingredients/IMG_0645.PNG", 0, false)
 	createIngredient("a leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/IMG_0634.PNG", 1, true)
 	createIngredient("a leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/IMG_0635.PNG", 1, false)
 	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/IMG_0628.PNG", 1, true)
 	createIngredient("a thorny heart powder", "crushed cactus", 0, "res://assets/ingredients/IMG_0629.PNG", 1, false)
-	createIngredient("tears of trees", "string of pearls", 0, "res://assets/ingredients/IMG_0626.PNG", 1, true)
+	createIngredient("tears of trees", "string of pearls", 1, "res://assets/ingredients/IMG_0626.PNG", 1, true)
 	createIngredient("tears of trees powder", "crushed string of pearls", 0, "res://assets/ingredients/IMG_0627.PNG", 1, false)
 	createIngredient("air's brevity", "feather", 0, "res://assets/ingredients/IMG_0616.PNG", 2, false)
 	createIngredient("desert calm", "aloe", 0, "res://assets/ingredients/IMG_0632.PNG", 2, true)
@@ -107,12 +107,12 @@ func Populate():
 	createIngredient("gaia's teeth powder", "crushed pebbles", 0, "res://assets/ingredients/IMG_0618.PNG", 2, false)
 	createIngredient("dragon's egg", "dragon fruit", 0, "res://assets/ingredients/dragon's egg.PNG", 3, true)
 	createIngredient("dragon's egg powder", "crushed dragon fruit", 0, "res://assets/ingredients/IMG_0621.PNG", 3, false)
-	createIngredient("eyelashes powder", "crushed venus flytrap", 0, "res://assets/ingredients/IMG_0631.PNG", 3, false)
-	createIngredient("spring crystal", "pink crystal", 0, "res://assets/ingredients/IMG_0638.PNG", 3, true)
+	createIngredient("spring crystal", "pink crystal", 10, "res://assets/ingredients/IMG_0638.PNG", 3, true)
 	createIngredient("spring crystal powder", "crushed pink crystal", 0, "res://assets/ingredients/IMG_0639.PNG", 3, false)
-	createIngredient("string of lovers", "bleeding hearts", 0, "res://assets/ingredients/IMG_0622.PNG", 3, true)
+	createIngredient("string of lovers", "bleeding hearts", 2, "res://assets/ingredients/IMG_0622.PNG", 3, true)
 	createIngredient("string of lovers powder", "crushed bleeding hearts", 0, "res://assets/ingredients/IMG_0623.PNG", 3, false)
 	createIngredient("venus's eyelashes", "venus flytrap", 0, "res://assets/ingredients/IMG_0630.PNG", 3, true)
+	createIngredient("eyelashes powder", "crushed venus flytrap", 0, "res://assets/ingredients/IMG_0631.PNG", 3, false)
 	createIngredient("winter crystal", "blue crystal", 0, "res://assets/ingredients/IMG_0640.PNG", 3, true)
 	createIngredient("winter crystal powder", "crushed blue crystal", 0, "res://assets/ingredients/IMG_0641.PNG", 3, false)
 	createIngredient("psychic stone", "amethyst", 0, "res://assets/ingredients/IMG_0642.PNG", 4, true)
@@ -210,6 +210,15 @@ func Populate():
 		0,
 		"res://assets/potions/five.jpg",
 		["beans","beans","beans","beans","beans"],
+		0
+	)
+	
+	createPotion(
+		"another test",
+		"abcd",
+		0,
+		"res://assets/potions/five.jpg",
+		["earth","tears of trees","earth"],
 		0
 	)
 	
