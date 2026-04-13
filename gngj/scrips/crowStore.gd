@@ -153,6 +153,8 @@ func _on_buyIngredient(ingredient : String):
 	checkIfTooBroke()
 
 func checkIfTooBroke():
+	$currentcy.text = "Currency: " + str(currency)
+	
 	for button in $allButtons.get_children():
 		var lable = button.get_child(0)
 		if(int(lable.text) > currency):

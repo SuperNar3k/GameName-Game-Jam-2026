@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e5pybteq1ogj"
-path="res://.godot/imported/Fire Breath Potion.PNG-eab1a2e3a534e83fcc1e2723ca9be7bd.ctex"
+uid="uid://d2j6wcp2qioud"
+path="res://.godot/imported/Heat Resistance Potion.PNG-6d2b56b11c74a3e3b7e66f823cb8912e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Fire Breath Potion.PNG"
-dest_files=["res://.godot/imported/Fire Breath Potion.PNG-eab1a2e3a534e83fcc1e2723ca9be7bd.ctex"]
+source_file="res://assets/potions/Heat Resistance Potion.PNG"
+dest_files=["res://.godot/imported/Heat Resistance Potion.PNG-6d2b56b11c74a3e3b7e66f823cb8912e.ctex"]
 
 [params]
 

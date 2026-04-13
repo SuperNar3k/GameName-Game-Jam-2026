@@ -484,7 +484,9 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 
 	# Set to dud if recipe not found
 	if potion == null:
-		potion = ItemCreator.allPotions.get("dud")
+		pass
+		
+		
 		
 	# Unlock if needed, and increase quantity
 	unlockPotion(potion)
@@ -492,7 +494,7 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 
 #TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():
-	print("ending day")
+	print("End of day: ", day)
 	
 	if(inConverstation):
 		print("cant end day because in convestation")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure All Potion.PNG-c5f64f2330dcb5a1d83874311630e6c5.ctex"
+uid="uid://e5pybteq1ogj"
+path="res://.godot/imported/Dragon's Breath Potion.PNG-bca69e0a00dcaee465795a09f49e85f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure All Potion.PNG"
-dest_files=["res://.godot/imported/Cure All Potion.PNG-c5f64f2330dcb5a1d83874311630e6c5.ctex"]
+source_file="res://assets/potions/Dragon's Breath Potion.PNG"
+dest_files=["res://.godot/imported/Dragon's Breath Potion.PNG-bca69e0a00dcaee465795a09f49e85f0.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ra3ljxhxa5ml"
-path="res://.godot/imported/Heat Resist.PNG-ce67fe9c4210cd2219a77cf034cad4bb.ctex"
+uid="uid://psqoiejuslr5"
+path="res://.godot/imported/pastel.PNG-007388f15ec64fed153e09ecd069a5b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Heat Resist.PNG"
-dest_files=["res://.godot/imported/Heat Resist.PNG-ce67fe9c4210cd2219a77cf034cad4bb.ctex"]
+source_file="res://assets/pastel.PNG"
+dest_files=["res://.godot/imported/pastel.PNG-007388f15ec64fed153e09ecd069a5b5.ctex"]
 
 [params]
 

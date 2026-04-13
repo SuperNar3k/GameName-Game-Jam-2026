@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://slqjvwfy3k7o"
-path="res://.godot/imported/Cold Resist.PNG-9f4b5266a81be3f90b993d5679487465.ctex"
+uid="uid://b0aydbl3jjn3b"
+path="res://.godot/imported/Fire Resistance Potion.PNG-5b137f3497021dc706b2c690a28e734d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cold Resist.PNG"
-dest_files=["res://.godot/imported/Cold Resist.PNG-9f4b5266a81be3f90b993d5679487465.ctex"]
+source_file="res://assets/potions/Fire Resistance Potion.PNG"
+dest_files=["res://.godot/imported/Fire Resistance Potion.PNG-5b137f3497021dc706b2c690a28e734d.ctex"]
 
 [params]
 

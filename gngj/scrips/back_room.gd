@@ -16,7 +16,7 @@ signal toFront
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ingredientsShelf.pressed.connect(_on_backRoomButton_pressed.bind("i"))
+	#ingredientsShelf.pressed.connect(_on_backRoomButton_pressed.bind("i"))
 	bookShelf.pressed.connect(_on_backRoomButton_pressed.bind("b"))
 	recipeBook.pressed.connect(_on_backRoomButton_pressed.bind("r"))
 	cauldonStation.pressed.connect(_on_backRoomButton_pressed.bind("c"))
@@ -53,5 +53,5 @@ func got_hovered(btn: String, hovered: bool):
 		$cauldronimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
 	if btn == "mp":
 		$mpimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
-	if btn == "ingshelf":
-		$ingshelfimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+	#if btn == "ingshelf":
+		#$ingshelfimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)

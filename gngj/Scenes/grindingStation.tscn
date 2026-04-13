@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://lbk7i6yms55y" path="res://assets/background/cauldron-mp-top/mptop.PNG" id="2_b08lm"]
 [ext_resource type="PackedScene" uid="uid://cqrxjuspqkdi0" path="res://Scenes/ingredient_drawer.tscn" id="3_b08lm"]
 [ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://scrips/pestle.gd" id="3_ohim2"]
-[ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="4_mnfot"]
+[ext_resource type="Texture2D" uid="uid://psqoiejuslr5" path="res://assets/pastel.PNG" id="5_mnfot"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5u62"]
 radius = 20.0
@@ -81,11 +81,10 @@ script = ExtResource("3_ohim2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pestle" unique_id=1031160259]
 position = Vector2(0.99998856, 11)
-scale = Vector2(0.5039061, 3.2109375)
-texture = ExtResource("4_mnfot")
+texture = ExtResource("5_mnfot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pestle" unique_id=112924750]
-position = Vector2(2, 183)
+position = Vector2(-77, 183)
 shape = SubResource("RectangleShape2D_b08lm")
 
 [node name="pickUp" type="Button" parent="Pestle" unique_id=1990278975]
