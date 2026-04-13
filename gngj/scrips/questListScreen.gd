@@ -22,7 +22,6 @@ func displayShit(activeQuests : Array, pharmacyQuests : Array, allPotions: Dicti
 		
 	for aQuest in activeQuests: 
 		if (!aQuest.completed):
-			print("activeQuests: ", activeQuests)
 			$ScrollContainer/AspectRatioContainer/VBoxContainer/questLable.add_sibling(quest)
 			quest.add_to_group("questToDelete")
 			quest.setSprite(allPotions.get(aQuest.requirements[0]).sprite)
@@ -30,7 +29,6 @@ func displayShit(activeQuests : Array, pharmacyQuests : Array, allPotions: Dicti
 			quest.setNpcName(aQuest.npcQuestGiver.npcName)
 			quest.setDaysUntilDue(aQuest.daysUntilDue)
 		
-			print("displaying active quest: ", aQuest)
 			quest = preload("res://Scenes/displayQuestOnList.tscn").instantiate()
 
 # Called when the node enters the scene tree for the first time.

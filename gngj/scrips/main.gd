@@ -1,10 +1,11 @@
 extends Node2D
 
 #GLOBAL VARIABLES
-var currency = 50
+var currency = 10
 var day = 1
 var dayDuration = 90
 var numOfNpcs = 3
+var dudCounter = 1
 
 var MAX_PHARMACY_QUESTS = 5 # Max number of repeatable quests
 var MAX_ACTIVE_QUESTS = 5 # Max number of active quests
@@ -27,6 +28,10 @@ signal optionChosen
 signal noLongerInConverstation
 var questAccepted
 var inConverstation = false
+
+signal noLongerNotifying
+var inNotification = false
+var notificationQueue = []
 
 var bellSFX = preload("res://assets/sound/vine-boom.mp3")
 var buySFX = preload("res://assets/sound/cha-ching.mp3")
@@ -60,8 +65,8 @@ func _ready() -> void:
 		availableQuests.append(quest)
 	
 	
-#TO-DO: test that certain quests are being added to their proper list upon quest succsess 
-#also need to make sure player is getting rewards properly 
+func _process(delta: float):
+	notificationQueueHandler()
 
 
 #NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
@@ -69,6 +74,31 @@ func _ready() -> void:
 
 func startOfDay():
 	print("Start of day: ", day)
+	
+	if(day == 1):
+		giveIngredient(ItemCreator.allIngredients.get("earth"))
+	
+		giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
+		giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
+	
+		giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
+		giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
+	
+		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
+		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
+	else:
+		var ingredient = ingredients.get("leaf of a thousand leaves")
+		ingredient.amountOwned = ingredients.amountOwned + 2
+		
+		ingredient = ingredients.get("a thorny heart")
+		ingredient.amountOwned = ingredients.amountOwned + 2
+		
+		ingredient = ingredients.get("tears of trees")
+		ingredient.amountOwned = ingredients.amountOwned + 2
+		
+		
+	
+	
 	
 	var t 
 	for n in range(0, numOfNpcs):
@@ -95,6 +125,7 @@ func startOfDay():
 		_updateQueue()
 		
 	$dayTimer.start(dayDuration)
+	$ui/Hud.updateCurrency(currency)
 	
 	
 func _onGenerateQuest():
@@ -187,6 +218,7 @@ func _on_greetNPC():
 			
 			#Giving player the reward
 			currency = currency + currentQuest.rewards[0][0]
+			$ui/Hud.updateCurrency(currency)
 			if(currentQuest.daysUntilReward == 0):
 				for rewardRecipe in currentQuest.rewards[1]:
 					unlockPotion(ItemCreator.allPotions.get(rewardRecipe))
@@ -267,6 +299,7 @@ func _on_greetNPC():
 			
 			#Logic for giving the player the reward
 			currency = currency + currentQuest.rewards[0][0]
+			$ui/Hud.updateCurrency(currency)
 			if(currentQuest.daysUntilReward == 0):
 				for rewardRecipe in currentQuest.rewards[1]:
 					unlockPotion(ItemCreator.allPotions.get(rewardRecipe))
@@ -436,11 +469,14 @@ func unlockPotion(p: Item):
 		
 		print("potion: ", p.itemName, " unlocked")
 		
-		# TO-DO: POPUP NEWITEM FOR NEW UNLOCKED POTION
+		notificationQueue.append(p)
+		notificationQueue.append("Potion")
+		
 
 func buyIngredient(cost: int, ingredient: Item):
 	if(cost <= currency):
 		currency -= cost
+		$ui/Hud.updateCurrency(currency)
 		$ui/crowStore.currency = currency
 		$AudioStreamPlayer2D.stream = buySFX
 		$AudioStreamPlayer2D.play()
@@ -456,12 +492,32 @@ func giveIngredient(i: Item):
 		
 		print("ingredient: ", i.itemName, " unlocked")
 		
-		#TO-DO: ALSO NEED TO ADD POP UP HERE
+		notificationQueue.append(i)
+		notificationQueue.append("Ingredient")
 		
 	# Increase quantity by 1
-	i.amountOwned += 1
+	if(!i.itemName == "earth"):
+		i.amountOwned += 1
 	
 	
+func notifcationFinished():
+	inNotification = false
+	noLongerNotifying.emit()	
+
+
+#TO-DO: THIS SHIT BROKEN!! FIX IT!!!
+func notificationQueueHandler():
+			
+	if(notificationQueue.size() > 0):
+		if(!inNotification):
+			inNotification = true
+			var item = notificationQueue[0]
+			var type = notificationQueue[1]
+			$ui/Notification/Popup.newItemUnlocked(item,type)
+			await noLongerNotifying
+			notificationQueue.pop_front()
+			notificationQueue.pop_front()
+			
 
 #TO-DO: TESTING NEEDS TO BE DONE ON THIS FUCNTION
 func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
@@ -476,20 +532,38 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 
 		# Check if cook level matches and if uses same number of ingredients
 		if p.cookLevelNeeded == cookedLevel and ingredientsUsed.size() == p.recipe.size():
-			for ingrName:String in ingredientsUsed:
-				if ingredientsUsed.count(ingrName) == p.recipe.count(ingrName):
-					# Match found
-					potion = p
-					# TO-DO: POPUP POTION MADE!
-					
-					break # Exit the inner for-loop
+			if(ingredientsUsed == p.recipe):
+				potion = p
+				break
 
 	# Set to dud if recipe not found
 	if potion == null:
-		pass
-		
-		
-		
+		var potionName = "Dud " + str(dudCounter)
+		var potionSprite
+		if(dudCounter%4 == 0):
+			potionSprite = "res://assets/potions/Dud Potion Large Round Bottle.PNG"
+		elif(dudCounter%4 == 1):
+			potionSprite = "res://assets/potions/Dud Potion round bottle long neck.PNG"
+		elif(dudCounter%4 == 2):
+			potionSprite = "res://assets/potions/Dud Potion Square Bottle.PNG"
+		else: 
+			potionSprite = "res://assets/potions/Dud Potion Vial.PNG"
+			
+		var potionRecipe = []
+			
+		for ingredient in ingredientsUsed:
+			potionRecipe.append(ingredient)
+			
+		potion = ItemCreator.createPotion(
+			potionName,
+			"This potion does nothing but taste bad",
+			0,
+			potionSprite,
+			potionRecipe,
+			0
+		)
+		dudCounter = dudCounter + 1
+		print("new dud created")
 	# Unlock if needed, and increase quantity
 	unlockPotion(potion)
 	potion.amountOwned += 1
@@ -521,7 +595,6 @@ func endOfDay():
 	storeQueue.clear()
 	_updateQueue()
 	
-	print("Active quest list: ", activeQuests)
 		
 
 	# TO-DO: if grinding in-progress, pause the grinding timer

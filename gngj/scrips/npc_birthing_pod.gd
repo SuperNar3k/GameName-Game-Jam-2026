@@ -38,8 +38,6 @@ func Populate():
 		var baby = npc.new()
 		baby.setParams(n, n.to_lower()+".PNG", "Adventurer")
 		allNPCs.set(n, baby)
-	# print("Total number of NPCs: " + str(allNPCs.size()))
-	# print(allNPCs)
 
 func GetRandomChild():
 	return allNPCs.get(allChildren.pick_random())

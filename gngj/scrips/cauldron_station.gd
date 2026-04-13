@@ -3,6 +3,8 @@ extends Control
 @onready var backButton : Button = $BackButton
 
 signal goBack
+signal cookingDone(held_ingredients)
+
 
 var ItemCreator
 var allPotions
@@ -48,7 +50,9 @@ func _process(delta: float) -> void:
 				recordRot = $liquid.rotation_degrees
 				if $liquid/waves.modulate.b <= .141:
 					done = true
-					_cooking_done()
+					held_ingredients.sort()
+					cookingDone.emit(held_ingredients)
+					$AnimationPlayer.play_backwards("revert_color")
 			
 func _on_hovered(hovered: bool, ref) -> void:
 	if $IngredientDrawer.held == null:
@@ -61,40 +65,14 @@ func _on_drop_spot_pressed() -> void:
 		$IngredientDrawer.instance.queue_free()
 		$IngredientDrawer.held = null
 		$IngredientDrawer.show_buttons()
-		print(held_ingredients)
+		print("ingredients in cauldron: ", held_ingredients)
 		
 
 func hide_buttons():
 	$BackButton.hide()
 func show_buttons():
 	$BackButton.show()
-
-func _cooking_done():
-	held_ingredients.sort()
-	var i = 0
-	while i < allPotions.keys().size():
-		var potionRecipeSorted = allPotions.get(allPotions.keys()[i]).recipe
-		potionRecipeSorted.sort()
-		if held_ingredients == potionRecipeSorted:
-			if allPotions.get(allPotions.keys()[i]).unlocked == false:
-				allPotions.get(allPotions.keys()[i]).unlocked = true
-			allPotions.get(allPotions.keys()[i]).amountOwned += 1
-			break
-		i = i + 1
-	if i == allPotions.size():
-		var pName = "dud" + str(numOfDuds)
-		#var potion = allPotions.createPotion(
-			#pName,
-			#"This potion does nothing but taste bad",
-			#1,
-			#"res://assets/potions/CTCBox.jpg",
-			#held_ingredients,
-			#0
-			#)
-		ItemCreator.UnlockPotion(potions, pName, held_ingredients)
-		numOfDuds += 1
-	print(i)
-	$AnimationPlayer.play_backwards("revert_color")
+	
 
 func _on_button_button_down() -> void:
 	if $IngredientDrawer.held == null:

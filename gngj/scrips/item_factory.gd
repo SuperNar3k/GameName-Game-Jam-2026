@@ -82,9 +82,9 @@ func Populate():
 		#false
 	#)
 	
-	createIngredient("earth", "dirt", 69, "res://assets/ingredients/earth.PNG", 0, false)
-	createIngredient("a leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/a leaf of a thousand leaves.PNG", 1, true)
-	createIngredient("a leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/a leaf of a thousand leaves powder.PNG", 1, false)
+	createIngredient("earth", "dirt", 9223372036854775807, "res://assets/ingredients/earth.PNG", 0, false)
+	createIngredient("leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/a leaf of a thousand leaves.PNG", 1, true)
+	createIngredient("leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/a leaf of a thousand leaves powder.PNG", 1, false)
 	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/a thorny heart.PNG", 1, true)
 	createIngredient("a thorny heart powder", "crushed cactus", 0, "res://assets/ingredients/a thorny heart powder.PNG", 1, false)
 	createIngredient("tears of trees", "string of pearls", 4, "res://assets/ingredients/tears of trees.PNG", 1, true)
@@ -124,31 +124,24 @@ func Populate():
 	
 	
 	
-	createPotion(
-		"cinnamon toast crunch milk",			#ItemName
-		"this shit yummy af",					#Description
-		69,										#AmountOwned
-		"res://assets/potions/CTCBox.jpg",		#Sprite
-		["asbestos", "crushed asbestos"],		#Recipe
-		0										#CookLevelNeeded
-	)
+	#createPotion(
+		#"cinnamon toast crunch milk",			#ItemName
+		#"this shit yummy af",					#Description
+		#69,										#AmountOwned
+		#"res://assets/potions/CTCBox.jpg",		#Sprite
+		#["asbestos", "crushed asbestos"],		#Recipe
+		#0										#CookLevelNeeded
+	#)
+	#
+	#createPotion(
+		#"epic fucking monkey",
+		#"curious af",
+		#3,
+		#"res://assets/potions/funny_monkey.jpg",
+		#["crushed asbestos","crushed asbestos","beans"],
+		#0
+	#)
 	
-	createPotion(
-		"epic fucking monkey",
-		"curious af",
-		3,
-		"res://assets/potions/funny_monkey.jpg",
-		["crushed asbestos","crushed asbestos","beans"],
-		0
-	)
-	createPotion(
-		"another test",
-		"abcd",
-		0,
-		"res://assets/potions/five.jpg",
-		["earth","tears of trees","earth"],
-		0
-	)
 	
 	createPotion(
 		"Animal Shape Potion",										#ItemName
@@ -160,7 +153,7 @@ func Populate():
 	)
 	
 	createPotion(
-		"Beuty Potion",										#ItemName
+		"Beauty Potion",										#ItemName
 		"I'll do it later, you'll just have to give me a second",		#Description
 		0,															#AmountOwned
 		"res://assets/potions/Beauty Potion.PNG",				#Sprite
@@ -394,10 +387,10 @@ func Populate():
 	)
 	
 	createPotion(
-		"Sill Perfection Potion",										#ItemName
+		"Skill Perfection Potion",										#ItemName
 		"I'll do it later, you'll just have to give me a second",		#Description
 		0,															#AmountOwned
-		"res://assets/potions/Skill PerfectionPotion.PNG",				#Sprite
+		"res://assets/potions/Skill Perfection Potion.PNG",				#Sprite
 		["gaia's teeth", "leaf of a thousand leaves powder", "psychic stone"],							#Recipe
 		0															#CookLevelNeeded
 	)
@@ -474,19 +467,9 @@ func Populate():
 		0															#CookLevelNeeded
 	)
 	
-	# DEBUG ONLY, REMOVE LATER
-	print(allIngredients)
-	print(allPotions)
 
 # Unlocks default items at start of game
 func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
-	var newItem = allIngredients.get("earth")
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
-	
-	newItem = allIngredients.get("tears of trees")
-	newItem.unlocked = true
-	_unlockedIngredients.set(newItem.itemName, newItem)
 	
 	#var newItem = allIngredients.get("beans") 
 	#newItem.unlocked = true
@@ -502,17 +485,11 @@ func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
 	pass
 	
 func UnlockDefaultPotions(_unlockedPotions: Dictionary):
-	var a = allPotions.get("cinnamon toast crunch milk") 
-	a.unlocked = true
-	_unlockedPotions.set(a.itemName, a)
-	
-	a = allPotions.get("another test") 
-	a.unlocked = true
-	_unlockedPotions.set(a.itemName, a)
-	
-	#a = allPotions.get("za heroin") 
+	pass
+	#var a = allPotions.get("cinnamon toast crunch milk") 
 	#a.unlocked = true
 	#_unlockedPotions.set(a.itemName, a)
+	
 
 # Unlock a new ingredient
 func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):

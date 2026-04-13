@@ -1,22 +1,25 @@
 extends Control
 
 #globals
-var sec = 5
+var sec = 3
+signal finishedPlaying
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+#Called when the node enters the scene tree for the first time.
+func newItemUnlocked(item: Item, type: String):
 
-func _on_button_pressed() -> void:
-	$contName/nameLabel.set_text("Crushed Asbestos")
-	$contTitle/titleLabel.set_text("New " + "Ingred/Recipe" + " Unlocked!")
+	$contName/nameLabel.set_text(item.itemName)
+	$contTitle/titleLabel.set_text("New " + type + " Unlocked!")
+	$itemSprite.set_texture(load(item.sprite))
 	$popupTimer.start(sec)
 	$".".show()
 	$popupAnimation.play("moveIn")
 
+
 func onTimerTimeout() -> void:
 	$popupAnimation.play("moveOut")
+	
 
 func onPopupAnimationFinished(anim_name: StringName) -> void:
 	if anim_name == "moveOut":
-			$".".hide()
+		$".".hide()
+		finishedPlaying.emit()
