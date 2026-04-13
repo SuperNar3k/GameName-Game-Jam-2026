@@ -18,7 +18,7 @@ func _ready() -> void:
 	rejectButton.pressed.connect(_on_questRejected_pressed)
 
 func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
-	var potionButton = preload("res://Scenes/potionButton.tscn").instantiate()
+	var potionButton = preload("res://Scenes/PotionButton.tscn").instantiate()
 	var potionShader = ShaderMaterial.new()
 	potionShader.shader = load("res://assets/shaders/highlight.gdshader")
 	
@@ -34,7 +34,7 @@ func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
 			potionButton.pressed.connect(isCorrectPotion.bind(potion))
 			potionButton.add_to_group("stuffToDelete")
 		
-			potionButton = preload("res://Scenes/potionButton.tscn").instantiate()
+			potionButton = preload("res://Scenes/PotionButton.tscn").instantiate()
 			potionShader = ShaderMaterial.new()
 			potionShader.shader = load("res://assets/shaders/highlight.gdshader")
 			

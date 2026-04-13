@@ -92,7 +92,7 @@ func resetQuest():
 		"Adventurer":
 			npcQuestGiver.npcName = tempBirthPod.allAdventurers.pick_random()
 	
-	var spriteName = npcQuestGiver.npcName.to_lower() + ".jpg"
+	var spriteName = npcQuestGiver.npcName.to_lower() + ".png"
 	
 	if FileAccess.file_exists("res://assets/npcs/" + spriteName):
 		npcQuestGiver.sprite ="res://assets/npcs/" + spriteName # Load sprite if the file exists
