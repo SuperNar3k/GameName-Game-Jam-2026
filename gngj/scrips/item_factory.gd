@@ -64,38 +64,30 @@ func Populate():
 		#value
 		#grindable
 	#
-	createIngredient(
-		"asbestos",										#ItemName
-		"this shit will kill you",						#Description
-		1000,											#AmountOwned
-		"res://assets/ingredients/asbestos.png",		#Sprite
-		3,												#Value
-		true											#grindable
-	)
+	#createIngredient(
+	#	"asbestos",										#ItemName
+	#	"this shit will kill you",						#Description
+	#	0,											#AmountOwned
+	#	"res://assets/ingredients/asbestos.png",		#Sprite
+	#	3,												#Value
+	#	true											#grindable
+	#)
 	
-	createIngredient(
-		"crushed asbestos",
-		"this shit will kill you, also its a powder now",
-		0,
-		"res://assets/ingredients/crushed asbestos.jpg",
-		0,
-		false
-	)
-	#
-	createIngredient(
-		"beans",
-		"staight up beans nigga",
-		3,
-		"res://assets/ingredients/beans.png",
-		3,
-		true
-	)
-	createIngredient("earth", "dirt", 0, "res://assets/ingredients/earth.PNG", 0, false)
+	#createIngredient(
+		#"crushed asbestos",
+		#"this shit will kill you, also its a powder now",
+		#0,
+		#"res://assets/ingredients/crushed asbestos.jpg",
+		#0,
+		#false
+	#)
+	
+	createIngredient("earth", "dirt", 69, "res://assets/ingredients/earth.PNG", 0, false)
 	createIngredient("a leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/a leaf of a thousand leaves.PNG", 1, true)
 	createIngredient("a leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/a leaf of a thousand leaves powder.PNG", 1, false)
 	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/a thorny heart.PNG", 1, true)
 	createIngredient("a thorny heart powder", "crushed cactus", 0, "res://assets/ingredients/a thorny heart powder.PNG", 1, false)
-	createIngredient("tears of trees", "string of pearls", 0, "res://assets/ingredients/tears of trees.PNG", 1, true)
+	createIngredient("tears of trees", "string of pearls", 4, "res://assets/ingredients/tears of trees.PNG", 1, true)
 	createIngredient("tears of trees powder", "crushed string of pearls", 0, "res://assets/ingredients/tears of trees powder.PNG", 1, false)
 	createIngredient("air's brevity", "feather", 0, "res://assets/ingredients/air's brevity.PNG", 2, false)
 	createIngredient("desert calm", "aloe", 0, "res://assets/ingredients/desert calm.PNG", 2, true)
@@ -107,12 +99,12 @@ func Populate():
 	createIngredient("gaia's teeth powder", "crushed pebbles", 0, "res://assets/ingredients/gaia's teeth powder.PNG", 2, false)
 	createIngredient("dragon's egg", "dragon fruit", 0, "res://assets/ingredients/dragon's egg.PNG", 3, true)
 	createIngredient("dragon's egg powder", "crushed dragon fruit", 0, "res://assets/ingredients/dragon's egg powder.PNG", 3, false)
-	createIngredient("venus's eyelashes powder", "crushed venus flytrap", 0, "res://assets/ingredients/venus's eyelashes powder.PNG", 3, false)
 	createIngredient("spring crystal", "pink crystal", 0, "res://assets/ingredients/spring crystal.PNG", 3, true)
 	createIngredient("spring crystal powder", "crushed pink crystal", 0, "res://assets/ingredients/spring crystal powder.PNG", 3, false)
 	createIngredient("string of lovers", "bleeding hearts", 0, "res://assets/ingredients/string of lovers.PNG", 3, true)
 	createIngredient("string of lovers powder", "crushed bleeding hearts", 0, "res://assets/ingredients/string of lovers powder.PNG", 3, false)
 	createIngredient("venus's eyelashes", "venus flytrap", 0, "res://assets/ingredients/venus's eyelashes.PNG", 3, true)
+	createIngredient("venus's eyelashes powder", "crushed venus flytrap", 0, "res://assets/ingredients/venus's eyelashes powder.PNG", 3, false)
 	createIngredient("winter crystal", "blue crystal", 0, "res://assets/ingredients/winter crystal.PNG", 3, true)
 	createIngredient("winter crystal powder", "crushed blue crystal", 0, "res://assets/ingredients/winter crystal powder.PNG", 3, false)
 	createIngredient("psychic stone", "amethyst", 0, "res://assets/ingredients/psychic stone.PNG", 4, true)
@@ -228,6 +220,14 @@ func Populate():
 
 # Unlocks default items at start of game
 func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
+	var newItem = allIngredients.get("earth")
+	newItem.unlocked = true
+	_unlockedIngredients.set(newItem.itemName, newItem)
+	
+	newItem = allIngredients.get("tears of trees")
+	newItem.unlocked = true
+	_unlockedIngredients.set(newItem.itemName, newItem)
+	
 	#var newItem = allIngredients.get("beans") 
 	#newItem.unlocked = true
 	#_unlockedIngredients.set(newItem.itemName, newItem)

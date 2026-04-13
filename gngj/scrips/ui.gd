@@ -204,12 +204,15 @@ func _on_hud_options_pressed() -> void:
 func _on_end_of_day() -> void:
 	lastScreen.hide()
 	$endOfDayScreen.show()
+	$endOfDayScreen.displayShit(allIngredients, allPotions)
 	
-	$endOfDayScreen.displayShit(allIngredients, allPotions)	
+	lastScreen = $endOfDayScreen
 	
 func _on_end_of_day_screen_show_store() -> void:
 	$endOfDayScreen.hide()
 	$crowStore.show()
+	
+	lastScreen = $crowStore
 
 func newDay() -> void:
 	$crowStore.hide()

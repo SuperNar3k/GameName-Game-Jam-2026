@@ -66,6 +66,8 @@ func _ready() -> void:
 #(CANNOT SEE WHEN DAY ENDS IF YOU HAVE RECEPE BOOK OPEN)
 
 func startOfDay():
+	print("Start of day: ", day)
+	
 	var t 
 	for n in range(0, numOfNpcs):
 		t = get_tree().create_timer(range(10,dayDuration-60).pick_random())

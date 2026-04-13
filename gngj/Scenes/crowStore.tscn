@@ -510,3 +510,12 @@ offset_top = 377.0
 offset_right = 898.0
 offset_bottom = 492.0
 text = "Continue"
+
+[node name="currentcy" type="Label" parent="." unique_id=628004203]
+layout_mode = 0
+offset_left = 248.0
+offset_top = -287.0
+offset_right = 493.0
+offset_bottom = -240.0
+theme_override_font_sizes/font_size = 30
+text = "Currency: "
