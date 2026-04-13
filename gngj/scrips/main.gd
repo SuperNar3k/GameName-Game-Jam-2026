@@ -43,9 +43,9 @@ func _ready() -> void:
 	
 	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
-	QuestCreator.Populate(quests, NPCBirthingPod)
 	ItemCreator.UnlockDefaultIngredients(ingredients)
 	ItemCreator.UnlockDefaultPotions(potions)
+	QuestCreator.Populate(quests, NPCBirthingPod, potions)
 	
 	
 	
