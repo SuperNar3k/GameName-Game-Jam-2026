@@ -11,7 +11,7 @@ func setParams(_name: String, _spriteName: String, _type: String):
 	if FileAccess.file_exists("res://assets/npcs/" + _spriteName):
 		sprite = "res://assets/npcs/" + _spriteName # Load sprite if the file exists
 	else:
-		sprite = "res://assets/npcs/lil freak.jpg"
+		print("Could not find npc sprite for : ", _spriteName)
 		
 	npcName = _name
 	type = _type

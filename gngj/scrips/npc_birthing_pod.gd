@@ -4,8 +4,9 @@ extends Node
 #GLOBAL VARIABLES
 #This array will hold all of our NPCs
 var allNPCs = {}
-var allChildren = ["Pepper", "Violet", "Jay Cutter", "Jeremiah", "Godwyn Blackbarrel", "Bard"]
-var allTownsolk = ["House of Rouge Knight",
+var allChildren = []
+var allTownsolk = [
+"House of Rouge Knight",
 "Intrepid Adventurer",
 "Mysterious Cloaked Noblewoman",
 "Wobbly Cloaked Figure",
@@ -18,11 +19,11 @@ var allTownsolk = ["House of Rouge Knight",
 "Friendly Bar Maid",
 "Unfriendly Squire",
 "Distracted Academic",
-"Ambitious Lady-in-Waiting",
+"Ambitious Lady In Waiting",
 "Fearless Privateer",
 "Vacant Mercenary",
 "Awkward Youth"]
-var allAdventurers = ["Lil Freak", "Obamna", "Sir Henry the Brave", "Gonzalles the Erratic", "Timothy the Tatted"]
+var allAdventurers = []
 
 # __init__
 func Populate():
@@ -53,4 +54,4 @@ func BirthNPC(_name: String):
 	if allNPCs.has(_name):
 		return allNPCs.get(_name)
 	else:
-		print("ERROR: That NPC does not exist!")
+		print("ERROR: NPC " + _name + " does not exist!")

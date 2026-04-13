@@ -73,7 +73,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 	
 	randomPotion = potions.keys()[randi_range(0, potions.size()) - 1]
 	allQuests.append(createQuest(
-		["Good day shopkeeper!", "I am a knight from the Noble House of Rouge.", 
+		["Good day shopkeeper!", "I am a knight from the Noble House of Rouge.",
 		"On this fine day, I am looking for " + randomPotion + ".",
 		"Perchance would you be able to procure this for me?"],									#allQueststartDialog
 		["Good day shopkeeper!"],										#QuestReturningDialog
@@ -160,7 +160,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
 		true,																#IsRepeatable
-		"Mysterious Cloaked Figure",												#NpcTypeOrName
+		"Wobbly Cloaked Figure",												#NpcTypeOrName
 		NPCBirthingPod														#Pass the birthing pod
 	))
 	
@@ -416,7 +416,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
 		false,																#IsRepeatable
-		"Ambitious Lady in Waiting",												#NpcTypeOrName
+		"Ambitious Lady In Waiting",												#NpcTypeOrName
 		NPCBirthingPod														#Pass the birthing pod
 	))
 	
@@ -620,5 +620,6 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 	#))
 
 	
-
+func createQuestForNPC():
+	pass
 	
