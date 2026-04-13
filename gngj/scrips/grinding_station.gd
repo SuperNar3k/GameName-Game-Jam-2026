@@ -15,6 +15,8 @@ var item_manip = Item_Factory.new()
 func _ready() -> void:
 	$IngredientDrawer.parent_buttons_hide.connect(hide_buttons)
 	$IngredientDrawer.parent_buttons_show.connect(show_buttons)
+	$BackButton.mouse_entered.connect(_on_hovered.bind(true, $Sprite2D))
+	$BackButton.mouse_exited.connect(_on_hovered.bind(false, $Sprite2D))
 	backButton.pressed.connect(_on_backButton_pressed)
 	
 func __init__(_allIngredients : Dictionary) -> void:
@@ -29,8 +31,8 @@ func _on_backButton_pressed() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-#func _on_hovered(hovered: bool, ref) -> void:
-	#ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
+func _on_hovered(hovered: bool, ref) -> void:
+	ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
 
 
 func _on_drop_spot_pressed() -> void:

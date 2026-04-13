@@ -114,6 +114,13 @@ func _enable_all_buttons() -> void:
 				if innerchild is Button:
 					innerchild.disabled = false
 
+func endDay():
+	if $CauldronStation/IngredientDrawer.huh % 2 != 0:
+		$CauldronStation/IngredientDrawer/AnimationPlayer.play_backwards("Drawer_Slide")
+		$CauldronStation/IngredientDrawer.huh += 1
+	if $GrindingStation/IngredientDrawer.huh % 2 != 0:
+		$GrindingStation/IngredientDrawer/AnimationPlayer.play_backwards("Drawer_Slide")
+		$CauldronStation/IngredientDrawer.huh += 1
 
 #IMPORTANT!
 func _on_main_menu_scene_start_game() -> void:
@@ -195,14 +202,15 @@ func _on_main_menu_scene_display_credits() -> void:
 	$credits.show()
 
 func _on_hud_quest_pressed() -> void:
-	lastScreen.hide()
-	$questListScreen.show()
+	$questListScreen/ColorRect.show()
+	$questListScreen/AnimationPlayer.play("slide_up")
 	
 	$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
 	
 func _on_quest_list_screen_return_to_game() -> void:
-	$questListScreen.hide()
-	lastScreen.show()
+	$questListScreen/returnButton.hide()
+	$questListScreen/Sprite2D2.hide()
+	$questListScreen/AnimationPlayer.play_backwards("slide_up")
 
 func _on_hud_options_pressed() -> void:
 	lastScreen.hide()

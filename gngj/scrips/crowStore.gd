@@ -107,6 +107,8 @@ func _ready() -> void:
 	shopOption16.mouse_exited.connect(_on_mouse_exited.bind(shopOption16))
 	shopOption16.pressed.connect(_on_buyIngredient.bind("tears of trees"))
 	
+	$continueButton.mouse_entered.connect(_on_hovered.bind(true))
+	$continueButton.mouse_exited.connect(_on_hovered.bind(false))
 	
 func _on_continueButton_pressed() -> void:
 	newDay.emit()
@@ -152,9 +154,10 @@ func _on_buyIngredient(ingredient : String):
 				
 	checkIfTooBroke()
 
+func _on_hovered(hovered):
+	$continuebuttonimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+
 func checkIfTooBroke():
-	$currentcy.text = "Currency: " + str(currency)
-	
 	for button in $allButtons.get_children():
 		var lable = button.get_child(0)
 		if(int(lable.text) > currency):

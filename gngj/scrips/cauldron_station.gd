@@ -23,6 +23,8 @@ var done = false
 func _ready() -> void:
 	$liquid/Button.mouse_entered.connect(_on_hovered.bind(true, $liquid/handle))
 	$liquid/Button.mouse_exited.connect(_on_hovered.bind(false, $liquid/handle))
+	$BackButton.mouse_entered.connect(_on_hovered.bind(true, $Sprite2D))
+	$BackButton.mouse_exited.connect(_on_hovered.bind(false, $Sprite2D))
 	$IngredientDrawer.parent_buttons_hide.connect(hide_buttons)
 	$IngredientDrawer.parent_buttons_show.connect(show_buttons)
 	backButton.pressed.connect(_on_backButton_pressed)
@@ -77,14 +79,18 @@ func show_buttons():
 func _on_button_button_down() -> void:
 	if $IngredientDrawer.held == null:
 		followMouse = true
+		$BackButton.disabled = true
+		$Sprite2D.hide()
 
 
 func _on_button_button_up() -> void:
 	if $IngredientDrawer.held == null:
 		followMouse = false
+		$BackButton.disabled = false
+		$Sprite2D.show()
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	done = false
 	held_ingredients.clear()
 	addedCook = 0

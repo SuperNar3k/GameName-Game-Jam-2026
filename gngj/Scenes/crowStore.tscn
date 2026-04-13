@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://batofbki0yyny" path="res://assets/ingredients/psychic stone.PNG" id="13_8pm8u"]
 [ext_resource type="Texture2D" uid="uid://daja3i8mkle21" path="res://assets/ingredients/shattered sky.PNG" id="14_i7vvm"]
 [ext_resource type="Texture2D" uid="uid://dythmsqj3sahj" path="res://assets/ingredients/shooting star.PNG" id="15_uys6e"]
+[ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="20_gveli"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lovfp"]
 shader = ExtResource("3_jsb4s")
@@ -115,6 +116,14 @@ shader = ExtResource("3_jsb4s")
 shader_parameter/allow_out_of_bounds = true
 shader_parameter/outline_thickness = 0.01
 shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06mlv"]
+shader = ExtResource("3_jsb4s")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5j08"]
 
 [node name="crowStore" type="Control" unique_id=1546794494]
 layout_mode = 3
@@ -503,19 +512,19 @@ theme_override_font_sizes/font_size = 24
 text = "6"
 horizontal_alignment = 2
 
+[node name="continuebuttonimg" type="Sprite2D" parent="." unique_id=558031959]
+material = SubResource("ShaderMaterial_06mlv")
+position = Vector2(-55, -24)
+texture = ExtResource("20_gveli")
+
 [node name="continueButton" type="Button" parent="." unique_id=653705216]
 layout_mode = 0
-offset_left = 652.0
+offset_left = 658.0
 offset_top = 377.0
-offset_right = 898.0
-offset_bottom = 492.0
-text = "Continue"
-
-[node name="currentcy" type="Label" parent="." unique_id=628004203]
-layout_mode = 0
-offset_left = 248.0
-offset_top = -287.0
-offset_right = 493.0
-offset_bottom = -240.0
-theme_override_font_sizes/font_size = 30
-text = "Currency: "
+offset_right = 904.0
+offset_bottom = 505.99
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t5j08")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t5j08")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5j08")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t5j08")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t5j08")

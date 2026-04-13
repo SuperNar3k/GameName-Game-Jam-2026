@@ -1,6 +1,39 @@
 [gd_scene format=3 uid="uid://dejhrlp1mqime"]
 
 [ext_resource type="Script" uid="uid://cagttvbuwiivb" path="res://scrips/hud.gd" id="1_e0onf"]
+[ext_resource type="Texture2D" uid="uid://dicuis3o73uj5" path="res://assets/background/UI/IMG_0650.PNG" id="2_6fbih"]
+[ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="2_36asn"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="2_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://bbrapahb4ou7w" path="res://assets/background/UI/IMG_0652.PNG" id="3_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://0hukbscnnnuj" path="res://assets/background/UI/IMG_0654.PNG" id="4_36asn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8jye8"]
+font_size = 40
+font_color = Color(1, 1, 0.3647059, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jye8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_36asn"]
+shader = ExtResource("2_t1xeu")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6fbih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jye8"]
+shader = ExtResource("2_t1xeu")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1xeu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43w4t"]
+shader = ExtResource("2_t1xeu")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="Hud" type="Control" unique_id=203291146]
 layout_mode = 3
@@ -11,48 +44,69 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e0onf")
 
+[node name="currencyLable" type="Label" parent="." unique_id=1472623530]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 234.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("2_36asn")
+theme_override_font_sizes/font_size = 40
+text = "Currency: 0"
+label_settings = SubResource("LabelSettings_8jye8")
+
 [node name="Recipes" type="Button" parent="." unique_id=1998033115]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 7.0
-offset_right = 83.0
-offset_bottom = 38.0
-text = "Recipes"
+offset_left = 1679.0
+offset_top = 14.0
+offset_right = 1784.925
+offset_bottom = 139.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8jye8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8jye8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8jye8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8jye8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8jye8")
+
+[node name="recipesimg" type="Sprite2D" parent="Recipes" unique_id=100345563]
+material = SubResource("ShaderMaterial_36asn")
+position = Vector2(-719, 526)
+texture = ExtResource("4_36asn")
 
 [node name="Quests" type="Button" parent="." unique_id=205836408]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 56.0
-offset_right = 78.0
-offset_bottom = 87.0
-text = "Quests"
+offset_left = 1580.0
+offset_top = 5.0
+offset_right = 1671.36
+offset_bottom = 125.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6fbih")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6fbih")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6fbih")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6fbih")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6fbih")
 
-[node name="Bookshelf" type="Button" parent="." unique_id=983928136]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 105.0
-offset_right = 98.0
-offset_bottom = 136.0
-text = "Bookshelf"
+[node name="questimg" type="Sprite2D" parent="Quests" unique_id=646488599]
+material = SubResource("ShaderMaterial_8jye8")
+position = Vector2(-620, 535)
+texture = ExtResource("3_t1xeu")
 
 [node name="Options" type="Button" parent="." unique_id=2119365602]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 154.0
-offset_right = 97.0
-offset_bottom = 185.0
-text = "Options"
+offset_left = 1807.0
+offset_top = 25.0
+offset_right = 1907.0
+offset_bottom = 125.0
+tooltip_text = "bitch"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t1xeu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t1xeu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t1xeu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_t1xeu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t1xeu")
 
-[node name="currencyLable" type="Label" parent="." unique_id=1472623530]
-layout_mode = 0
-offset_left = 1610.0
-offset_top = 11.0
-offset_right = 1829.0
-offset_bottom = 66.0
-theme_override_font_sizes/font_size = 40
-text = "Currency: 0"
+[node name="optionsimg" type="Sprite2D" parent="Options" unique_id=120833002]
+material = SubResource("ShaderMaterial_43w4t")
+position = Vector2(-847, 515)
+texture = ExtResource("2_6fbih")
 
 [connection signal="pressed" from="Recipes" to="." method="_on_recipes_pressed"]
 [connection signal="pressed" from="Quests" to="." method="_on_quests_pressed"]
-[connection signal="pressed" from="Bookshelf" to="." method="_on_bookshelf_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
