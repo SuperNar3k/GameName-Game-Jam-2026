@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://bwytwv2k0rol4"
+path="res://.godot/imported/powerful witch.PNG-8a27f8ae878178dc232f57f2d713f7e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/powerful witch.PNG"
+dest_files=["res://.godot/imported/powerful witch.PNG-8a27f8ae878178dc232f57f2d713f7e8.ctex"]
 
 [params]
 

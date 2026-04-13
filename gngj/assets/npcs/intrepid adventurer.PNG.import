@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://blf5qcqvv5mu6"
+path="res://.godot/imported/intrepid adventurer.PNG-117108ff2a104b0012918213653b9f65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/intrepid adventurer.PNG"
+dest_files=["res://.godot/imported/intrepid adventurer.PNG-117108ff2a104b0012918213653b9f65.ctex"]
 
 [params]
 

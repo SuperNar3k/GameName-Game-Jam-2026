@@ -5,22 +5,38 @@ extends Node
 #This array will hold all of our NPCs
 var allNPCs = {}
 var allChildren = ["Pepper", "Violet", "Jay Cutter", "Jeremiah", "Godwyn Blackbarrel", "Bard"]
-var allTownsolk = ["Aldric Hayworth", "Brenna Tallowmere", "Oswin Cutter", "Maribel Fenwick", "Torren Blackbarrel", "Elswyth Porridgepot", "Joric Underbough", "Lysa Thornwhistle", "Garrin Millstone", "Fara Goodbrook"]
+var allTownsolk = ["House of Rouge Knight",
+"Intrepid Adventurer",
+"Mysterious Cloaked Noblewoman",
+"Wobbly Cloaked Figure",
+"Disheveled Academic",
+"Confident Druid",
+"Dirt Covered Field Hand",
+"Novice Witch",
+"Powerful Witch",
+"Wisened Dwarf",
+"Friendly Bar Maid",
+"Unfriendly Squire",
+"Distracted Academic",
+"Ambitious Lady-in-Waiting",
+"Fearless Privateer",
+"Vacant Mercenary",
+"Awkward Youth"]
 var allAdventurers = ["Lil Freak", "Obamna", "Sir Henry the Brave", "Gonzalles the Erratic", "Timothy the Tatted"]
 
 # __init__
 func Populate():
 	for n in allChildren:
 		var baby = npc.new()
-		baby.setParams(n, n.to_lower()+".jpg", "Child")
+		baby.setParams(n, n.to_lower()+".PNG", "Child")
 		allNPCs.set(n, baby)
 	for n in allTownsolk:
 		var baby = npc.new()
-		baby.setParams(n, n.to_lower()+".jpg", "Townsfolk")
+		baby.setParams(n, n.to_lower()+".PNG", "Townsfolk")
 		allNPCs.set(n, baby)
 	for n in allAdventurers:
 		var baby = npc.new()
-		baby.setParams(n, n.to_lower()+".jpg", "Adventurer")
+		baby.setParams(n, n.to_lower()+".PNG", "Adventurer")
 		allNPCs.set(n, baby)
 	# print("Total number of NPCs: " + str(allNPCs.size()))
 	# print(allNPCs)

@@ -506,9 +506,13 @@ func UnlockDefaultPotions(_unlockedPotions: Dictionary):
 	a.unlocked = true
 	_unlockedPotions.set(a.itemName, a)
 	
-	a = allPotions.get("za heroin") 
+	a = allPotions.get("another test") 
 	a.unlocked = true
 	_unlockedPotions.set(a.itemName, a)
+	
+	#a = allPotions.get("za heroin") 
+	#a.unlocked = true
+	#_unlockedPotions.set(a.itemName, a)
 
 # Unlock a new ingredient
 func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):

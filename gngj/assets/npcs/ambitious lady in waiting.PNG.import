@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://bnh7ltacij1qm"
+path="res://.godot/imported/ambitious lady in waiting.PNG-cb6a66bda4065fa430fc827a7915022e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/ambitious lady in waiting.PNG"
+dest_files=["res://.godot/imported/ambitious lady in waiting.PNG-cb6a66bda4065fa430fc827a7915022e.ctex"]
 
 [params]
 

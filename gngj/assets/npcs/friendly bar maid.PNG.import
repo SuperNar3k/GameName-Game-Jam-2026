@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://d1pb7aa6dr0o"
+path="res://.godot/imported/friendly bar maid.PNG-eb2c65de5d5901ef377a5e14c2fbfcb4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/friendly bar maid.PNG"
+dest_files=["res://.godot/imported/friendly bar maid.PNG-eb2c65de5d5901ef377a5e14c2fbfcb4.ctex"]
 
 [params]
 

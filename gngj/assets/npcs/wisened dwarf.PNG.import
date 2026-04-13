@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://6p28lcmelgek"
+path="res://.godot/imported/wisened dwarf.PNG-ac14163698ca4d490ac1aac2bc59d41c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/wisened dwarf.PNG"
+dest_files=["res://.godot/imported/wisened dwarf.PNG-ac14163698ca4d490ac1aac2bc59d41c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://doy04mr73rj3s"
+path="res://.godot/imported/unfriendly squire.PNG-a7baacec6e76251a6debd654507de227.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/unfriendly squire.PNG"
+dest_files=["res://.godot/imported/unfriendly squire.PNG-a7baacec6e76251a6debd654507de227.ctex"]
 
 [params]
 

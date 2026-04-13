@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://dndojw6cmo1he"
+path="res://.godot/imported/confident druid.PNG-c73287fa636a16d8f5a964b2f6871999.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/confident druid.PNG"
+dest_files=["res://.godot/imported/confident druid.PNG-c73287fa636a16d8f5a964b2f6871999.ctex"]
 
 [params]
 

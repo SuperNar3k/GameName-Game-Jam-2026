@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://dipsfvw4qdepj"
+path="res://.godot/imported/disheveled academic.PNG-704d55ea0149a3bca9c6e9e8d8c6216e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/disheveled academic.PNG"
+dest_files=["res://.godot/imported/disheveled academic.PNG-704d55ea0149a3bca9c6e9e8d8c6216e.ctex"]
 
 [params]
 

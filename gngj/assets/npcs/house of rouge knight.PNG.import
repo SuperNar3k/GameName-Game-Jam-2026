@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://bi6xlycfq7hqv"
+path="res://.godot/imported/house of rouge knight.PNG-7649f8117fc252f78a993f5a306dd4f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/house of rouge knight.PNG"
+dest_files=["res://.godot/imported/house of rouge knight.PNG-7649f8117fc252f78a993f5a306dd4f7.ctex"]
 
 [params]
 

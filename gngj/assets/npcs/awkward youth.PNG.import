@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://cthisvpqcyvbk"
+path="res://.godot/imported/awkward youth.PNG-3b961b3b318b394d5ba21f84b84f70e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/awkward youth.PNG"
+dest_files=["res://.godot/imported/awkward youth.PNG-3b961b3b318b394d5ba21f84b84f70e1.ctex"]
 
 [params]
 

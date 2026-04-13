@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://r6mb22v4q3he"
+path="res://.godot/imported/dirt covered field hand.PNG-e0af60a20834c261206ddd677ba91d4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/dirt covered field hand.PNG"
+dest_files=["res://.godot/imported/dirt covered field hand.PNG-e0af60a20834c261206ddd677ba91d4d.ctex"]
 
 [params]
 

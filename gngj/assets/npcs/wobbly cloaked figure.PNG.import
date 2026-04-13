@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://bw6e2bwfcy60j"
+path="res://.godot/imported/wobbly cloaked figure.PNG-6aa054ec98074be3d3fa54ba7072e768.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/wobbly cloaked figure.PNG"
+dest_files=["res://.godot/imported/wobbly cloaked figure.PNG-6aa054ec98074be3d3fa54ba7072e768.ctex"]
 
 [params]
 

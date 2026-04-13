@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmgr62w52nt3r"
-path="res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"
+uid="uid://lw837ppxgswv"
+path="res://.godot/imported/vacant mercenary.PNG-210294b1dcedf94e3a505d8a055559df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Cure all potion.PNG"
-dest_files=["res://.godot/imported/Cure all potion.PNG-15b640784ef1d0641c8944e245bb5355.ctex"]
+source_file="res://assets/npcs/vacant mercenary.PNG"
+dest_files=["res://.godot/imported/vacant mercenary.PNG-210294b1dcedf94e3a505d8a055559df.ctex"]
 
 [params]
 
