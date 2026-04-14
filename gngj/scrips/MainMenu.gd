@@ -16,6 +16,7 @@ signal displayCredits
 signal testThatShit
 
 func _ready() -> void:
+	#$ColorRect.hide()
 	$phys_buttons.open_button_pressed.connect(_on_menu_button_pressed.bind("start"))
 	$phys_buttons.options_button_pressed.connect(_on_menu_button_pressed.bind("options"))
 	$phys_buttons.credits_button_pressed.connect(_on_menu_button_pressed.bind("credits"))
@@ -28,12 +29,14 @@ func _ready() -> void:
 	
 	testEndOfDayButton.pressed.connect(_on_menu_button_pressed.bind("test1"))
 	
+	
 
 
 func _on_menu_button_pressed(button_name: String) -> void:
 	match button_name:
 		"start":
 			startGame.emit()
+			
 		"load":
 			print("Opening load menu...")
 			
@@ -49,3 +52,5 @@ func _on_menu_button_pressed(button_name: String) -> void:
 
 func phys_button_pressed():
 	pass
+
+	

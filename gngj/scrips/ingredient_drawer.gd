@@ -81,39 +81,47 @@ func _on_drawer_button_pressed(pressed : int) -> void:
 				if pressed + 16 < 30:
 					if (allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned > 0):
 						if (wantGrinded):
+							var ref = allIngredients.get(allIngredients.keys()[pressed+16])
 							instance = spawn_test.instantiate()
 							add_child(instance)
 							instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed+16]).sprite))  
 							held = allIngredients.keys()[pressed+16]
 							hide_buttons()
 							allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
+							get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
 						else:
 							if (allIngredients.get(allIngredients.keys()[pressed+16]).isGrindable):
+								var ref = allIngredients.get(allIngredients.keys()[pressed+16])
 								instance = spawn_test.instantiate()
 								add_child(instance)
 								instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed+16]).sprite))  
 								held = allIngredients.keys()[pressed+16]
 								hide_buttons()
 								allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
+								get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
 						if (allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned == 0):
 							get_child(pressed).get_child(0).set_texture(Texture2D)
 			else:
 				if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned > 0):
 						if (wantGrinded):
+							var ref = allIngredients.get(allIngredients.keys()[pressed])
 							instance = spawn_test.instantiate()
 							add_child(instance)
 							instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed]).sprite))  
 							held = allIngredients.keys()[pressed]
 							hide_buttons()
 							allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
+							get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
 						else:
 							if (allIngredients.get(allIngredients.keys()[pressed]).isGrindable):
+								var ref = allIngredients.get(allIngredients.keys()[pressed])
 								instance = spawn_test.instantiate()
 								add_child(instance)
 								instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed]).sprite))  
 								held = allIngredients.keys()[pressed]
 								hide_buttons()
 								allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
+								get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
 						if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned == 0):
 							get_child(pressed).get_child(0).set_texture(Texture2D)
 		else:
@@ -166,6 +174,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 	if nextPressed:
 		var delete = 0
 		while delete < 16:
+			get_child(delete).tooltip_text = ""
 			get_child(delete).get_child(0).set_texture(Texture2D)
 			delete = delete + 1
 		if page != 1:
@@ -174,6 +183,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 			for ingred in allIngredients.keys():
 				if i <= 15:
 					if allIngredients.get(ingred).amountOwned > 0:
+						get_child(i).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 						get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 				i = i + 1
 		else:
@@ -184,6 +194,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 					pass
 				else:
 					if allIngredients.get(ingred).amountOwned > 0:
+						get_child(i-16).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 						get_child(i-16).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 				i = i + 1
 		$AnimationPlayer.play("Drawer_Slide")
@@ -208,6 +219,7 @@ func _redraw() -> void:
 		for ingred in allIngredients.keys():
 			if i <= 15:
 				if allIngredients.get(ingred).amountOwned > 0:
+					get_child(i).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 					get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 			i = i + 1
 	else:
@@ -217,6 +229,7 @@ func _redraw() -> void:
 				pass
 			else:
 				if allIngredients.get(ingred).amountOwned > 0:
+					get_child(i-16).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 					get_child(i-16).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 			i = i + 1
 

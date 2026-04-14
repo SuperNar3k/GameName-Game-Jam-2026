@@ -1,7 +1,7 @@
 extends Control
 
 
-#makin every fuckin button work 
+# Makin every alphabetical button 
 @onready var aButton : Button = $Book/aButton
 @onready var bButton : Button = $Book/bButton
 @onready var cButton : Button = $Book/cButton
@@ -45,7 +45,8 @@ var fwdPressed = false
 
 func _ready() -> void:
 	hide()
-	
+	$ExitBtn.mouse_entered.connect(_on_hovered.bind($Sprite2D, true))
+	$ExitBtn.mouse_exited.connect(_on_hovered.bind($Sprite2D, false))
 	aButton.pressed.connect(_go_to_page.bind("A"))
 	bButton.pressed.connect(_go_to_page.bind("B"))
 	cButton.pressed.connect(_go_to_page.bind("C"))
@@ -117,6 +118,8 @@ func _go_to_page(c : String):
 		else:
 			_on_back_btn_pressed()
 
+func _on_hovered(ref, hovered:bool):
+	ref.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
 
 func _on_recipe_book_btn_pressed() -> void:
 	#Displays the first set of recipes
@@ -329,6 +332,7 @@ func _on_exit_btn_pressed() -> void:
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if $ExitBtn.is_visible_in_tree():
 		$ExitBtn.hide()
+		$Sprite2D.hide()
 		$FwdBtn.hide()
 		$BackBtn.hide()
 		page_index =  0
@@ -342,4 +346,5 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		hide()
 	else:
 		$ExitBtn.show()
+		$Sprite2D.show()
 		$FwdBtn.show()
