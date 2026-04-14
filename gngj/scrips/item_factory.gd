@@ -13,7 +13,6 @@ func createIngredient(
 	_sprite: String,
 	_value: int,
 	_isGrindable: bool
-
 ):
 	var brandNewPart = Item.new()
 	brandNewPart.__init__(
@@ -63,26 +62,8 @@ func Populate():
 		#sprite
 		#value
 		#grindable
-	#
-	#createIngredient(
-	#	"asbestos",										#ItemName
-	#	"this shit will kill you",						#Description
-	#	0,											#AmountOwned
-	#	"res://assets/ingredients/asbestos.png",		#Sprite
-	#	3,												#Value
-	#	true											#grindable
-	#)
 	
-	#createIngredient(
-		#"crushed asbestos",
-		#"this shit will kill you, also its a powder now",
-		#0,
-		#"res://assets/ingredients/crushed asbestos.jpg",
-		#0,
-		#false
-	#)
-	
-	createIngredient("earth", "dirt", 9223372036854775807, "res://assets/ingredients/earth.PNG", 0, false)
+	createIngredient("earth", "dirt", 9999, "res://assets/ingredients/earth.PNG", 0, false)
 	createIngredient("leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/a leaf of a thousand leaves.PNG", 1, true)
 	createIngredient("leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/a leaf of a thousand leaves powder.PNG", 1, false)
 	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/a thorny heart.PNG", 1, true)
@@ -112,36 +93,6 @@ func Populate():
 	createIngredient("shattered sky", "obsidian", 0, "res://assets/ingredients/shattered sky.PNG", 5, false)
 	createIngredient("shooting star", "star", 0, "res://assets/ingredients/shooting star.PNG", 6, true)
 	createIngredient("stardust", "stardust", 0, "res://assets/ingredients/stardust.PNG", 6, false)
-
-	
-	#Hardcoding all of our Potions here
-		#itemName
-		#description
-		#amountOwned
-		#sprite
-		#recipe
-		#cookLevelNeeded
-	
-	
-	
-	#createPotion(
-		#"cinnamon toast crunch milk",			#ItemName
-		#"this shit yummy af",					#Description
-		#69,										#AmountOwned
-		#"res://assets/potions/CTCBox.jpg",		#Sprite
-		#["asbestos", "crushed asbestos"],		#Recipe
-		#0										#CookLevelNeeded
-	#)
-	#
-	#createPotion(
-		#"epic fucking monkey",
-		#"curious af",
-		#3,
-		#"res://assets/potions/funny_monkey.jpg",
-		#["crushed asbestos","crushed asbestos","beans"],
-		#0
-	#)
-	
 	
 	createPotion(
 		"Animal Shape Potion",										#ItemName
@@ -466,30 +417,6 @@ func Populate():
 		["air's brevity", "dried ocean", "winter crystal"],							#Recipe
 		0															#CookLevelNeeded
 	)
-	
-
-# Unlocks default items at start of game
-func UnlockDefaultIngredients(_unlockedIngredients: Dictionary):
-	
-	#var newItem = allIngredients.get("beans") 
-	#newItem.unlocked = true
-	#_unlockedIngredients.set(newItem.itemName, newItem)
-	#
-	#newItem = allIngredients.get("asbestos") 
-	#newItem.unlocked = true
-	#_unlockedIngredients.set(newItem.itemName, newItem)
-	#
-	#newItem = allIngredients.get("crushed asbestos") 
-	#newItem.unlocked = true
-	#_unlockedIngredients.set(newItem.itemName, newItem)
-	pass
-	
-func UnlockDefaultPotions(_unlockedPotions: Dictionary):
-	pass
-	#var a = allPotions.get("cinnamon toast crunch milk") 
-	#a.unlocked = true
-	#_unlockedPotions.set(a.itemName, a)
-	
 
 # Unlock a new ingredient
 func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):
@@ -500,6 +427,8 @@ func UnlockIngredient(_unlockedIngredients: Dictionary, _ingName: String):
 # Unlock a new potion
 func UnlockPotion(_unlockedPotions: Dictionary, _potName: String, ing):
 	var pot = allPotions.get(_potName) 
+	
+	# If potion doesnt exist, its a dud
 	if pot == null:
 		var potion = createPotion(
 			_potName,
@@ -511,6 +440,8 @@ func UnlockPotion(_unlockedPotions: Dictionary, _potName: String, ing):
 			)
 		allPotions.set(_potName, potion)
 		pot = allPotions.get(_potName) 
+		
+	# Unlock it and add it to list
 	pot.unlocked = true
 	_unlockedPotions.set(_potName, pot)
 	
