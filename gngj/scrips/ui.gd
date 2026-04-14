@@ -126,6 +126,7 @@ func endDay():
 func _on_main_menu_scene_start_game() -> void:
 	$MainMenuScene.hide()
 	$FrontRoom.show()
+	$FrontRoom/AnimationPlayer.play("fade_to_normal")
 	gameStart = true
 	
 	$Hud.show()

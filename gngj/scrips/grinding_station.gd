@@ -11,6 +11,8 @@ var bowlIngredient = null
 
 var item_manip = Item_Factory.new()
 
+var grindSFX = preload("res://assets/sound/Grind Stone.wav")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$IngredientDrawer.parent_buttons_hide.connect(hide_buttons)
@@ -62,6 +64,9 @@ func show_buttons():
 func _on_grinding_area_body_entered(_body: Node2D) -> void:
 	if bowlIngredient != null and grindDone == false:
 		grindLVL += 1
+		$AudioStreamPlayer2D.stream = grindSFX
+		if ($AudioStreamPlayer2D.is_playing() == false):
+			$AudioStreamPlayer2D.play()
 	if grindLVL == 30 and grindDone == false:
 		grindDone = true
 		var i = 0
