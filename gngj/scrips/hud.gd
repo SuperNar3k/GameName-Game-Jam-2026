@@ -35,8 +35,8 @@ func _on_options_pressed() -> void:
 	options_pressed.emit()
 	
 func updateCurrency(currency: Variant):
-	$currencyLable.text = "Currency: " + str(currency) 
+	$currencyLable.text = str(currency) 
 	
 func updateTimer(timer: Timer):
 	var hours_left = floor((timer.time_left / 240) * 8)
-	$endDay.text = "Hours Till Close: " + str(int(hours_left))	
+	$endDay.text = "Hours Left: " + str(int(hours_left))	

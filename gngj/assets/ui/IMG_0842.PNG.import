@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnh7ltacij1qm"
-path="res://.godot/imported/ambitious lady in waiting.PNG-19790f5c0bc29eb9c263abc04384a370.ctex"
+uid="uid://dss1pcr5ekm36"
+path="res://.godot/imported/IMG_0842.PNG-5f2997bf31bc871d76d085e0b2394edb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/ambitious lady in waiting.PNG"
-dest_files=["res://.godot/imported/ambitious lady in waiting.PNG-19790f5c0bc29eb9c263abc04384a370.ctex"]
+source_file="res://assets/ui/IMG_0842.PNG"
+dest_files=["res://.godot/imported/IMG_0842.PNG-5f2997bf31bc871d76d085e0b2394edb.ctex"]
 
 [params]
 
