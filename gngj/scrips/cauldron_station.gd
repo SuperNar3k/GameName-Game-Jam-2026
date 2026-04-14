@@ -11,8 +11,6 @@ var allPotions
 var allIngredients
 var potions
 
-var numOfDuds = 1
-
 var held_ingredients : Array
 var followMouse = false
 var recordRot = 0

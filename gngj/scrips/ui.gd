@@ -20,6 +20,7 @@ signal questAccepted(option)
 signal startGame
 signal correctPotionSelected
 signal buyItem(cost, item)
+signal grindIngredient(ingredient)
 signal cookingDone(heldIngredients, cookedLevel)
 signal finishedNotifying
 
@@ -255,7 +256,6 @@ func _on_front_room_correct_potion_selected() -> void:
 func _on_crow_store_buy(cost: Variant, item: Variant):
 	var ingredient = allIngredients.get(item)
 	buyItem.emit(cost,ingredient)
-	
 
 
 func _on_cauldron_station_cooking_done(held_ingredients: Variant) -> void:
@@ -264,3 +264,7 @@ func _on_cauldron_station_cooking_done(held_ingredients: Variant) -> void:
 
 func _on_notification_finished_playing() -> void:
 	finishedNotifying.emit()
+
+
+func _on_grinding_station_grind_ingredient(_ingredient: Variant) -> void:
+	grindIngredient.emit(_ingredient)

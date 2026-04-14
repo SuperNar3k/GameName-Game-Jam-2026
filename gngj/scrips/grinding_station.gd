@@ -2,14 +2,13 @@ extends Control
 @onready var backButton : Button = $BackButton
 
 signal goBack
+signal grindIngredient(_ingredient)
 
 var grindLVL = 0
 var grindDone = false
 
 var allIngredients
 var bowlIngredient = null
-
-var item_manip = Item_Factory.new()
 
 var grindSFX = preload("res://assets/sound/Grind Stone.wav")
 
@@ -67,13 +66,11 @@ func _on_grinding_area_body_entered(_body: Node2D) -> void:
 		$AudioStreamPlayer2D.stream = grindSFX
 		if ($AudioStreamPlayer2D.is_playing() == false):
 			$AudioStreamPlayer2D.play()
-	if grindLVL == 30 and grindDone == false:
+	if grindLVL == 20 and grindDone == false:
 		grindDone = true
-		var i = 0
-		while i != allIngredients.size():
-			if bowlIngredient != allIngredients.keys()[i]:
-				i = i + 1
-			else:
-				bowlIngredient = allIngredients.keys()[i + 1]
-				break
-		$fruitBowl.set_texture(load(allIngredients.get(bowlIngredient).sprite))
+		
+		# Check if grinding is possible
+		var crushedName:String = bowlIngredient + " powder"
+		if crushedName in allIngredients:
+			grindIngredient.emit(allIngredients.get(bowlIngredient))
+			$fruitBowl.set_texture(load(allIngredients.get(crushedName).sprite))

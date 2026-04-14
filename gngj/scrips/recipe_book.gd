@@ -1,7 +1,7 @@
 extends Control
 
 
-#makin every fuckin button work 
+# Makin every alphabetical button 
 @onready var aButton : Button = $Book/aButton
 @onready var bButton : Button = $Book/bButton
 @onready var cButton : Button = $Book/cButton

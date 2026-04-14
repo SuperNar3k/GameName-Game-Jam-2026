@@ -40,16 +40,11 @@ var buySFX = preload("res://assets/sound/cha-ching.mp3")
 # Called when the game starts.
 func _ready() -> void:
 	
-	
-	
 	$dayTimer.set_wait_time(dayDuration)
 	#$dayTimer.timeout.connect(endOfDay)
 	
 	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
-	ItemCreator.UnlockDefaultIngredients(ingredients)
-	ItemCreator.UnlockDefaultPotions(potions)
-	
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
@@ -67,7 +62,7 @@ func _process(_delta: float):
 	notificationQueueHandler()
 
 
-#NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
+#TO DO: NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
 #(CANNOT SEE WHEN DAY ENDS IF YOU HAVE RECEPE BOOK OPEN)
 
 func startOfDay():
@@ -87,8 +82,6 @@ func startOfDay():
 		
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
 		
-		#QuestCreator.Populate(quests, NPCBirthingPod, potions)
-		
 		for NPC in NPCBirthingPod.allNPCs.values():
 			availableNPCS.append(NPC)
 	else:
@@ -100,10 +93,6 @@ func startOfDay():
 		
 		ingredient = ingredients.get("tears of trees")
 		ingredient.amountOwned = ingredient.amountOwned + 2
-		
-		
-	
-	
 	
 	var t 
 	for n in range(0, numOfNpcs):
@@ -145,20 +134,21 @@ func _onGenerateQuest():
 		_updateQueue()
 		
 		# Trigger the bell sound effect
+		# TO DO
 		#bell_sfx.play()
 		$AudioStreamPlayer2D.stream = bellSFX
 		$AudioStreamPlayer2D.play()
 	else: 
 		print("No more quest available for player")
-	
-#TO-DO: ADD LOGIC FOR FADING OUT AND FADING IN NPCS
+
 func _updateQueue():
 	#Disable button which allows NPC interaction
 	$ui/FrontRoom/NPC.disabled = true
 	
 	# TO-DO: Fade out already loaded NPCs
 
-	#Updating the textures here. TO-DO :STILL HAVE TO FADE THEM IN
+	#Updating the textures here.
+	# TO-DO :STILL HAVE TO FADE THEM IN
 	if storeQueue.size() == 0: 
 		$ui/FrontRoom/NPC.set_texture_normal(null)
 		$ui/FrontRoom/customer2.set_texture(null)
@@ -443,27 +433,22 @@ func _onQuestCompleted(_quest: Quest):
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
 
-
-#TO-DO: TESTING NEEDS TO BE DONE ON THIS FUNCTION
 func onIngredientGrinded(i: Item):
-	# Check if object can be grinded
 	var crushedName:String = i.itemName + " powder"
-	if !(crushedName in ItemCreator.allIngredients):
-		return false
+	var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
 	
 	# If not unlocked, unlock it!
 	if !(crushedName in ingredients):
-		var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
 		ingredients.set(crushedName, crushedObj)
 		crushedObj.unlocked = true
 	
 	# Increase crushed quantity by 1
-	ingredients.get(crushedName).amountOwned += 1
+	crushedObj.amountOwned += 1
 	
 	# Decrease quantity by 1
 	i.amountOwned -= 1
 	
-	return true
+	return crushedObj
 
 func unlockPotion(p: Item):
 	
@@ -502,7 +487,7 @@ func giveIngredient(i: Item):
 		notificationQueue.append("Ingredient")
 		
 	# Increase quantity by 1
-	if(!i.itemName == "earth"):
+	if(i.itemName != "earth"):
 		i.amountOwned += 1
 	
 	
@@ -577,13 +562,13 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 #TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():
 	print("End of day: ", day)
-	
-	$ui.endDay()
-	
+		
 	if(inConverstation):
-		print("cant end day because in convestation")
+		print("cant end day because in conversation")
 		await noLongerInConverstation
 	
+	# End day in UI
+	$ui.endDay()
 	
 	# Increment day
 	day += 1;
@@ -591,7 +576,7 @@ func endOfDay():
 	#Logic for handling quest still in the queue when the day ends
 	for i in range(storeQueue.size() - 1, -1, -1):
 		var q = storeQueue[i]
-		#Any npcs on their deadlines are removed from player quest. GET FUCKED
+		#Any npcs on their deadlines are removed from player quest.
 		if q.daysUntilDue == 0:
 			activeQuests.erase(q)
 			pharmacyQuests.erase(q)
@@ -603,14 +588,11 @@ func endOfDay():
 	storeQueue.clear()
 	_updateQueue()
 	
-		
-
-	# TO-DO: if grinding in-progress, pause the grinding timer
-	
-	# TO-DO: if potion making was in-progress, immediately complete the potion
+	# If potion making was in-progress, give ingredients back
+	for i in $ui/CauldronStation.held_ingredients:
+		giveIngredient(i)
 	
 	$ui/crowStore.currency = currency
 	$ui/crowStore.checkIfTooBroke()
 	$ui._on_end_of_day()
-	
 	
