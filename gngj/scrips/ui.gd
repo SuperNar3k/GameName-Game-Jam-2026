@@ -20,6 +20,7 @@ signal questAccepted(option)
 signal startGame
 signal correctPotionSelected
 signal buyItem(cost, item)
+signal grindIngredient(ingredient)
 signal cookingDone(heldIngredients, cookedLevel)
 signal finishedNotifying
 
@@ -115,17 +116,20 @@ func _enable_all_buttons() -> void:
 					innerchild.disabled = false
 
 func endDay():
-	if $CauldronStation/IngredientDrawer.huh % 2 != 0:
-		$CauldronStation/IngredientDrawer/AnimationPlayer.play_backwards("Drawer_Slide")
-		$CauldronStation/IngredientDrawer.huh += 1
-	if $GrindingStation/IngredientDrawer.huh % 2 != 0:
-		$GrindingStation/IngredientDrawer/AnimationPlayer.play_backwards("Drawer_Slide")
-		$CauldronStation/IngredientDrawer.huh += 1
+	if $CauldronStation/IngredientDrawer.position.x < 860:
+		$CauldronStation/IngredientDrawer._on_handle_pressed()
+		$CauldronStation/IngredientDrawer._redraw()
+	if $GrindingStation/IngredientDrawer.position.x < 860:
+		$GrindingStation/IngredientDrawer._on_handle_pressed()
+		$GrindingStation/IngredientDrawer._redraw()
 
 #IMPORTANT!
 func _on_main_menu_scene_start_game() -> void:
 	$MainMenuScene.hide()
 	$FrontRoom.show()
+	$FrontRoom/AnimationPlayer.play("fade_to_normal")
+	await ($FrontRoom/AnimationPlayer.animation_finished)
+	$FrontRoom/ColorRect.hide()
 	gameStart = true
 	
 	$Hud.show()
@@ -253,7 +257,6 @@ func _on_front_room_correct_potion_selected() -> void:
 func _on_crow_store_buy(cost: Variant, item: Variant):
 	var ingredient = allIngredients.get(item)
 	buyItem.emit(cost,ingredient)
-	
 
 
 func _on_cauldron_station_cooking_done(held_ingredients: Variant) -> void:
@@ -262,3 +265,7 @@ func _on_cauldron_station_cooking_done(held_ingredients: Variant) -> void:
 
 func _on_notification_finished_playing() -> void:
 	finishedNotifying.emit()
+
+
+func _on_grinding_station_grind_ingredient(_ingredient: Variant) -> void:
+	grindIngredient.emit(_ingredient)

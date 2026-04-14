@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1gwq37n5wiwm"
+path="res://.godot/imported/Liquid Pour Cup.wav-75c818b95485adab2c4e373d38861ef0.sample"
+
+[deps]
+
+source_file="res://assets/sound/Liquid Pour Cup.wav"
+dest_files=["res://.godot/imported/Liquid Pour Cup.wav-75c818b95485adab2c4e373d38861ef0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

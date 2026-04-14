@@ -74,7 +74,6 @@ func __init__(
 	# Set NPC class
 	npcQuestGiver = _npc
 	
-	
 func resetQuest(): 
 	daysUntilDue = daysUntilDueReset
 	daysUntilReward = daysUntilRewardReset
@@ -83,12 +82,11 @@ func resetQuest():
 	
 	var tempBirthPod = Npc_Birthing_Pod.new()
 	
-	
 	match npcQuestGiver.type: 
 		"Child":
 			npcQuestGiver.npcName = tempBirthPod.allChildren.pick_random()
 		"Townsfolk":
-			npcQuestGiver.npcName = tempBirthPod.allTownsolk.pick_random()
+			npcQuestGiver.npcName = tempBirthPod.allTownsfolk.pick_random()
 		"Adventurer":
 			npcQuestGiver.npcName = tempBirthPod.allAdventurers.pick_random()
 	
