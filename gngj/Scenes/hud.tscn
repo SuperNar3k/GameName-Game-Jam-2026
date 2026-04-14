@@ -79,6 +79,17 @@ theme_override_font_sizes/font_size = 40
 text = "Hours Left: 0"
 label_settings = ExtResource("6_5ep0j")
 
+[node name="endDay" type="Label" parent="." unique_id=2003778843]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 74.0
+offset_right = 239.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("3_8jye8")
+theme_override_font_sizes/font_size = 40
+text = "Timer: 0"
+label_settings = SubResource("LabelSettings_8jye8")
+
 [node name="Recipes" type="Button" parent="." unique_id=1998033115]
 layout_mode = 0
 offset_left = 1679.0

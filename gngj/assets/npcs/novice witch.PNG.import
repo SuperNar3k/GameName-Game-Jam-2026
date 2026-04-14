@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://derfm4pecnccb"
-path="res://.godot/imported/novice witch.png-ba432f3e6c032d242871ac8cf8ef99ef.ctex"
+path="res://.godot/imported/novice witch.PNG-ba432f3e6c032d242871ac8cf8ef99ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/novice witch.png"
-dest_files=["res://.godot/imported/novice witch.png-ba432f3e6c032d242871ac8cf8ef99ef.ctex"]
+source_file="res://assets/npcs/novice witch.PNG"
+dest_files=["res://.godot/imported/novice witch.PNG-ba432f3e6c032d242871ac8cf8ef99ef.ctex"]
 
 [params]
 
