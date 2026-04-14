@@ -12,7 +12,8 @@ func _ready() -> void:
 	$Quests.mouse_entered.connect(_on_hovered.bind($Quests, true))
 	$Quests.mouse_exited.connect(_on_hovered.bind($Quests, false))
 	$Options.mouse_entered.connect(_on_hovered.bind($Options, true))
-	$Options.mouse_exited.connect(_on_hovered.bind($Options, false))
+	$Options.mouse_exited.connect(_on_hovered.bind($Options, false)) 
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,4 +35,8 @@ func _on_options_pressed() -> void:
 	options_pressed.emit()
 	
 func updateCurrency(currency: Variant):
-	$currencyLable.text = "Currency: " + str(currency)
+	$currencyLable.text = "Currency: " + str(currency) 
+	
+func updateTimer(timer: Timer):
+	var hours_left = floor((timer.time_left / 240) * 8)
+	$endDay.text = "Hours Till Close: " + str(int(hours_left))	

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lw837ppxgswv"
-path="res://.godot/imported/vacant mercenary.PNG-210294b1dcedf94e3a505d8a055559df.ctex"
+path="res://.godot/imported/vacant mercenary.PNG-7ba1527ff1ddeecb9888d85060b89a71.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/npcs/vacant mercenary.PNG"
-dest_files=["res://.godot/imported/vacant mercenary.PNG-210294b1dcedf94e3a505d8a055559df.ctex"]
+dest_files=["res://.godot/imported/vacant mercenary.PNG-7ba1527ff1ddeecb9888d85060b89a71.ctex"]
 
 [params]
 

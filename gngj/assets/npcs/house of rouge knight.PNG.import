@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi6xlycfq7hqv"
-path="res://.godot/imported/house of rouge knight.PNG-7649f8117fc252f78a993f5a306dd4f7.ctex"
+path="res://.godot/imported/house of rouge knight.PNG-bbaf0d8321139ed7936246c12c46e251.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/npcs/house of rouge knight.PNG"
-dest_files=["res://.godot/imported/house of rouge knight.PNG-7649f8117fc252f78a993f5a306dd4f7.ctex"]
+dest_files=["res://.godot/imported/house of rouge knight.PNG-bbaf0d8321139ed7936246c12c46e251.ctex"]
 
 [params]
 

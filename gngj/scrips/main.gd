@@ -3,7 +3,8 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 180
+var dayDuration = 240
+var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
 
@@ -43,6 +44,8 @@ func _ready() -> void:
 	$dayTimer.set_wait_time(dayDuration)
 	#$dayTimer.timeout.connect(endOfDay)
 	
+	
+	
 	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
 	
@@ -60,6 +63,8 @@ func _ready() -> void:
 	
 func _process(_delta: float):
 	notificationQueueHandler()
+	if(timerStarted == true):
+		$ui/Hud.updateTimer($dayTimer)
 
 
 #TO DO: NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
@@ -119,8 +124,9 @@ func startOfDay():
 		_updateQueue()
 		
 	$dayTimer.start(dayDuration)
+	timerStarted = true
 	$ui/Hud.updateCurrency(currency)
-	
+	$ui/Hud.updateTimer($dayTimer)
 	
 func _onGenerateQuest():
 	print("Generating quest!")
@@ -568,6 +574,7 @@ func createdItem(i: Item, type: String):
 
 #TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():
+	timerStarted = false
 	print("End of day: ", day)
 		
 	if(inConversation):
