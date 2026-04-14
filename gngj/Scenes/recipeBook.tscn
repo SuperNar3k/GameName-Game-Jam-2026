@@ -4,6 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://b56r3gb22bhui" path="res://assets/background/IMG_0702.PNG" id="2_rxxfk"]
 [ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="3_gfmpn"]
 [ext_resource type="FontFile" uid="uid://dttamm24jafgg" path="res://assets/fonts/Felipa-Regular.ttf" id="3_rxxfk"]
+[ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="4_nvrov"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_wbrmg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbrmg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j186r"]
+shader = ExtResource("4_wbrmg")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_gfmpn"]
 default_font = ExtResource("3_rxxfk")
@@ -324,25 +334,40 @@ offset_left = -758.0
 offset_top = 351.0
 offset_right = -713.0
 offset_bottom = 382.0
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 60
 text = "Back"
 
 [node name="FwdBtn" type="Button" parent="." unique_id=342672085]
 visible = false
 layout_mode = 0
-offset_left = 690.0
-offset_top = 397.0
-offset_right = 763.0
-offset_bottom = 428.0
+offset_left = 679.0
+offset_top = 351.0
+offset_right = 864.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 60
 text = "Forward"
 
 [node name="ExitBtn" type="Button" parent="." unique_id=757798167]
 visible = false
 layout_mode = 0
-offset_left = -898.0
-offset_top = -482.0
-offset_right = -861.0
-offset_bottom = -451.0
-text = "Exit"
+offset_left = -944.0
+offset_top = -423.0
+offset_right = -707.02
+offset_bottom = -298.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wbrmg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wbrmg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wbrmg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wbrmg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wbrmg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=400350703]
+visible = false
+material = SubResource("ShaderMaterial_j186r")
+position = Vector2(16, -825)
+texture = ExtResource("4_nvrov")
+flip_h = true
 
 [node name="LeftSprite" type="Sprite2D" parent="." unique_id=1479250762]
 position = Vector2(-285.995, 900)
