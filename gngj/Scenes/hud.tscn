@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dicuis3o73uj5" path="res://assets/background/UI/IMG_0650.PNG" id="2_6fbih"]
 [ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="2_36asn"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="2_t1xeu"]
+[ext_resource type="FontFile" uid="uid://bikav46enllqp" path="res://assets/fonts/Amarante-Regular.ttf" id="3_8jye8"]
 [ext_resource type="Texture2D" uid="uid://bbrapahb4ou7w" path="res://assets/background/UI/IMG_0652.PNG" id="3_t1xeu"]
 [ext_resource type="Texture2D" uid="uid://0hukbscnnnuj" path="res://assets/background/UI/IMG_0654.PNG" id="4_36asn"]
 
@@ -53,6 +54,17 @@ offset_bottom = 66.0
 theme_override_fonts/font = ExtResource("2_36asn")
 theme_override_font_sizes/font_size = 40
 text = "Currency: 0"
+label_settings = SubResource("LabelSettings_8jye8")
+
+[node name="endDay" type="Label" parent="." unique_id=2003778843]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 74.0
+offset_right = 239.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("3_8jye8")
+theme_override_font_sizes/font_size = 40
+text = "Timer: 0"
 label_settings = SubResource("LabelSettings_8jye8")
 
 [node name="Recipes" type="Button" parent="." unique_id=1998033115]

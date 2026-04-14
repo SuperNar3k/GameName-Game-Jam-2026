@@ -96,7 +96,7 @@ func _ready() -> void:
 	
 	shopOption14.mouse_entered.connect(_on_mouse_entered.bind(shopOption14))
 	shopOption14.mouse_exited.connect(_on_mouse_exited.bind(shopOption14))
-	shopOption14.pressed.connect(_on_buyIngredient.bind("a leaf of a thousand leaves"))
+	shopOption14.pressed.connect(_on_buyIngredient.bind("leaf of a thousand leaves"))
 	
 	
 	shopOption15.mouse_entered.connect(_on_mouse_entered.bind(shopOption15))
@@ -114,12 +114,13 @@ func _on_continueButton_pressed() -> void:
 	newDay.emit()
 
 func _on_buyIngredient(ingredient : String):
+	print("Player wants to buy "+ingredient)
 	match ingredient: 
 		"beans":
 			buy.emit(2,int($allButtons/shopOption1/optionCost.text))
 		"aspestos":
 			buy.emit(0,int($allButtons/shopOption2/optionCost.text))
-		"a leaf of a thousand leaves":
+		"leaf of a thousand leaves":
 			buy.emit(1, ingredient)
 		"a thorny heart":
 			buy.emit(1, ingredient)
@@ -153,6 +154,7 @@ func _on_buyIngredient(ingredient : String):
 			buy.emit(6, ingredient)
 				
 	checkIfTooBroke()
+	print("player bought "+ingredient)
 
 func _on_hovered(hovered):
 	$continuebuttonimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
