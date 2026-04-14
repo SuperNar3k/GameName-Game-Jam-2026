@@ -2,15 +2,18 @@
 
 [ext_resource type="Script" uid="uid://cagttvbuwiivb" path="res://scrips/hud.gd" id="1_e0onf"]
 [ext_resource type="Texture2D" uid="uid://dicuis3o73uj5" path="res://assets/background/UI/IMG_0650.PNG" id="2_6fbih"]
+[ext_resource type="Texture2D" uid="uid://dss1pcr5ekm36" path="res://assets/ui/IMG_0842.PNG" id="2_7gr8i"]
 [ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="2_36asn"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="2_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://cs3lkap1jvlky" path="res://assets/ui/IMG_0840.PNG" id="3_5ep0j"]
 [ext_resource type="FontFile" uid="uid://bikav46enllqp" path="res://assets/fonts/Amarante-Regular.ttf" id="3_8jye8"]
 [ext_resource type="Texture2D" uid="uid://bbrapahb4ou7w" path="res://assets/background/UI/IMG_0652.PNG" id="3_t1xeu"]
 [ext_resource type="Texture2D" uid="uid://0hukbscnnnuj" path="res://assets/background/UI/IMG_0654.PNG" id="4_36asn"]
+[ext_resource type="LabelSettings" uid="uid://6rygp2pa1ke6" path="res://new_label_settings.tres" id="6_5ep0j"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_8jye8"]
+[sub_resource type="LabelSettings" id="LabelSettings_4f5kr"]
 font_size = 40
-font_color = Color(1, 1, 0.3647059, 1)
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jye8"]
 
@@ -45,27 +48,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e0onf")
 
+[node name="endDayGraphic" type="Sprite2D" parent="." unique_id=638001845]
+position = Vector2(231, 193)
+texture = ExtResource("2_7gr8i")
+
+[node name="currencyGraphic" type="Sprite2D" parent="." unique_id=298426145]
+position = Vector2(225, 178)
+texture = ExtResource("3_5ep0j")
+
 [node name="currencyLable" type="Label" parent="." unique_id=1472623530]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 11.0
-offset_right = 234.0
-offset_bottom = 66.0
+offset_left = -16.0
+offset_top = 196.0
+offset_right = 208.0
+offset_bottom = 255.0
 theme_override_fonts/font = ExtResource("2_36asn")
 theme_override_font_sizes/font_size = 40
-text = "Currency: 0"
-label_settings = SubResource("LabelSettings_8jye8")
+text = "999"
+label_settings = SubResource("LabelSettings_4f5kr")
+horizontal_alignment = 1
 
 [node name="endDay" type="Label" parent="." unique_id=2003778843]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 74.0
-offset_right = 239.0
-offset_bottom = 133.0
+offset_left = 166.0
+offset_top = 82.0
+offset_right = 390.0
+offset_bottom = 141.0
 theme_override_fonts/font = ExtResource("3_8jye8")
 theme_override_font_sizes/font_size = 40
-text = "Timer: 0"
-label_settings = SubResource("LabelSettings_8jye8")
+text = "Hours Left: 0"
+label_settings = ExtResource("6_5ep0j")
 
 [node name="Recipes" type="Button" parent="." unique_id=1998033115]
 layout_mode = 0
