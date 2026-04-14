@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nqm50q2fog1c"
-path="res://.godot/imported/distracted academic.png-35d0fd914f84a7a8ef11de71f9c43ccf.ctex"
+path="res://.godot/imported/distracted academic.PNG-519ab2b2781f2cd3802880b19328200d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/distracted academic.png"
-dest_files=["res://.godot/imported/distracted academic.png-35d0fd914f84a7a8ef11de71f9c43ccf.ctex"]
+source_file="res://assets/npcs/distracted academic.PNG"
+dest_files=["res://.godot/imported/distracted academic.PNG-519ab2b2781f2cd3802880b19328200d.ctex"]
 
 [params]
 
