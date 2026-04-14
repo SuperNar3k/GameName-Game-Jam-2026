@@ -193,7 +193,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 	randomPotion = potions.keys()[randi_range(0, potions.size()) - 1]
 	allQuests.append(createQuest(
 		["Hey. You got a sec?",
-		"I need a " + randomPotion + "for my journey. Do you know how to make one?"],									#allQueststartDialog
+		"I need a " + randomPotion + " for my journey. Do you know how to make one?"],									#allQueststartDialog
 		["Hey, do you have the " + randomPotion + " ready?"],										#QuestReturningDialog
 		["I guess I’ll have to make it myself along the way. See ya around."],							#QuestRejectedDialog
 		["Well, that sucks. I wasted a lot of time in this town.",
@@ -682,7 +682,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"Confident Druid":
 			quest = createQuest(
 		["Hey. You got a sec?",
-		"I need a " + randomPotion + "for my journey. Do you know how to make one?"],									#allQueststartDialog
+		"I need a " + randomPotion + " for my journey. Do you know how to make one?"],									#allQueststartDialog
 		["Hey, do you have the " + randomPotion + " ready?"],										#QuestReturningDialog
 		["I guess I’ll have to make it myself along the way. See ya around."],							#QuestRejectedDialog
 		["Well, that sucks. I wasted a lot of time in this town.",
