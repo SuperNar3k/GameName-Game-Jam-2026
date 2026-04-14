@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cvr710tnvcl0" path="res://scrips/grinding_station.gd" id="1_pjki0"]
 [ext_resource type="Texture2D" uid="uid://lbk7i6yms55y" path="res://assets/background/cauldron-mp-top/mptop.PNG" id="2_b08lm"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="3_aj0c6"]
-[ext_resource type="PackedScene" path="res://Scenes/ingredient_drawer.tscn" id="3_b08lm"]
+[ext_resource type="PackedScene" uid="uid://cqrxjuspqkdi0" path="res://Scenes/ingredient_drawer.tscn" id="3_b08lm"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="3_diasw"]
 [ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://scrips/pestle.gd" id="3_ohim2"]
 [ext_resource type="Texture2D" uid="uid://psqoiejuslr5" path="res://assets/pastel.PNG" id="5_mnfot"]
