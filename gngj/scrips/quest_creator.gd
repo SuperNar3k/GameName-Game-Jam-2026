@@ -193,7 +193,7 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 	randomPotion = potions.keys()[randi_range(0, potions.size()) - 1]
 	allQuests.append(createQuest(
 		["Hey. You got a sec?",
-		"I need a " + randomPotion + "for my journey. Do you know how to make one?"],									#allQueststartDialog
+		"I need a " + randomPotion + " for my journey. Do you know how to make one?"],									#allQueststartDialog
 		["Hey, do you have the " + randomPotion + " ready?"],										#QuestReturningDialog
 		["I guess I’ll have to make it myself along the way. See ya around."],							#QuestRejectedDialog
 		["Well, that sucks. I wasted a lot of time in this town.",
@@ -620,8 +620,9 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 	#))
 
 	
-func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary):
+func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary):
 	var randomPotion = potions.keys().pick_random()
+	var randomRecipeReward = allPotions.keys().pick_random()
 	var quest = null
 	
 	match npcName:
@@ -642,7 +643,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -650,6 +651,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"Ambitious Lady In Waiting",												#NpcTypeOrName
 		NPCBirthingPod														#Pass the birthing pod
 	)
+	
 		"Awkward Youth":
 			quest = createQuest(
 		["Um… hello. You’re the shopkeeper right?",
@@ -669,7 +671,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -680,7 +682,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"Confident Druid":
 			quest = createQuest(
 		["Hey. You got a sec?",
-		"I need a " + randomPotion + "for my journey. Do you know how to make one?"],									#allQueststartDialog
+		"I need a " + randomPotion + " for my journey. Do you know how to make one?"],									#allQueststartDialog
 		["Hey, do you have the " + randomPotion + " ready?"],										#QuestReturningDialog
 		["I guess I’ll have to make it myself along the way. See ya around."],							#QuestRejectedDialog
 		["Well, that sucks. I wasted a lot of time in this town.",
@@ -691,7 +693,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -715,7 +717,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -740,7 +742,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -767,7 +769,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -795,7 +797,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -823,7 +825,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -888,7 +890,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -912,7 +914,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -936,7 +938,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -958,7 +960,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -986,7 +988,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -1011,7 +1013,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
@@ -1035,7 +1037,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		[],
 		[randomPotion],																#Requirements
 		69,																	#RewardMoney
-		["another test"],																	#RewardRecipes
+		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
