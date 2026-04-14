@@ -127,6 +127,7 @@ func _on_main_menu_scene_start_game() -> void:
 	$MainMenuScene.hide()
 	$FrontRoom.show()
 	$FrontRoom/AnimationPlayer.play("fade_to_normal")
+	await ($FrontRoom/AnimationPlayer.animation_finished)
 	$FrontRoom/ColorRect.hide()
 	gameStart = true
 	
