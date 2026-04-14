@@ -115,12 +115,12 @@ func _enable_all_buttons() -> void:
 					innerchild.disabled = false
 
 func endDay():
-	if $CauldronStation/IngredientDrawer.huh % 2 != 0:
-		$CauldronStation/IngredientDrawer/AnimationPlayer.play_backwards("Drawer_Slide")
-		$CauldronStation/IngredientDrawer.huh += 1
-	if $GrindingStation/IngredientDrawer.huh % 2 != 0:
-		$GrindingStation/IngredientDrawer/AnimationPlayer.play_backwards("Drawer_Slide")
-		$CauldronStation/IngredientDrawer.huh += 1
+	if $CauldronStation/IngredientDrawer.position.x < 860:
+		$CauldronStation/IngredientDrawer._on_handle_pressed()
+		$CauldronStation/IngredientDrawer._redraw()
+	if $GrindingStation/IngredientDrawer.position.x < 860:
+		$GrindingStation/IngredientDrawer._on_handle_pressed()
+		$GrindingStation/IngredientDrawer._redraw()
 
 #IMPORTANT!
 func _on_main_menu_scene_start_game() -> void:

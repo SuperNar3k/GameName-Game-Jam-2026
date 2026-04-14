@@ -53,6 +53,14 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="crowStore" parent="." unique_id=1546794494 instance=ExtResource("11_g0wmg")]
+visible = false
+layout_mode = 1
+
+[node name="endOfDayScreen" parent="." unique_id=1933692783 instance=ExtResource("10_nt8jn")]
+visible = false
+layout_mode = 1
+
 [node name="Hud" parent="." unique_id=203291146 instance=ExtResource("13_3r70p")]
 visible = false
 layout_mode = 0
@@ -92,14 +100,6 @@ offset_bottom = 544.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="endOfDayScreen" parent="." unique_id=1933692783 instance=ExtResource("10_nt8jn")]
-visible = false
-layout_mode = 1
-
-[node name="crowStore" parent="." unique_id=1546794494 instance=ExtResource("11_g0wmg")]
-visible = false
-layout_mode = 1
-
 [node name="Notification" parent="." unique_id=1275692138 instance=ExtResource("14_8fs27")]
 layout_mode = 1
 offset_top = -700.0
@@ -119,11 +119,11 @@ offset_bottom = -700.0
 [connection signal="cookingDone" from="CauldronStation" to="." method="_on_cauldron_station_cooking_done"]
 [connection signal="goBack" from="CauldronStation" to="." method="_on_cauldron_station_go_back"]
 [connection signal="goBack" from="credits" to="." method="_on_credits_go_back"]
+[connection signal="buy" from="crowStore" to="." method="_on_crow_store_buy"]
+[connection signal="newDay" from="crowStore" to="." method="newDay"]
+[connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
 [connection signal="options_pressed" from="Hud" to="." method="_on_hud_options_pressed"]
 [connection signal="quest_pressed" from="Hud" to="." method="_on_hud_quest_pressed"]
 [connection signal="returnToGame" from="questListScreen" to="." method="_on_quest_list_screen_return_to_game"]
 [connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]
-[connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
-[connection signal="buy" from="crowStore" to="." method="_on_crow_store_buy"]
-[connection signal="newDay" from="crowStore" to="." method="newDay"]
 [connection signal="finishedPlaying" from="Notification" to="." method="_on_notification_finished_playing"]
