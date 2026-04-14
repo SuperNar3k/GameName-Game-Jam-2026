@@ -138,7 +138,7 @@ func _onGenerateQuest():
 
 	# Choose a random quest from availble quest list
 	if(availableNPCS.size() > 0):
-		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions) 
+		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions, dudCounter) 
 		# Add new quest to the queue
 		storeQueue.append(newQuest)
 		availableNPCS.erase(newQuest)
@@ -465,19 +465,7 @@ func onIngredientGrinded(i: Item):
 	
 	return true
 
-func unlockPotion(p: Item):
-	
-	# If not unlocked, unlock it!
-	if !(p.itemName in potions):
-		ItemCreator.UnlockPotion(potions, p.itemName, null)
-		potions.set(p.itemName, p)
-		p.unlocked = true
-		
-		print("potion: ", p.itemName, " unlocked")
-		
-		notificationQueue.append(p)
-		notificationQueue.append("Potion")
-		
+
 
 func buyIngredient(cost: int, ingredient: Item):
 	if(cost <= currency):
@@ -511,7 +499,6 @@ func notifcationFinished():
 	noLongerNotifying.emit()	
 
 
-#TO-DO: THIS SHIT BROKEN!! FIX IT!!!
 func notificationQueueHandler():
 			
 	if(notificationQueue.size() > 0):
@@ -523,7 +510,7 @@ func notificationQueueHandler():
 			await noLongerNotifying
 			notificationQueue.pop_front()
 			notificationQueue.pop_front()
-			
+	
 
 #TO-DO: TESTING NEEDS TO BE DONE ON THIS FUCNTION
 func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
@@ -570,9 +557,29 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 		)
 		dudCounter = dudCounter + 1
 		print("new dud created")
+		
 	# Unlock if needed, and increase quantity
 	unlockPotion(potion)
 	potion.amountOwned += 1
+
+func unlockPotion(p: Item):
+	
+	# If not unlocked, unlock it!
+	if !(p.itemName in potions):
+		ItemCreator.UnlockPotion(potions, p.itemName, null)
+		potions.set(p.itemName, p)
+		p.unlocked = true
+		
+		print("potion: ", p.itemName, " unlocked")
+		
+		notificationQueue.append(p)
+		notificationQueue.append("Potion")
+	else: 
+		createdItem(p, p.itemName)
+
+func createdItem(i: Item, type: String):
+	$ui/Notification/Popup.itemMade(i, type)
+
 
 #TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():

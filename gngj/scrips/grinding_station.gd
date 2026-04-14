@@ -70,5 +70,7 @@ func _on_grinding_area_body_entered(_body: Node2D) -> void:
 				i = i + 1
 			else:
 				bowlIngredient = allIngredients.keys()[i + 1]
+				
+				
 				break
 		$fruitBowl.set_texture(load(allIngredients.get(bowlIngredient).sprite))

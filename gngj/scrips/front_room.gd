@@ -27,8 +27,6 @@ func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
 	for potion in potions: 
 		if(potion.amountOwned > 0 and potion.unlocked):
 			$potionHotbar/HBoxContainer.add_child(potionButton)
-			$potionHotbar/HBoxContainer.add_child(potionButton)
-			$potionHotbar/HBoxContainer.add_child(potionButton)
 			potionButton.set_texture_normal(load(potion.sprite))
 			potionButton.set_material(potionShader)
 			potionButton.pressed.connect(isCorrectPotion.bind(potion))

@@ -620,8 +620,11 @@ func Populate(allQuests: Array, NPCBirthingPod: Npc_Birthing_Pod, potions: Dicti
 	#))
 
 	
-func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary):
-	var randomPotion = potions.keys().pick_random()
+func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary, numOfDuds: Variant):
+	
+	var r = potions.size() - (numOfDuds-1)
+	var randomPotion = potions.keys()[range(0 , r).pick_random()]
+
 	var randomRecipeReward = allPotions.keys().pick_random()
 	var quest = null
 	

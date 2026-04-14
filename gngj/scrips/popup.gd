@@ -14,6 +14,14 @@ func newItemUnlocked(item: Item, type: String):
 	$".".show()
 	$popupAnimation.play("moveIn")
 
+func itemMade(item: Item, type : String):
+
+	$contTitle/titleLabel.set_text(type + " Created!")
+	$contName/nameLabel.set_text(item.itemName)
+	$itemSprite.set_texture(load(item.sprite))
+	$popupTimer.start(sec)
+	$".".show()
+	$popupAnimation.play("moveIn")
 
 func onTimerTimeout() -> void:
 	$popupAnimation.play("moveOut")
