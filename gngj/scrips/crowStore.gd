@@ -116,10 +116,6 @@ func _on_continueButton_pressed() -> void:
 func _on_buyIngredient(ingredient : String):
 	print("Player wants to buy "+ingredient)
 	match ingredient: 
-		"beans":
-			buy.emit(2,int($allButtons/shopOption1/optionCost.text))
-		"aspestos":
-			buy.emit(0,int($allButtons/shopOption2/optionCost.text))
 		"leaf of a thousand leaves":
 			buy.emit(1, ingredient)
 		"a thorny heart":
