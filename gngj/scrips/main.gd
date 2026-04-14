@@ -25,9 +25,9 @@ var ItemCreator = Item_Factory.new() # Used for creating quests
 
 #@onready var bell_sfx = $BellSFX # Bell sound effect
 signal optionChosen
-signal noLongerInConverstation
+signal noLongerInConversation
 var questAccepted
-var inConverstation = false
+var inConversation = false
 
 signal noLongerNotifying
 var inNotification = false
@@ -167,7 +167,7 @@ func _updateQueue():
 		$ui/FrontRoom/customer3.set_texture(load(storeQueue[2].npcQuestGiver.sprite))
 
 	#Re-enable button which allows NPC interaction
-	if(storeQueue.size() > 0 && !inConverstation):
+	if(storeQueue.size() > 0 && !inConversation):
 		$ui/FrontRoom/NPC.disabled = false
 		
 #TO-DO: Maybe add sound effect for getting the reward?
@@ -177,7 +177,7 @@ func _on_greetNPC():
 	$ui/FrontRoom/goToBackroom.disabled = true
 	$ui/FrontRoom/Dialogue.disabled = false
 	$ui/FrontRoom/Dialogue.visible = true
-	inConverstation = true
+	inConversation = true
 	
 	var currentQuest = storeQueue[0]
 	
@@ -375,8 +375,8 @@ func _on_greetNPC():
 	$ui/FrontRoom/goToBackroom.disabled = false
 	$ui/FrontRoom/Dialogue.disabled = true
 	$ui/FrontRoom/Dialogue.visible = false
-	inConverstation = false
-	noLongerInConverstation.emit()
+	inConversation = false
+	noLongerInConversation.emit()
 	
 	storeQueue.pop_front()
 	_updateQueue()
@@ -563,9 +563,9 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 func endOfDay():
 	print("End of day: ", day)
 		
-	if(inConverstation):
+	if(inConversation):
 		print("cant end day because in conversation")
-		await noLongerInConverstation
+		await noLongerInConversation
 	
 	# End day in UI
 	$ui.endDay()
