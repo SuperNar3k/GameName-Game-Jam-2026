@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blf5qcqvv5mu6"
-path="res://.godot/imported/intrepid adventurer.PNG-117108ff2a104b0012918213653b9f65.ctex"
+path="res://.godot/imported/intrepid adventurer.png-7257981fa34fade69fe27dc175a18a60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/intrepid adventurer.PNG"
-dest_files=["res://.godot/imported/intrepid adventurer.PNG-117108ff2a104b0012918213653b9f65.ctex"]
+source_file="res://assets/npcs/intrepid adventurer.png"
+dest_files=["res://.godot/imported/intrepid adventurer.png-7257981fa34fade69fe27dc175a18a60.ctex"]
 
 [params]
 

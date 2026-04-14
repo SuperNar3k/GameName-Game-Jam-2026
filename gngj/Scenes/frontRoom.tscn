@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6niyjurcgd0l" path="res://scrips/front_room.gd" id="1_t5cqi"]
 [ext_resource type="Texture2D" uid="uid://c0g1bjkejnpat" path="res://assets/background/front/frontempty.PNG" id="2_fixym"]
 [ext_resource type="Texture2D" uid="uid://dv8ebk8jjw4xv" path="res://assets/background/front/frontdesk.PNG" id="3_s0epr"]
-[ext_resource type="Texture2D" uid="uid://r6mb22v4q3he" path="res://assets/npcs/dirt covered field hand.PNG" id="3_w4gd2"]
+[ext_resource type="Texture2D" uid="uid://r6mb22v4q3he" path="res://assets/npcs/dirt covered field hand.png" id="3_w4gd2"]
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3
