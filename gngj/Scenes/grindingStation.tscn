@@ -131,6 +131,8 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_mnfot")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_mnfot")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mnfot")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1920220946]
+
 [connection signal="body_entered" from="GrindingArea" to="." method="_on_grinding_area_body_entered"]
 [connection signal="button_down" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_down"]
 [connection signal="button_up" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_up"]

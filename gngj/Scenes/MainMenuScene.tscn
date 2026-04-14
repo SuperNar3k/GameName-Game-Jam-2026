@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_sb72h")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=468685304]
+position = Vector2(0, 2)
 texture = ExtResource("2_mxhvt")
 
 [node name="MainMenu" type="Control" parent="." unique_id=343162974]
