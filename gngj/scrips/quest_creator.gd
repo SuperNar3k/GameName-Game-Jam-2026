@@ -258,7 +258,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"Friendly Bar Maid",												#NpcTypeOrName
 		NPCBirthingPod														#Pass the birthing pod
 	)
-		"House Of Rouge Knight":
+		"House of Rouge Knight":
 			quest = createQuest(
 				["Good day shopkeeper!", "I am a knight from the Noble House of Rouge.",
 				"On this fine day, I am looking for " + randomPotion + ".",

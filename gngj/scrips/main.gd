@@ -34,8 +34,8 @@ signal noLongerNotifying
 var inNotification = false
 var notificationQueue = []
 
-var bellSFX = preload("res://assets/sound/vine-boom.mp3")
-var buySFX = preload("res://assets/sound/cha-ching.mp3")
+var bellSFX = preload("res://assets/sound/Service Bell.wav")
+var buySFX = preload("res://assets/sound/Coin.wav")
 
 
 # Called when the game starts.
@@ -119,6 +119,8 @@ func startOfDay():
 			storeQueue.append(quest)
 	
 	if(storeQueue.size() > 0):
+		var randPitch = (randf_range(.8, 1.2))
+		$AudioStreamPlayer2D.pitch_scale = randPitch
 		$AudioStreamPlayer2D.stream = bellSFX
 		$AudioStreamPlayer2D.play()
 		_updateQueue()
@@ -213,12 +215,20 @@ func _on_greetNPC():
 			$ui/FrontRoom.clearInventory()
  		
 			#Dialog for quest success
+			var randPitch = (randf_range(.8, 1.2))
+			$giveSFX.pitch_scale = randPitch
+			$giveSFX.play()
+			$ui/Hud.updateCurrency(currency)
 			for dialog in currentQuest.questDialog[4]:
 				$ui/FrontRoom/Dialogue.text = dialog
 				await $ui/FrontRoom/Dialogue.pressed
 			
 			#Giving player the reward
 			currency = currency + currentQuest.rewards[0][0]
+			$AudioStreamPlayer2D.stream = buySFX
+			randPitch = (randf_range(.8, 1.2))
+			$AudioStreamPlayer2D.pitch_scale = randPitch
+			$AudioStreamPlayer2D.play()
 			$ui/Hud.updateCurrency(currency)
 			if(currentQuest.daysUntilReward == 0):
 				for rewardRecipe in currentQuest.rewards[1]:
@@ -286,6 +296,10 @@ func _on_greetNPC():
 			
 			#Wait to select the potion and reduce the amount we own
 			await $ui/FrontRoom/givePotionButton.pressed
+			var randPitch = (randf_range(.8, 1.2))
+			$giveSFX.pitch_scale = randPitch
+			$giveSFX.play(.68)
+			$ui/Hud.updateCurrency(currency)
 			potionWeNeed.amountOwned = potionWeNeed.amountOwned - 1
 			
 			#Hide all the shit and clean it out
@@ -300,6 +314,10 @@ func _on_greetNPC():
 				await $ui/FrontRoom/Dialogue.pressed
 			
 			#Logic for giving the player the reward
+			$AudioStreamPlayer2D.stream = buySFX
+			randPitch = (randf_range(.8, 1.2))
+			$AudioStreamPlayer2D.pitch_scale = randPitch
+			$AudioStreamPlayer2D.play()
 			currency = currency + currentQuest.rewards[0][0]
 			$ui/Hud.updateCurrency(currency)
 			if(currentQuest.daysUntilReward == 0):
@@ -465,6 +483,8 @@ func buyIngredient(cost: int, ingredient: Item):
 		$ui/Hud.updateCurrency(currency)
 		$ui/crowStore.currency = currency
 		$AudioStreamPlayer2D.stream = buySFX
+		var randPitch = (randf_range(.8, 1.2))
+		$AudioStreamPlayer2D.pitch_scale = randPitch
 		$AudioStreamPlayer2D.play()
 		giveIngredient(ingredient)
 		

@@ -139,11 +139,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_mnfot")
 
 [node name="grind" type="AudioStreamPlayer2D" parent="." unique_id=1600105974]
 stream = ExtResource("9_tl0jk")
-bus = &"SFX"
-
-[node name="TweenTimer" type="Timer" parent="." unique_id=1633589439]
-wait_time = 0.15
-one_shot = true
 
 [connection signal="body_entered" from="GrindingArea" to="." method="_on_grinding_area_body_entered"]
 [connection signal="button_down" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_down"]

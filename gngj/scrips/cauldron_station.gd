@@ -43,8 +43,18 @@ func _process(delta: float) -> void:
 	if followMouse:
 		if done == false:
 			$liquid.look_at(get_global_mouse_position())
+			if recordRot != $liquid.rotation_degrees:
+				if !$sloshing.playing:
+					$sloshing.volume_db = 3
+					$sloshing.play()
+				if $sloshing.volume_db < 0:
+					$sloshing.volume_db = 5
 			if held_ingredients.size() > 0:
 				if recordRot < $liquid.rotation_degrees:
+					if !$brewing.playing:
+						$brewing.play()
+					if $brewing.volume_db < 0:
+						$brewing.volume_db = lerp($brewing.volume_db, 0.0, 1.0)
 					addedCook += delta
 					$liquid/waves.modulate = lerp(Color(0.573, 0.675, 0.737, 1.0), Color(0.725, 0.388, 0.141, 1.0), addedCook / 3)
 				recordRot = $liquid.rotation_degrees
@@ -52,7 +62,10 @@ func _process(delta: float) -> void:
 					done = true
 					held_ingredients.sort()
 					cookingDone.emit(held_ingredients)
+					$potionDone.play()
 					$AnimationPlayer.play_backwards("revert_color")
+	$brewing.volume_db = lerp($brewing.volume_db, -80.0, .08 * delta)
+	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
 			
 func _on_hovered(hovered: bool, ref) -> void:
 	if $IngredientDrawer.held == null:

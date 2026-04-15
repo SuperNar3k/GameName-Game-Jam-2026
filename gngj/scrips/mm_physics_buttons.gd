@@ -22,6 +22,9 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_2d_body_entered(_body: RigidBody2D) -> void:
 	if $collisionTimer.is_stopped():
+		var randPitch = (randf_range(.8, 1.2))
+		$AudioStreamPlayer2D.pitch_scale = randPitch
+		$AudioStreamPlayer2D.play(.2)
 		$collisionTimer.start(.1)
 
 

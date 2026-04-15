@@ -30,7 +30,9 @@ func _on_backButton_pressed() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if $grind.get_playback_position() > .61:
+		$grind.stream_paused = true
+	#pass
 
 func _on_hovered(hovered: bool, ref) -> void:
 	ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
@@ -63,10 +65,18 @@ func show_buttons():
 func _on_grinding_area_body_entered(_body: Node2D) -> void:
 	if bowlIngredient != null and grindDone == false:
 		grindLVL += 1
-		$AudioStreamPlayer2D.stream = grindSFX
-		if ($AudioStreamPlayer2D.is_playing() == false):
-			$AudioStreamPlayer2D.play()
-	if grindLVL == 20 and grindDone == false:
+		if ($TweenTimer.is_stopped()):
+			var pos_hold = $fruitBowl.position
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_LINEAR)
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property($fruitBowl, "position", pos_hold + Vector2(randf_range(2.5 * grindLVL/10, 10 * grindLVL/10), 0), .05)
+			tween.tween_property($fruitBowl, "position", pos_hold + Vector2(randf_range(-10 * grindLVL/10, -2.5 ), 0), .05)
+			tween.tween_property($fruitBowl, "position", pos_hold, .05)
+			$TweenTimer.start()
+		if !$grind.playing:
+			$grind.play(.13)
+	if grindLVL == 30 and grindDone == false:
 		grindDone = true
 		
 		# Check if grinding is possible

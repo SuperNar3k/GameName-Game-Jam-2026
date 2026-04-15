@@ -4,6 +4,8 @@ var grabbed : bool = false
 var home_pos
 
 func _process(delta):
+	if $pestleGrabDrop.get_playback_position() > .79 and $pestleGrabDrop.get_playback_position() < 2:
+		$pestleGrabDrop.stream_paused = true
 	if grabbed:
 		var mouse_pos = get_global_mouse_position()
 		global_position = lerp(global_position,mouse_pos,0.2)
@@ -26,12 +28,15 @@ func _ready() -> void:
 
 
 func _on_pick_up_button_down() -> void:
+	$pestleGrabDrop.play()
 	if grabbed == false:
 		grabbed = true
 
 
 
 func _on_pick_up_button_up() -> void:
+	$pestleGrabDrop.stream_paused = false
+	$pestleGrabDrop.play(2.09)
 	if grabbed == true:
 		position = home_pos
 		grabbed = false
