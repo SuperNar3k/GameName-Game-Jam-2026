@@ -47,6 +47,9 @@ func _ready() -> void:
 	hide()
 	$ExitBtn.mouse_entered.connect(_on_hovered.bind($Sprite2D, true))
 	$ExitBtn.mouse_exited.connect(_on_hovered.bind($Sprite2D, false))
+	
+	var buttonRecipeArray = $Book.get_children()
+	
 	aButton.pressed.connect(_go_to_page.bind("A"))
 	bButton.pressed.connect(_go_to_page.bind("B"))
 	cButton.pressed.connect(_go_to_page.bind("C"))
@@ -73,6 +76,10 @@ func _ready() -> void:
 	xButton.pressed.connect(_go_to_page.bind("X"))
 	yButton.pressed.connect(_go_to_page.bind("Y"))
 	zButton.pressed.connect(_go_to_page.bind("Z"))
+	
+	# Set font of Recipe Buttons
+	for i in buttonRecipeArray:
+		i.add_theme_font_override("font", load("res://assets/fonts/ArefRuqaaInk-Regular.ttf"))
 
 func __init__(
 	_allPotions : Dictionary,
