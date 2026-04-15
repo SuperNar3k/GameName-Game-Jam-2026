@@ -1,11 +1,14 @@
 extends Control
 
-@onready var exitButton : Button = $Exit
-signal exitOptions
+@onready var backButton : Button = $Back
+@onready var mainMenuButton : Button = $MainMenu
+signal backFromOptions
+signal backToMainMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	exitButton.pressed.connect(_on_exitButton_pressed)
+	backButton.pressed.connect(_on_backButton_pressed)
+	mainMenuButton.pressed.connect(_on_mainMenuButton_pressed)
 	$TabContainer/Display/Resolutions.disabled = !SettingsManager.settings.windowed
 	$TabContainer/Sound/MasterVolumeSlider.value = SettingsManager.settings.master_volume
 	$TabContainer/Sound/MasterVolumeSlider/MasterLabel.text = "%d%%" % int(round(SettingsManager.settings.master_volume * 100))
@@ -16,9 +19,14 @@ func _ready() -> void:
 	
 	
 
-func _on_exitButton_pressed() -> void: 
-	exitOptions.emit()
+func _on_backButton_pressed() -> void: 
+	print("backButtonPressed")
+	backFromOptions.emit()
 
+func _on_mainMenuButton_pressed() -> void: 
+	print("mainmenuButtonPressed")
+	backToMainMenu.emit()
+	
 #Change master volume
 func _on_master_value_changed(value: float):
 	$TabContainer/Sound/MasterVolumeSlider/MasterLabel.text = "%d%%" % int(round(SettingsManager.settings.master_volume * 100))
