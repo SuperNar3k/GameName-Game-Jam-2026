@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwh72s7wbi4ye"]
 
-[ext_resource type="Script" uid="uid://b8saiyr4qhtsj" path="res://Scenes/credits.gd" id="1_1bamb"]
+[ext_resource type="Script" path="res://Scenes/credits.gd" id="1_1bamb"]
 [ext_resource type="Texture2D" uid="uid://bnfyxdhaxsp7" path="res://assets/background/main menu/mainbg.PNG" id="2_xelri"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="3_uah1q"]
 [ext_resource type="Texture2D" uid="uid://ivjrvrnwru1d" path="res://assets/ui/credit final.png" id="4_7emq5"]
@@ -41,6 +41,6 @@ position = Vector2(-690, -384)
 texture = ExtResource("3_uah1q")
 
 [node name="CreditsBook" type="Sprite2D" parent="." unique_id=390538009]
-position = Vector2(199.00002, -54.999985)
-scale = Vector2(0.774074, 0.7740741)
+position = Vector2(8.444473, -33.49997)
+scale = Vector2(0.82662034, 0.81388897)
 texture = ExtResource("4_7emq5")
