@@ -3,7 +3,7 @@ extends CharacterBody2D
 var grabbed : bool = false
 var home_pos
 
-func _process(delta):
+func _process(_delta):
 	if $pestleGrabDrop.get_playback_position() > .79 and $pestleGrabDrop.get_playback_position() < 2:
 		$pestleGrabDrop.stream_paused = true
 	if grabbed:

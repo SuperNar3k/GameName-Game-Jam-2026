@@ -42,7 +42,7 @@ func _ready() -> void:
 	$BackRoom/MortarandPestleBtn.pressed.connect(_on_button_pressed.bind("MortarandPestle"))
 	$BackRoom/toFrontRoomBtn.pressed.connect(_on_button_pressed.bind("toFrontRoom"))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("options_btn"):
 		get_tree().quit()
 	
@@ -173,7 +173,7 @@ func _on_grinding_station_go_back() -> void:
 	$BackRoom.show()
 	
 	lastScreen = $BackRoom
-
+ 
 
 func _on_cauldron_station_go_back() -> void:
 	$Hud.show_leftstuff()

@@ -177,7 +177,7 @@ func _on_mouse_entered(button: Variant, ingred_name):
 	button.material.set_shader_parameter("outline_thickness", 5.0)
 
 
-func _on_mouse_exited(button: Variant, ingred_name):
+func _on_mouse_exited(button: Variant, _ingred_name):
 	if instance != null:
 		instance.queue_free()
 	button.material.set_shader_parameter("outline_thickness", 0.0)

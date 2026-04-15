@@ -7,8 +7,6 @@ signal backToMainMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	backButton.pressed.connect(_on_backButton_pressed)
-	mainMenuButton.pressed.connect(_on_mainMenuButton_pressed)
 	$TabContainer/Display/Resolutions.disabled = !SettingsManager.settings.windowed
 	$TabContainer/Sound/MasterVolumeSlider.value = SettingsManager.settings.master_volume
 	$TabContainer/Sound/MasterVolumeSlider/MasterLabel.text = "%d%%" % int(round(SettingsManager.settings.master_volume * 100))

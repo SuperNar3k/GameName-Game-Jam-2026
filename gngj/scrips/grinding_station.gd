@@ -70,8 +70,8 @@ func _on_grinding_area_body_entered(_body: Node2D) -> void:
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_LINEAR)
 			tween.set_ease(Tween.EASE_IN)
-			tween.tween_property($fruitBowl, "position", pos_hold + Vector2(randf_range(2.5 * grindLVL/10, 10 * grindLVL/10), 0), .05)
-			tween.tween_property($fruitBowl, "position", pos_hold + Vector2(randf_range(-10 * grindLVL/10, -2.5 ), 0), .05)
+			tween.tween_property($fruitBowl, "position", pos_hold + Vector2(randf_range(0.25 * grindLVL, grindLVL), 0), .05)
+			tween.tween_property($fruitBowl, "position", pos_hold + Vector2(randf_range(-1 * grindLVL, -2.5 ), 0), .05)
 			tween.tween_property($fruitBowl, "position", pos_hold, .05)
 			$TweenTimer.start()
 		if !$grind.playing:

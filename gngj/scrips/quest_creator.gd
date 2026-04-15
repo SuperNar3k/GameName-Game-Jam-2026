@@ -41,7 +41,7 @@ func createQuest(
 	)
 	return newQuest
 	
-func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary, numOfDuds: Variant):
+func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary):
 	print("creating a quest")
 	
 	

@@ -137,7 +137,7 @@ func _onGenerateQuest():
 
 	# Choose a random quest from availble quest list
 	if(availableNPCS.size() > 0):
-		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions, dudCounter) 
+		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions) 
 		# Add new quest to the queue
 		storeQueue.append(newQuest)
 		availableNPCS.erase(newQuest)
