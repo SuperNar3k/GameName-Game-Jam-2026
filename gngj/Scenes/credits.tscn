@@ -1,5 +1,16 @@
 [gd_scene format=3 uid="uid://cwh72s7wbi4ye"]
 
+[ext_resource type="Script" uid="uid://b8saiyr4qhtsj" path="res://Scenes/credits.gd" id="1_1bamb"]
+[ext_resource type="Texture2D" uid="uid://bnfyxdhaxsp7" path="res://assets/background/main menu/mainbg.PNG" id="2_xelri"]
+[ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="3_uah1q"]
+[ext_resource type="Texture2D" uid="uid://ivjrvrnwru1d" path="res://assets/ui/credit final.png" id="4_7emq5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_803yc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wbrc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6nef"]
+
 [node name="credits" type="Control" unique_id=1866293905]
 layout_mode = 3
 anchors_preset = 8
@@ -9,11 +20,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
+script = ExtResource("1_1bamb")
 
 [node name="Latest" type="Sprite2D" parent="." unique_id=1464057022]
 position = Vector2(0, 2)
-
+texture = ExtResource("2_xelri")
 
 [node name="backButton" type="Button" parent="." unique_id=1121910015]
 layout_mode = 0
@@ -21,6 +32,15 @@ offset_left = 638.0
 offset_top = 343.0
 offset_right = 905.0
 offset_bottom = 494.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_803yc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1wbrc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j6nef")
 
+[node name="Sprite2D" type="Sprite2D" parent="backButton" unique_id=535823516]
+position = Vector2(-690, -384)
+texture = ExtResource("3_uah1q")
 
-
+[node name="CreditsBook" type="Sprite2D" parent="." unique_id=390538009]
+position = Vector2(199.00002, -54.999985)
+scale = Vector2(0.774074, 0.7740741)
+texture = ExtResource("4_7emq5")
