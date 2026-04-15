@@ -266,6 +266,7 @@ func _on_fwd_btn_pressed() -> void:
 		
 	if page_index == allPotions.size() or page_index == allPotions.size()-1:
 		$FwdBtn.hide()
+		$fwdimg.hide()
 
 
 func _on_back_btn_pressed() -> void:
@@ -286,6 +287,7 @@ func _on_back_btn_pressed() -> void:
 	$RightSprite.set_texture(null)
 	
 	$FwdBtn.show()
+	$fwdimg.show()
 	
 	
 	if(page_index%2 != 0):
@@ -341,6 +343,7 @@ func _on_back_btn_pressed() -> void:
 		
 	if page_index == 0:
 		$BackBtn.hide()
+		$backimg.hide()
 
 func _on_exit_btn_pressed() -> void:
 	$AnimationPlayer.play_backwards()
