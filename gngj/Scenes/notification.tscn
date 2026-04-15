@@ -129,7 +129,7 @@ layout_mode = 2
 text = "Potion/Ingredient Name"
 label_settings = ExtResource("5_kxtsc")
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 
 [connection signal="finishedPlaying" from="Popup" to="." method="_on_popup_finished_playing"]
 [connection signal="timeout" from="Popup/popupTimer" to="Popup" method="onTimerTimeout"]

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://ul05e01y00gs"]
 
 [ext_resource type="Script" uid="uid://df1pb00d0phn8" path="res://scrips/displayOnQuestList.gd" id="1_c0ud8"]
-[ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="1_c0355"]
+[ext_resource type="Texture2D" uid="uid://e5pybteq1ogj" path="res://assets/potions/Dragon's Breath Potion.PNG" id="2_o6lcf"]
 [ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="3_yfkir"]
+[ext_resource type="LabelSettings" uid="uid://bgk07qtqte5ia" path="res://assets/fonts/label_settings/regText.tres" id="4_nm1tc"]
 [ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="4_o6lcf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yfkir"]
@@ -21,7 +22,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -960.0
 offset_top = -544.0
-offset_right = 86.0
+offset_right = -110.0
 offset_bottom = -420.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -36,15 +37,18 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("1_c0355")
+texture = ExtResource("2_o6lcf")
 expand_mode = 1
-stretch_mode = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=621271167]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="potionNameLable" type="Label" parent="VBoxContainer" unique_id=1208371953]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=753312459]
+layout_mode = 2
+
+[node name="potionNameLable" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1208371953]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_yfkir")
@@ -53,17 +57,24 @@ text = "POTION NAME"
 label_settings = SubResource("LabelSettings_yfkir")
 vertical_alignment = 1
 
+[node name="DaysUntilDueLable" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=762977107]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Days Until Due"
+label_settings = ExtResource("4_nm1tc")
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=921815192]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="npcName" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1137279697]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_o6lcf")
 theme_override_font_sizes/font_size = 30
-text = "TIMMY FUCKER"
+text = "NPC NAME"
 
 [node name="daysUntilDue" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=11665203]
 custom_minimum_size = Vector2(300, 0)

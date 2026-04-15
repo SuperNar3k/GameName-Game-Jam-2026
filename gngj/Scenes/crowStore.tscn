@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://daja3i8mkle21" path="res://assets/ingredients/shattered sky.PNG" id="14_i7vvm"]
 [ext_resource type="Texture2D" uid="uid://dythmsqj3sahj" path="res://assets/ingredients/shooting star.PNG" id="15_uys6e"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="20_gveli"]
+[ext_resource type="Texture2D" uid="uid://do1eifpnj1e4o" path="res://assets/ui/IMG_0847.PNG" id="21_t5j08"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lovfp"]
 shader = ExtResource("3_jsb4s")
@@ -516,6 +517,10 @@ horizontal_alignment = 2
 material = SubResource("ShaderMaterial_06mlv")
 position = Vector2(-55, -24)
 texture = ExtResource("20_gveli")
+
+[node name="crowShopName" type="Sprite2D" parent="." unique_id=1365735683]
+position = Vector2(0, -244)
+texture = ExtResource("21_t5j08")
 
 [node name="continueButton" type="Button" parent="." unique_id=653705216]
 layout_mode = 0
