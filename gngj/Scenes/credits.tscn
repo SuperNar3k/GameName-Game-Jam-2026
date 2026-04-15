@@ -25,9 +25,7 @@ offset_left = 638.0
 offset_top = 343.0
 offset_right = 905.0
 offset_bottom = 494.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_1bamb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_xelri")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_uah1q")
+
 
 [node name="Sprite2D" type="Sprite2D" parent="backButton" unique_id=1011485201]
 position = Vector2(-794, -456.99997)
