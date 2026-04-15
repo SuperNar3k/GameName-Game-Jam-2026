@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6p28lcmelgek"
-path="res://.godot/imported/wisened dwarf.PNG-a78e253ffee79d26e99a3a187d1af797.ctex"
+path="res://.godot/imported/wisened dwarf.PNG-ac14163698ca4d490ac1aac2bc59d41c.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/npcs/wisened dwarf.PNG"
-dest_files=["res://.godot/imported/wisened dwarf.PNG-a78e253ffee79d26e99a3a187d1af797.ctex"]
+dest_files=["res://.godot/imported/wisened dwarf.PNG-ac14163698ca4d490ac1aac2bc59d41c.ctex"]
 
 [params]
 
