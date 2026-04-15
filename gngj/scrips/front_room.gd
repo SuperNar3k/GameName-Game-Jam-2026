@@ -17,6 +17,11 @@ func _ready() -> void:
 	npcButton.pressed.connect(_on_npcButton_pressed)
 	acceptButton.pressed.connect(_on_questAccepted_pressed)
 	rejectButton.pressed.connect(_on_questRejected_pressed)
+	
+	# Set font of Buttons
+	var arrayFrontButtons = [backRoomButton, npcButton, acceptButton, rejectButton]
+	for i in arrayFrontButtons:
+		i.add_theme_font_override("font", load("res://assets/fonts/ArefRuqaaInk-Regular.ttf"))
 
 func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
 	var potionButton = preload("res://Scenes/PotionButton.tscn").instantiate()

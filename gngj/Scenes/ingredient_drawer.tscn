@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="1_2cnka"]
 [ext_resource type="Texture2D" uid="uid://cd1okxuxo1474" path="res://assets/background/cauldron-mp-top/igndrawer.PNG" id="2_msq4k"]
 [ext_resource type="Script" uid="uid://db60yq50nv5yt" path="res://scrips/ingredient_drawer.gd" id="3_msq4k"]
+[ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="4_lk3kl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tl0jk"]
 shader = ExtResource("1_2cnka")
@@ -311,7 +312,8 @@ offset_left = -148.0
 offset_top = -502.0
 offset_right = 52.0
 offset_bottom = -402.0
-text = "next"
+theme_override_fonts/font = ExtResource("4_lk3kl")
+text = "Next"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1400457152]
 libraries/ = SubResource("AnimationLibrary_msq4k")

@@ -31,6 +31,11 @@ func _ready() -> void:
 	$ingredientShelfBtn.mouse_entered.connect(got_hovered.bind("ingshelf", true))
 	$ingredientShelfBtn.mouse_exited.connect(got_hovered.bind("ingshelf", false))
 	
+	# Set font of Buttons
+	var buttonBackArray = [front]
+	for i in buttonBackArray:
+		i.add_theme_font_override("font", load("res://assets/fonts/ArefRuqaaInk-Regular.ttf"))
+	
 func _on_backRoomButton_pressed(_name: String) -> void:
 	match _name:
 		"i":
