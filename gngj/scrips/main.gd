@@ -146,7 +146,7 @@ func _onGenerateQuest():
 		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions, dudCounter) 
 		# Add new quest to the queue
 		storeQueue.append(newQuest)
-		availableNPCS.erase(newQuest)
+		availableNPCS.erase(newQuest.npcQuestGiver)
 		_updateQueue()
 		
 		# Trigger the bell sound effect
@@ -265,6 +265,7 @@ func _on_greetNPC():
 					
 				activeQuests.erase(currentQuest)
 				pharmacyQuests.append(currentQuest)
+				currentQuest.daysUntilDue = currentQuest.daysUntilDueReset
 				
 			#If we complete a pharmacy quest 
 			if(currentQuest.isRepeatable and pharmacyQuests.has(currentQuest)):
@@ -382,7 +383,7 @@ func _on_greetNPC():
 				
 			#Again, if it is a one time quest, we can just do logic so they 
 			#only come back to give player the rewards
-			elif(currentQuest.daysUntilDue > 0):
+			elif(currentQuest.daysUntilReward > 0):
 				
 				print("set the quest up for delayed return rewards")
 				currentQuest.accepted = true
