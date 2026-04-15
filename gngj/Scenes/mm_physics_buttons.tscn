@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c364vd5nqxnoj" path="res://assets/background/main menu/IMG_0580.PNG" id="6_w6fws"]
 [ext_resource type="Texture2D" uid="uid://b7pm30nv4t5k3" path="res://assets/background/main menu/IMG_0582.PNG" id="7_rqxr1"]
 [ext_resource type="Texture2D" uid="uid://cth4ukaqy54k7" path="res://assets/background/main menu/Untitled_Artwork.png" id="8_8nx21"]
+[ext_resource type="AudioStream" uid="uid://dgouormkaxobf" path="res://assets/sound/Sign.wav" id="9_8nx21"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cd7o"]
 size = Vector2(377.245, 108.103)
@@ -684,6 +685,11 @@ node_b = NodePath("../RigidBody2D22")
 position = Vector2(216, 981)
 node_a = NodePath("../RigidBody2D22")
 node_b = NodePath("../StaticBody2D2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=227427831]
+stream = ExtResource("9_8nx21")
+volume_db = 20.0
+bus = &"SFX"
 
 [connection signal="pressed" from="open/openbtn" to="." method="_on_openbtn_pressed"]
 [connection signal="pressed" from="options/optionsbtn" to="." method="_on_optionsbtn_pressed"]

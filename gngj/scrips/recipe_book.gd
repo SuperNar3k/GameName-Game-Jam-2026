@@ -148,7 +148,7 @@ func _on_recipe_book_btn_pressed() -> void:
 					$RightSprite/RightRecipe.add_child(newLabel)
 		else:
 			if (page_index % 2 == 0):
-				$LeftSprite.set_texture(load("res://assets/icon.svg"))
+				$LeftSprite.set_texture(Texture2D)
 				$LeftSprite/LeftDesc.text = "???"
 				$LeftSprite/LeftName.text = "???"
 				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
@@ -158,7 +158,7 @@ func _on_recipe_book_btn_pressed() -> void:
 					newLabel.text = "???"
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
-				$RightSprite.set_texture(load("res://assets/icon.svg"))
+				$RightSprite.set_texture(Texture2D)
 				$RightSprite/RightDesc.text = "???"
 				$RightSprite/RightName.text = "???"
 				for ingred in allPotions.get(potionKeysSorted[page_index]).recipe:
@@ -176,7 +176,9 @@ func _on_recipe_book_btn_pressed() -> void:
 
 func _on_fwd_btn_pressed() -> void:
 	fwdPressed = true
-	
+	var randPitch = (randf_range(0.8, 1.2))
+	$paper.pitch_scale = randPitch
+	$paper.play(.41)
 	#delete previous page infos
 	for child in $LeftSprite/LeftRecipe.get_children():
 		child.queue_free()
@@ -226,7 +228,7 @@ func _on_fwd_btn_pressed() -> void:
 						$RightSprite/RightRecipe.add_child(newLabel)
 			else:
 				if (page_index % 2 == 0):
-					$LeftSprite.set_texture(load("res://assets/icon.svg"))
+					$LeftSprite.set_texture(Texture2D)
 					$LeftSprite/LeftDesc.text = "???"
 					$LeftSprite/LeftName.text = "???"
 
@@ -237,7 +239,7 @@ func _on_fwd_btn_pressed() -> void:
 						newLabel.text = "???"
 						$LeftSprite/LeftRecipe.add_child(newLabel)
 				else:
-					$RightSprite.set_texture(load("res://assets/icon.svg"))
+					$RightSprite.set_texture(Texture2D)
 					$RightSprite/RightDesc.text = "???"
 					$RightSprite/RightName.text = "???"
 
@@ -256,6 +258,9 @@ func _on_fwd_btn_pressed() -> void:
 
 func _on_back_btn_pressed() -> void:
 	backPressed = true
+	var randPitch = (randf_range(0.8, 1.2))
+	$paper.pitch_scale = randPitch
+	$paper.play(.41)
 	#delete previous recipe labels
 	for child in $LeftSprite/LeftRecipe.get_children():
 		child.queue_free()
@@ -302,7 +307,7 @@ func _on_back_btn_pressed() -> void:
 					$RightSprite/RightRecipe.add_child(newLabel)
 		else:
 			if (page_index % 2 == 0):
-				$LeftSprite.set_texture(load("res://assets/icon.svg"))
+				$LeftSprite.set_texture(Texture2D)
 				$LeftSprite/LeftDesc.text = "???"
 				$LeftSprite/LeftName.text = "???"
 				for j in allPotions.values()[page_index].recipe:
@@ -312,7 +317,7 @@ func _on_back_btn_pressed() -> void:
 					newLabel.text = "???"
 					$LeftSprite/LeftRecipe.add_child(newLabel)
 			else:
-				$RightSprite.set_texture(load("res://assets/icon.svg"))
+				$RightSprite.set_texture(Texture2D)
 				$RightSprite/RightDesc.text = "???"
 				$RightSprite/RightName.text = "???"
 				for j in allPotions.values()[page_index].recipe:

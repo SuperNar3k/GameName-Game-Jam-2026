@@ -2,12 +2,20 @@
 
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="1_jhe2c"]
 [ext_resource type="Script" uid="uid://cc5bjoxj0wq8d" path="res://scrips/potionButton.gd" id="3_hippx"]
+[ext_resource type="AudioStream" uid="uid://b5eugi6isvnun" path="res://assets/sound/Bottles Clinking.1.wav" id="3_otolt"]
+[ext_resource type="AudioStream" uid="uid://lmd0e64ba8lu" path="res://assets/sound/Bottles Clinking.2.wav" id="4_pooxq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_otolt"]
 shader = ExtResource("1_jhe2c")
 shader_parameter/allow_out_of_bounds = true
 shader_parameter/outline_thickness = 0.01
 shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7w5ko"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("3_otolt")
+stream_1/stream = ExtResource("4_pooxq")
 
 [node name="potionButton" type="TextureButton" unique_id=1764766637]
 material = SubResource("ShaderMaterial_otolt")
@@ -17,6 +25,10 @@ offset_bottom = 200.0
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_hippx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1483132457]
+stream = SubResource("AudioStreamRandomizer_7w5ko")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
