@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://6oc5iudc0t7r" path="res://scrips/back_room.gd" id="1_aqhi3"]
 [ext_resource type="Texture2D" uid="uid://cpg1nuojx6en2" path="res://assets/background/back/bgempty.PNG" id="2_oddft"]
 [ext_resource type="Texture2D" uid="uid://cyi5os1qwbfdr" path="res://assets/background/back/ingshelf.PNG" id="3_8ly7a"]
-[ext_resource type="Texture2D" uid="uid://38rp5uw1xgwv" path="res://assets/background/back/cauldron.PNG" id="3_ligfe"]
-[ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="3_rntc6"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_j34kl"]
+[ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="4_rntc6"]
 [ext_resource type="Texture2D" uid="uid://dfr2x343vw6fg" path="res://assets/background/back/IMG_0703.PNG" id="5_njmsa"]
 [ext_resource type="Texture2D" uid="uid://cefjajvllyis8" path="res://assets/background/back/cobblecauld.PNG" id="6_njmsa"]
 [ext_resource type="Texture2D" uid="uid://cvo12svpk15i8" path="res://assets/background/back/New Assets 4-14/cauldren.PNG" id="6_rntc6"]
@@ -137,10 +136,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_rntc6")
 
 [node name="toFrontRoomBtn" type="Button" parent="." unique_id=385305503]
 layout_mode = 0
-offset_left = 720.0
-offset_top = 386.0
-offset_right = 845.0
-offset_bottom = 486.0
+offset_left = 682.0
+offset_top = 377.0
+offset_right = 899.56
+offset_bottom = 502.315
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4ab26")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4ab26")
@@ -150,8 +149,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_4ab26")
 
 [node name="frontimg" type="Sprite2D" parent="." unique_id=1214143513]
 material = SubResource("ShaderMaterial_rntc6")
-position = Vector2(803, 435)
-texture = ExtResource("3_rntc6")
+position = Vector2(-45, -26)
+texture = ExtResource("4_rntc6")
 
 [node name="ingshelfimg" type="Sprite2D" parent="." unique_id=214425391]
 material = SubResource("ShaderMaterial_k8uso")

@@ -661,13 +661,634 @@ offset_bottom = 32.99997
 rotation = -0.08682512
 text = "Z"
 
+[node name="BookmarkContainer1" type="VBoxContainer" parent="Book" unique_id=1026793679]
+offset_left = 228.0
+offset_top = 85.0
+offset_right = 428.0
+offset_bottom = 945.0
+scale = Vector2(0.95, 0.95)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 50
+
+[node name="aButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1269564758]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/aButton" unique_id=1665689471]
+layout_mode = 0
+offset_left = 44.21054
+offset_top = 21.127254
+offset_right = 57.21055
+offset_bottom = 44.127254
+rotation = -0.08682512
+text = "A"
+
+[node name="cButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1191626825]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/cButton" unique_id=1839548820]
+layout_mode = 0
+offset_left = 44.21054
+offset_top = 21.127254
+offset_right = 57.21055
+offset_bottom = 44.127254
+rotation = -0.08682512
+text = "C"
+
+[node name="eButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=906540228]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/eButton" unique_id=1442308306]
+layout_mode = 0
+offset_left = 44.21054
+offset_top = 21.127258
+offset_right = 57.21055
+offset_bottom = 44.12726
+rotation = -0.08682512
+text = "E"
+
+[node name="gButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=2112963471]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/gButton" unique_id=1881754558]
+layout_mode = 0
+offset_left = 44.21051
+offset_top = 21.127258
+offset_right = 57.210518
+offset_bottom = 44.12726
+rotation = -0.08682512
+text = "G"
+
+[node name="iButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=164375901]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/iButton" unique_id=1107373957]
+layout_mode = 0
+offset_left = 44.21054
+offset_top = 21.127258
+offset_right = 57.21055
+offset_bottom = 44.12726
+rotation = -0.08682512
+text = "I"
+
+[node name="kButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=2146895903]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/kButton" unique_id=96415411]
+layout_mode = 0
+offset_left = 44.210526
+offset_top = 21.127258
+offset_right = 57.210533
+offset_bottom = 44.12726
+rotation = -0.08682512
+text = "K"
+
+[node name="mButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1116316760]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer1/mButton" unique_id=696513296]
+layout_mode = 0
+offset_left = 44.210526
+offset_top = 21.127258
+offset_right = 57.210533
+offset_bottom = 44.12726
+rotation = -0.08682512
+text = "M"
+
+[node name="BookmarkContainer2" type="VBoxContainer" parent="Book" unique_id=1618582259]
+offset_left = 245.00002
+offset_top = 149.0
+offset_right = 445.0
+offset_bottom = 949.0
+scale = Vector2(0.95, 0.95)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 50
+
+[node name="bButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=1447584109]
+clip_contents = true
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer2/bButton" unique_id=306932777]
+layout_mode = 0
+offset_left = 18.947357
+offset_top = 25.337826
+offset_right = 31.947365
+offset_bottom = 48.337826
+rotation = -0.08682512
+text = "B"
+
+[node name="dButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=1675601888]
+clip_contents = true
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer2/dButton" unique_id=2049831393]
+layout_mode = 0
+offset_left = 18.947357
+offset_top = 25.337826
+offset_right = 31.947365
+offset_bottom = 48.337826
+rotation = -0.08682512
+text = "D"
+
+[node name="fButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=408063011]
+clip_contents = true
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer2/fButton" unique_id=1766232350]
+layout_mode = 0
+offset_left = 18.947357
+offset_top = 25.33783
+offset_right = 31.947365
+offset_bottom = 48.33783
+rotation = -0.08682512
+text = "F"
+
+[node name="hButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=1477384312]
+clip_contents = true
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer2/hButton" unique_id=411791614]
+layout_mode = 0
+offset_left = 18.947327
+offset_top = 25.33783
+offset_right = 31.947334
+offset_bottom = 48.33783
+rotation = -0.08682512
+text = "H"
+
+[node name="jButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=469931478]
+clip_contents = true
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer2/jButton" unique_id=241701975]
+layout_mode = 0
+offset_left = 18.947357
+offset_top = 25.33783
+offset_right = 31.947365
+offset_bottom = 48.33783
+rotation = -0.08682512
+text = "J"
+
+[node name="lButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=906045539]
+clip_contents = true
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_h2olp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer2/lButton" unique_id=1254608312]
+layout_mode = 0
+offset_left = 18.947342
+offset_top = 25.33783
+offset_right = 31.94735
+offset_bottom = 48.33783
+rotation = -0.08682512
+text = "L"
+
+[node name="BookmarkContainer4" type="VBoxContainer" parent="Book" unique_id=2102633227]
+offset_left = 1502.0
+offset_top = 136.0
+offset_right = 1702.0
+offset_bottom = 916.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 50
+
+[node name="oButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=341001908]
+clip_contents = true
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer4/oButton" unique_id=1001550504]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 137.0
+offset_bottom = 46.0
+rotation = -0.08682512
+text = "O"
+
+[node name="qButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=109389763]
+clip_contents = true
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer4/qButton" unique_id=1380932768]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 137.0
+offset_bottom = 46.0
+rotation = -0.08682512
+text = "Q"
+
+[node name="sButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=2117784626]
+clip_contents = true
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer4/sButton" unique_id=40222867]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 137.0
+offset_bottom = 46.0
+rotation = -0.08682512
+text = "S"
+
+[node name="uButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=2062136916]
+clip_contents = true
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer4/uButton" unique_id=1094281521]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 137.0
+offset_bottom = 46.0
+rotation = -0.08682512
+text = "U"
+
+[node name="wButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=1313032220]
+clip_contents = true
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer4/wButton" unique_id=1562499386]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 140.0
+offset_bottom = 46.0
+rotation = -0.08682512
+text = "W"
+
+[node name="yButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=735508808]
+clip_contents = true
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer4/yButton" unique_id=998545542]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 23.0
+offset_right = 137.0
+offset_bottom = 46.0
+rotation = -0.08682512
+text = "Y"
+
+[node name="BookmarkContainer3" type="VBoxContainer" parent="Book" unique_id=602043388]
+offset_left = 1491.0
+offset_top = 74.0
+offset_right = 1691.0
+offset_bottom = 994.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 50
+
+[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1058057139]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/nButton" unique_id=232287362]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "N"
+
+[node name="pButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1051359773]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/pButton" unique_id=1183482401]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "P"
+
+[node name="rButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1631063600]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/rButton" unique_id=2132799450]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "R"
+
+[node name="tButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1144752543]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/tButton" unique_id=1074361856]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "T"
+
+[node name="vButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1663494853]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/vButton" unique_id=1648243297]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "V"
+
+[node name="xButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1956635439]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/xButton" unique_id=162722835]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "X"
+
+[node name="zButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=2042877446]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer3/zButton" unique_id=1018118798]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "Z"
+
+[node name="BookmarkContainer5" type="VBoxContainer" parent="Book" unique_id=1642312325]
+visible = false
+offset_left = 1492.0
+offset_top = 98.0
+offset_right = 1692.0
+offset_bottom = 898.0
+scale = Vector2(0.95, 0.95)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1018729798]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer5/nButton" unique_id=1923191402]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "N"
+
+[node name="pButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1233334958]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer5/pButton" unique_id=1820981092]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "P"
+
+[node name="rButton2" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=553866870]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer5/rButton2" unique_id=1590002393]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "R"
+
+[node name="tButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1788644743]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer5/tButton" unique_id=533216561]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "T"
+
+[node name="vButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1054925020]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer5/vButton" unique_id=1694485485]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "V"
+
+[node name="xButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1127167907]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Book/BookmarkContainer5/xButton" unique_id=1714536071]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "X"
+
+[node name="zButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=268199696]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("3_pjxqd")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Book/BookmarkContainer5/zButton" unique_id=180000515]
+layout_mode = 0
+offset_left = 129.47363
+offset_top = 25.473606
+offset_right = 142.47363
+offset_bottom = 48.473606
+rotation = -0.08682512
+text = "Z"
+
 [node name="BackBtn" type="Button" parent="." unique_id=795886714]
 visible = false
 layout_mode = 0
 offset_left = -814.0
-offset_top = 136.0
+offset_top = -39.0
 offset_right = -695.0
-offset_bottom = 222.0
+offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_pjxqd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_pjxqd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_pjxqd")
@@ -678,9 +1299,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_pjxqd")
 visible = false
 layout_mode = 0
 offset_left = 708.0
-offset_top = 136.0
+offset_top = -40.0
 offset_right = 827.0
-offset_bottom = 222.0
+offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_h2olp")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_h2olp")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_h2olp")
@@ -690,10 +1311,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_h2olp")
 [node name="ExitBtn" type="Button" parent="." unique_id=757798167]
 visible = false
 layout_mode = 0
-offset_left = -944.0
-offset_top = -166.0
-offset_right = -707.02
-offset_bottom = -41.0
+offset_left = 676.0
+offset_top = 375.0
+offset_right = 912.98
+offset_bottom = 500.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wbrmg")
@@ -703,9 +1324,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_wbrmg")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=400350703]
 visible = false
 material = SubResource("ShaderMaterial_j186r")
-position = Vector2(16, -568)
+position = Vector2(-45, -26)
 texture = ExtResource("4_nvrov")
-flip_h = true
 
 [node name="LeftSprite" type="Sprite2D" parent="." unique_id=1479250762]
 position = Vector2(-285.995, 900)
@@ -783,14 +1403,14 @@ bus = &"SFX"
 [node name="backimg" type="Sprite2D" parent="." unique_id=1147217930]
 visible = false
 material = SubResource("ShaderMaterial_q4q0n")
-position = Vector2(-774, 176)
+position = Vector2(-774, 0)
 texture = ExtResource("8_q4q0n")
 flip_h = true
 
 [node name="fwdimg" type="Sprite2D" parent="." unique_id=1317108704]
 visible = false
 material = SubResource("ShaderMaterial_pjxqd")
-position = Vector2(788, 177)
+position = Vector2(788, 0)
 texture = ExtResource("8_q4q0n")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
