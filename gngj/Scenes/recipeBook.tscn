@@ -375,14 +375,15 @@ position = Vector2(-285.995, 900)
 texture = ExtResource("3_gfmpn")
 
 [node name="LeftDesc" type="Label" parent="LeftSprite" unique_id=1275169040]
-offset_left = -274.005
+offset_left = -231.005
 offset_top = 375.0
-offset_right = 285.995
+offset_right = 221.995
 offset_bottom = 407.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="LeftName" type="Label" parent="LeftSprite" unique_id=2106939271]
 offset_left = -274.005
@@ -407,14 +408,15 @@ position = Vector2(285.995, 900)
 texture = ExtResource("3_gfmpn")
 
 [node name="RightDesc" type="Label" parent="RightSprite" unique_id=2017092086]
-offset_left = -285.995
+offset_left = -245.995
 offset_top = 375.0
-offset_right = 274.325
+offset_right = 229.005
 offset_bottom = 407.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="RightName" type="Label" parent="RightSprite" unique_id=241050334]
 offset_left = -288.995

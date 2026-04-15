@@ -82,13 +82,15 @@ func resetQuest():
 	
 	var tempBirthPod = Npc_Birthing_Pod.new()
 	
-	match npcQuestGiver.type: 
-		"Child":
-			npcQuestGiver.npcName = tempBirthPod.allChildren.pick_random()
-		"Townsfolk":
-			npcQuestGiver.npcName = tempBirthPod.allTownsfolk.pick_random()
-		"Adventurer":
-			npcQuestGiver.npcName = tempBirthPod.allAdventurers.pick_random()
+	
+	npcQuestGiver.npcName = tempBirthPod.allTownsfolk.pick_random()
+	#match npcQuestGiver.type: 
+		#"Child":
+			#npcQuestGiver.npcName = tempBirthPod.allChildren.pick_random()
+		#"Townsfolk":
+			#
+		#"Adventurer":
+			#npcQuestGiver.npcName = tempBirthPod.allAdventurers.pick_random()
 	
 	var spriteName = npcQuestGiver.npcName.to_lower() + ".png"
 	
