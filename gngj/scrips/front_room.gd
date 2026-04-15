@@ -12,6 +12,8 @@ var potionForQuest
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$goToBackroom.mouse_entered.connect(_on_hovered.bind($backimg, true))
+	$goToBackroom.mouse_exited.connect(_on_hovered.bind($backimg, false))
 	$AnimationPlayer.play("fade_to_normal")
 	backRoomButton.pressed.connect(_on_backRoomButton_pressed)
 	npcButton.pressed.connect(_on_npcButton_pressed)
@@ -22,6 +24,9 @@ func _ready() -> void:
 	var arrayFrontButtons = [backRoomButton, npcButton, acceptButton, rejectButton]
 	for i in arrayFrontButtons:
 		i.add_theme_font_override("font", load("res://assets/fonts/ArefRuqaaInk-Regular.ttf"))
+
+func _on_hovered(ref, hovered:bool):
+	ref.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
 
 func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
 	var potionButton = preload("res://Scenes/PotionButton.tscn").instantiate()
@@ -57,6 +62,7 @@ func _on_backRoomButton_pressed() -> void:
 	toBackRoom.emit()
 	
 func _on_npcButton_pressed():
+	$AnimationPlayer.play("npc_talking")
 	talkToNpc.emit()	
 	
 func _on_questAccepted_pressed():

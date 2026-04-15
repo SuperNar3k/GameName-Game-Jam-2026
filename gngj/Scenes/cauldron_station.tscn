@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c288m7eou85u0" path="res://assets/background/cauldron-mp-top/new/IMG_0720.PNG" id="3_dcrpx"]
 [ext_resource type="PackedScene" uid="uid://cqrxjuspqkdi0" path="res://Scenes/ingredient_drawer.tscn" id="3_hhgs4"]
 [ext_resource type="Texture2D" uid="uid://domohosdor27e" path="res://assets/background/cauldron-mp-top/new/IMG_0719.PNG" id="4_x1ou3"]
-[ext_resource type="Texture2D" uid="uid://tujpsa6dikab" path="res://assets/background/cauldron-mp-top/new/IMG_0721.PNG" id="5_4t13b"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="5_x1ou3"]
+[ext_resource type="Texture2D" uid="uid://bdytciqk78d50" path="res://assets/background/back/New Assets 4-14/cauldronhandle.PNG" id="6_l5v4h"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="8_4t13b"]
 [ext_resource type="AudioStream" uid="uid://b0ujpi24jwvwt" path="res://assets/sound/Bubbling Wet.wav" id="9_pg281"]
 [ext_resource type="AudioStream" uid="uid://dmvaagihud3nj" path="res://assets/sound/Liquid Sloshing.wav" id="10_l5v4h"]
@@ -128,8 +128,9 @@ texture = ExtResource("4_x1ou3")
 
 [node name="handle" type="Sprite2D" parent="liquid" unique_id=1234661561]
 material = SubResource("ShaderMaterial_4t13b")
+position = Vector2(377, 42)
 rotation = 0.77823955
-texture = ExtResource("5_4t13b")
+texture = ExtResource("6_l5v4h")
 
 [node name="Button" type="Button" parent="liquid" unique_id=765800098]
 offset_left = 411.5

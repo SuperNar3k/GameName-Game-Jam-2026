@@ -75,6 +75,7 @@ layout_mode = 2
 
 [node name="ingredientLable" type="Label" parent="ScrollContainer/AspectRatioContainer/VBoxContainer" unique_id=1895945021]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bq2xf")
 theme_override_font_sizes/font_size = 30
 text = "INGREDIENTS"
 label_settings = SubResource("LabelSettings_ohqld")
@@ -82,6 +83,7 @@ horizontal_alignment = 1
 
 [node name="potionLable" type="Label" parent="ScrollContainer/AspectRatioContainer/VBoxContainer" unique_id=2029568648]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bq2xf")
 theme_override_font_sizes/font_size = 30
 text = "POTIONS"
 label_settings = SubResource("LabelSettings_sml3a")

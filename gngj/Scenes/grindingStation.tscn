@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cqrxjuspqkdi0" path="res://Scenes/ingredient_drawer.tscn" id="3_b08lm"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="3_diasw"]
 [ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://scrips/pestle.gd" id="3_ohim2"]
-[ext_resource type="Texture2D" uid="uid://psqoiejuslr5" path="res://assets/pastel.PNG" id="5_mnfot"]
+[ext_resource type="Texture2D" uid="uid://dnj88vlcmlflo" path="res://assets/background/back/New Assets 4-14/pestil.PNG" id="6_tl0jk"]
 [ext_resource type="AudioStream" uid="uid://cn1qgre5uh0l3" path="res://assets/sound/Glass on Table Movement.wav" id="8_aj0c6"]
-[ext_resource type="AudioStream" uid="uid://b18jgxwiqkubq" path="res://assets/sound/Grind Stone.wav" id="9_tl0jk"]
+[ext_resource type="AudioStream" uid="uid://ylh3ewxy6x43" path="res://assets/sound/Grind Stone.wav" id="9_tl0jk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5u62"]
 radius = 20.0
@@ -100,8 +100,8 @@ input_pickable = true
 script = ExtResource("3_ohim2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Pestle" unique_id=1031160259]
-position = Vector2(0.99998856, 11)
-texture = ExtResource("5_mnfot")
+position = Vector2(4.9999886, 3)
+texture = ExtResource("6_tl0jk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pestle" unique_id=112924750]
 position = Vector2(-77, 183)

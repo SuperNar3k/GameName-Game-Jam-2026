@@ -199,16 +199,17 @@ horizontal_alignment = 1
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=827291182]
 visible = false
 material = SubResource("ShaderMaterial_iq35i")
-position = Vector2(-84, -47)
+position = Vector2(161, -144)
 texture = ExtResource("4_54bui")
+flip_h = true
 
 [node name="returnButton" type="Button" parent="." unique_id=442347869]
 visible = false
 layout_mode = 0
-offset_left = 615.0
-offset_top = 347.0
-offset_right = 887.0
-offset_bottom = 484.0
+offset_left = -804.0
+offset_top = 250.0
+offset_right = -532.0
+offset_bottom = 387.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1dylo")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_1dylo")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1dylo")

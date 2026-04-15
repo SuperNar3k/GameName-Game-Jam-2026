@@ -79,7 +79,8 @@ anchors_preset = 0
 script = ExtResource("1_0gtv2")
 
 [node name="parchment" type="Sprite2D" parent="Popup" unique_id=691351669]
-scale = Vector2(0.25, 0.25)
+position = Vector2(0, -3.4674528)
+scale = Vector2(0.26, 0.26)
 texture = ExtResource("2_wohpn")
 flip_h = true
 
@@ -90,20 +91,21 @@ libraries/ = SubResource("AnimationLibrary_cmct2")
 
 [node name="itemSprite" type="TextureRect" parent="Popup" unique_id=898404669]
 layout_mode = 0
-offset_left = -194.45215
-offset_top = -50.000004
-offset_right = 5.5478516
-offset_bottom = 150.0
+offset_left = -84.605835
+offset_top = -36.754993
+offset_right = 115.394165
+offset_bottom = 163.24501
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_cmct2")
 expand_mode = 1
 
 [node name="contTitle" type="CenterContainer" parent="Popup" unique_id=1706173725]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
-offset_left = -150.0
-offset_top = -69.0
-offset_right = 150.0
-offset_bottom = -19.0
+offset_left = -144.93953
+offset_top = -101.24959
+offset_right = 155.06047
+offset_bottom = -51.249588
 
 [node name="titleLabel" type="Label" parent="Popup/contTitle" unique_id=457213967]
 custom_minimum_size = Vector2(300, 0)
@@ -114,11 +116,12 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="contName" type="CenterContainer" parent="Popup" unique_id=734220691]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_left = -55.0
-offset_top = -8.321886
-offset_right = 145.0
-offset_bottom = 81.13839
+offset_left = -145.63301
+offset_top = -78.36443
+offset_right = 154.36699
+offset_bottom = 10.635567
 
 [node name="nameLabel" type="Label" parent="Popup/contName" unique_id=1675335421]
 custom_minimum_size = Vector2(200, 25)

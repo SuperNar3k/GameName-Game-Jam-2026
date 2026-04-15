@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cpg1nuojx6en2" path="res://assets/background/back/bgempty.PNG" id="2_oddft"]
 [ext_resource type="Texture2D" uid="uid://cyi5os1qwbfdr" path="res://assets/background/back/ingshelf.PNG" id="3_8ly7a"]
 [ext_resource type="Texture2D" uid="uid://38rp5uw1xgwv" path="res://assets/background/back/cauldron.PNG" id="3_ligfe"]
+[ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="3_rntc6"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_j34kl"]
 [ext_resource type="Texture2D" uid="uid://dfr2x343vw6fg" path="res://assets/background/back/IMG_0703.PNG" id="5_njmsa"]
 [ext_resource type="Texture2D" uid="uid://cefjajvllyis8" path="res://assets/background/back/cobblecauld.PNG" id="6_njmsa"]
-[ext_resource type="Texture2D" uid="uid://bnqstwn4x68wd" path="res://assets/background/back/mp.PNG" id="7_rntc6"]
+[ext_resource type="Texture2D" uid="uid://cvo12svpk15i8" path="res://assets/background/back/New Assets 4-14/cauldren.PNG" id="6_rntc6"]
 [ext_resource type="Texture2D" uid="uid://d3dqs6v1ko65u" path="res://assets/background/back/mpscarf.PNG" id="8_o84pg"]
+[ext_resource type="Texture2D" uid="uid://bo41w73ywpbsj" path="res://assets/background/back/New Assets 4-14/mortar.PNG" id="8_y60a3"]
 [ext_resource type="Texture2D" uid="uid://cfqq766xl3rbt" path="res://assets/background/back/bookstand.PNG" id="9_y60a3"]
 [ext_resource type="Texture2D" uid="uid://cc2x00w4wvtpd" path="res://assets/background/back/bookshelf.PNG" id="10_j34kl"]
 
@@ -21,6 +23,14 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njmsa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rntc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ab26"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rntc6"]
+shader = ExtResource("4_j34kl")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8uso"]
 shader = ExtResource("4_j34kl")
@@ -127,12 +137,21 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_rntc6")
 
 [node name="toFrontRoomBtn" type="Button" parent="." unique_id=385305503]
 layout_mode = 0
-offset_left = 659.0
-offset_top = 361.0
-offset_right = 915.0
-offset_bottom = 512.0
+offset_left = 720.0
+offset_top = 386.0
+offset_right = 845.0
+offset_bottom = 486.0
 theme_override_font_sizes/font_size = 28
-text = "To Front"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4ab26")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4ab26")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4ab26")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4ab26")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ab26")
+
+[node name="frontimg" type="Sprite2D" parent="." unique_id=1214143513]
+material = SubResource("ShaderMaterial_rntc6")
+position = Vector2(803, 435)
+texture = ExtResource("3_rntc6")
 
 [node name="ingshelfimg" type="Sprite2D" parent="." unique_id=214425391]
 material = SubResource("ShaderMaterial_k8uso")
@@ -143,14 +162,16 @@ texture = ExtResource("5_njmsa")
 
 [node name="cauldronimg" type="Sprite2D" parent="." unique_id=591737901]
 material = SubResource("ShaderMaterial_4ab26")
-texture = ExtResource("3_ligfe")
+position = Vector2(-725, 84)
+texture = ExtResource("6_rntc6")
 
 [node name="cobblecauldimg" type="Sprite2D" parent="." unique_id=823232032]
 texture = ExtResource("6_njmsa")
 
 [node name="mpimg" type="Sprite2D" parent="." unique_id=818675302]
 material = SubResource("ShaderMaterial_o84pg")
-texture = ExtResource("7_rntc6")
+position = Vector2(0, 185)
+texture = ExtResource("8_y60a3")
 
 [node name="mpscarfimg" type="Sprite2D" parent="." unique_id=1808432728]
 texture = ExtResource("8_o84pg")

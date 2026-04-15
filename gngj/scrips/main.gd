@@ -217,6 +217,7 @@ func _on_greetNPC():
 			$ui/FrontRoom/potionHotbar.hide()
 			$ui/FrontRoom/givePotionButton.hide()
 			$ui/FrontRoom.clearInventory()
+			$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
  		
 			#Dialog for quest success
 			var randPitch = (randf_range(.8, 1.2))
@@ -405,6 +406,7 @@ func _on_greetNPC():
 	$ui/FrontRoom/Dialogue.visible = false
 	inConversation = false
 	noLongerInConversation.emit()
+	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
 	
 	storeQueue.pop_front()
 	_updateQueue()

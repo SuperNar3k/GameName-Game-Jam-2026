@@ -102,8 +102,8 @@ grow_vertical = 1
 
 [node name="Notification" parent="." unique_id=1275692138 instance=ExtResource("14_8fs27")]
 layout_mode = 1
-offset_top = -700.0
-offset_bottom = -700.0
+offset_top = -703.0
+offset_bottom = -703.0
 
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]
