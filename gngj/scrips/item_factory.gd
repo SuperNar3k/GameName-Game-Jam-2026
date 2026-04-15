@@ -19,10 +19,10 @@ func createIngredient(
 		_sprite,
 		_itemName,
 		_description,
+		0,
 		[],
 		_amountOwned,
 		0,
-		_value,
 		_isGrindable
 	)
 	
@@ -36,13 +36,15 @@ func createPotion(
 	_amountOwned: int,
 	_sprite: String,
 	_recipe: Array,
-	_cookLevelNeeded: int
+	_cookLevelNeeded: int,
+	_value: int
 ):
 	var brandNewPart = Item.new()
 	brandNewPart.__init__(
 		_sprite,
 		_itemName,
 		_description,
+		_value,
 		_recipe,
 		_amountOwned,
 		_cookLevelNeeded,
@@ -100,7 +102,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Animal Shape Potion.PNG",				#Sprite
 		["dragon's egg","earth","venus's eyelashes"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		8															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -109,7 +112,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Beauty Potion.PNG",				#Sprite
 		["ear of the sea powder","string of lovers powder","venus's eyelashes"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		12															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -118,7 +122,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Charm Potion.PNG",				#Sprite
 		["a thorny heart", "string of lovers", "venus's eyelashes"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -127,7 +132,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Clairvoiancy Potion.PNG",				#Sprite
 		["air's brevity", "ear of the sea", "psychic stone powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		11															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -136,7 +142,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Cold Resist Potion.PNG",				#Sprite
 		["dragon's egg powder", "gaia's teeth powder", "winter crystal powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		13															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -145,7 +152,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Courage Potion.PNG",				#Sprite
 		["a thorny heart", "gaia's teeth", "psychic stone"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -154,7 +162,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Cure All Potion.PNG",				#Sprite
 		["gaia's teeth", "leaf of a thousand leaves", "stardust"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		12															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -163,7 +172,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Darkness Potion.PNG",				#Sprite
 		["leaf of a thousand leaves powder", "tears of trees", "shattered sky"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -172,7 +182,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Demon Conjuration Potion.PNG",				#Sprite
 		["a thorny heart", "desert calm powder", "earth"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		15															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -181,7 +192,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Dragon's Breath Potion.PNG",				#Sprite
 		["a thorny heart", "air's brevity", "dragon's egg powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -190,7 +202,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/False Death Potion.PNG",				#Sprite
 		["earth", "leaf of a thousand leaves powder", "winter crystal powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		15															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -199,7 +212,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Fire Resistance Potion.PNG",				#Sprite
 		["a thorny heart powder", "desert calm", "dried ocean"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -208,7 +222,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Flying Potion.PNG",				#Sprite
 		["air's brevity", "dragon's egg powder", "stardust"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		15															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -217,7 +232,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Fog in a bottle.PNG",				#Sprite
 		["a thorny heart", "dried ocean", "shattered sky"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -226,7 +242,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Friendship Potion.PNG",				#Sprite
 		["desert calm", "psychic stone powder", "spring crystal powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -235,7 +252,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Growth Potion.PNG",				#Sprite
 		["earth", "gaia's teeth powder", "spring crystal"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		8															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -244,7 +262,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Healing Potion.PNG",				#Sprite
 		["desert calm", "earth", "string of lovers"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		7															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -253,7 +272,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Heat Resistance Potion.PNG",				#Sprite
 		["a thorny heart", "earth", "tears of trees"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		5															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -262,7 +282,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Invincibility Potion.PNG",				#Sprite
 		["gaia's teeth", "shattered sky", "stardust"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		100															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -271,7 +292,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Invisibility Potion.PNG",				#Sprite
 		["air's brevity", "dried ocean", "winter crystal"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -280,7 +302,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Love Potion.PNG",				#Sprite
 		["psychic stone powder", "string of lovers powder", "venus's eyelashes powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		15															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -289,7 +312,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Luck Potion.PNG",				#Sprite
 		["air's brevity", "psychic stone powder", "shooting star"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		15															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -298,7 +322,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Mind Reading Potion.PNG",				#Sprite
 		["ear of the sea", "psychic stone powder", "psychic stone"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		13															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -307,7 +332,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Ooze Potion.PNG",				#Sprite
 		["desert calm", "spring crystal powder", "tears of trees powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -316,7 +342,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Petrification Potion.PNG",				#Sprite
 		["a thorny heart powder", "gaia's teeth powder", "winter crystal"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -325,7 +352,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Randomization Potion.PNG",				#Sprite
 		["air's brevity", "earth", "spring crystal powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -334,7 +362,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Relaxation Potion.PNG",				#Sprite
 		["desert calm", "dried ocean", "ear of the sea powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -343,7 +372,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Skill Perfection Potion.PNG",				#Sprite
 		["gaia's teeth", "leaf of a thousand leaves powder", "psychic stone"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -352,7 +382,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Speak With Animals Potion.PNG",				#Sprite
 		["desert calm", "earth", "tears of trees"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		5															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -361,7 +392,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Stone Skin Potion.PNG",				#Sprite
 		["dragon's egg","dried ocean", "gaia's teeth"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -370,7 +402,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Storm In a Bottle.PNG",				#Sprite
 		["air's brevity", "dragon's egg powder", "ear of the sea powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		11															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -379,7 +412,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Strength Potion.PNG",				#Sprite
 		["dragon's egg powder", "gaia's teeth", "tears of trees powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -388,7 +422,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Time In a Bottle.PNG",				#Sprite
 		["shattered sky", "spring crystal powder", "winter crystal powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		15															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -397,7 +432,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Toxic Resist Potion.PNG",				#Sprite
 		["a thorny heart powder", "desert calm powder", "ear of the sea powder"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		10															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -406,7 +442,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Water Breathing Potion.PNG",				#Sprite
 		["air's brevity", "dried ocean", "ear of the sea"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		8															#CookLevelNeeded
 	)
 	
 	createPotion(
@@ -415,7 +452,8 @@ func Populate():
 		0,															#AmountOwned
 		"res://assets/potions/Water Walking Potion.PNG",				#Sprite
 		["air's brevity", "dried ocean", "winter crystal"],							#Recipe
-		0															#CookLevelNeeded
+		0,
+		9															#CookLevelNeeded
 	)
 
 # Unlock a new ingredient
@@ -436,6 +474,7 @@ func UnlockPotion(_unlockedPotions: Dictionary, _potName: String, ing):
 			1,
 			"res://assets/potions/CTCBox.jpg",
 			ing,
+			0,
 			0
 			)
 		allPotions.set(_potName, potion)

@@ -24,8 +24,9 @@ var allTownsfolk = [
 	"Fearless Privateer",
 	"Vacant Mercenary",
 	"Awkward Youth",
-	#"Frog Fanatic",
-	#"Carefree Blacksmith"
+	"Frog Fanatic",
+	"Carefree Blacksmith",
+	"Charming Noble"
 ]
 
 # __init__
