@@ -201,6 +201,8 @@ func _on_greetNPC():
 	#Logic for quest on the activeQuest[] and pharmacy[]
 	if (currentQuest.accepted && !currentQuest.completed) :
 		
+		print("In dialog for returning npc")
+		
 		#Display Dialog for returning npc
 		for dialog in currentQuest.questDialog[1]:
 			$ui/FrontRoom/Dialogue.text = dialog
@@ -209,6 +211,7 @@ func _on_greetNPC():
 		#Check if we have the potion
 		var potionWeNeed = ItemCreator.allPotions.get(currentQuest.requirements[0])
 		if(potionWeNeed.amountOwned > 0 && potionWeNeed.unlocked):
+			print("Giving them the potion")
 			
 			#Logic for potion inventory
 			$ui/FrontRoom/potionHotbar.show()
@@ -233,12 +236,15 @@ func _on_greetNPC():
 				$ui/FrontRoom/Dialogue.text = dialog
 				await $ui/FrontRoom/Dialogue.pressed
 			
+			
 			#Giving player the reward
 			currency = currency + currentQuest.rewards[0][0]
 			$AudioStreamPlayer2D.stream = buySFX
 			randPitch = (randf_range(.8, 1.2))
 			$AudioStreamPlayer2D.pitch_scale = randPitch
 			$AudioStreamPlayer2D.play()
+			
+			print("Giving player reward")
 			$ui/Hud.updateCurrency(currency)
 			if(currentQuest.daysUntilReward == 0):
 				for rewardRecipe in currentQuest.rewards[1]:
@@ -250,6 +256,7 @@ func _on_greetNPC():
 			#If we complete a pharmacy quest for the first time
 			if(currentQuest.isRepeatable && !pharmacyQuests.has(currentQuest)):
 				
+				print("completed pharmacy quest for first time, adding them to pharmacyQuests[]")
 				#Dialog for active quest becoming a pharmacy quest
 				for dialog in currentQuest.questDialog[5]:
 					$ui/FrontRoom/Dialogue.text = dialog
@@ -260,11 +267,18 @@ func _on_greetNPC():
 				
 			#If we complete a pharmacy quest 
 			if(currentQuest.isRepeatable and pharmacyQuests.has(currentQuest)):
+				print("Completed reoccuring pharmacyQuest, resetting the days until due")
+				
 				currentQuest.daysUntilDue = currentQuest.daysUntilDueReset
 			#mark the one time quest as complete so they can just come back to give the reward
 			elif(currentQuest.daysUntilReward > 0):
+				
+				print("One shot quest with delayed rewards complete Marking it done")
 				currentQuest.completed = true
+				
 			else:
+				
+				print("One shot quest complete. removing it from activeQuests[] and returing the npc to pool")
 				activeQuests.erase(currentQuest)
 				#currentQuest.resetQuest()
 				availableNPCS.append(currentQuest.npcQuestGiver)
@@ -273,12 +287,16 @@ func _on_greetNPC():
 		#If we don't have the potion logic
 		else: 
 			
+			print("no potion for npc")
 			#Dialogue for quest failure
 			if(currentQuest.daysUntilDue == 0):
+				
+				print("quest failure dialog")
 				for dialog in currentQuest.questDialog[3]:
 					$ui/FrontRoom/Dialogue.text = dialog
 					await $ui/FrontRoom/Dialogue.pressed
 					
+				print("resetting the quest")
 				#Reset the quest and remove it from the list
 				pharmacyQuests.erase(currentQuest)
 				activeQuests.erase(currentQuest)
@@ -287,10 +305,18 @@ func _on_greetNPC():
 				print("quest erased")
 				
 			else:
+				
+				print("npc returing dialog and logic")
+				$ui/FrontRoom/Dialogue.text = "I see you don't have my potion ready. I'll check again tomorrow."
+				await $ui/FrontRoom/Dialogue.pressed
+				
 				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1 
 			
 	#Logic if its a first time quest!
 	elif(!currentQuest.accepted):
+		
+		print("first time quest dialog")
+		
 		#Display Dialog for starting quest
 		for dialog in currentQuest.questDialog[0]:
 			$ui/FrontRoom/Dialogue.text = dialog
@@ -317,7 +343,7 @@ func _on_greetNPC():
 			$ui/FrontRoom/givePotionButton.hide()
 			$ui/FrontRoom.clearInventory()
 			
- 		
+ 			
 			#Dialog for quest success
 			for dialog in currentQuest.questDialog[4]:
 				$ui/FrontRoom/Dialogue.text = dialog
@@ -328,9 +354,13 @@ func _on_greetNPC():
 			randPitch = (randf_range(.8, 1.2))
 			$AudioStreamPlayer2D.pitch_scale = randPitch
 			$AudioStreamPlayer2D.play()
+			
+			print("giving player rewards")
 			currency = currency + currentQuest.rewards[0][0]
 			$ui/Hud.updateCurrency(currency)
 			if(currentQuest.daysUntilReward == 0):
+				
+				print("giving recipe rewards")
 				for rewardRecipe in currentQuest.rewards[1]:
 					unlockPotion(ItemCreator.allPotions.get(rewardRecipe))
 						
@@ -340,6 +370,7 @@ func _on_greetNPC():
 			#Logic for completing a pharmacy quest vs a one time quest
 			if(currentQuest.isRepeatable):
 				
+				print("adding quest to pharmacyQuest[]")
 				#Dialog for adding quest to pharmacy
 				for dialog in currentQuest.questDialog[5]:
 					$ui/FrontRoom/Dialogue.text = dialog
@@ -351,17 +382,22 @@ func _on_greetNPC():
 			#Again, if it is a one time quest, we can just do logic so they 
 			#only come back to give player the rewards
 			elif(currentQuest.daysUntilDue > 0):
+				
+				print("set the quest up for delayed return rewards")
 				currentQuest.accepted = true
 				currentQuest.completed = true
 				activeQuests.append(currentQuest)
 				
 			else:
+				print("resetting one shot quest")
 				#currentQuest.resetQuest()
 				availableNPCS.append(currentQuest.npcQuestGiver)
 				
 			
 		#logic for either having them come back later or rejecting quest
 		else:
+			
+			print("allowing player to decided to reject or accept")
 			$ui/FrontRoom/acceptQuestButton.show()
 			$ui/FrontRoom/rejectQuestButton.show()
 			
@@ -372,39 +408,49 @@ func _on_greetNPC():
 			
 			#If quest accepted
 			if(questAccepted):
+				print("quest accepted")
 				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1 
 				currentQuest.accepted = true
 				activeQuests.append(currentQuest)
 				
 			#If quest is rejected
 			else:
+				print("quest rejected")
 				for dialog in currentQuest.questDialog[2]:
 					$ui/FrontRoom/Dialogue.text = dialog
 					await $ui/FrontRoom/Dialogue.pressed
 			
+				print("resetting npc and adding them to pool")
 				#currentQuest.resetQuest()
 				availableNPCS.append(currentQuest.npcQuestGiver)
 				
 	#Logic for when the npc wants to give you rewards for completing a one time quest
 	elif(currentQuest.accepted && currentQuest.completed):
+		print("logic for npc coming to give us delayed reward")
+		print("this should not be happening btw")
 		
 		#Dialog for the npc saying that they came back to give more stuff
 		for dialog in currentQuest.questDialog[6]:
 					$ui/FrontRoom/Dialogue.text = dialog
 					await $ui/FrontRoom/Dialogue.pressed
 					
+					
+		print("giving rewards anyways?")
 		#Logic for giving the rewards to the player
 		for rewardRecipe in currentQuest.rewards[1]:
 			unlockPotion(ItemCreator.allPotions.get(rewardRecipe))
 		for rewardIngredient in currentQuest.rewards[2]:
 			giveIngredient(ItemCreator.allIngredients.get(rewardIngredient))
 			
-				
+		
+		print("resetting quest?")
 		#Reset the quest and remove it from activeQuest[]
 		#currentQuest.resetQuest()
 		activeQuests.erase(currentQuest)
 		availableNPCS.append(currentQuest.npcQuestGiver)
 	
+	
+	print("convo done")
 	#Unlock the player from the interaction
 	$ui/FrontRoom/goToBackroom.disabled = false
 	$ui/FrontRoom/Dialogue.disabled = true
@@ -413,6 +459,7 @@ func _on_greetNPC():
 	noLongerInConversation.emit()
 	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
 	
+	print("displaying new npc if available")
 	storeQueue.pop_front()
 	_updateQueue()
 
