@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cwh72s7wbi4ye" path="res://Scenes/credits.tscn" id="9_mmixe"]
 [ext_resource type="PackedScene" uid="uid://db6uxsqamrixk" path="res://Scenes/endOfDayScreen.tscn" id="10_nt8jn"]
 [ext_resource type="PackedScene" uid="uid://bai0jtmapvbqk" path="res://Scenes/crowStore.tscn" id="11_g0wmg"]
-[ext_resource type="PackedScene" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
+[ext_resource type="PackedScene" uid="uid://p73w6eq3dno8" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
 [ext_resource type="PackedScene" uid="uid://dejhrlp1mqime" path="res://Scenes/hud.tscn" id="13_3r70p"]
 [ext_resource type="PackedScene" uid="uid://ctbfso3nbohqd" path="res://Scenes/notification.tscn" id="14_8fs27"]
 
