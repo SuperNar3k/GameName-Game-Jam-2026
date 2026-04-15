@@ -2,32 +2,39 @@ extends Control
 
 
 # Makin every alphabetical button 
-@onready var aButton : Button = $Book/aButton
-@onready var bButton : Button = $Book/bButton
-@onready var cButton : Button = $Book/cButton
-@onready var dButton : Button = $Book/dButton
-@onready var eButton : Button = $Book/eButton
-@onready var fButton : Button = $Book/fButton
-@onready var gButton : Button = $Book/gButton
-@onready var hButton : Button = $Book/hButton
-@onready var iButton : Button = $Book/iButton
-@onready var jButton : Button = $Book/jButton
-@onready var kButton : Button = $Book/kButton
-@onready var lButton : Button = $Book/lButton
-@onready var mButton : Button = $Book/mButton
-@onready var nButton : Button = $Book/nButton
-@onready var oButton : Button = $Book/oButton
-@onready var pButton : Button = $Book/pButton
-@onready var qButton : Button = $Book/qButton
-@onready var rButton : Button = $Book/rButton
-@onready var sButton : Button = $Book/sButton
-@onready var tButton : Button = $Book/tButton
-@onready var uButton : Button = $Book/uButton
-@onready var vButton : Button = $Book/vButton
-@onready var wButton : Button = $Book/wButton
-@onready var xButton : Button = $Book/xButton
-@onready var yButton : Button = $Book/yButton
-@onready var zButton : Button = $Book/zButton
+# Container 1: A C E G I K M
+@onready var aButton: TextureButton = $Book/BookmarkContainer1/aButton
+@onready var cButton: TextureButton = $Book/BookmarkContainer1/cButton
+@onready var eButton: TextureButton = $Book/BookmarkContainer1/eButton
+@onready var gButton: TextureButton = $Book/BookmarkContainer1/gButton
+@onready var iButton: TextureButton = $Book/BookmarkContainer1/iButton
+@onready var kButton: TextureButton = $Book/BookmarkContainer1/kButton
+@onready var mButton: TextureButton = $Book/BookmarkContainer1/mButton
+
+# Container 2: B D F H J L
+@onready var bButton: TextureButton = $Book/BookmarkContainer2/bButton
+@onready var dButton: TextureButton = $Book/BookmarkContainer2/dButton
+@onready var fButton: TextureButton = $Book/BookmarkContainer2/fButton
+@onready var hButton: TextureButton = $Book/BookmarkContainer2/hButton
+@onready var jButton: TextureButton = $Book/BookmarkContainer2/jButton
+@onready var lButton: TextureButton = $Book/BookmarkContainer2/lButton
+
+# Container 3: N P R T V X Z
+@onready var nButton: TextureButton = $Book/BookmarkContainer3/nButton
+@onready var pButton: TextureButton = $Book/BookmarkContainer3/pButton
+@onready var rButton: TextureButton = $Book/BookmarkContainer3/rButton
+@onready var tButton: TextureButton = $Book/BookmarkContainer3/tButton
+@onready var vButton: TextureButton = $Book/BookmarkContainer3/vButton
+@onready var xButton: TextureButton = $Book/BookmarkContainer3/xButton
+@onready var zButton: TextureButton = $Book/BookmarkContainer3/zButton
+
+# Container 4: O Q S U W Y
+@onready var oButton: TextureButton = $Book/BookmarkContainer4/oButton
+@onready var qButton: TextureButton = $Book/BookmarkContainer4/qButton
+@onready var sButton: TextureButton = $Book/BookmarkContainer4/sButton
+@onready var uButton: TextureButton = $Book/BookmarkContainer4/uButton
+@onready var wButton: TextureButton = $Book/BookmarkContainer4/wButton
+@onready var yButton: TextureButton = $Book/BookmarkContainer4/yButton
 
 
 signal enable_outside_buttons
