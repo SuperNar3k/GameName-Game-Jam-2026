@@ -30,6 +30,8 @@ func _ready() -> void:
 	$MortarandPestleBtn.mouse_exited.connect(got_hovered.bind("mp", false))
 	$ingredientShelfBtn.mouse_entered.connect(got_hovered.bind("ingshelf", true))
 	$ingredientShelfBtn.mouse_exited.connect(got_hovered.bind("ingshelf", false))
+	$toFrontRoomBtn.mouse_entered.connect(got_hovered.bind("front_room", true))
+	$toFrontRoomBtn.mouse_exited.connect(got_hovered.bind("front_room", false))
 	
 	# Set font of Buttons
 	var buttonBackArray = [front]
@@ -58,5 +60,5 @@ func got_hovered(btn: String, hovered: bool):
 		$cauldronimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
 	if btn == "mp":
 		$mpimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
-	#if btn == "ingshelf":
-		#$ingshelfimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+	if btn == "front_room":
+		$frontimg.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)

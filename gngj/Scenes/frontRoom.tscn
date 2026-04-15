@@ -4,6 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://c0g1bjkejnpat" path="res://assets/background/front/frontempty.PNG" id="2_fixym"]
 [ext_resource type="Texture2D" uid="uid://dv8ebk8jjw4xv" path="res://assets/background/front/frontdesk.PNG" id="3_s0epr"]
 [ext_resource type="Texture2D" uid="uid://r6mb22v4q3he" path="res://assets/npcs/dirt covered field hand.PNG" id="3_w4gd2"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="5_pk1jc"]
+[ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="5_w4gd2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pk1jc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ld2q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tojp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ld2q"]
+shader = ExtResource("5_pk1jc")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_s0epr"]
 length = 0.001
@@ -18,6 +32,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_w4gd2"]
@@ -36,10 +62,26 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_pk1jc"]
+resource_name = "npc_talking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.41568628)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pk1jc"]
 _data = {
 &"RESET": SubResource("Animation_s0epr"),
-&"fade_to_normal": SubResource("Animation_w4gd2")
+&"fade_to_normal": SubResource("Animation_w4gd2"),
+&"npc_talking": SubResource("Animation_pk1jc")
 }
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
@@ -78,6 +120,14 @@ offset_bottom = 129.0
 texture = ExtResource("3_w4gd2")
 expand_mode = 1
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1341277346]
+layout_mode = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0)
+
 [node name="NPC" type="TextureButton" parent="." unique_id=1846388663]
 layout_mode = 0
 offset_left = -665.0
@@ -107,11 +157,20 @@ size_flags_vertical = 3
 [node name="goToBackroom" type="Button" parent="." unique_id=1735358139]
 layout_mode = 0
 offset_left = 719.0
-offset_top = 294.0
-offset_right = 934.0
-offset_bottom = 507.0
+offset_top = 389.0
+offset_right = 844.0
+offset_bottom = 489.0
 theme_override_font_sizes/font_size = 25
-text = "To Back"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pk1jc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ld2q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5tojp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5tojp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5tojp")
+
+[node name="backimg" type="Sprite2D" parent="." unique_id=784804419]
+material = SubResource("ShaderMaterial_5ld2q")
+position = Vector2(803, 435)
+texture = ExtResource("5_w4gd2")
 
 [node name="acceptQuestButton" type="Button" parent="." unique_id=1847298089]
 visible = false
