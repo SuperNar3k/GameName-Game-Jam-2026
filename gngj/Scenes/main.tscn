@@ -9,6 +9,12 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjvhh"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjvhh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kry3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_21xkr"]
+
 [node name="main" type="Node2D" unique_id=375112751]
 script = ExtResource("1_bo1nx")
 

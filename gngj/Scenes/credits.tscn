@@ -16,16 +16,23 @@ grow_vertical = 2
 script = ExtResource("1_gryuy")
 
 [node name="Latest" type="Sprite2D" parent="." unique_id=1464057022]
-position = Vector2(-7.402897e-05, 7.6293945e-06)
+position = Vector2(0, 2)
 texture = ExtResource("2_1bamb")
 
 [node name="backButton" type="Button" parent="." unique_id=1121910015]
 layout_mode = 0
 offset_left = 638.0
 offset_top = 343.0
-offset_right = 877.0
-offset_bottom = 473.0
-text = "Back"
+offset_right = 905.0
+offset_bottom = 494.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1bamb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xelri")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uah1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="backButton" unique_id=1011485201]
+position = Vector2(-794, -456.99997)
+scale = Vector2(1.1109375, 1.1407408)
+texture = ExtResource("3_1bamb")
 
 [node name="credits" type="Sprite2D" parent="." unique_id=1906036019]
 texture = ExtResource("3_ccovl")
