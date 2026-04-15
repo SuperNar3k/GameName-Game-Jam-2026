@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dndojw6cmo1he"
-path="res://.godot/imported/confident druid.PNG-c73287fa636a16d8f5a964b2f6871999.ctex"
+path="res://.godot/imported/confident druid.png-cb4f367b98a3342c9b5a1951fad5d963.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/confident druid.PNG"
-dest_files=["res://.godot/imported/confident druid.PNG-c73287fa636a16d8f5a964b2f6871999.ctex"]
+source_file="res://assets/npcs/confident druid.png"
+dest_files=["res://.godot/imported/confident druid.png-cb4f367b98a3342c9b5a1951fad5d963.ctex"]
 
 [params]
 
