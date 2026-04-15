@@ -5,7 +5,7 @@ var currency = 10
 var day = 1
 var dayDuration = 90
 var timerStarted = false
-var numOfNpcs = 3
+var numOfNpcs = 9
 var dudCounter = 1
 
 var MAX_PHARMACY_QUESTS = 5 # Max number of repeatable quests

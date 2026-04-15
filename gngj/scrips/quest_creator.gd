@@ -477,52 +477,52 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		NPCBirthingPod														#Pass the birthing pod
 	)
 	
-		"Frog Fanatic":
-			quest = createQuest(
-		["Hiya!", "Lovely shop you've got here.",
-		"I passed it when traveling through the woods with my little friends",
-		"Do you happen to have " + randomPotion],									#allQueststartDialog
-		["Hiya!", "can you believe this weather we're having?",
-		"Absolutely splendid!", "Anyways, do you have that potion ready?"],										#QuestReturningDialog
-		["Oh, that's okay.", "We'll just hop around the woods to find the ingredients ourselves.",
-		"Have a nice day."],							#QuestRejectedDialog
-		["Ah well", "Days can't be perfect or the next one won't be as good in comparison",
-		"Take care!"],							#QuestFailedDialog
-		["Oh lovely!", "I'll have time for a bit of splashing around by the pond.",
-		"I'll see you later"],										#allQuestsuccses
-		["I hope we cross paths again, you and your shop are quite adorable!"],		#Joining pharmacy dialog
-		[],
-		[randomPotion],																#Requirements
-		69,																	#RewardMoney
-		[randomRecipeReward],																	#RewardRecipes
-		["earth"],												#RewardIngredients
-		3,																	#DaysUntilDue
-		0,																	#DaysUntilReward
-		true,																#IsRepeatable
-		"Frog Fanatic",												#NpcTypeOrName
-		NPCBirthingPod														#Pass the birthing pod
-	)
-	
-		"Carefree Blacksmith":
-			quest = createQuest(
-		["Hey there!", "I was just passin' by. I heard good things about the " + randomPotion,
-		"Do you have one?"],									#allQueststartDialog
-		["Hey there stranger!", "Do you have that " + randomPotion + " ready yet?"],										#QuestReturningDialog
-		["Hey! No worries.", "If you get any adventurers in need of weapons, send them my way through."],							#QuestRejectedDialog
-		["That's okay, it was nice chatting.", "See you."],							#QuestFailedDialog
-		["Oh? This is so cool!", "I could never do this myself. Thanks!"],										#allQuestsuccses
-		["Maybe I'll be able to stop by the shop again.", "See you around!"],		#Joining pharmacy dialog
-		[],
-		[randomPotion],																#Requirements
-		69,																	#RewardMoney
-		[randomRecipeReward],																	#RewardRecipes
-		["earth"],												#RewardIngredients
-		3,																	#DaysUntilDue
-		0,																	#DaysUntilReward
-		true,																#IsRepeatable
-		"Carefree Blacksmith",												#NpcTypeOrName
-		NPCBirthingPod														#Pass the birthing pod
-	)
+		#"Frog Fanatic":
+			#quest = createQuest(
+		#["Hiya!", "Lovely shop you've got here.",
+		#"I passed it when traveling through the woods with my little friends",
+		#"Do you happen to have " + randomPotion],									#allQueststartDialog
+		#["Hiya!", "can you believe this weather we're having?",
+		#"Absolutely splendid!", "Anyways, do you have that potion ready?"],										#QuestReturningDialog
+		#["Oh, that's okay.", "We'll just hop around the woods to find the ingredients ourselves.",
+		#"Have a nice day."],							#QuestRejectedDialog
+		#["Ah well", "Days can't be perfect or the next one won't be as good in comparison",
+		#"Take care!"],							#QuestFailedDialog
+		#["Oh lovely!", "I'll have time for a bit of splashing around by the pond.",
+		#"I'll see you later"],										#allQuestsuccses
+		#["I hope we cross paths again, you and your shop are quite adorable!"],		#Joining pharmacy dialog
+		#[],
+		#[randomPotion],																#Requirements
+		#69,																	#RewardMoney
+		#[randomRecipeReward],																	#RewardRecipes
+		#["earth"],												#RewardIngredients
+		#3,																	#DaysUntilDue
+		#0,																	#DaysUntilReward
+		#true,																#IsRepeatable
+		#"Frog Fanatic",												#NpcTypeOrName
+		#NPCBirthingPod														#Pass the birthing pod
+	#)
+	#
+		#"Carefree Blacksmith":
+			#quest = createQuest(
+		#["Hey there!", "I was just passin' by. I heard good things about the " + randomPotion,
+		#"Do you have one?"],									#allQueststartDialog
+		#["Hey there stranger!", "Do you have that " + randomPotion + " ready yet?"],										#QuestReturningDialog
+		#["Hey! No worries.", "If you get any adventurers in need of weapons, send them my way through."],							#QuestRejectedDialog
+		#["That's okay, it was nice chatting.", "See you."],							#QuestFailedDialog
+		#["Oh? This is so cool!", "I could never do this myself. Thanks!"],										#allQuestsuccses
+		#["Maybe I'll be able to stop by the shop again.", "See you around!"],		#Joining pharmacy dialog
+		#[],
+		#[randomPotion],																#Requirements
+		#69,																	#RewardMoney
+		#[randomRecipeReward],																	#RewardRecipes
+		#["earth"],												#RewardIngredients
+		#3,																	#DaysUntilDue
+		#0,																	#DaysUntilReward
+		#true,																#IsRepeatable
+		#"Carefree Blacksmith",												#NpcTypeOrName
+		#NPCBirthingPod														#Pass the birthing pod
+	#)
 	
 	# If npc not found
 	if(quest == null):

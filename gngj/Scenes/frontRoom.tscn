@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://c0g1bjkejnpat" path="res://assets/background/front/frontempty.PNG" id="2_fixym"]
 [ext_resource type="Texture2D" uid="uid://dv8ebk8jjw4xv" path="res://assets/background/front/frontdesk.PNG" id="3_s0epr"]
 [ext_resource type="Texture2D" uid="uid://r6mb22v4q3he" path="res://assets/npcs/dirt covered field hand.PNG" id="3_w4gd2"]
-[ext_resource type="FontFile" uid="uid://bbda1el5gvlty" path="res://assets/fonts/Organic Teabags.otf" id="5_w4gd2"]
+[ext_resource type="Texture2D" uid="uid://dndojw6cmo1he" path="res://assets/npcs/confident druid.PNG" id="4_5tojp"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="5_pk1jc"]
+[ext_resource type="FontFile" uid="uid://bbda1el5gvlty" path="res://assets/fonts/Organic Teabags.otf" id="5_w4gd2"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="6_pk1jc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pk1jc"]
@@ -137,6 +138,7 @@ offset_right = 964.39966
 offset_bottom = 469.50464
 scale = Vector2(1.0206213, 1.0206213)
 disabled = true
+texture_normal = ExtResource("4_5tojp")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -215,6 +217,7 @@ theme_override_font_sizes/font_size = 90
 autowrap_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=432883579]
+visible = false
 layout_mode = 0
 offset_left = -962.0
 offset_top = -542.0
