@@ -130,7 +130,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.55478483, 1),
 "update": 0,
-"values": [Vector2(860, 0), Vector2(0, 0)]
+"values": [Vector2(840, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qsit0"]
@@ -174,7 +174,7 @@ _data = {
 
 [node name="IngredientDrawer" type="Sprite2D" unique_id=1675254955]
 material = SubResource("ShaderMaterial_tl0jk")
-position = Vector2(860, 0)
+position = Vector2(840, 0)
 texture = ExtResource("2_msq4k")
 script = ExtResource("3_msq4k")
 

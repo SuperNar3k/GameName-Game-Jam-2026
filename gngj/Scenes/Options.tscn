@@ -250,6 +250,16 @@ text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Quit Game" type="Button" parent="." unique_id=705992276]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 850.0
+offset_right = 1168.0
+offset_bottom = 935.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
+theme_override_font_sizes/font_size = 60
+text = "QUIT GAME"
+
 [connection signal="value_changed" from="Sound/MasterVolumeSlider" to="." method="_on_master_value_changed"]
 [connection signal="toggled" from="Sound/MasterVolumeSlider/CheckBox" to="." method="_on_master_mute_toggled"]
 [connection signal="value_changed" from="Sound/MusicVolumeSlider" to="." method="_on_music_value_changed"]
@@ -258,3 +268,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="openSound" to="." method="_on_open_sound_pressed"]
 [connection signal="pressed" from="openControls" to="." method="_on_open_controls_pressed"]
+[connection signal="pressed" from="Quit Game" to="." method="_on_quit_game_pressed"]

@@ -694,5 +694,6 @@ func endOfDay():
 
 
 func _on_intro_letter_pressed() -> void:
+	$ui/Hud.show()
 	get_tree().paused = false
 	$introLetter.hide()
