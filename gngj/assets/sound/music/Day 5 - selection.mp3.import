@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq82h1weptbr0"
+path="res://.godot/imported/Day 5 - selection.mp3-c69048621fe563f424655838c36bf3fa.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/Day 5 - selection.mp3"
+dest_files=["res://.godot/imported/Day 5 - selection.mp3-c69048621fe563f424655838c36bf3fa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

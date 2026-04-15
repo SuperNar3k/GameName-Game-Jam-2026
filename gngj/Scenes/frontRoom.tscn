@@ -266,9 +266,12 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2mvl6")
 
 [node name="cat" type="AudioStreamPlayer2D" parent="." unique_id=1438617841]
 stream = SubResource("AudioStreamRandomizer_vmwma")
+volume_db = 3.0
+bus = &"SFX"
 
 [node name="bell" type="AudioStreamPlayer2D" parent="." unique_id=947946798]
 stream = ExtResource("11_3a8a8")
+bus = &"SFX"
 
 [connection signal="pressed" from="catbtn" to="." method="_on_catbtn_pressed"]
 [connection signal="pressed" from="bellbtn" to="." method="_on_bellbtn_pressed"]

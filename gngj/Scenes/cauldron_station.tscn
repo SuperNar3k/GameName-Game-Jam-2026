@@ -183,9 +183,11 @@ bus = &"SFX"
 
 [node name="heavysplash" type="AudioStreamPlayer2D" parent="." unique_id=2038204886]
 stream = ExtResource("12_cy4qc")
+volume_db = 5.0
 
 [node name="lightsplash" type="AudioStreamPlayer2D" parent="." unique_id=1984803436]
 stream = ExtResource("13_omp8q")
+volume_db = 5.0
 
 [connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
 [connection signal="button_down" from="liquid/Button" to="." method="_on_button_button_down"]

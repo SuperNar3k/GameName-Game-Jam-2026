@@ -135,6 +135,7 @@ autowrap_mode = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Popup" unique_id=1222076206]
 stream = ExtResource("7_kxtsc")
+bus = &"SFX"
 
 [connection signal="finishedPlaying" from="Popup" to="." method="_on_popup_finished_playing"]
 [connection signal="timeout" from="Popup/popupTimer" to="Popup" method="onTimerTimeout"]

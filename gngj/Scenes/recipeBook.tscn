@@ -1420,6 +1420,7 @@ texture = ExtResource("8_q4q0n")
 
 [node name="bookopen" type="AudioStreamPlayer2D" parent="." unique_id=858484239]
 stream = ExtResource("11_nf5bx")
+bus = &"SFX"
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]
