@@ -230,7 +230,6 @@ theme_override_font_sizes/font_size = 90
 autowrap_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=432883579]
-visible = false
 layout_mode = 0
 offset_left = -962.0
 offset_top = -542.0

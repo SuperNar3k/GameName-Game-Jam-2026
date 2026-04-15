@@ -4,6 +4,8 @@
 [ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="2_bq2xf"]
 [ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="2_n44ff"]
 [ext_resource type="Texture2D" uid="uid://ttpiv2wmlhcs" path="res://assets/ui/vert_parchment.PNG" id="2_ohqld"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="5_k76cc"]
+[ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="6_weffq"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_68nuj"]
 
@@ -37,6 +39,14 @@ font_size = 40
 [sub_resource type="LabelSettings" id="LabelSettings_sml3a"]
 font = ExtResource("2_n44ff")
 font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k76cc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb1r5"]
+shader = ExtResource("5_k76cc")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="endOfDayScreen" type="Control" unique_id=1933692783]
 layout_mode = 3
@@ -92,8 +102,17 @@ horizontal_alignment = 1
 
 [node name="continueButton" type="Button" parent="." unique_id=363319046]
 layout_mode = 0
-offset_left = 722.0
+offset_left = 707.0
 offset_top = 378.0
-offset_right = 906.0
-offset_bottom = 493.0
-text = "Continue"
+offset_right = 924.44
+offset_bottom = 510.465
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k76cc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k76cc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k76cc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k76cc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k76cc")
+
+[node name="continueimg" type="Sprite2D" parent="." unique_id=1767228578]
+material = SubResource("ShaderMaterial_wb1r5")
+position = Vector2(-20, -21)
+texture = ExtResource("6_weffq")
