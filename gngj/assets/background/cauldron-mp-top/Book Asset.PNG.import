@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mct1ploxxp01"
-path="res://.godot/imported/fearless privateer.png-e7d14e2e6d61067339206dc298c4b159.ctex"
+uid="uid://bvyjjyeq3ak2v"
+path="res://.godot/imported/Book Asset.PNG-230e8de62263a9f704f3bc2e035cd4f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/fearless privateer.png"
-dest_files=["res://.godot/imported/fearless privateer.png-e7d14e2e6d61067339206dc298c4b159.ctex"]
+source_file="res://assets/background/cauldron-mp-top/Book Asset.PNG"
+dest_files=["res://.godot/imported/Book Asset.PNG-230e8de62263a9f704f3bc2e035cd4f8.ctex"]
 
 [params]
 

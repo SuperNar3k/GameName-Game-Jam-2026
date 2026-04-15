@@ -3,7 +3,8 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 90
+var dayDuration = 240
+var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
 
@@ -25,9 +26,9 @@ var ItemCreator = Item_Factory.new() # Used for creating quests
 
 #@onready var bell_sfx = $BellSFX # Bell sound effect
 signal optionChosen
-signal noLongerInConverstation
+signal noLongerInConversation
 var questAccepted
-var inConverstation = false
+var inConversation = false
 
 signal noLongerNotifying
 var inNotification = false
@@ -40,16 +41,13 @@ var buySFX = preload("res://assets/sound/Coin.wav")
 # Called when the game starts.
 func _ready() -> void:
 	
-	
-	
 	$dayTimer.set_wait_time(dayDuration)
 	#$dayTimer.timeout.connect(endOfDay)
 	
+	
+	
 	ItemCreator.Populate()
 	NPCBirthingPod.Populate()
-	ItemCreator.UnlockDefaultIngredients(ingredients)
-	ItemCreator.UnlockDefaultPotions(potions)
-	
 	
 	#sends references of these variables to the ui script for distribution over there
 	$ui.ref_storage(
@@ -65,9 +63,11 @@ func _ready() -> void:
 	
 func _process(_delta: float):
 	notificationQueueHandler()
+	if(timerStarted == true):
+		$ui/Hud.updateTimer($dayTimer)
 
 
-#NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
+#TO DO: NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
 #(CANNOT SEE WHEN DAY ENDS IF YOU HAVE RECEPE BOOK OPEN)
 
 func startOfDay():
@@ -87,8 +87,6 @@ func startOfDay():
 		
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
 		
-		#QuestCreator.Populate(quests, NPCBirthingPod, potions)
-		
 		for NPC in NPCBirthingPod.allNPCs.values():
 			availableNPCS.append(NPC)
 	else:
@@ -100,10 +98,6 @@ func startOfDay():
 		
 		ingredient = ingredients.get("tears of trees")
 		ingredient.amountOwned = ingredient.amountOwned + 2
-		
-		
-	
-	
 	
 	var t 
 	for n in range(0, numOfNpcs):
@@ -132,35 +126,37 @@ func startOfDay():
 		_updateQueue()
 		
 	$dayTimer.start(dayDuration)
+	timerStarted = true
 	$ui/Hud.updateCurrency(currency)
-	
+	$ui/Hud.updateTimer($dayTimer)
 	
 func _onGenerateQuest():
 	print("Generating quest!")
 
 	# Choose a random quest from availble quest list
 	if(availableNPCS.size() > 0):
-		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions) 
+		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions, dudCounter) 
 		# Add new quest to the queue
 		storeQueue.append(newQuest)
 		availableNPCS.erase(newQuest)
 		_updateQueue()
 		
 		# Trigger the bell sound effect
+		# TO DO
 		#bell_sfx.play()
 		$AudioStreamPlayer2D.stream = bellSFX
 		$AudioStreamPlayer2D.play()
 	else: 
 		print("No more quest available for player")
-	
-#TO-DO: ADD LOGIC FOR FADING OUT AND FADING IN NPCS
+
 func _updateQueue():
 	#Disable button which allows NPC interaction
 	$ui/FrontRoom/NPC.disabled = true
 	
 	# TO-DO: Fade out already loaded NPCs
 
-	#Updating the textures here. TO-DO :STILL HAVE TO FADE THEM IN
+	#Updating the textures here.
+	# TO-DO :STILL HAVE TO FADE THEM IN
 	if storeQueue.size() == 0: 
 		$ui/FrontRoom/NPC.set_texture_normal(null)
 		$ui/FrontRoom/customer2.set_texture(null)
@@ -179,7 +175,7 @@ func _updateQueue():
 		$ui/FrontRoom/customer3.set_texture(load(storeQueue[2].npcQuestGiver.sprite))
 
 	#Re-enable button which allows NPC interaction
-	if(storeQueue.size() > 0 && !inConverstation):
+	if(storeQueue.size() > 0 && !inConversation):
 		$ui/FrontRoom/NPC.disabled = false
 		
 #TO-DO: Maybe add sound effect for getting the reward?
@@ -189,7 +185,7 @@ func _on_greetNPC():
 	$ui/FrontRoom/goToBackroom.disabled = true
 	$ui/FrontRoom/Dialogue.disabled = false
 	$ui/FrontRoom/Dialogue.visible = true
-	inConverstation = true
+	inConversation = true
 	
 	var currentQuest = storeQueue[0]
 	
@@ -403,8 +399,8 @@ func _on_greetNPC():
 	$ui/FrontRoom/goToBackroom.disabled = false
 	$ui/FrontRoom/Dialogue.disabled = true
 	$ui/FrontRoom/Dialogue.visible = false
-	inConverstation = false
-	noLongerInConverstation.emit()
+	inConversation = false
+	noLongerInConversation.emit()
 	
 	storeQueue.pop_front()
 	_updateQueue()
@@ -461,41 +457,25 @@ func _onQuestCompleted(_quest: Quest):
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
 
-
-#TO-DO: TESTING NEEDS TO BE DONE ON THIS FUNCTION
 func onIngredientGrinded(i: Item):
-	# Check if object can be grinded
 	var crushedName:String = i.itemName + " powder"
-	if !(crushedName in ItemCreator.allIngredients):
-		return false
+	var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
 	
 	# If not unlocked, unlock it!
 	if !(crushedName in ingredients):
-		var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
 		ingredients.set(crushedName, crushedObj)
 		crushedObj.unlocked = true
 	
 	# Increase crushed quantity by 1
-	ingredients.get(crushedName).amountOwned += 1
+	crushedObj.amountOwned += 1
+	createdItem(crushedObj, "Ingredient")
 	
 	# Decrease quantity by 1
 	i.amountOwned -= 1
 	
-	return true
+	return crushedObj
 
-func unlockPotion(p: Item):
-	
-	# If not unlocked, unlock it!
-	if !(p.itemName in potions):
-		ItemCreator.UnlockPotion(potions, p.itemName, null)
-		potions.set(p.itemName, p)
-		p.unlocked = true
-		
-		print("potion: ", p.itemName, " unlocked")
-		
-		notificationQueue.append(p)
-		notificationQueue.append("Potion")
-		
+
 
 func buyIngredient(cost: int, ingredient: Item):
 	if(cost <= currency):
@@ -522,7 +502,7 @@ func giveIngredient(i: Item):
 		notificationQueue.append("Ingredient")
 		
 	# Increase quantity by 1
-	if(!i.itemName == "earth"):
+	if(i.itemName != "earth"):
 		i.amountOwned += 1
 	
 	
@@ -531,7 +511,6 @@ func notifcationFinished():
 	noLongerNotifying.emit()	
 
 
-#TO-DO: THIS SHIT BROKEN!! FIX IT!!!
 func notificationQueueHandler():
 			
 	if(notificationQueue.size() > 0):
@@ -543,7 +522,7 @@ func notificationQueueHandler():
 			await noLongerNotifying
 			notificationQueue.pop_front()
 			notificationQueue.pop_front()
-			
+	
 
 #TO-DO: TESTING NEEDS TO BE DONE ON THIS FUCNTION
 func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
@@ -590,20 +569,41 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 		)
 		dudCounter = dudCounter + 1
 		print("new dud created")
+		
 	# Unlock if needed, and increase quantity
 	unlockPotion(potion)
 	potion.amountOwned += 1
 
+func unlockPotion(p: Item):
+	
+	# If not unlocked, unlock it!
+	if !(p.itemName in potions):
+		ItemCreator.UnlockPotion(potions, p.itemName, null)
+		potions.set(p.itemName, p)
+		p.unlocked = true
+		
+		print("potion: ", p.itemName, " unlocked")
+		
+		notificationQueue.append(p)
+		notificationQueue.append("Potion")
+	else: 
+		createdItem(p, "Potion")
+
+func createdItem(i: Item, type: String):
+	$ui/Notification/Popup.itemMade(i, type)
+
+
 #TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():
+	timerStarted = false
 	print("End of day: ", day)
+		
+	if(inConversation):
+		print("cant end day because in conversation")
+		await noLongerInConversation
 	
+	# End day in UI
 	$ui.endDay()
-	
-	if(inConverstation):
-		print("cant end day because in convestation")
-		await noLongerInConverstation
-	
 	
 	# Increment day
 	day += 1;
@@ -611,7 +611,7 @@ func endOfDay():
 	#Logic for handling quest still in the queue when the day ends
 	for i in range(storeQueue.size() - 1, -1, -1):
 		var q = storeQueue[i]
-		#Any npcs on their deadlines are removed from player quest. GET FUCKED
+		#Any npcs on their deadlines are removed from player quest.
 		if q.daysUntilDue == 0:
 			activeQuests.erase(q)
 			pharmacyQuests.erase(q)
@@ -623,14 +623,11 @@ func endOfDay():
 	storeQueue.clear()
 	_updateQueue()
 	
-		
-
-	# TO-DO: if grinding in-progress, pause the grinding timer
-	
-	# TO-DO: if potion making was in-progress, immediately complete the potion
+	# If potion making was in-progress, give ingredients back
+	for i in $ui/CauldronStation.held_ingredients:
+		giveIngredient(i)
 	
 	$ui/crowStore.currency = currency
 	$ui/crowStore.checkIfTooBroke()
 	$ui._on_end_of_day()
-	
 	

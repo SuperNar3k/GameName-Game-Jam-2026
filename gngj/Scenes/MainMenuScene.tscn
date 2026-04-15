@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cpubh6amks5vo" path="res://scrips/MainMenu.gd" id="1_sb72h"]
 [ext_resource type="PackedScene" uid="uid://0nauyx3wsvbo" path="res://Scenes/mm_physics_buttons.tscn" id="2_47sjk"]
 [ext_resource type="Texture2D" uid="uid://bnfyxdhaxsp7" path="res://assets/background/main menu/mainbg.PNG" id="2_mxhvt"]
+[ext_resource type="Texture2D" uid="uid://x8pmvhnqsegd" path="res://assets/ui/IMG_0828.PNG" id="4_gmxq7"]
 
 [node name="MainMenuScene" type="Control" unique_id=1432645101]
 layout_mode = 3
@@ -16,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_sb72h")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=468685304]
+position = Vector2(0, 2)
 texture = ExtResource("2_mxhvt")
 
 [node name="MainMenu" type="Control" parent="." unique_id=343162974]
@@ -124,3 +126,7 @@ text = "Test End Of Day
 
 [node name="phys_buttons" parent="." unique_id=1086510356 instance=ExtResource("2_47sjk")]
 position = Vector2(216, -529)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=722251689]
+position = Vector2(-289, -274)
+texture = ExtResource("4_gmxq7")

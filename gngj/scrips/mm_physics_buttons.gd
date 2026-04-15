@@ -6,6 +6,7 @@ signal credits_button_pressed()
 signal close_button_pressed()
 
 func _ready() -> void:
+	$ColorRect.hide()
 	$open/openbtn.mouse_entered.connect(got_hovered.bind("open", true))
 	$open/openbtn.mouse_exited.connect(got_hovered.bind("open", false))
 	$options/optionsbtn.mouse_entered.connect(got_hovered.bind("options", true))
@@ -17,7 +18,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	$follower.global_position = get_global_mouse_position()
-
+	
 
 func _on_area_2d_body_entered(_body: RigidBody2D) -> void:
 	if $collisionTimer.is_stopped():
@@ -50,9 +51,11 @@ func got_hovered(btn: String, hovered: bool):
 
 
 func _on_openbtn_pressed() -> void:
+	$ColorRect.show()
+	$AnimationPlayer.play("fade_to_black")
+	await ($AnimationPlayer.animation_finished)
 	open_button_pressed.emit()
 	queue_free()
-
 
 func _on_optionsbtn_pressed() -> void:
 	options_button_pressed.emit()
@@ -70,3 +73,8 @@ func _on_closebtn_pressed() -> void:
 	close_button_pressed.emit()
 	$follower/CollisionShape2D.set_deferred("disabled", true)
 	$collisionTimer.paused = true
+	
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	pass

@@ -12,6 +12,7 @@ var potionForQuest
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimationPlayer.play("fade_to_normal")
 	backRoomButton.pressed.connect(_on_backRoomButton_pressed)
 	npcButton.pressed.connect(_on_npcButton_pressed)
 	acceptButton.pressed.connect(_on_questAccepted_pressed)
@@ -26,8 +27,6 @@ func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
 	
 	for potion in potions: 
 		if(potion.amountOwned > 0 and potion.unlocked):
-			$potionHotbar/HBoxContainer.add_child(potionButton)
-			$potionHotbar/HBoxContainer.add_child(potionButton)
 			$potionHotbar/HBoxContainer.add_child(potionButton)
 			potionButton.set_texture_normal(load(potion.sprite))
 			potionButton.set_material(potionShader)

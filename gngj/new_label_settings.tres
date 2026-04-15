@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://6rygp2pa1ke6"]
+
+[ext_resource type="FontFile" uid="uid://c3lkj8eno8uqv" path="res://assets/fonts/label_settings/Amarante-Regular.ttf" id="1_1nvk1"]
+
+[resource]
+font = ExtResource("1_1nvk1")
+font_size = 35
+font_color = Color(0.96, 0.96, 0.3456, 1)
