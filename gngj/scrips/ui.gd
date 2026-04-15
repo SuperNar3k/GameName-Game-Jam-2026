@@ -151,6 +151,7 @@ func _on_back_room_to_front() -> void:
 	lastScreen = $FrontRoom
 
 func _on_back_room_to_grind_station() -> void:
+	$Hud.hide_leftstuff()
 	$BackRoom.hide()
 	$GrindingStation.show()
 	
@@ -158,6 +159,7 @@ func _on_back_room_to_grind_station() -> void:
 
 
 func _on_back_room_to_cauldron_station() -> void:
+	$Hud.hide_leftstuff()
 	$BackRoom.hide()
 	$CauldronStation.show()
 	
@@ -165,6 +167,7 @@ func _on_back_room_to_cauldron_station() -> void:
 
 
 func _on_grinding_station_go_back() -> void:
+	$Hud.show_leftstuff()
 	$GrindingStation.hide()
 	$BackRoom.show()
 	
@@ -172,6 +175,7 @@ func _on_grinding_station_go_back() -> void:
 
 
 func _on_cauldron_station_go_back() -> void:
+	$Hud.show_leftstuff()
 	$CauldronStation.hide()
 	$BackRoom.show()
 	
@@ -213,15 +217,19 @@ func _on_hud_quest_pressed() -> void:
 	$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
 	
 func _on_quest_list_screen_return_to_game() -> void:
+	
 	$questListScreen/returnButton.hide()
 	$questListScreen/Sprite2D2.hide()
 	$questListScreen/AnimationPlayer.play_backwards("slide_up")
 
 func _on_hud_options_pressed() -> void:
+	$Hud.hide_leftstuff()
 	lastScreen.hide()
 	$Options.show()
 	
 func _on_end_of_day() -> void:
+	$Hud/endDay.hide()
+	$Hud/endDayGraphic.hide()
 	lastScreen.hide()
 	$endOfDayScreen.show()
 	$endOfDayScreen.displayShit(allIngredients, allPotions)
@@ -235,6 +243,7 @@ func _on_end_of_day_screen_show_store() -> void:
 	lastScreen = $crowStore
 
 func newDay() -> void:
+	$Hud.show_leftstuff()
 	$crowStore.hide()
 	$FrontRoom.show()
 	lastScreen = $FrontRoom

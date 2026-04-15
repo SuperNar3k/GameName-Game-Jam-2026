@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="4_nvrov"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_wbrmg"]
 [ext_resource type="AudioStream" uid="uid://bimgvannaic6u" path="res://assets/sound/Paper.wav" id="7_j186r"]
+[ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="8_q4q0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjxqd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2olp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbrmg"]
 
@@ -95,6 +100,18 @@ _data = {
 &"RESET": SubResource("Animation_5ak3s"),
 &"slide_up": SubResource("Animation_rxxfk")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4q0n"]
+shader = ExtResource("4_wbrmg")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjxqd"]
+shader = ExtResource("4_wbrmg")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="RecipeBook" type="Control" unique_id=496628637]
 layout_mode = 3
@@ -331,32 +348,36 @@ text = "Z"
 [node name="BackBtn" type="Button" parent="." unique_id=795886714]
 visible = false
 layout_mode = 0
-offset_left = -758.0
-offset_top = 351.0
-offset_right = -713.0
-offset_bottom = 382.0
-theme_override_fonts/font = ExtResource("3_rxxfk")
-theme_override_font_sizes/font_size = 60
-text = "Back"
+offset_left = -814.0
+offset_top = 136.0
+offset_right = -695.0
+offset_bottom = 222.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pjxqd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pjxqd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pjxqd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pjxqd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pjxqd")
 
 [node name="FwdBtn" type="Button" parent="." unique_id=342672085]
 visible = false
 layout_mode = 0
-offset_left = 679.0
-offset_top = 351.0
-offset_right = 864.0
-offset_bottom = 437.0
-theme_override_fonts/font = ExtResource("3_rxxfk")
-theme_override_font_sizes/font_size = 60
-text = "Forward"
+offset_left = 708.0
+offset_top = 136.0
+offset_right = 827.0
+offset_bottom = 222.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h2olp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h2olp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_h2olp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h2olp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h2olp")
 
 [node name="ExitBtn" type="Button" parent="." unique_id=757798167]
 visible = false
 layout_mode = 0
 offset_left = -944.0
-offset_top = -423.0
+offset_top = -166.0
 offset_right = -707.02
-offset_bottom = -298.0
+offset_bottom = -41.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wbrmg")
@@ -366,7 +387,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_wbrmg")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=400350703]
 visible = false
 material = SubResource("ShaderMaterial_j186r")
-position = Vector2(16, -825)
+position = Vector2(16, -568)
 texture = ExtResource("4_nvrov")
 flip_h = true
 
@@ -375,14 +396,15 @@ position = Vector2(-285.995, 900)
 texture = ExtResource("3_gfmpn")
 
 [node name="LeftDesc" type="Label" parent="LeftSprite" unique_id=1275169040]
-offset_left = -274.005
+offset_left = -231.005
 offset_top = 375.0
-offset_right = 285.995
+offset_right = 221.995
 offset_bottom = 407.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="LeftName" type="Label" parent="LeftSprite" unique_id=2106939271]
 offset_left = -274.005
@@ -407,14 +429,15 @@ position = Vector2(285.995, 900)
 texture = ExtResource("3_gfmpn")
 
 [node name="RightDesc" type="Label" parent="RightSprite" unique_id=2017092086]
-offset_left = -285.995
+offset_left = -245.995
 offset_top = 375.0
-offset_right = 274.325
+offset_right = 229.005
 offset_bottom = 407.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="RightName" type="Label" parent="RightSprite" unique_id=241050334]
 offset_left = -288.995
@@ -440,6 +463,19 @@ libraries/ = SubResource("AnimationLibrary_gfmpn")
 [node name="paper" type="AudioStreamPlayer2D" parent="." unique_id=1152532029]
 stream = ExtResource("7_j186r")
 bus = &"SFX"
+
+[node name="backimg" type="Sprite2D" parent="." unique_id=1147217930]
+visible = false
+material = SubResource("ShaderMaterial_q4q0n")
+position = Vector2(-774, 176)
+texture = ExtResource("8_q4q0n")
+flip_h = true
+
+[node name="fwdimg" type="Sprite2D" parent="." unique_id=1317108704]
+visible = false
+material = SubResource("ShaderMaterial_pjxqd")
+position = Vector2(788, 177)
+texture = ExtResource("8_q4q0n")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]

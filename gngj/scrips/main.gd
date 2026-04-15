@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 240
+var dayDuration = 90
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -130,6 +130,8 @@ func startOfDay():
 	$ui/Hud.updateCurrency(currency)
 	$ui/Hud.updateTimer($dayTimer)
 	
+	
+	
 func _onGenerateQuest():
 	print("Generating quest!")
 
@@ -180,6 +182,8 @@ func _updateQueue():
 		
 #TO-DO: Maybe add sound effect for getting the reward?
 func _on_greetNPC():
+	print("Talking to npc")
+	
 	#Lock the player into the interaction
 	$ui/FrontRoom/NPC.disabled = true
 	$ui/FrontRoom/goToBackroom.disabled = true
@@ -213,6 +217,7 @@ func _on_greetNPC():
 			$ui/FrontRoom/potionHotbar.hide()
 			$ui/FrontRoom/givePotionButton.hide()
 			$ui/FrontRoom.clearInventory()
+			$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
  		
 			#Dialog for quest success
 			var randPitch = (randf_range(.8, 1.2))
@@ -256,7 +261,7 @@ func _on_greetNPC():
 				currentQuest.completed = true
 			else:
 				activeQuests.erase(currentQuest)
-				currentQuest.resetQuest()
+				#currentQuest.resetQuest()
 				availableNPCS.append(currentQuest.npcQuestGiver)
 			
 				
@@ -272,7 +277,7 @@ func _on_greetNPC():
 				#Reset the quest and remove it from the list
 				pharmacyQuests.erase(currentQuest)
 				activeQuests.erase(currentQuest)
-				currentQuest.resetQuest()
+				#currentQuest.resetQuest()
 				availableNPCS.append(currentQuest.npcQuestGiver)
 				print("quest erased")
 				
@@ -346,7 +351,7 @@ func _on_greetNPC():
 				activeQuests.append(currentQuest)
 				
 			else:
-				currentQuest.resetQuest()
+				#currentQuest.resetQuest()
 				availableNPCS.append(currentQuest.npcQuestGiver)
 				
 			
@@ -372,7 +377,7 @@ func _on_greetNPC():
 					$ui/FrontRoom/Dialogue.text = dialog
 					await $ui/FrontRoom/Dialogue.pressed
 			
-				currentQuest.resetQuest()
+				#currentQuest.resetQuest()
 				availableNPCS.append(currentQuest.npcQuestGiver)
 				
 	#Logic for when the npc wants to give you rewards for completing a one time quest
@@ -391,7 +396,7 @@ func _on_greetNPC():
 			
 				
 		#Reset the quest and remove it from activeQuest[]
-		currentQuest.resetQuest()
+		#currentQuest.resetQuest()
 		activeQuests.erase(currentQuest)
 		availableNPCS.append(currentQuest.npcQuestGiver)
 	
@@ -401,6 +406,7 @@ func _on_greetNPC():
 	$ui/FrontRoom/Dialogue.visible = false
 	inConversation = false
 	noLongerInConversation.emit()
+	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
 	
 	storeQueue.pop_front()
 	_updateQueue()
@@ -512,7 +518,6 @@ func notifcationFinished():
 
 
 func notificationQueueHandler():
-			
 	if(notificationQueue.size() > 0):
 		if(!inNotification):
 			inNotification = true
@@ -569,13 +574,15 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 		)
 		dudCounter = dudCounter + 1
 		print("new dud created")
+	else:
+		createdItem(potion, "Potion")
+		
 		
 	# Unlock if needed, and increase quantity
 	unlockPotion(potion)
 	potion.amountOwned += 1
 
 func unlockPotion(p: Item):
-	
 	# If not unlocked, unlock it!
 	if !(p.itemName in potions):
 		ItemCreator.UnlockPotion(potions, p.itemName, null)
@@ -586,8 +593,6 @@ func unlockPotion(p: Item):
 		
 		notificationQueue.append(p)
 		notificationQueue.append("Potion")
-	else: 
-		createdItem(p, "Potion")
 
 func createdItem(i: Item, type: String):
 	$ui/Notification/Popup.itemMade(i, type)
@@ -602,6 +607,8 @@ func endOfDay():
 		print("cant end day because in conversation")
 		await noLongerInConversation
 	
+	
+	$ui/RecipeBook._on_exit_btn_pressed()
 	# End day in UI
 	$ui.endDay()
 	

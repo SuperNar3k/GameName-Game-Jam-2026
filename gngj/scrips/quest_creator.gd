@@ -42,10 +42,16 @@ func createQuest(
 	return newQuest
 	
 func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary, numOfDuds: Variant):
+	print("creating a quest")
 	
-	var r = potions.size() - (numOfDuds - 1)
-	var randomPotion = potions.keys()[range(0,r).pick_random()]
 	
+	var cleanPotions = []
+	for pName in potions.keys():
+		if(!("Dud" in pName)):
+			cleanPotions.append(pName)
+	
+	var randomPotion = cleanPotions.pick_random()
+	print("The random potion was: ", randomPotion)
 	
 	var randomRecipeReward = allPotions.keys().pick_random()
 	var quest = null
@@ -283,7 +289,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"Intrepid Adventurer":
 			quest = createQuest(
 				["Heya!", "By any chance do you have " + randomPotion + "?",],									#allQueststartDialog
-				["Hi again! How are you?"],										#QuestReturningDialog
+				["Hi again! How are you?", "Would you happen to have my potion ready?"],										#QuestReturningDialog
 				["Shucks, I was really hoping to get " + randomPotion + ".", " I guess I’ll try somewhere else."],							#QuestRejectedDialog
 				["Oh. Well maybe I’m unlucky now so I’m luckier later.",
 				"See you around!"],							#QuestFailedDialog
