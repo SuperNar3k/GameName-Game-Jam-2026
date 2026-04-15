@@ -62,7 +62,6 @@ visible = false
 layout_mode = 1
 
 [node name="Hud" parent="." unique_id=203291146 instance=ExtResource("13_3r70p")]
-visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

@@ -5,6 +5,8 @@ extends Control
 signal goBack
 signal cookingDone(held_ingredients)
 
+var spawn_test = preload("res://Scenes/Spawn_Test.tscn")
+var instance
 
 var ItemCreator
 var allPotions
@@ -26,6 +28,8 @@ func _ready() -> void:
 	$IngredientDrawer.parent_buttons_hide.connect(hide_buttons)
 	$IngredientDrawer.parent_buttons_show.connect(show_buttons)
 	backButton.pressed.connect(_on_backButton_pressed)
+	$DropSpot.mouse_entered.connect(_on_hovered.bind(true, null))
+	$DropSpot.mouse_exited.connect(_on_hovered.bind(false, null))
 
 func __init__(_ItemCreator, _allPotions : Dictionary, _allIngredients : Dictionary, _potions : Dictionary) -> void:
 	# Set global dictionaries
@@ -68,25 +72,40 @@ func _process(delta: float) -> void:
 	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
 			
 func _on_hovered(hovered: bool, ref) -> void:
+	if followMouse != true:
+		if hovered:
+			if $IngredientDrawer.held == null:
+				var strHold: String = ""
+				instance = spawn_test.instantiate()
+				add_child(instance)
+				for i in held_ingredients.size():
+					strHold = strHold + str(held_ingredients[i] + "\n")
+				instance.get_child(0).text = strHold
 	if $IngredientDrawer.held == null:
-		ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
+		if ref != null:
+			ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
+	if !hovered:
+		if instance != null:
+			instance.queue_free()
 
 
 func _on_drop_spot_pressed() -> void:
-	if ($IngredientDrawer.held != null):
-		if allIngredients.get($IngredientDrawer.held).isGrindable:
-			var randPitch = randf_range(0.7, 1.1)
-			$heavysplash.pitch_scale = randPitch
-			$heavysplash.play(.22)
-		else:
-			var randPitch = randf_range(0.9, 1.3)
-			$lightsplash.pitch_scale = randPitch
-			$lightsplash.play(.53)
-		held_ingredients.append($IngredientDrawer.held)
-		$IngredientDrawer.instance.queue_free()
-		$IngredientDrawer.held = null
-		$IngredientDrawer.show_buttons()
-		print("ingredients in cauldron: ", held_ingredients)
+	if !done:
+		if ($IngredientDrawer.held != null):
+			if allIngredients.get($IngredientDrawer.held).isGrindable:
+				var randPitch = randf_range(0.7, 1.1)
+				$heavysplash.pitch_scale = randPitch
+				$heavysplash.play(.22)
+			else:
+				var randPitch = randf_range(0.9, 1.3)
+				$lightsplash.pitch_scale = randPitch
+				$lightsplash.play(.53)
+			held_ingredients.append($IngredientDrawer.held)
+			$IngredientDrawer.instance.queue_free()
+			$IngredientDrawer.held = null
+			$IngredientDrawer.show_buttons()
+			print("ingredients in cauldron: ", held_ingredients)
+			_on_hovered(true, null)
 		
 
 func hide_buttons():

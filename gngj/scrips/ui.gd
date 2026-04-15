@@ -42,22 +42,24 @@ func _ready() -> void:
 	$BackRoom/MortarandPestleBtn.pressed.connect(_on_button_pressed.bind("MortarandPestle"))
 	$BackRoom/toFrontRoomBtn.pressed.connect(_on_button_pressed.bind("toFrontRoom"))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("options_btn"):
-		if !$Options.is_visible_in_tree():
-			_on_hud_options_pressed()
-		else:
-			_on_options_exit_options()
+		if $RecipeBook/Book.position.y == 540.0:
+			if !$Options.is_visible_in_tree():
+				_on_hud_options_pressed()
+			else:
+				_on_options_exit_options()
 	
 	if Input.is_action_just_pressed("recipe_book_btn"):
 		if gameStart:
-			if $RecipeBook/AnimationPlayer.is_playing() == false:
-				if bookOpen == false:
-					bookOpen = true
-					_on_button_pressed("RecipeBook")
-				else:
-					bookOpen = false
-					$RecipeBook._on_exit_btn_pressed()
+			if !$Options.visible:
+				if $RecipeBook/AnimationPlayer.is_playing() == false:
+					if bookOpen == false:
+						bookOpen = true
+						_on_button_pressed("RecipeBook")
+					else:
+						bookOpen = false
+						$RecipeBook._on_exit_btn_pressed()
 					
 
 #called from main; saves references of the variables from main into these local (global?) variables
@@ -237,6 +239,8 @@ func _on_hud_options_pressed() -> void:
 func _on_end_of_day() -> void:
 	$Hud/endDay.hide()
 	$Hud/endDayGraphic.hide()
+	$Hud/currancyGraphic.show()
+	$Hud/currencyLable.show()
 	lastScreen.hide()
 	$endOfDayScreen.show()
 	$endOfDayScreen.displayShit(allIngredients, allPotions)

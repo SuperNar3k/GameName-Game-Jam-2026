@@ -44,7 +44,12 @@ func displayShit(allIngredients: Dictionary, allPotions: Dictionary):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$continueButton.mouse_entered.connect(_on_hovered.bind(true))
+	$continueButton.mouse_exited.connect(_on_hovered.bind(false))
 	continueButton.pressed.connect(_on_continueButton_pressed)
+
+func _on_hovered(boom:bool):
+	$continueimg.material.set_shader_parameter("outline_thickness", 5.0 if boom else 0.0)
 
 func _on_continueButton_pressed(): 
 	get_tree().call_group("itemToDelete", "queue_free")
