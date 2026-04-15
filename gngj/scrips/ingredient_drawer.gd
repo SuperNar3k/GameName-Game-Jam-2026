@@ -16,6 +16,7 @@ var page = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimationPlayer.play('arrow')
 	$Handle.mouse_entered.connect(_on_hovered.bind(true, self, null))
 	$Handle.mouse_exited.connect(_on_hovered.bind(false, self, null))
 	
@@ -150,6 +151,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_handle_pressed() -> void:
+	$tutarrow.hide()
 	$nextBtn.hide()
 	$Sprite2D.hide()
 	if (huh % 2 == 0):
@@ -171,11 +173,12 @@ func _on_hovered(hovered: bool, ref, button) -> void:
 				add_child(instance)
 				instance.get_child(0).text = "Next Drawer"
 			elif button != null:
-				if page != 1:
-					if (button + 16) < 30:
-						ing = allIngredients.get(allIngredients.keys()[button+16])
-				else:
-					ing = allIngredients.get(allIngredients.keys()[button])
+				if ref.texture != null:
+					if page != 1:
+						if (button + 16) < 30:
+							ing = allIngredients.get(allIngredients.keys()[button+16])
+					else:
+						ing = allIngredients.get(allIngredients.keys()[button])
 				instance = spawn_test.instantiate()
 				if ing != null:
 					add_child(instance)

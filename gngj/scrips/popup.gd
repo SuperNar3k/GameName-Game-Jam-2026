@@ -7,6 +7,7 @@ signal finishedPlaying
 #Called when the node enters the scene tree for the first time.
 func newItemUnlocked(item: Item, type: String):
 
+	$AudioStreamPlayer2D.play(.11)
 	$contName/nameLabel.set_text(item.itemName)
 	$contTitle/titleLabel.set_text("New " + type + " Unlocked!")
 	$itemSprite.set_texture(load(item.sprite))

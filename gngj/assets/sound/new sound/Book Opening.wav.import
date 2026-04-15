@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bwawb3xjlcb4m"
+path="res://.godot/imported/Book Opening.wav-b7f8147fc64ed6f5f7f9c9b5a8fe527e.sample"
+
+[deps]
+
+source_file="res://assets/sound/new sound/Book Opening.wav"
+dest_files=["res://.godot/imported/Book Opening.wav-b7f8147fc64ed6f5f7f9c9b5a8fe527e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

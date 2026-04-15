@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_wbrmg"]
 [ext_resource type="AudioStream" uid="uid://bimgvannaic6u" path="res://assets/sound/Paper.wav" id="7_j186r"]
 [ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="8_q4q0n"]
+[ext_resource type="AudioStream" uid="uid://bwawb3xjlcb4m" path="res://assets/sound/new sound/Book Opening.wav" id="11_nf5bx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjxqd"]
 
@@ -1416,6 +1417,9 @@ visible = false
 material = SubResource("ShaderMaterial_pjxqd")
 position = Vector2(788, 0)
 texture = ExtResource("8_q4q0n")
+
+[node name="bookopen" type="AudioStreamPlayer2D" parent="." unique_id=858484239]
+stream = ExtResource("11_nf5bx")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]

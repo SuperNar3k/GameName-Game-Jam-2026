@@ -70,3 +70,13 @@ func _on_questAccepted_pressed():
 
 func _on_questRejected_pressed():
 	questAccepted.emit(false)
+
+
+func _on_catbtn_pressed() -> void:
+	$cat.play()
+
+
+func _on_bellbtn_pressed() -> void:
+	var randPitch = randf_range(0.8, 1.2)
+	$bell.pitch_scale = randPitch
+	$bell.play(.14)

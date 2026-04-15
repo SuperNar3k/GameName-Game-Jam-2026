@@ -7,6 +7,10 @@
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="5_pk1jc"]
 [ext_resource type="FontFile" uid="uid://bbda1el5gvlty" path="res://assets/fonts/Organic Teabags.otf" id="5_w4gd2"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="6_pk1jc"]
+[ext_resource type="AudioStream" uid="uid://hnqatuhlb40j" path="res://assets/sound/new sound/Cat Meow 1.wav" id="8_1lhjq"]
+[ext_resource type="AudioStream" uid="uid://c2tx3sj8r1mgf" path="res://assets/sound/new sound/Cat Meow 2.wav" id="9_3a8a8"]
+[ext_resource type="AudioStream" uid="uid://cagbjury30e8g" path="res://assets/sound/new sound/Cat Meow 3.wav" id="10_2mvl6"]
+[ext_resource type="AudioStream" uid="uid://coqjtomu1xtkb" path="res://assets/sound/Service Bell.wav" id="11_3a8a8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pk1jc"]
 
@@ -84,6 +88,17 @@ _data = {
 &"fade_to_normal": SubResource("Animation_w4gd2"),
 &"npc_talking": SubResource("Animation_pk1jc")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3a8a8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mvl6"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vmwma"]
+random_pitch = 1.3711787
+streams_count = 3
+stream_0/stream = ExtResource("8_1lhjq")
+stream_1/stream = ExtResource("9_3a8a8")
+stream_2/stream = ExtResource("10_2mvl6")
 
 [node name="FrontRoom" type="Control" unique_id=717244377]
 layout_mode = 3
@@ -225,3 +240,36 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=874053815]
 libraries/ = SubResource("AnimationLibrary_pk1jc")
+
+[node name="catbtn" type="Button" parent="." unique_id=2109576304]
+layout_mode = 0
+offset_left = -812.0
+offset_top = 108.0
+offset_right = -507.83
+offset_bottom = 284.595
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3a8a8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3a8a8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3a8a8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3a8a8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3a8a8")
+
+[node name="bellbtn" type="Button" parent="." unique_id=1513670024]
+layout_mode = 0
+offset_left = 693.0
+offset_top = 156.0
+offset_right = 793.0
+offset_bottom = 256.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2mvl6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2mvl6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2mvl6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2mvl6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2mvl6")
+
+[node name="cat" type="AudioStreamPlayer2D" parent="." unique_id=1438617841]
+stream = SubResource("AudioStreamRandomizer_vmwma")
+
+[node name="bell" type="AudioStreamPlayer2D" parent="." unique_id=947946798]
+stream = ExtResource("11_3a8a8")
+
+[connection signal="pressed" from="catbtn" to="." method="_on_catbtn_pressed"]
+[connection signal="pressed" from="bellbtn" to="." method="_on_bellbtn_pressed"]

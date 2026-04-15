@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dvxxi13ha3ktn" path="res://assets/background/UI/quests.png" id="2_o7yuq"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_0kfgu"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="4_54bui"]
+[ext_resource type="AudioStream" uid="uid://bkc8mm32ghj7y" path="res://assets/sound/new sound/Unfurl.wav" id="6_iq35i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iq35i"]
 atlas = ExtResource("2_o7yuq")
@@ -217,5 +218,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1dylo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1947173758]
 libraries/ = SubResource("AnimationLibrary_0kfgu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1789387087]
+stream = ExtResource("6_iq35i")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
