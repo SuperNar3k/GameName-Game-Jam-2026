@@ -8,8 +8,9 @@
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_j34kl"]
 [ext_resource type="Texture2D" uid="uid://dfr2x343vw6fg" path="res://assets/background/back/IMG_0703.PNG" id="5_njmsa"]
 [ext_resource type="Texture2D" uid="uid://cefjajvllyis8" path="res://assets/background/back/cobblecauld.PNG" id="6_njmsa"]
-[ext_resource type="Texture2D" uid="uid://bnqstwn4x68wd" path="res://assets/background/back/mp.PNG" id="7_rntc6"]
+[ext_resource type="Texture2D" uid="uid://cvo12svpk15i8" path="res://assets/background/back/New Assets 4-14/cauldren.PNG" id="6_rntc6"]
 [ext_resource type="Texture2D" uid="uid://d3dqs6v1ko65u" path="res://assets/background/back/mpscarf.PNG" id="8_o84pg"]
+[ext_resource type="Texture2D" uid="uid://bo41w73ywpbsj" path="res://assets/background/back/New Assets 4-14/mortar.PNG" id="8_y60a3"]
 [ext_resource type="Texture2D" uid="uid://cfqq766xl3rbt" path="res://assets/background/back/bookstand.PNG" id="9_y60a3"]
 [ext_resource type="Texture2D" uid="uid://cc2x00w4wvtpd" path="res://assets/background/back/bookshelf.PNG" id="10_j34kl"]
 
@@ -161,14 +162,16 @@ texture = ExtResource("5_njmsa")
 
 [node name="cauldronimg" type="Sprite2D" parent="." unique_id=591737901]
 material = SubResource("ShaderMaterial_4ab26")
-texture = ExtResource("3_ligfe")
+position = Vector2(-725, 84)
+texture = ExtResource("6_rntc6")
 
 [node name="cobblecauldimg" type="Sprite2D" parent="." unique_id=823232032]
 texture = ExtResource("6_njmsa")
 
 [node name="mpimg" type="Sprite2D" parent="." unique_id=818675302]
 material = SubResource("ShaderMaterial_o84pg")
-texture = ExtResource("7_rntc6")
+position = Vector2(0, 185)
+texture = ExtResource("8_y60a3")
 
 [node name="mpscarfimg" type="Sprite2D" parent="." unique_id=1808432728]
 texture = ExtResource("8_o84pg")
