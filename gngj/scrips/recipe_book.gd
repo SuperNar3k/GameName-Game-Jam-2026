@@ -47,6 +47,10 @@ func _ready() -> void:
 	hide()
 	$ExitBtn.mouse_entered.connect(_on_hovered.bind($Sprite2D, true))
 	$ExitBtn.mouse_exited.connect(_on_hovered.bind($Sprite2D, false))
+	$BackBtn.mouse_entered.connect(_on_hovered.bind($backimg, true))
+	$BackBtn.mouse_exited.connect(_on_hovered.bind($backimg, false))
+	$FwdBtn.mouse_entered.connect(_on_hovered.bind($fwdimg, true))
+	$FwdBtn.mouse_exited.connect(_on_hovered.bind($fwdimg, false))
 	
 	var buttonRecipeArray = $Book.get_children()
 	
@@ -201,6 +205,7 @@ func _on_fwd_btn_pressed() -> void:
 	
 	
 	$BackBtn.show()
+	$backimg.show()
 	
 	if(page_index%2 == 0):
 		page_index += 1
@@ -346,7 +351,9 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		$ExitBtn.hide()
 		$Sprite2D.hide()
 		$FwdBtn.hide()
+		$fwdimg.hide()
 		$BackBtn.hide()
+		$backimg.hide()
 		page_index =  0
 		backPressed = false
 		fwdPressed = false
@@ -360,3 +367,4 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		$ExitBtn.show()
 		$Sprite2D.show()
 		$FwdBtn.show()
+		$fwdimg.show()
