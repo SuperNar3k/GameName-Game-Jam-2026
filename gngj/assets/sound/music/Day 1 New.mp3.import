@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bifn0tch5fqro"
+path="res://.godot/imported/Day 1 New.mp3-635b0411a48bcce40f97f8c1937045ed.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/Day 1 New.mp3"
+dest_files=["res://.godot/imported/Day 1 New.mp3-635b0411a48bcce40f97f8c1937045ed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

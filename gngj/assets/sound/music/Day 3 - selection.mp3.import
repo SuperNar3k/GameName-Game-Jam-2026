@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbr5wx3moeacg"
+path="res://.godot/imported/Day 3 - selection.mp3-a1843ad5241741442f56c1deba66b647.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/Day 3 - selection.mp3"
+dest_files=["res://.godot/imported/Day 3 - selection.mp3-a1843ad5241741442f56c1deba66b647.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

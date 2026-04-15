@@ -40,6 +40,8 @@ var buySFX = preload("res://assets/sound/Coin.wav")
 
 # Called when the game starts.
 func _ready() -> void:
+	$ui/MainMenuScene/phys_buttons.open_button_pressed.connect(music_fade.bind())
+	$mmmusic.play()
 	$introLetter.hide()
 	$gameWonScreen.hide()
 	
@@ -76,9 +78,11 @@ func startOfDay():
 	print("Start of day: ", day)
 	
 	if(day == 1):
+		#$music.play()
 		$introLetter.show()
 		await ($introLetter.pressed)
 		
+		$day1music.play()
 		
 		giveIngredient(ItemCreator.allIngredients.get("earth"))
 	
@@ -96,6 +100,20 @@ func startOfDay():
 		for NPC in NPCBirthingPod.allNPCs.values():
 			availableNPCS.append(NPC)
 	else:
+		if day == 2:
+			$day2music.play()
+		if day == 3:
+			$day3music.play()
+		if day == 4:
+			$day4music.play()
+		if day == 5:
+			$day5music.play()
+		if day == 6:
+			$day6music.play()
+		if day == 7:
+			$day7music.play()
+		if day > 7:
+			$day8music.play()
 		var ingredient = ingredients.get("leaf of a thousand leaves")
 		ingredient.amountOwned = ingredient.amountOwned + 2
 		
@@ -694,6 +712,7 @@ func endOfDay():
 	for i in $ui/CauldronStation.held_ingredients:
 		giveIngredient(ingredients.get(i))
 	
+	music_fade()
 	
 	$ui/crowStore.currency = currency
 	$ui/crowStore.checkIfTooBroke()
@@ -705,3 +724,80 @@ func _on_intro_letter_pressed() -> void:
 	$ui/Hud.show()
 	get_tree().paused = false
 	$introLetter.hide()
+
+func music_fade():
+	if $mmmusic.playing == true:
+		_on_animation_player_animation_finished("mm_music_fade_anim")
+	if $day1music.playing == true:
+		_on_animation_player_animation_finished("day1_music_fade_anim")
+	if $day2music.playing == true:
+		_on_animation_player_animation_finished("day2_music_fade_anim")
+	if $day3music.playing == true:
+		_on_animation_player_animation_finished("day3_music_fade_anim")
+	if $day4music.playing == true:
+		_on_animation_player_animation_finished("day4_music_fade_anim")
+	if $day5music.playing == true:
+		_on_animation_player_animation_finished("day5_music_fade_anim")
+	if $day6music.playing == true:
+		_on_animation_player_animation_finished("day6_music_fade_anim")
+	if $day7music.playing == true:
+		_on_animation_player_animation_finished("day7_music_fade_anim")
+	if $day8music.playing == true:
+		_on_animation_player_animation_finished("day8_music_fade_anim")
+
+func _on_mmmusic_finished() -> void:
+	$mmmusic.play()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "mm_music_fade_anim":
+		$mmmusic.stop()
+	if anim_name == "day1_music_fade_anim":
+		$day1music.stop()
+	if anim_name == "day2_music_fade_anim":
+		$day2music.stop()
+	if anim_name == "day3_music_fade_anim":
+		$day3music.stop()
+	if anim_name == "day4_music_fade_anim":
+		$day4music.stop()
+	if anim_name == "day5_music_fade_anim":
+		$day5music.stop()
+	if anim_name == "day6_music_fade_anim":
+		$day6music.stop()
+	if anim_name == "day7_music_fade_anim":
+		$day7music.stop()
+	if anim_name == "day8_music_fade_anim":
+		$day8music.stop()
+	else:
+		pass
+
+
+func _on_day_1_music_finished() -> void:
+	$day1music.play()
+
+
+func _on_day_2_music_finished() -> void:
+	$day2music.play()
+
+
+func _on_day_3_music_finished() -> void:
+	$day3music.play()
+
+
+func _on_day_4_music_finished() -> void:
+	$day4music.play()
+
+func _on_day_5_music_finished() -> void:
+	$day5music.play()
+
+
+func _on_day_6_music_finished() -> void:
+	$day6music.play()
+
+
+func _on_day_7_music_finished() -> void:
+	$day7music.play()
+
+
+func _on_day_8_music_finished() -> void:
+	$day8music.play()
