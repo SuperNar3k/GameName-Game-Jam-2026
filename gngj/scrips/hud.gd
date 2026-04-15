@@ -39,4 +39,4 @@ func updateCurrency(currency: Variant):
 	
 func updateTimer(timer: Timer):
 	var hours_left = floor((timer.time_left / 240) * 8)
-	$endDay.text = "Hours Left: " + str(int(hours_left))
+	#$endDay.text = "Hours Left: " + str(int(hours_left))

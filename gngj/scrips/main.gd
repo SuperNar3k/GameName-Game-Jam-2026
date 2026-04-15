@@ -450,6 +450,7 @@ func onIngredientGrinded(i: Item):
 	
 	# Increase crushed quantity by 1
 	crushedObj.amountOwned += 1
+	createdItem(crushedObj, "Ingredient")
 	
 	# Decrease quantity by 1
 	i.amountOwned -= 1
@@ -566,7 +567,7 @@ func unlockPotion(p: Item):
 		notificationQueue.append(p)
 		notificationQueue.append("Potion")
 	else: 
-		createdItem(p, p.itemName)
+		createdItem(p, "Potion")
 
 func createdItem(i: Item, type: String):
 	$ui/Notification/Popup.itemMade(i, type)
