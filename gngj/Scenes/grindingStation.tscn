@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dknqykf8c7u1n" path="res://scrips/pestle.gd" id="3_ohim2"]
 [ext_resource type="Texture2D" uid="uid://dnj88vlcmlflo" path="res://assets/background/back/New Assets 4-14/pestil.PNG" id="6_tl0jk"]
 [ext_resource type="AudioStream" uid="uid://cn1qgre5uh0l3" path="res://assets/sound/Glass on Table Movement.wav" id="8_aj0c6"]
-[ext_resource type="AudioStream" uid="uid://ylh3ewxy6x43" path="res://assets/sound/Grind Stone.wav" id="9_tl0jk"]
+[ext_resource type="AudioStream" uid="uid://eeyiwbri3tgr" path="res://assets/sound/new sound/New Grind.wav" id="9_tl0jk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w5u62"]
 radius = 20.0

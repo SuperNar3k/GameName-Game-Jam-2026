@@ -30,6 +30,7 @@ func displayShit(activeQuests : Array, pharmacyQuests : Array, allPotions: Dicti
 			quest.setDaysUntilDue(aQuest.daysUntilDue)
 		
 			quest = preload("res://Scenes/displayQuestOnList.tscn").instantiate()
+	$AudioStreamPlayer2D.play()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

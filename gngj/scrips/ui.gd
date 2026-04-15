@@ -44,7 +44,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("options_btn"):
-		get_tree().quit()
+		if !$Options.is_visible_in_tree():
+			_on_hud_options_pressed()
+		else:
+			_on_options_exit_options()
 	
 	if Input.is_action_just_pressed("recipe_book_btn"):
 		if gameStart:
@@ -195,6 +198,8 @@ func _on_options_exit_options() -> void:
 	if(lastScreen == $MainMenuScene):
 		$MainMenuScene/phys_buttons/collisionTimer.paused = false
 		$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
+	else:
+		$Hud.show()
 		
 	lastScreen.show()
 
@@ -224,9 +229,10 @@ func _on_quest_list_screen_return_to_game() -> void:
 	$questListScreen/AnimationPlayer.play_backwards("slide_up")
 
 func _on_hud_options_pressed() -> void:
-	$Hud.hide_leftstuff()
-	lastScreen.hide()
-	$Options.show()
+	if lastScreen != null:
+		$Hud.hide()
+		lastScreen.hide()
+		$Options.show()
 	
 func _on_end_of_day() -> void:
 	$Hud/endDay.hide()

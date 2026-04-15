@@ -133,6 +133,7 @@ func _on_hovered(ref, hovered:bool):
 	ref.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
 
 func _on_recipe_book_btn_pressed() -> void:
+	$bookopen.play()
 	#Displays the first set of recipes
 	page_index =  0
 	while page_index < 2:

@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="4_wbrmg"]
 [ext_resource type="AudioStream" uid="uid://bimgvannaic6u" path="res://assets/sound/Paper.wav" id="7_j186r"]
 [ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="8_q4q0n"]
+[ext_resource type="AudioStream" uid="uid://bwawb3xjlcb4m" path="res://assets/sound/new sound/Book Opening.wav" id="11_nf5bx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjxqd"]
 
@@ -662,6 +663,7 @@ rotation = -0.08682512
 text = "Z"
 
 [node name="BookmarkContainer1" type="VBoxContainer" parent="Book" unique_id=1026793679]
+visible = false
 offset_left = 228.0
 offset_top = 85.0
 offset_right = 428.0
@@ -671,7 +673,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 50
 
-[node name="aButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1269564758]
+[node name="aButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1722907086]
 custom_minimum_size = Vector2(50, 80)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -679,7 +681,7 @@ texture_normal = ExtResource("3_h2olp")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/aButton" unique_id=1665689471]
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/aButton" unique_id=474454977]
 layout_mode = 0
 offset_left = 44.21054
 offset_top = 21.127254
@@ -791,6 +793,7 @@ rotation = -0.08682512
 text = "M"
 
 [node name="BookmarkContainer2" type="VBoxContainer" parent="Book" unique_id=1618582259]
+visible = false
 offset_left = 245.00002
 offset_top = 149.0
 offset_right = 445.0
@@ -916,6 +919,7 @@ rotation = -0.08682512
 text = "L"
 
 [node name="BookmarkContainer4" type="VBoxContainer" parent="Book" unique_id=2102633227]
+visible = false
 offset_left = 1502.0
 offset_top = 136.0
 offset_right = 1702.0
@@ -1026,6 +1030,7 @@ rotation = -0.08682512
 text = "Y"
 
 [node name="BookmarkContainer3" type="VBoxContainer" parent="Book" unique_id=602043388]
+visible = false
 offset_left = 1491.0
 offset_top = 74.0
 offset_right = 1691.0
@@ -1034,7 +1039,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 50
 
-[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1058057139]
+[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=553018457]
 custom_minimum_size = Vector2(50, 80)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -1042,7 +1047,7 @@ texture_normal = ExtResource("3_pjxqd")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/nButton" unique_id=232287362]
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/nButton" unique_id=1442849637]
 layout_mode = 0
 offset_left = 129.47363
 offset_top = 25.473606
@@ -1412,6 +1417,9 @@ visible = false
 material = SubResource("ShaderMaterial_pjxqd")
 position = Vector2(788, 0)
 texture = ExtResource("8_q4q0n")
+
+[node name="bookopen" type="AudioStreamPlayer2D" parent="." unique_id=858484239]
+stream = ExtResource("11_nf5bx")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]

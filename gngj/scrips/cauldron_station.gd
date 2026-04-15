@@ -74,6 +74,14 @@ func _on_hovered(hovered: bool, ref) -> void:
 
 func _on_drop_spot_pressed() -> void:
 	if ($IngredientDrawer.held != null):
+		if allIngredients.get($IngredientDrawer.held).isGrindable:
+			var randPitch = randf_range(0.7, 1.1)
+			$heavysplash.pitch_scale = randPitch
+			$heavysplash.play(.22)
+		else:
+			var randPitch = randf_range(0.9, 1.3)
+			$lightsplash.pitch_scale = randPitch
+			$lightsplash.play(.53)
 		held_ingredients.append($IngredientDrawer.held)
 		$IngredientDrawer.instance.queue_free()
 		$IngredientDrawer.held = null

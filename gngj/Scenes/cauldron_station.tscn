@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://b0ujpi24jwvwt" path="res://assets/sound/Bubbling Wet.wav" id="9_pg281"]
 [ext_resource type="AudioStream" uid="uid://dmvaagihud3nj" path="res://assets/sound/Liquid Sloshing.wav" id="10_l5v4h"]
 [ext_resource type="AudioStream" uid="uid://c1gwq37n5wiwm" path="res://assets/sound/Liquid Pour Cup.wav" id="10_v4hfa"]
+[ext_resource type="AudioStream" uid="uid://cr2e4xee65b1m" path="res://assets/sound/new sound/Cauldron Add Heavy.wav" id="12_cy4qc"]
+[ext_resource type="AudioStream" uid="uid://cnicmwh34iold" path="res://assets/sound/new sound/Cauldron Add Light.wav" id="13_omp8q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lc2wf"]
 radius = 41.225906
@@ -178,6 +180,12 @@ bus = &"SFX"
 stream = ExtResource("10_l5v4h")
 volume_db = 5.0
 bus = &"SFX"
+
+[node name="heavysplash" type="AudioStreamPlayer2D" parent="." unique_id=2038204886]
+stream = ExtResource("12_cy4qc")
+
+[node name="lightsplash" type="AudioStreamPlayer2D" parent="." unique_id=1984803436]
+stream = ExtResource("13_omp8q")
 
 [connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
 [connection signal="button_down" from="liquid/Button" to="." method="_on_button_button_down"]
