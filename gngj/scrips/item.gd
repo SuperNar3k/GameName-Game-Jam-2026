@@ -24,10 +24,10 @@ func __init__(
 	_sprite: String,
 	_itemName: String,
 	_description: String,
+	_value: int,
 	_recipe = [],
 	_amountOwned = 0,
 	_cookLevelNeeded = 0,
-	_value = 0,
 	_isGrindable = false
 
 ):

@@ -3,9 +3,9 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 90
+var dayDuration = 240
 var timerStarted = false
-var numOfNpcs = 9
+var numOfNpcs = 3
 var dudCounter = 1
 
 var MAX_PHARMACY_QUESTS = 5 # Max number of repeatable quests
@@ -570,6 +570,7 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 			0,
 			potionSprite,
 			potionRecipe,
+			0,
 			0
 		)
 		dudCounter = dudCounter + 1
