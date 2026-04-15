@@ -126,6 +126,7 @@ func endDay():
 	if $CauldronStation/IngredientDrawer.position.x < 860:
 		$CauldronStation/IngredientDrawer._on_handle_pressed()
 		$CauldronStation/IngredientDrawer._redraw()
+		
 	if $GrindingStation/IngredientDrawer.position.x < 860:
 		$GrindingStation/IngredientDrawer._on_handle_pressed()
 		$GrindingStation/IngredientDrawer._redraw()
