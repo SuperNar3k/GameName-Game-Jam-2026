@@ -998,9 +998,9 @@ text = "Z"
 visible = false
 layout_mode = 0
 offset_left = -814.0
-offset_top = 136.0
+offset_top = -39.0
 offset_right = -695.0
-offset_bottom = 222.0
+offset_bottom = 47.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_pjxqd")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_pjxqd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_pjxqd")
@@ -1011,9 +1011,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_pjxqd")
 visible = false
 layout_mode = 0
 offset_left = 708.0
-offset_top = 136.0
+offset_top = -40.0
 offset_right = 827.0
-offset_bottom = 222.0
+offset_bottom = 46.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_h2olp")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_h2olp")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_h2olp")
@@ -1023,10 +1023,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_h2olp")
 [node name="ExitBtn" type="Button" parent="." unique_id=757798167]
 visible = false
 layout_mode = 0
-offset_left = -944.0
-offset_top = -166.0
-offset_right = -707.02
-offset_bottom = -41.0
+offset_left = 676.0
+offset_top = 375.0
+offset_right = 912.98
+offset_bottom = 500.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wbrmg")
@@ -1036,9 +1036,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_wbrmg")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=400350703]
 visible = false
 material = SubResource("ShaderMaterial_j186r")
-position = Vector2(16, -568)
+position = Vector2(-45, -26)
 texture = ExtResource("4_nvrov")
-flip_h = true
 
 [node name="LeftSprite" type="Sprite2D" parent="." unique_id=1479250762]
 position = Vector2(-285.995, 900)
@@ -1116,14 +1115,14 @@ bus = &"SFX"
 [node name="backimg" type="Sprite2D" parent="." unique_id=1147217930]
 visible = false
 material = SubResource("ShaderMaterial_q4q0n")
-position = Vector2(-774, 176)
+position = Vector2(-774, 0)
 texture = ExtResource("8_q4q0n")
 flip_h = true
 
 [node name="fwdimg" type="Sprite2D" parent="." unique_id=1317108704]
 visible = false
 material = SubResource("ShaderMaterial_pjxqd")
-position = Vector2(788, 177)
+position = Vector2(788, 0)
 texture = ExtResource("8_q4q0n")
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

@@ -16,41 +16,43 @@ var page = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Handle.mouse_entered.connect(_on_hovered.bind(true, self))
-	$Handle.mouse_exited.connect(_on_hovered.bind(false, self))
+	$Handle.mouse_entered.connect(_on_hovered.bind(true, self, null))
+	$Handle.mouse_exited.connect(_on_hovered.bind(false, self, null))
 	
-	$Button.mouse_entered.connect(_on_hovered.bind(true, $Button/Sprite2D))
-	$Button.mouse_exited.connect(_on_hovered.bind(false, $Button/Sprite2D))
-	$Button2.mouse_entered.connect(_on_hovered.bind(true, $Button2/Sprite2D))
-	$Button2.mouse_exited.connect(_on_hovered.bind(false, $Button2/Sprite2D))
-	$Button3.mouse_entered.connect(_on_hovered.bind(true, $Button3/Sprite2D))
-	$Button3.mouse_exited.connect(_on_hovered.bind(false, $Button3/Sprite2D))
-	$Button4.mouse_entered.connect(_on_hovered.bind(true, $Button4/Sprite2D))
-	$Button4.mouse_exited.connect(_on_hovered.bind(false, $Button4/Sprite2D))
-	$Button5.mouse_entered.connect(_on_hovered.bind(true, $Button5/Sprite2D))
-	$Button5.mouse_exited.connect(_on_hovered.bind(false, $Button5/Sprite2D))
-	$Button6.mouse_entered.connect(_on_hovered.bind(true, $Button6/Sprite2D))
-	$Button6.mouse_exited.connect(_on_hovered.bind(false, $Button6/Sprite2D))
-	$Button7.mouse_entered.connect(_on_hovered.bind(true, $Button7/Sprite2D))
-	$Button7.mouse_exited.connect(_on_hovered.bind(false, $Button7/Sprite2D))
-	$Button8.mouse_entered.connect(_on_hovered.bind(true, $Button8/Sprite2D))
-	$Button8.mouse_exited.connect(_on_hovered.bind(false, $Button8/Sprite2D))
-	$Button9.mouse_entered.connect(_on_hovered.bind(true, $Button9/Sprite2D))
-	$Button9.mouse_exited.connect(_on_hovered.bind(false, $Button9/Sprite2D))
-	$Button10.mouse_entered.connect(_on_hovered.bind(true, $Button10/Sprite2D))
-	$Button10.mouse_exited.connect(_on_hovered.bind(false, $Button10/Sprite2D))
-	$Button11.mouse_entered.connect(_on_hovered.bind(true, $Button11/Sprite2D))
-	$Button11.mouse_exited.connect(_on_hovered.bind(false, $Button11/Sprite2D))
-	$Button12.mouse_entered.connect(_on_hovered.bind(true, $Button12/Sprite2D))
-	$Button12.mouse_exited.connect(_on_hovered.bind(false, $Button12/Sprite2D))
-	$Button13.mouse_entered.connect(_on_hovered.bind(true, $Button13/Sprite2D))
-	$Button13.mouse_exited.connect(_on_hovered.bind(false, $Button13/Sprite2D))
-	$Button14.mouse_entered.connect(_on_hovered.bind(true, $Button14/Sprite2D))
-	$Button14.mouse_exited.connect(_on_hovered.bind(false, $Button14/Sprite2D))
-	$Button15.mouse_entered.connect(_on_hovered.bind(true, $Button15/Sprite2D))
-	$Button15.mouse_exited.connect(_on_hovered.bind(false, $Button15/Sprite2D))
-	$Button16.mouse_entered.connect(_on_hovered.bind(true, $Button16/Sprite2D))
-	$Button16.mouse_exited.connect(_on_hovered.bind(false, $Button16/Sprite2D))
+	$Button.mouse_entered.connect(_on_hovered.bind(true, $Button/Sprite2D, 0))
+	$Button.mouse_exited.connect(_on_hovered.bind(false, $Button/Sprite2D, 0))
+	$Button2.mouse_entered.connect(_on_hovered.bind(true, $Button2/Sprite2D, 1))
+	$Button2.mouse_exited.connect(_on_hovered.bind(false, $Button2/Sprite2D, 1))
+	$Button3.mouse_entered.connect(_on_hovered.bind(true, $Button3/Sprite2D, 2))
+	$Button3.mouse_exited.connect(_on_hovered.bind(false, $Button3/Sprite2D, 2))
+	$Button4.mouse_entered.connect(_on_hovered.bind(true, $Button4/Sprite2D, 3))
+	$Button4.mouse_exited.connect(_on_hovered.bind(false, $Button4/Sprite2D, 3))
+	$Button5.mouse_entered.connect(_on_hovered.bind(true, $Button5/Sprite2D, 4))
+	$Button5.mouse_exited.connect(_on_hovered.bind(false, $Button5/Sprite2D, 4))
+	$Button6.mouse_entered.connect(_on_hovered.bind(true, $Button6/Sprite2D, 5))
+	$Button6.mouse_exited.connect(_on_hovered.bind(false, $Button6/Sprite2D, 5))
+	$Button7.mouse_entered.connect(_on_hovered.bind(true, $Button7/Sprite2D, 6))
+	$Button7.mouse_exited.connect(_on_hovered.bind(false, $Button7/Sprite2D, 6))
+	$Button8.mouse_entered.connect(_on_hovered.bind(true, $Button8/Sprite2D, 7))
+	$Button8.mouse_exited.connect(_on_hovered.bind(false, $Button8/Sprite2D, 7))
+	$Button9.mouse_entered.connect(_on_hovered.bind(true, $Button9/Sprite2D, 8))
+	$Button9.mouse_exited.connect(_on_hovered.bind(false, $Button9/Sprite2D, 8))
+	$Button10.mouse_entered.connect(_on_hovered.bind(true, $Button10/Sprite2D, 9))
+	$Button10.mouse_exited.connect(_on_hovered.bind(false, $Button10/Sprite2D, 9))
+	$Button11.mouse_entered.connect(_on_hovered.bind(true, $Button11/Sprite2D, 10))
+	$Button11.mouse_exited.connect(_on_hovered.bind(false, $Button11/Sprite2D, 10))
+	$Button12.mouse_entered.connect(_on_hovered.bind(true, $Button12/Sprite2D, 11))
+	$Button12.mouse_exited.connect(_on_hovered.bind(false, $Button12/Sprite2D, 11))
+	$Button13.mouse_entered.connect(_on_hovered.bind(true, $Button13/Sprite2D, 12))
+	$Button13.mouse_exited.connect(_on_hovered.bind(false, $Button13/Sprite2D, 12))
+	$Button14.mouse_entered.connect(_on_hovered.bind(true, $Button14/Sprite2D, 13))
+	$Button14.mouse_exited.connect(_on_hovered.bind(false, $Button14/Sprite2D, 13))
+	$Button15.mouse_entered.connect(_on_hovered.bind(true, $Button15/Sprite2D, 14))
+	$Button15.mouse_exited.connect(_on_hovered.bind(false, $Button15/Sprite2D, 14))
+	$Button16.mouse_entered.connect(_on_hovered.bind(true, $Button16/Sprite2D, 15))
+	$Button16.mouse_exited.connect(_on_hovered.bind(false, $Button16/Sprite2D, 15))
+	$nextBtn.mouse_entered.connect(_on_hovered.bind(true, $Sprite2D, -1))
+	$nextBtn.mouse_exited.connect(_on_hovered.bind(false, $Sprite2D, -1))
 	
 	$Button.pressed.connect(_on_drawer_button_pressed.bind(0))
 	$Button2.pressed.connect(_on_drawer_button_pressed.bind(1))
@@ -75,6 +77,8 @@ func __init__(_allIngredients : Dictionary, _wantGrinded : bool) -> void:
 	wantGrinded = _wantGrinded
 	
 func _on_drawer_button_pressed(pressed : int) -> void:
+	if instance != null:
+		instance.queue_free()
 	if grabbingAllowed:
 		if(held == null):
 			if page != 1:
@@ -88,7 +92,7 @@ func _on_drawer_button_pressed(pressed : int) -> void:
 							held = allIngredients.keys()[pressed+16]
 							hide_buttons()
 							allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
-							get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
+							instance.get_child(0).text = (ref.itemName + "\n" + str(ref.amountOwned))
 						else:
 							if (allIngredients.get(allIngredients.keys()[pressed+16]).isGrindable):
 								var ref = allIngredients.get(allIngredients.keys()[pressed+16])
@@ -98,7 +102,6 @@ func _on_drawer_button_pressed(pressed : int) -> void:
 								held = allIngredients.keys()[pressed+16]
 								hide_buttons()
 								allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
-								get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
 						if (allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned == 0):
 							get_child(pressed).get_child(0).set_texture(Texture2D)
 			else:
@@ -111,7 +114,6 @@ func _on_drawer_button_pressed(pressed : int) -> void:
 							held = allIngredients.keys()[pressed]
 							hide_buttons()
 							allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
-							get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
 						else:
 							if (allIngredients.get(allIngredients.keys()[pressed]).isGrindable):
 								var ref = allIngredients.get(allIngredients.keys()[pressed])
@@ -121,7 +123,6 @@ func _on_drawer_button_pressed(pressed : int) -> void:
 								held = allIngredients.keys()[pressed]
 								hide_buttons()
 								allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
-								get_child(pressed).tooltip_text = (ref.itemName + "\n" + str(ref.amountOwned))
 						if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned == 0):
 							get_child(pressed).get_child(0).set_texture(Texture2D)
 		else:
@@ -150,6 +151,7 @@ func _process(_delta: float) -> void:
 
 func _on_handle_pressed() -> void:
 	$nextBtn.hide()
+	$Sprite2D.hide()
 	if (huh % 2 == 0):
 		$AnimationPlayer.play("Drawer_Slide")
 		huh = huh + 1
@@ -160,8 +162,27 @@ func _on_handle_pressed() -> void:
 		$AnimationPlayer.play_backwards("Drawer_Slide")
 		huh = huh + 1
 
-func _on_hovered(hovered: bool, ref) -> void:
+func _on_hovered(hovered: bool, ref, button) -> void:
 	if held == null:
+		if hovered:
+			var ing
+			if button == -1:
+				instance = spawn_test.instantiate()
+				add_child(instance)
+				instance.get_child(0).text = "Next Drawer"
+			elif button != null:
+				if page != 1:
+					if (button + 16) < 30:
+						ing = allIngredients.get(allIngredients.keys()[button+16])
+				else:
+					ing = allIngredients.get(allIngredients.keys()[button])
+				instance = spawn_test.instantiate()
+				if ing != null:
+					add_child(instance)
+					instance.get_child(0).text = (ing.itemName + "\n" + str(ing.amountOwned))
+		else:
+			if instance != null:
+				instance.queue_free()
 		ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
 	else:
 		ref.material.set_shader_parameter("outline_thickness", 0.0)
@@ -170,11 +191,11 @@ func _on_hovered(hovered: bool, ref) -> void:
 func _on_animation_player_animation_finished(_anim_name: StringName):
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and held == null:
 		$nextBtn.show()
+		$Sprite2D.show()
 	
 	if nextPressed:
 		var delete = 0
 		while delete < 16:
-			get_child(delete).tooltip_text = ""
 			get_child(delete).get_child(0).set_texture(Texture2D)
 			delete = delete + 1
 		if page != 1:
@@ -183,7 +204,6 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 			for ingred in allIngredients.keys():
 				if i <= 15:
 					if allIngredients.get(ingred).amountOwned > 0:
-						get_child(i).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 						get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 				i = i + 1
 		else:
@@ -194,7 +214,6 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 					pass
 				else:
 					if allIngredients.get(ingred).amountOwned > 0:
-						get_child(i-16).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 						get_child(i-16).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 				i = i + 1
 		$AnimationPlayer.play("Drawer_Slide")
@@ -206,6 +225,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 
 func _on_next_btn_pressed() -> void:
 	$nextBtn.hide()
+	$Sprite2D.hide()
 	$AnimationPlayer.play_backwards("Drawer_Slide")
 	nextPressed = true
 
@@ -219,7 +239,6 @@ func _redraw() -> void:
 		for ingred in allIngredients.keys():
 			if i <= 15:
 				if allIngredients.get(ingred).amountOwned > 0:
-					get_child(i).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 					get_child(i).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 			i = i + 1
 	else:
@@ -229,12 +248,12 @@ func _redraw() -> void:
 				pass
 			else:
 				if allIngredients.get(ingred).amountOwned > 0:
-					get_child(i-16).tooltip_text = (allIngredients.get(ingred).itemName + "\n" + str(allIngredients.get(ingred).amountOwned))
 					get_child(i-16).get_child(0).set_texture(load(allIngredients.get(ingred).sprite))
 			i = i + 1
 
 func hide_buttons():
 	$nextBtn.hide()
+	$Sprite2D.hide()
 	$Handle.hide()
 	parent_buttons_hide.emit()
 func show_buttons():
@@ -242,5 +261,6 @@ func show_buttons():
 		showOnCompleted = true
 	else:
 		$nextBtn.show()
+		$Sprite2D.show()
 		$Handle.show()
 		parent_buttons_show.emit()

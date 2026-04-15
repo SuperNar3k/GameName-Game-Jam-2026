@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cd1okxuxo1474" path="res://assets/background/cauldron-mp-top/igndrawer.PNG" id="2_msq4k"]
 [ext_resource type="Script" uid="uid://db60yq50nv5yt" path="res://scrips/ingredient_drawer.gd" id="3_msq4k"]
 [ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="4_lk3kl"]
+[ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="5_qsit0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tl0jk"]
 shader = ExtResource("1_2cnka")
@@ -108,6 +109,14 @@ shader_parameter/outline_thickness = 0.0
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_diasw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsit0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lexk"]
+shader = ExtResource("1_2cnka")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_2cnka"]
 resource_name = "Drawer_Slide"
@@ -308,12 +317,23 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_diasw")
 
 [node name="nextBtn" type="Button" parent="." unique_id=900976747]
 visible = false
-offset_left = -148.0
-offset_top = -502.0
-offset_right = 52.0
-offset_bottom = -402.0
+offset_left = -95.70831
+offset_top = -233.70825
+offset_right = 35.291687
+offset_bottom = -133.70825
 theme_override_fonts/font = ExtResource("4_lk3kl")
-text = "Next"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qsit0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qsit0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qsit0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qsit0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qsit0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=953921059]
+visible = false
+material = SubResource("ShaderMaterial_3lexk")
+position = Vector2(-5.708313, -169.70828)
+rotation = 0.506738
+texture = ExtResource("5_qsit0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1400457152]
 libraries/ = SubResource("AnimationLibrary_msq4k")

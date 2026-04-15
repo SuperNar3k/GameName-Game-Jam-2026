@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://r6mb22v4q3he" path="res://assets/npcs/dirt covered field hand.PNG" id="3_w4gd2"]
 [ext_resource type="FontFile" uid="uid://bbda1el5gvlty" path="res://assets/fonts/Organic Teabags.otf" id="5_w4gd2"]
 [ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="5_pk1jc"]
-[ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="5_w4gd2"]
+[ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="6_pk1jc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pk1jc"]
 
@@ -157,10 +157,10 @@ size_flags_vertical = 3
 
 [node name="goToBackroom" type="Button" parent="." unique_id=1735358139]
 layout_mode = 0
-offset_left = 719.0
-offset_top = 389.0
-offset_right = 844.0
-offset_bottom = 489.0
+offset_left = 686.0
+offset_top = 370.0
+offset_right = 902.71497
+offset_bottom = 507.425
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxEmpty_pk1jc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ld2q")
@@ -170,8 +170,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5tojp")
 
 [node name="backimg" type="Sprite2D" parent="." unique_id=784804419]
 material = SubResource("ShaderMaterial_5ld2q")
-position = Vector2(803, 435)
-texture = ExtResource("5_w4gd2")
+position = Vector2(-45, -26)
+texture = ExtResource("6_pk1jc")
 
 [node name="acceptQuestButton" type="Button" parent="." unique_id=1847298089]
 visible = false
