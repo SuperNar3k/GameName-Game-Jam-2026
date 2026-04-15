@@ -41,7 +41,7 @@ func createQuest(
 	)
 	return newQuest
 	
-func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary, numOfDuds: Variant):
+func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary, _numOfDuds: Variant):
 	print("creating a quest")
 	
 	
@@ -53,8 +53,12 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 	var randomPotion = cleanPotions.pick_random()
 	print("The random potion was: ", randomPotion)
 	
+	var potionValue = allPotions.get(randomPotion).value
+	
 	var randomRecipeReward = allPotions.keys().pick_random()
 	var quest = null
+	
+	
 	
 	match npcName:
 		"Ambitious Lady In Waiting":
@@ -73,7 +77,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["Remarkable. This is a very pristine specimen."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -101,7 +105,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"You got yourself a proper adventurer customer."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -123,7 +127,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"We as in my party. Yeah, my party."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -147,7 +151,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"Thank you again for your help."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -172,7 +176,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"We as in my party. Yeah, my party."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -199,7 +203,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"I may stop by here again when I have the time."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -227,7 +231,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["Remarkable. This is a very pristine specimen."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -255,7 +259,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["I’ll be sure to stop by again, you’re a great potion master!"],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -277,7 +281,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 				"I will share your brilliance with the rest of the noble house of Rouge."],		#Joining pharmacy dialog
 				[],
 				[randomPotion],																#Requirements
-				69,																	#RewardMoney
+				potionValue,																	#RewardMoney
 				[],																	#RewardRecipes
 				["earth"],												#RewardIngredients
 				3,																	#DaysUntilDue
@@ -298,7 +302,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 				""],		#Joining pharmacy dialog
 				[],
 				[randomPotion],																#Requirements
-				69,																	#RewardMoney
+				potionValue,																	#RewardMoney
 				[],																	#RewardRecipes
 				["earth"],												#RewardIngredients
 				3,																	#DaysUntilDue
@@ -320,7 +324,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["You’re quite dependable. I will remember your shop!"],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -344,7 +348,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["I’ll be sure to swing by again to see your cute face and to grab some more potions."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -368,7 +372,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["I’ll be sure to swing by again to see your cute face and to grab some more potions."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -390,7 +394,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["I’ll be sure to stop by again, you’re a great potion master!"],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -418,7 +422,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"so I’ll probably see you again soon. See you."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -443,7 +447,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["I’ll be sure to swing by again to see your cute face and to grab some more potions."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -467,7 +471,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		"We as in my party. Yeah, my party."],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -493,7 +497,7 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["I hope we cross paths again, you and your shop are quite adorable!"],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
@@ -514,13 +518,34 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 		["Maybe I'll be able to stop by the shop again.", "See you around!"],		#Joining pharmacy dialog
 		[],
 		[randomPotion],																#Requirements
-		69,																	#RewardMoney
+		potionValue,																	#RewardMoney
 		[randomRecipeReward],																	#RewardRecipes
 		["earth"],												#RewardIngredients
 		3,																	#DaysUntilDue
 		0,																	#DaysUntilReward
 		true,																#IsRepeatable
 		"Carefree Blacksmith",												#NpcTypeOrName
+		NPCBirthingPod														#Pass the birthing pod
+	)
+	
+		"Charming Noble":
+			quest = createQuest(
+		["Why, hello there!", "Would it be possible to acquire a " + randomPotion + "?"],									#allQueststartDialog
+		["Hello again, my dear shopkeeper.", "Might you have my potion ready?"],										#QuestReturningDialog
+		["Well, not to fret", "I am, if anything, very resilient"],							#QuestRejectedDialog
+		["That is a tragic way to start my quest.",
+		"But, if that's the worse of it, I may have an alright day after all.", "Good day."],							#QuestFailedDialog
+		["Most excellent dear merchant!", "This is splendid."],										#allQuestsuccses
+		["This shop is most excellent.", "I may frequent this establishment more often."],		#Joining pharmacy dialog
+		[],
+		[randomPotion],																#Requirements
+		potionValue,																	#RewardMoney
+		[randomRecipeReward],																	#RewardRecipes
+		["earth"],												#RewardIngredients
+		3,																	#DaysUntilDue
+		0,																	#DaysUntilReward
+		true,																#IsRepeatable
+		"Charming Noble",												#NpcTypeOrName
 		NPCBirthingPod														#Pass the birthing pod
 	)
 	

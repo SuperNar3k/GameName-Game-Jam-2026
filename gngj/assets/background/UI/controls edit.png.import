@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drbgdjjwbj6rb"
-path="res://.godot/imported/carefree blacksmith.PNG-8ccb5d421d8a41f9c370542f42530970.ctex"
+uid="uid://bsidyls6jb024"
+path="res://.godot/imported/controls edit.png-a69abb257b57a65c3cef3916b585595a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/carefree blacksmith.PNG"
-dest_files=["res://.godot/imported/carefree blacksmith.PNG-8ccb5d421d8a41f9c370542f42530970.ctex"]
+source_file="res://assets/background/UI/controls edit.png"
+dest_files=["res://.godot/imported/controls edit.png-a69abb257b57a65c3cef3916b585595a.ctex"]
 
 [params]
 

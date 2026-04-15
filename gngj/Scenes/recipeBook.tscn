@@ -673,7 +673,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 50
 
-[node name="aButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1722907086]
+[node name="aButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1957509586]
 custom_minimum_size = Vector2(50, 80)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -681,7 +681,7 @@ texture_normal = ExtResource("3_h2olp")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/aButton" unique_id=474454977]
+[node name="Label2" type="Label" parent="Book/BookmarkContainer1/aButton" unique_id=264240201]
 layout_mode = 0
 offset_left = 44.21054
 offset_top = 21.127254
@@ -1039,7 +1039,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 50
 
-[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=553018457]
+[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1081047776]
 custom_minimum_size = Vector2(50, 80)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -1047,7 +1047,7 @@ texture_normal = ExtResource("3_pjxqd")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/nButton" unique_id=1442849637]
+[node name="Label2" type="Label" parent="Book/BookmarkContainer3/nButton" unique_id=1429718333]
 layout_mode = 0
 offset_left = 129.47363
 offset_top = 25.473606
