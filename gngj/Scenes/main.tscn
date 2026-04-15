@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://5p73ychobdgw" path="res://Scenes/ui.tscn" id="1_jjgbg"]
 [ext_resource type="AudioStream" uid="uid://cvx4fcfhwilwu" path="res://assets/sound/Small Glass Clink.1.wav" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://hivedecccwh4" path="res://assets/ui/intro letter.PNG" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://buxby8wj8be0g" path="res://assets/background/parchment.PNG" id="5_21xkr"]
+[ext_resource type="LabelSettings" uid="uid://bgk07qtqte5ia" path="res://assets/fonts/label_settings/regText.tres" id="6_6bp64"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjvhh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjvhh"]
 
@@ -29,6 +33,7 @@ position = Vector2(960, 540)
 bus = &"SFX"
 
 [node name="giveSFX" type="AudioStreamPlayer2D" parent="." unique_id=878792952]
+visible = false
 position = Vector2(960, 540)
 stream = ExtResource("3_8gbba")
 bus = &"SFX"
@@ -37,12 +42,36 @@ bus = &"SFX"
 offset_right = 1917.0
 offset_bottom = 1080.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jjvhh")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kry3j")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_21xkr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jjvhh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jjvhh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jjvhh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jjvhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="introLetter" unique_id=2110292277]
 position = Vector2(962, 545)
 texture = ExtResource("4_jjvhh")
+
+[node name="gameWonScreen" type="Button" parent="." unique_id=1195702664]
+offset_right = 1917.0
+offset_bottom = 1080.0
+
+[node name="Sprite2D" type="Sprite2D" parent="gameWonScreen" unique_id=1938087235]
+position = Vector2(964.00006, 506)
+scale = Vector2(1.8844082, 2.04918)
+texture = ExtResource("5_21xkr")
+
+[node name="Label" type="Label" parent="gameWonScreen/Sprite2D" unique_id=1983663933]
+offset_left = -201.12416
+offset_top = -82.47202
+offset_right = 196.87584
+offset_bottom = 117.60801
+text = "YOU'VE MADE THE INVINCIBILITY POTION!!
+
+You are now the greatest potion maker in the land. 
+
+Feel free to keep tending to your loyal customers!"
+label_settings = ExtResource("6_6bp64")
+horizontal_alignment = 1
 
 [connection signal="buyItem" from="ui" to="." method="buyIngredient"]
 [connection signal="cookingDone" from="ui" to="." method="onCreatePotion"]

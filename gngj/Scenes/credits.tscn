@@ -2,16 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d313qrsadx0bv" path="res://scrips/credits.gd" id="1_gryuy"]
 [ext_resource type="Texture2D" uid="uid://bnfyxdhaxsp7" path="res://assets/background/main menu/mainbg.PNG" id="2_1bamb"]
-[ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="3_1bamb"]
-[ext_resource type="Texture2D" uid="uid://ivjrvrnwru1d" path="res://assets/ui/credit final.png" id="3_ccovl"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1bamb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xelri"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uah1q"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xelri"]
+[ext_resource type="Texture2D" uid="uid://ijmwswi54rps" path="res://assets/ui/IMG_0858.png" id="3_ccovl"]
 
 [node name="credits" type="Control" unique_id=1866293905]
 layout_mode = 3
@@ -43,17 +34,5 @@ position = Vector2(-794, -456.99997)
 scale = Vector2(1.1109375, 1.1407408)
 texture = ExtResource("3_1bamb")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=811555559]
-texture_filter = 5
-material = SubResource("CanvasItemMaterial_xelri")
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -327.00003
-offset_top = -424.00003
-offset_right = 1593.0
-offset_bottom = 656.0
-grow_horizontal = 2
-scale = Vector2(0.7, 0.7)
+[node name="credits" type="Sprite2D" parent="." unique_id=1906036019]
 texture = ExtResource("3_ccovl")

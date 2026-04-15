@@ -59,3 +59,7 @@ func _on_open_sound_pressed() -> void:
 func _on_open_controls_pressed() -> void:
 	$Sound.hide()
 	$Controls.show()
+
+
+func _on_quit_game_pressed() -> void:
+	get_tree().quit()

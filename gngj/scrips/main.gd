@@ -41,6 +41,7 @@ var buySFX = preload("res://assets/sound/Coin.wav")
 # Called when the game starts.
 func _ready() -> void:
 	$introLetter.hide()
+	$gameWonScreen.hide()
 	
 	$dayTimer.set_wait_time(dayDuration)
 	#$dayTimer.timeout.connect(endOfDay)
@@ -596,6 +597,11 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 		if p.cookLevelNeeded == cookedLevel and ingredientsUsed.size() == p.recipe.size():
 			if(ingredientsUsed == p.recipe):
 				potion = p
+				
+				if(p.itemName == "Invincibility Potion"):
+					$gameWonScreen.show()
+					await $gameWonScreen.pressed
+					$gameWonScreen.hide()
 				break
 
 	# Set to dud if recipe not found
@@ -694,5 +700,6 @@ func endOfDay():
 
 
 func _on_intro_letter_pressed() -> void:
+	$ui/Hud.show()
 	get_tree().paused = false
 	$introLetter.hide()
