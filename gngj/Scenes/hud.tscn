@@ -59,11 +59,11 @@ texture = ExtResource("6_i2avg")
 
 [node name="endDay" type="Label" parent="." unique_id=174043222]
 layout_mode = 0
-offset_left = 161.0
-offset_top = 73.0
-offset_right = 319.0
-offset_bottom = 118.0
-text = "Hours Left"
+offset_left = 178.0
+offset_top = 67.0
+offset_right = 351.0
+offset_bottom = 124.0
+text = "hours"
 label_settings = ExtResource("5_piegi")
 
 [node name="currencyLable" type="Label" parent="." unique_id=1472623530]
