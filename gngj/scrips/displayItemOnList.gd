@@ -7,4 +7,4 @@ func setItemName(_name: Variant):
 	$itemName.text = _name
 	
 func setItemAmount(amount: Variant):
-	$itemAmount.text = str(amount)
+	$itemAmount.text = "x" + str(amount)

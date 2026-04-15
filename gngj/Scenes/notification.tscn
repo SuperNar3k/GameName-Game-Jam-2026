@@ -90,8 +90,9 @@ libraries/ = SubResource("AnimationLibrary_cmct2")
 
 [node name="itemSprite" type="TextureRect" parent="Popup" unique_id=898404669]
 layout_mode = 0
-offset_left = -200.0
-offset_top = -50.0
+offset_left = -194.45215
+offset_top = -50.000004
+offset_right = 5.5478516
 offset_bottom = 150.0
 texture = ExtResource("3_cmct2")
 expand_mode = 1
@@ -115,9 +116,9 @@ autowrap_mode = 2
 [node name="contName" type="CenterContainer" parent="Popup" unique_id=734220691]
 layout_mode = 0
 offset_left = -55.0
-offset_top = -8.0
+offset_top = -8.321886
 offset_right = 145.0
-offset_bottom = 81.0
+offset_bottom = 81.13839
 
 [node name="nameLabel" type="Label" parent="Popup/contName" unique_id=1675335421]
 custom_minimum_size = Vector2(200, 25)
@@ -125,7 +126,7 @@ layout_mode = 2
 text = "Potion/Ingredient Name"
 label_settings = ExtResource("5_kxtsc")
 horizontal_alignment = 1
-autowrap_mode = 2
+autowrap_mode = 3
 
 [connection signal="finishedPlaying" from="Popup" to="." method="_on_popup_finished_playing"]
 [connection signal="timeout" from="Popup/popupTimer" to="Popup" method="onTimerTimeout"]

@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://db6uxsqamrixk"]
 
 [ext_resource type="Script" uid="uid://cm216fmwdtd20" path="res://scrips/endOfDayScreen.gd" id="1_nu41p"]
+[ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="2_n44ff"]
+[ext_resource type="Texture2D" uid="uid://ttpiv2wmlhcs" path="res://assets/ui/vert_parchment.PNG" id="2_ohqld"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_68nuj"]
 
@@ -27,6 +29,14 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_54bui")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_0kfgu")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_iq35i")
 
+[sub_resource type="LabelSettings" id="LabelSettings_ohqld"]
+font = ExtResource("2_n44ff")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_sml3a"]
+font = ExtResource("2_n44ff")
+font_size = 40
+
 [node name="endOfDayScreen" type="Control" unique_id=1933692783]
 layout_mode = 3
 anchors_preset = 8
@@ -40,6 +50,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nu41p")
 
+[node name="parchmentBackground" type="Sprite2D" parent="." unique_id=1793033519]
+position = Vector2(18, 409)
+texture = ExtResource("2_ohqld")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=10108451]
 clip_contents = false
 layout_mode = 0
@@ -50,7 +64,7 @@ offset_bottom = 544.0
 theme = SubResource("Theme_nu41p")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="ScrollContainer" unique_id=126831018]
-custom_minimum_size = Vector2(900, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -63,12 +77,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "INGREDIENTS"
+label_settings = SubResource("LabelSettings_ohqld")
 horizontal_alignment = 1
 
 [node name="potionLable" type="Label" parent="ScrollContainer/AspectRatioContainer/VBoxContainer" unique_id=2029568648]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "POTIONS"
+label_settings = SubResource("LabelSettings_sml3a")
 horizontal_alignment = 1
 
 [node name="continueButton" type="Button" parent="." unique_id=363319046]
