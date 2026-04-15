@@ -23,7 +23,10 @@ var allTownsfolk = [
 	"Ambitious Lady In Waiting",
 	"Fearless Privateer",
 	"Vacant Mercenary",
-	"Awkward Youth"
+	"Awkward Youth",
+	"Frog Fanatic",
+	"Carefree Blacksmith",
+	"Charming Noble"
 ]
 
 # __init__
