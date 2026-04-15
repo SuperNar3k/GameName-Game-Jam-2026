@@ -137,7 +137,7 @@ func _on_main_menu_scene_start_game() -> void:
 	$FrontRoom/ColorRect.hide()
 	gameStart = true
 	
-	$Hud.show()
+	#$Hud.show()
 	lastScreen = $FrontRoom
 	
 	startGame.emit()

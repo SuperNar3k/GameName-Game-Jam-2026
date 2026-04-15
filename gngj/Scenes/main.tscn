@@ -5,6 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://cvx4fcfhwilwu" path="res://assets/sound/Small Glass Clink.1.wav" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://hivedecccwh4" path="res://assets/ui/intro letter.PNG" id="4_jjvhh"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjvhh"]
+
 [node name="main" type="Node2D" unique_id=375112751]
 script = ExtResource("1_bo1nx")
 
@@ -30,6 +32,11 @@ bus = &"SFX"
 [node name="introLetter" type="Button" parent="." unique_id=1870892629]
 offset_right = 1917.0
 offset_bottom = 1080.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jjvhh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jjvhh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jjvhh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jjvhh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jjvhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="introLetter" unique_id=2110292277]
 position = Vector2(962, 545)
