@@ -2,20 +2,41 @@
 
 [ext_resource type="Script" uid="uid://3mj2jpxl7v7e" path="res://scrips/displayItemOnList.gd" id="1_n22ve"]
 [ext_resource type="Texture2D" uid="uid://dl6aw6dcxjbq8" path="res://assets/icon.svg" id="1_ofr5u"]
+[ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="2_s4me7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b0pl1"]
+font = ExtResource("2_s4me7")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_jycja"]
+font = ExtResource("2_s4me7")
+font_size = 25
 
 [node name="displayItemOnList" type="HBoxContainer" unique_id=110119318]
+custom_minimum_size = Vector2(500, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 3.0
-offset_bottom = -722.0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = -1423.0
+offset_bottom = -727.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n22ve")
 
+[node name="itemAmount" type="Label" parent="." unique_id=2009591534]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "x9999"
+label_settings = SubResource("LabelSettings_b0pl1")
+horizontal_alignment = 1
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=360610233]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
 [node name="itemSprite" type="TextureRect" parent="AspectRatioContainer" unique_id=1111635685]
 custom_minimum_size = Vector2(100, 100)
@@ -26,13 +47,9 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="itemName" type="Label" parent="." unique_id=838400886]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "word 1"
+text = "speak with animals potion"
+label_settings = SubResource("LabelSettings_jycja")
 vertical_alignment = 1
-
-[node name="itemAmount" type="Label" parent="." unique_id=2009591534]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "word 2"
-horizontal_alignment = 1
