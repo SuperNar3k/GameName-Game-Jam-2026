@@ -40,6 +40,7 @@ var buySFX = preload("res://assets/sound/Coin.wav")
 
 # Called when the game starts.
 func _ready() -> void:
+	$introLetter.hide()
 	
 	$dayTimer.set_wait_time(dayDuration)
 	#$dayTimer.timeout.connect(endOfDay)
@@ -74,6 +75,10 @@ func startOfDay():
 	print("Start of day: ", day)
 	
 	if(day == 1):
+		$introLetter.show()
+		await ($introLetter.pressed)
+		
+		
 		giveIngredient(ItemCreator.allIngredients.get("earth"))
 	
 		giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
@@ -638,3 +643,8 @@ func endOfDay():
 	$ui/crowStore.checkIfTooBroke()
 	$ui._on_end_of_day()
 	
+
+
+func _on_intro_letter_pressed() -> void:
+	get_tree().paused = false
+	$introLetter.hide()

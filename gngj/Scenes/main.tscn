@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://djsuwsu6buxsj" path="res://scrips/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://5p73ychobdgw" path="res://Scenes/ui.tscn" id="1_jjgbg"]
 [ext_resource type="AudioStream" uid="uid://cvx4fcfhwilwu" path="res://assets/sound/Small Glass Clink.1.wav" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://hivedecccwh4" path="res://assets/ui/intro letter.PNG" id="4_jjvhh"]
 
 [node name="main" type="Node2D" unique_id=375112751]
 script = ExtResource("1_bo1nx")
@@ -26,6 +27,14 @@ position = Vector2(960, 540)
 stream = ExtResource("3_8gbba")
 bus = &"SFX"
 
+[node name="introLetter" type="Button" parent="." unique_id=1870892629]
+offset_right = 1917.0
+offset_bottom = 1080.0
+
+[node name="Sprite2D" type="Sprite2D" parent="introLetter" unique_id=2110292277]
+position = Vector2(962, 545)
+texture = ExtResource("4_jjvhh")
+
 [connection signal="buyItem" from="ui" to="." method="buyIngredient"]
 [connection signal="cookingDone" from="ui" to="." method="onCreatePotion"]
 [connection signal="finishedNotifying" from="ui" to="." method="notifcationFinished"]
@@ -34,3 +43,4 @@ bus = &"SFX"
 [connection signal="startGame" from="ui" to="." method="startOfDay"]
 [connection signal="talkToNpc" from="ui" to="." method="_on_greetNPC"]
 [connection signal="timeout" from="dayTimer" to="." method="endOfDay"]
+[connection signal="pressed" from="introLetter" to="." method="_on_intro_letter_pressed"]

@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="3_cbhj7"]
 [ext_resource type="Texture2D" uid="uid://bw6t13kkqchpx" path="res://assets/background/UI/IMG_0659.PNG" id="4_q4at1"]
 [ext_resource type="Texture2D" uid="uid://b0exq7et5bhtm" path="res://assets/background/UI/IMG_0853.PNG" id="5_6f4k2"]
+[ext_resource type="FontFile" uid="uid://bifg0csa2300r" path="res://assets/fonts/label_settings/Gelasio-VariableFont_wght.ttf" id="7_bdxpv"]
 
 [sub_resource type="Theme" id="Theme_bdxpv"]
 
@@ -70,6 +71,7 @@ offset_left = 2.0
 offset_top = -26.0
 offset_right = 120.0
 offset_bottom = -3.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
 text = "Master Volume"
 
 [node name="MasterLabel" type="Label" parent="Sound/MasterVolumeSlider" unique_id=1280005323]
@@ -85,6 +87,7 @@ offset_left = -4.0
 offset_top = 23.0
 offset_right = 65.0
 offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
 text = "Mute"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Sound" unique_id=164630622]
@@ -102,6 +105,7 @@ offset_left = 2.0
 offset_top = -26.0
 offset_right = 120.0
 offset_bottom = -3.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
 text = "Music Volume"
 
 [node name="CheckBox" type="CheckBox" parent="Sound/MusicVolumeSlider" unique_id=1061323178]
@@ -110,6 +114,7 @@ offset_left = -4.0
 offset_top = 23.0
 offset_right = 65.0
 offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
 text = "Mute"
 
 [node name="MusicLabel" type="Label" parent="Sound/MusicVolumeSlider" unique_id=83190494]
@@ -134,6 +139,7 @@ offset_left = 2.0
 offset_top = -26.0
 offset_right = 120.0
 offset_bottom = -3.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
 text = "SFX Volume"
 
 [node name="Label" type="Label" parent="Sound/SFXVolumeSlider" unique_id=590274517]
@@ -149,9 +155,11 @@ offset_left = -4.0
 offset_top = 23.0
 offset_right = 65.0
 offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
 text = "Mute"
 
 [node name="Controls" type="Control" parent="." unique_id=1588457959]
+visible = false
 anchors_preset = 0
 offset_left = 107.0
 offset_top = 44.0
@@ -206,12 +214,23 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_pke3u")
 position = Vector2(131, 49)
 texture = ExtResource("5_6f4k2")
 
+[node name="Label" type="Label" parent="openSound/Sprite2D" unique_id=647850919]
+offset_left = -75.0
+offset_top = -45.0
+offset_right = 111.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
+theme_override_font_sizes/font_size = 30
+text = "Sound"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="openControls" type="Button" parent="." unique_id=1366076015]
 layout_mode = 0
-offset_left = 37.0
-offset_top = 185.0
-offset_right = 260.0
-offset_bottom = 283.0
+offset_left = 41.0
+offset_top = 168.0
+offset_right = 264.0
+offset_bottom = 266.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_6f4k2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_kfnrp")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_tcskm")
@@ -219,6 +238,17 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_tcskm")
 [node name="Sprite2D" type="Sprite2D" parent="openControls" unique_id=1933418118]
 position = Vector2(136, 45)
 texture = ExtResource("5_6f4k2")
+
+[node name="Label" type="Label" parent="openControls/Sprite2D" unique_id=394479771]
+offset_left = -70.0
+offset_top = -40.0
+offset_right = 108.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("7_bdxpv")
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="value_changed" from="Sound/MasterVolumeSlider" to="." method="_on_master_value_changed"]
 [connection signal="toggled" from="Sound/MasterVolumeSlider/CheckBox" to="." method="_on_master_mute_toggled"]
