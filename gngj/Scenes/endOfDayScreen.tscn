@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://db6uxsqamrixk"]
 
 [ext_resource type="Script" uid="uid://cm216fmwdtd20" path="res://scrips/endOfDayScreen.gd" id="1_nu41p"]
+[ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="2_bq2xf"]
 [ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="2_n44ff"]
 [ext_resource type="Texture2D" uid="uid://ttpiv2wmlhcs" path="res://assets/ui/vert_parchment.PNG" id="2_ohqld"]
 
