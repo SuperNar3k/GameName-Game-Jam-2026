@@ -13,8 +13,11 @@ signal startGame
 signal displayOptions
 signal displayCredits
 
+signal testThatShit
+
 func _ready() -> void:
 	#$ColorRect.hide()
+	$phys_buttons.show()
 	$phys_buttons.open_button_pressed.connect(_on_menu_button_pressed.bind("start"))
 	$phys_buttons.options_button_pressed.connect(_on_menu_button_pressed.bind("options"))
 	$phys_buttons.credits_button_pressed.connect(_on_menu_button_pressed.bind("credits"))
@@ -41,6 +44,8 @@ func _on_menu_button_pressed(button_name: String) -> void:
 		"exit":
 			print("Exiting the game...")
 			get_tree().quit()
+		"test1":
+			testThatShit.emit()
 
 func phys_button_pressed():
 	pass

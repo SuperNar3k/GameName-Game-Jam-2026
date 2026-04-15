@@ -126,5 +126,6 @@ offset_bottom = -703.0
 [connection signal="options_pressed" from="Hud" to="." method="_on_hud_options_pressed"]
 [connection signal="quest_pressed" from="Hud" to="." method="_on_hud_quest_pressed"]
 [connection signal="returnToGame" from="questListScreen" to="." method="_on_quest_list_screen_return_to_game"]
-[connection signal="exitOptions" from="Options" to="." method="_on_options_exit_options"]
+[connection signal="backFromOptions" from="Options" to="." method="_on_options_back_button"]
+[connection signal="backToMainMenu" from="Options" to="." method="_on_options_return_to_menu"]
 [connection signal="finishedPlaying" from="Notification" to="." method="_on_notification_finished_playing"]

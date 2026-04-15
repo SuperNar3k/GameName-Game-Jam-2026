@@ -7,6 +7,8 @@ signal backToMainMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	backButton.pressed.connect(_on_backButton_pressed)
+	mainMenuButton.pressed.connect(_on_mainMenuButton_pressed)
 	$Controls.hide()
 	$Sound/MasterVolumeSlider.value = SettingsManager.settings.master_volume
 	$Sound/MasterVolumeSlider/MasterLabel.text = "%d%%" % int(round(SettingsManager.settings.master_volume * 100))
@@ -18,11 +20,9 @@ func _ready() -> void:
 	
 
 func _on_backButton_pressed() -> void: 
-	print("backButtonPressed")
 	backFromOptions.emit()
 
 func _on_mainMenuButton_pressed() -> void: 
-	print("mainmenuButtonPressed")
 	backToMainMenu.emit()
 	
 #Change master volume

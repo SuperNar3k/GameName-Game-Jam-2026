@@ -415,53 +415,6 @@ func _on_ui_quest_accepted(option: Variant):
 	questAccepted = option
 	optionChosen.emit()
 
-func _onAcceptQuest():
-	# If there's no space in the activeQuests list, do nothing
-	if activeQuests.size() > MAX_ACTIVE_QUESTS:
-		return false
-		
-	# If there's no quest in the store queue, do nothing
-	# Note: this should never happen, but is here to prevent an out-of-bounds exception
-	if storeQueue.size() == 0:
-		return false
-		
-	# Take the first quest in the store queue
-	var nextQuest = storeQueue[0]
-	storeQueue.remove_at(0)
-	activeQuests.append(nextQuest)
-
-	# Generate new quest and update queue
-	_onGenerateQuest()
-	_updateQueue()
-	return true
-
-#Never used this lol!
-func _onQuestCompleted(_quest: Quest):
-	# Mark as completed
-	_quest.questCompleted = true
-	
-	# Remove from active list
-	var i = activeQuests.find(_quest)
-	activeQuests.remove_at(i)
-	
-	# Add to pharmacyQuests list if there's space and if quest is repeatable
-	if _quest.isRepeatable and pharmacyQuests.size() <= MAX_PHARMACY_QUESTS:
-		pharmacyQuests.append(_quest)
-
-	### Give rewards
-	
-	# Reward money
-	currency += _quest.rewards[0]
-	
-	# Reward recipes (unlock them)
-	for r:String in _quest.rewards[1]:
-		var newPot:Item = ItemCreator.allPotions.get(r)
-		unlockPotion(newPot)
-	
-	# Reward ingredients
-	for r:String in _quest.rewards[2]:
-		var newIng:Item = ItemCreator.allIngredients.get(r)
-		giveIngredient(newIng)
 
 func onIngredientGrinded(i: Item):
 	var crushedName:String = i.itemName + " powder"
@@ -480,7 +433,6 @@ func onIngredientGrinded(i: Item):
 	i.amountOwned -= 1
 	
 	return crushedObj
-
 
 
 func buyIngredient(cost: int, ingredient: Item):
@@ -529,7 +481,6 @@ func notificationQueueHandler():
 			notificationQueue.pop_front()
 	
 
-#TO-DO: TESTING NEEDS TO BE DONE ON THIS FUCNTION
 func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 	var potion:Item = null
 	
@@ -599,7 +550,6 @@ func createdItem(i: Item, type: String):
 	$ui/Notification/Popup.itemMade(i, type)
 
 
-#TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
 func endOfDay():
 	timerStarted = false
 	print("End of day: ", day)

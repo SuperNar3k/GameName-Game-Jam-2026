@@ -189,13 +189,25 @@ func _on_main_menu_scene_display_options() -> void:
 
 	lastScreen = $MainMenuScene
 
-func _on_options_exit_options() -> void:
+func _on_options_back_button() -> void:
 	$Options.hide()
 	#used to re-enable the thing that hits the menu signs ONLY if we were on the main menu
 	if(lastScreen == $MainMenuScene):
 		$MainMenuScene/phys_buttons/collisionTimer.paused = false
 		$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
 		
+	lastScreen.show()
+
+func _on_options_return_to_menu() -> void:
+	$Options.hide()
+	$FrontRoom.hide()
+	$BackRoom.hide()
+	$Hud.hide()
+	$FrontRoom/ColorRect.show()
+	gameStart = false
+	
+	lastScreen = $MainMenuScene
+	$MainMenuScene._ready()
 	lastScreen.show()
 
 
