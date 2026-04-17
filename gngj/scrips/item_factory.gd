@@ -171,7 +171,7 @@ func Populate():
 		"Non-drinkable concoction intended to create a field of darkness where its contents are splashed. The more powerful the potion maker, the more powerful the darkness that creeps in. ",		#Description
 		0,															#AmountOwned
 		"res://assets/potions/Darkness Potion.PNG",				#Sprite
-		["leaf of a thousand leaves powder", "tears of trees", "shattered sky"],							#Recipe
+		["leaf of a thousand leaves powder", "shattered sky", "tears of trees"],							#Recipe
 		0,
 		10															#CookLevelNeeded
 	)
@@ -321,7 +321,7 @@ func Populate():
 		"Low level mind reading potion that allows the drinker to focus on a target and comprehend their thoughts. ",		#Description
 		0,															#AmountOwned
 		"res://assets/potions/Mind Reading Potion.PNG",				#Sprite
-		["ear of the sea", "psychic stone powder", "psychic stone"],							#Recipe
+		["ear of the sea", "psychic stone", "psychic stone powder"],							#Recipe
 		0,
 		13															#CookLevelNeeded
 	)

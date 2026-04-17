@@ -40,6 +40,7 @@ var buySFX = preload("res://assets/sound/Coin.wav")
 
 # Called when the game starts.
 func _ready() -> void:
+
 	$ui/MainMenuScene/phys_buttons.open_button_pressed.connect(music_fade.bind())
 	$mmmusic.play()
 	$introLetter.hide()
@@ -130,6 +131,7 @@ func startOfDay():
 		
 	#we only pop in quest we have not completed or quest who's rewards are due
 	for quest in activeQuests:
+		quest.daysUntilDue = quest.daysUntilDue - 1
 		if(!quest.completed):
 			storeQueue.append(quest)
 		elif(quest.completed and quest.daysUntilReward == 0):
@@ -330,7 +332,6 @@ func _on_greetNPC():
 				$ui/FrontRoom/Dialogue.text = "I see you don't have my potion ready. I'll check again tomorrow."
 				await $ui/FrontRoom/Dialogue.pressed
 				
-				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1 
 			
 	#Logic if its a first time quest!
 	elif(!currentQuest.accepted):
