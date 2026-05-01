@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 240
+var dayDuration = 90
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -33,6 +33,8 @@ var inConversation = false
 signal noLongerNotifying
 var inNotification = false
 var notificationQueue = []
+
+signal gameAutoSaved
 
 var bellSFX = preload("res://assets/sound/Service Bell.wav")
 var buySFX = preload("res://assets/sound/Coin.wav")
@@ -77,6 +79,11 @@ func _process(_delta: float):
 
 func startOfDay():
 	print("Start of day: ", day)
+	
+	autoSave()
+	print("waiting for game to auto save")
+	await gameAutoSaved
+	print("auto saved finished, resuming game")
 	
 	if(day == 1):
 		#$music.play()
@@ -124,7 +131,7 @@ func startOfDay():
 		ingredient = ingredients.get("tears of trees")
 		ingredient.amountOwned = ingredient.amountOwned + 2
 	
-	var t 
+	var t
 	for n in range(0, numOfNpcs):
 		t = get_tree().create_timer(range(10,dayDuration-60).pick_random())
 		t.timeout.connect(_onGenerateQuest)
@@ -135,8 +142,8 @@ func startOfDay():
 		if(!quest.completed):
 			storeQueue.append(quest)
 		elif(quest.completed and quest.daysUntilReward == 0):
-			storeQueue.append(quest)			
-		else: 
+			storeQueue.append(quest)
+		else:
 			quest.daysUntilReward = quest.daysUntilReward - 1
 		
 	for quest in pharmacyQuests:
@@ -162,8 +169,8 @@ func _onGenerateQuest():
 	print("Generating quest!")
 
 	# Choose a random quest from availble quest list
-	if(availableNPCS.size() > 0):
-		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions, dudCounter) 
+	if(availableNPCS.size() > 0):		
+		var newQuest = QuestCreator.createQuestForNPC(availableNPCS.pick_random().npcName, NPCBirthingPod, potions, ItemCreator.allPotions, "")
 		# Add new quest to the queue
 		storeQueue.append(newQuest)
 		availableNPCS.erase(newQuest.npcQuestGiver)
@@ -174,7 +181,7 @@ func _onGenerateQuest():
 		#bell_sfx.play()
 		$AudioStreamPlayer2D.stream = bellSFX
 		$AudioStreamPlayer2D.play()
-	else: 
+	else:
 		print("No more quest available for player")
 
 func _updateQueue():
@@ -185,7 +192,7 @@ func _updateQueue():
 
 	#Updating the textures here.
 	# TO-DO :STILL HAVE TO FADE THEM IN
-	if storeQueue.size() == 0: 
+	if storeQueue.size() == 0:
 		$ui/FrontRoom/NPC.set_texture_normal(null)
 		$ui/FrontRoom/customer2.set_texture(null)
 		$ui/FrontRoom/customer3.set_texture(null)
@@ -307,7 +314,7 @@ func _on_greetNPC():
 			
 				
 		#If we don't have the potion logic
-		else: 
+		else:
 			
 			print("no potion for npc")
 			#Dialogue for quest failure
@@ -430,7 +437,7 @@ func _on_greetNPC():
 			#If quest accepted
 			if(questAccepted):
 				print("quest accepted")
-				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1 
+				currentQuest.daysUntilDue = currentQuest.daysUntilDue - 1
 				currentQuest.accepted = true
 				activeQuests.append(currentQuest)
 				
@@ -452,8 +459,8 @@ func _on_greetNPC():
 		
 		#Dialog for the npc saying that they came back to give more stuff
 		for dialog in currentQuest.questDialog[6]:
-					$ui/FrontRoom/Dialogue.text = dialog
-					await $ui/FrontRoom/Dialogue.pressed
+			$ui/FrontRoom/Dialogue.text = dialog
+			await $ui/FrontRoom/Dialogue.pressed
 					
 					
 		print("giving rewards anyways?")
@@ -587,7 +594,7 @@ func giveIngredient(i: Item):
 	
 func notifcationFinished():
 	inNotification = false
-	noLongerNotifying.emit()	
+	noLongerNotifying.emit()
 
 
 func notificationQueueHandler():
@@ -634,7 +641,7 @@ func onCreatePotion(ingredientsUsed: Array, cookedLevel: int):
 			potionSprite = "res://assets/potions/Dud Potion round bottle long neck.PNG"
 		elif(dudCounter%4 == 2):
 			potionSprite = "res://assets/potions/Dud Potion Square Bottle.PNG"
-		else: 
+		else:
 			potionSprite = "res://assets/potions/Dud Potion Vial.PNG"
 			
 		var potionRecipe = []
@@ -802,3 +809,121 @@ func _on_day_7_music_finished() -> void:
 
 func _on_day_8_music_finished() -> void:
 	$day8music.play()
+
+func autoSave():
+	print("auto saving game")
+	
+	var saveFile = FileAccess.open("user://pp.save", FileAccess.WRITE)
+	
+	var saveday = day
+	var savecurrency = currency
+	
+	var saveIngredients = {}
+	var savePotions = {}
+	var saveActiveQuests = {}
+	var savePharmacyQuests = {}
+	
+	
+	for potion in potions.values():
+		savePotions.set(potion.itemName, potion.amountOwned)
+		
+	for ingredient in ingredients.values():
+		saveIngredients.set(ingredient.itemName, ingredient.amountOwned)
+		
+	for aQuest in activeQuests:
+		var questData = {}
+		questData.set("Quest completed", aQuest.completed)
+		questData.set("Days until due", aQuest.daysUntilDue)
+		questData.set("Days until reward", aQuest.daysUntilReward)
+		questData.set("Required potion", aQuest.requirements[0])
+		
+		saveActiveQuests.set(aQuest.npcQuestGiver.npcName, questData)
+
+	for pQuest in pharmacyQuests:
+		var questData = {}
+		questData.set("Quest completed", pQuest.completed)
+		questData.set("Days until due", pQuest.daysUntilDue)
+		questData.set("Required potion", pQuest.requirements[0])
+		
+		savePharmacyQuests.set(pQuest.npcQuestGiver.npcName, questData)
+		
+	
+	var jsonString
+	jsonString = JSON.stringify(saveday)
+	saveFile.store_line(jsonString)
+	
+	jsonString = JSON.stringify(savecurrency)
+	saveFile.store_line(jsonString)
+	
+	jsonString = JSON.stringify(saveIngredients)
+	saveFile.store_line(jsonString)
+	
+	jsonString = JSON.stringify(savePotions)
+	saveFile.store_line(jsonString)
+	
+	jsonString = JSON.stringify(saveActiveQuests)
+	saveFile.store_line(jsonString)
+	
+	jsonString = JSON.stringify(savePharmacyQuests)
+	saveFile.store_line(jsonString)
+	
+	print("finised writing save file")
+	gameAutoSaved.emit()
+	
+func loadGame():
+	if not FileAccess.file_exists("user://pp.save"):
+		print("no save data found!")
+		return
+		
+	var saveFile = FileAccess.open("user://pp.save", FileAccess.READ)
+	var json = JSON.new()
+	var jsonString
+	
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	day = json.data
+	
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	currency = json.data
+	
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	var ingredientDict = json.data
+	for ingredient in ingredientDict.keys():
+		ItemCreator.UnlockIngredient(ingredients, ingredient)
+		ingredients.get(ingredient).amountOwned = ingredientDict.get(ingredient)
+	
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	var potionDict = json.data
+	for potion in potionDict.keys():
+		var p = ItemCreator.allPotions.get(potion)
+		potions.set(potion, p)
+		p.amountOwned = potionDict.get(potion)
+		
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	var activeQuestDict = json.data
+	for npcName in activeQuestDict.keys():
+		var savedQuest = activeQuestDict.get(npcName)
+		var quest = QuestCreator.createQuestForNPC(npcName, NPCBirthingPod, potions, ItemCreator.allPotions, savedQuest.get("Required potion"))
+		quest.npcQuestGiver.npcName = npcName
+		quest.completed = savedQuest.get("Quest completed")
+		quest.daysUntilDue = savedQuest.get("Days until due")
+		quest.daysUntilReward = savedQuest.get("Days until reward")
+		
+		activeQuests.append(quest)
+	
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	var pharmacyQuestDict = json.data
+	
+	for npcName in pharmacyQuestDict.keys():
+		var savedQuest = pharmacyQuestDict.get(npcName)
+		var quest = QuestCreator.createQuestForNPC(npcName, NPCBirthingPod, potions, ItemCreator.allPotions, savedQuest.get("Required potion"))
+		quest.npcQuestGiver.npcName = npcName
+		quest.completed = savedQuest.get("Quest completed")
+		quest.daysUntilDue = savedQuest.get("Days until due")
+		
+		pharmacyQuests.append(quest)
