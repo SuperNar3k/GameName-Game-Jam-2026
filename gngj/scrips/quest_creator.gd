@@ -41,7 +41,7 @@ func createQuest(
 	)
 	return newQuest
 	
-func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary, _numOfDuds: Variant):
+func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potions: Dictionary, allPotions: Dictionary, setPotion: String):
 	print("creating a quest")
 	
 	
@@ -52,6 +52,10 @@ func createQuestForNPC(npcName: String, NPCBirthingPod: Npc_Birthing_Pod, potion
 	
 	var randomPotion = cleanPotions.pick_random()
 	print("The random potion was: ", randomPotion)
+	
+	if(setPotion != ""):
+		randomPotion = setPotion
+		print("random potion was reset to: ", setPotion)
 	
 	var potionValue = allPotions.get(randomPotion).value
 	
