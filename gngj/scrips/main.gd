@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 90
+var dayDuration = 240
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -936,6 +936,7 @@ func loadGame():
 		quest.completed = savedQuest.get("Quest completed")
 		quest.daysUntilDue = int(savedQuest.get("Days until due"))
 		quest.daysUntilReward = int(savedQuest.get("Days until reward"))
+		quest.accepted = true
 		
 		activeQuests.append(quest)
 		availableNPCS.erase(quest.npcQuestGiver)
@@ -950,6 +951,7 @@ func loadGame():
 		quest.npcQuestGiver.npcName = npcName
 		quest.completed = savedQuest.get("Quest completed")
 		quest.daysUntilDue = int(savedQuest.get("Days until due"))
+		quest.accepted = true
 		
 		pharmacyQuests.append(quest)
 		availableNPCS.erase(quest.npcQuestGiver)

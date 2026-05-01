@@ -47,3 +47,6 @@ func hide_leftstuff():
 
 func show_leftstuff():
 	$gameInfo.show()
+	$gameInfo/endDay.show()
+	$gameInfo/endDayGraphic.show()
+	$gameInfo/dayCounter.show()
