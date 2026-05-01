@@ -6,10 +6,12 @@ extends Control
 @onready var credits_button: Button = $MainMenu/CenterContainer2/CreditsButton
 @onready var exit_button: Button = $MainMenu/CenterContainer/VBoxContainer/ExitButton
 
+
 @onready var testEndOfDayButton: Button = $testEndOfDay
 
 
 signal startGame
+signal loadGame
 signal displayOptions
 signal displayCredits
 
@@ -21,6 +23,11 @@ func _ready() -> void:
 	$phys_buttons.options_button_pressed.connect(_on_menu_button_pressed.bind("options"))
 	$phys_buttons.credits_button_pressed.connect(_on_menu_button_pressed.bind("credits"))
 	$phys_buttons.close_button_pressed.connect(_on_menu_button_pressed.bind("exit"))
+	$gameFileSelectScreen/newGameButton.pressed.connect(onGameSelectScreenButtonPressed.bind("new game"))
+	$gameFileSelectScreen/loadGameButton.pressed.connect(onGameSelectScreenButtonPressed.bind("load game"))
+	
+	
+	
 	start_button.pressed.connect(_on_menu_button_pressed.bind("start"))
 	load_button.pressed.connect(_on_menu_button_pressed.bind("load"))
 	options_button.pressed.connect(_on_menu_button_pressed.bind("options"))
@@ -35,7 +42,7 @@ func _ready() -> void:
 func _on_menu_button_pressed(button_name: String) -> void:
 	match button_name:
 		"start":
-			startGame.emit()
+			gameSelectScreen()
 			
 		"load":
 			print("Opening load menu...")
@@ -53,4 +60,18 @@ func _on_menu_button_pressed(button_name: String) -> void:
 func phys_button_pressed():
 	pass
 
+func gameSelectScreen():
+	$bg.hide()
+	$phys_buttons.hide()
+	$Sprite2D.hide()
+	$gameFileSelectScreen.show()
 	
+	if FileAccess.file_exists("user://pp.save"):
+		$gameFileSelectScreen/loadGameButton.show()
+	
+func onGameSelectScreenButtonPressed(option : String):
+	match option: 
+		"new game":
+			startGame.emit()
+		"load game":
+			loadGame.emit()
