@@ -35,6 +35,9 @@ var inNotification = false
 var notificationQueue = []
 
 signal gameAutoSaved
+var saving = false
+var justLoaded = false
+
 
 var bellSFX = preload("res://assets/sound/Service Bell.wav")
 var buySFX = preload("res://assets/sound/Coin.wav")
@@ -74,16 +77,24 @@ func _process(_delta: float):
 		$ui/Hud.updateTimer($dayTimer)
 
 
-#TO DO: NEED TO FIX BUG WHERE THE RECIPE BOOK COVERS EVERYTHING
-#(CANNOT SEE WHEN DAY ENDS IF YOU HAVE RECEPE BOOK OPEN)
-
 func startOfDay():
+	
+	
+	
 	print("Start of day: ", day)
 	
-	autoSave()
-	print("waiting for game to auto save")
-	await gameAutoSaved
-	print("auto saved finished, resuming game")
+	
+	if !justLoaded:
+		autoSave()
+		print("waiting for game to auto save")
+		if saving: 
+			await gameAutoSaved
+		
+		print("auto saved finished, resuming game")
+	else:
+		justLoaded = false
+	
+	$ui/Hud/gameInfo/dayCounter.text = "Day: " + str(day)
 	
 	if(day == 1):
 		#$music.play()
@@ -543,8 +554,14 @@ func _onQuestCompleted(_quest: Quest):
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
 
+#this funciton might be useless
 func onIngredientGrinded(i: Item):
-	var crushedName:String = i.itemName + " powder"
+	var crushedName:String 
+	if(i.itemName == "shooting star"):
+		crushedName = "stardust"
+	else: 
+		crushedName = i.itemName + " powder"
+	
 	var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
 	
 	# If not unlocked, unlock it!
@@ -812,6 +829,7 @@ func _on_day_8_music_finished() -> void:
 
 func autoSave():
 	print("auto saving game")
+	saving = true
 	
 	var saveFile = FileAccess.open("user://pp.save", FileAccess.WRITE)
 	
@@ -868,9 +886,12 @@ func autoSave():
 	saveFile.store_line(jsonString)
 	
 	print("finised writing save file")
+	saving = false
 	gameAutoSaved.emit()
 	
 func loadGame():
+	print("loading saved game file")
+	
 	if not FileAccess.file_exists("user://pp.save"):
 		print("no save data found!")
 		return
@@ -879,29 +900,38 @@ func loadGame():
 	var json = JSON.new()
 	var jsonString
 	
+	print("importing day")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
-	day = json.data
+	day = int(json.data)
 	
+	print("importing currency")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
-	currency = json.data
+	currency = int(json.data)
 	
+	print("importing ingredients")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
 	var ingredientDict = json.data
 	for ingredient in ingredientDict.keys():
 		ItemCreator.UnlockIngredient(ingredients, ingredient)
-		ingredients.get(ingredient).amountOwned = ingredientDict.get(ingredient)
+		ingredients.get(ingredient).amountOwned = int(ingredientDict.get(ingredient))
 	
+	print("importing potions")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
 	var potionDict = json.data
 	for potion in potionDict.keys():
 		var p = ItemCreator.allPotions.get(potion)
 		potions.set(potion, p)
-		p.amountOwned = potionDict.get(potion)
+		p.amountOwned = int(potionDict.get(potion))
+		p.unlocked = true
 		
+	for NPC in NPCBirthingPod.allNPCs.values():
+		availableNPCS.append(NPC)	
+		
+	print("importing active quests")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
 	var activeQuestDict = json.data
@@ -910,20 +940,31 @@ func loadGame():
 		var quest = QuestCreator.createQuestForNPC(npcName, NPCBirthingPod, potions, ItemCreator.allPotions, savedQuest.get("Required potion"))
 		quest.npcQuestGiver.npcName = npcName
 		quest.completed = savedQuest.get("Quest completed")
-		quest.daysUntilDue = savedQuest.get("Days until due")
-		quest.daysUntilReward = savedQuest.get("Days until reward")
+		quest.daysUntilDue = int(savedQuest.get("Days until due"))
+		quest.daysUntilReward = int(savedQuest.get("Days until reward"))
+		quest.accepted = true
 		
 		activeQuests.append(quest)
+		availableNPCS.erase(quest.npcQuestGiver)
 	
+	print("importing pharmacy quests")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
 	var pharmacyQuestDict = json.data
-	
 	for npcName in pharmacyQuestDict.keys():
 		var savedQuest = pharmacyQuestDict.get(npcName)
 		var quest = QuestCreator.createQuestForNPC(npcName, NPCBirthingPod, potions, ItemCreator.allPotions, savedQuest.get("Required potion"))
 		quest.npcQuestGiver.npcName = npcName
 		quest.completed = savedQuest.get("Quest completed")
-		quest.daysUntilDue = savedQuest.get("Days until due")
+		quest.daysUntilDue = int(savedQuest.get("Days until due"))
+		quest.accepted = true
 		
 		pharmacyQuests.append(quest)
+		availableNPCS.erase(quest.npcQuestGiver)
+		
+	print("loading complete")
+	
+	$ui/Hud.show()
+	
+	justLoaded = true
+	startOfDay()

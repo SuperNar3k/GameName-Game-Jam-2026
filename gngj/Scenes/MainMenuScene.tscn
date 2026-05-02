@@ -130,3 +130,29 @@ position = Vector2(216, -529)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=722251689]
 position = Vector2(-289, -274)
 texture = ExtResource("4_gmxq7")
+
+[node name="gameFileSelectScreen" type="Control" parent="." unique_id=1862025264]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="newGameButton" type="Button" parent="gameFileSelectScreen" unique_id=1165485612]
+layout_mode = 0
+offset_left = -144.0
+offset_top = -174.0
+offset_right = 141.0
+offset_bottom = -82.0
+theme_override_font_sizes/font_size = 30
+text = "NEW GAME"
+
+[node name="loadGameButton" type="Button" parent="gameFileSelectScreen" unique_id=1074560441]
+visible = false
+layout_mode = 0
+offset_left = -142.0
+offset_top = 21.0
+offset_right = 143.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 30
+text = "LOAD GAME
+"

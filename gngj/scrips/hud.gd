@@ -35,20 +35,18 @@ func _on_options_pressed() -> void:
 	options_pressed.emit()
 	
 func updateCurrency(currency: Variant):
-	$currencyLable.text = str(currency) 
+	$gameInfo/currencyLable.text = str(currency) 
 	
 func updateTimer(timer: Timer):
 	var hours_left = floor((timer.time_left / 240) * 8)
-	$endDay.text = str(int(hours_left) + 1) + " hours"
+	$gameInfo/endDay.text = str(int(hours_left) + 1) + " hours"
 
 func hide_leftstuff():
-	$currancyGraphic.hide()
-	$endDayGraphic.hide()
-	$endDay.hide()
-	$currencyLable.hide()
+	$gameInfo.hide()
+	
 
 func show_leftstuff():
-	$currancyGraphic.show()
-	$endDayGraphic.show()
-	$endDay.show()
-	$currencyLable.show()
+	$gameInfo.show()
+	$gameInfo/endDay.show()
+	$gameInfo/endDayGraphic.show()
+	$gameInfo/dayCounter.show()

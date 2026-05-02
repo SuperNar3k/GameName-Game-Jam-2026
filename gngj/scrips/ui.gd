@@ -18,6 +18,7 @@ var lastScreen
 signal talkToNpc
 signal questAccepted(option)
 signal startGame
+signal loadGame
 signal correctPotionSelected
 signal buyItem(cost, item)
 signal grindIngredient(ingredient)
@@ -144,7 +145,20 @@ func _on_main_menu_scene_start_game() -> void:
 	lastScreen = $FrontRoom
 	
 	startGame.emit()
-
+	
+func _on_main_menu_scene_load_game():
+	$MainMenuScene.hide()
+	$FrontRoom.show()
+	$FrontRoom/AnimationPlayer.play("fade_to_normal")
+	await ($FrontRoom/AnimationPlayer.animation_finished)
+	$FrontRoom/ColorRect.hide()
+	gameStart = true
+	
+	lastScreen = $FrontRoom
+	
+	loadGame.emit()
+		
+		
 func _on_front_room_to_back_room() -> void:
 	$FrontRoom.hide()
 	$BackRoom.show()
@@ -238,10 +252,7 @@ func _on_hud_options_pressed() -> void:
 		$Options.show()
 	
 func _on_end_of_day() -> void:
-	$Hud/endDay.hide()
-	$Hud/endDayGraphic.hide()
-	$Hud/currancyGraphic.show()
-	$Hud/currencyLable.show()
+	$Hud/gameInfo.hide()
 	lastScreen.hide()
 	$endOfDayScreen.show()
 	$endOfDayScreen.displayShit(allIngredients, allPotions)
@@ -249,6 +260,13 @@ func _on_end_of_day() -> void:
 	lastScreen = $endOfDayScreen
 	
 func _on_end_of_day_screen_show_store() -> void:
+	$Hud/gameInfo.show()
+	$Hud/gameInfo/endDay.hide()
+	$Hud/gameInfo/endDayGraphic.hide()
+	$Hud/gameInfo/dayCounter.hide()
+	#$Hud/gameInfo/currancyGraphic.show()
+	#$Hud/gameInfo/currencyLable.show()
+	
 	$endOfDayScreen.hide()
 	$crowStore.show()
 	

@@ -83,7 +83,12 @@ func _on_grinding_area_body_entered(_body: Node2D) -> void:
 		grindDone = true
 		
 		# Check if grinding is possible
-		var crushedName:String = bowlIngredient + " powder"
+		var crushedName:String 
+		if(bowlIngredient == "shooting star"):
+			crushedName = "stardust"
+		else: 
+			crushedName = bowlIngredient + " powder"
+
 		if crushedName in allIngredients:
 			grindIngredient.emit(allIngredients.get(bowlIngredient))
 			$fruitBowl.set_texture(load(allIngredients.get(crushedName).sprite))

@@ -11,11 +11,6 @@
 [ext_resource type="LabelSettings" uid="uid://6rygp2pa1ke6" path="res://new_label_settings.tres" id="5_piegi"]
 [ext_resource type="Texture2D" uid="uid://dss1pcr5ekm36" path="res://assets/ui/IMG_0842.PNG" id="6_i2avg"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_8jye8"]
-font = ExtResource("3_5ep0j")
-font_size = 40
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jye8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_36asn"]
@@ -40,6 +35,11 @@ shader_parameter/allow_out_of_bounds = true
 shader_parameter/outline_thickness = 0.01
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_8jye8"]
+font = ExtResource("3_5ep0j")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
 [node name="Hud" type="Control" unique_id=203291146]
 visible = false
 layout_mode = 3
@@ -49,35 +49,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e0onf")
-
-[node name="currancyGraphic" type="Sprite2D" parent="." unique_id=1846794771]
-position = Vector2(217, 183)
-texture = ExtResource("4_4f5kr")
-
-[node name="endDayGraphic" type="Sprite2D" parent="." unique_id=1052668119]
-position = Vector2(225, 185)
-texture = ExtResource("6_i2avg")
-
-[node name="endDay" type="Label" parent="." unique_id=174043222]
-layout_mode = 0
-offset_left = 178.0
-offset_top = 67.0
-offset_right = 351.0
-offset_bottom = 124.0
-text = "hours"
-label_settings = ExtResource("5_piegi")
-
-[node name="currencyLable" type="Label" parent="." unique_id=1472623530]
-layout_mode = 0
-offset_left = -19.0
-offset_top = 210.0
-offset_right = 200.0
-offset_bottom = 265.0
-theme_override_fonts/font = ExtResource("2_36asn")
-theme_override_font_sizes/font_size = 40
-text = "999"
-label_settings = SubResource("LabelSettings_8jye8")
-horizontal_alignment = 1
 
 [node name="Recipes" type="Button" parent="." unique_id=1998033115]
 layout_mode = 0
@@ -129,6 +100,50 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_t1xeu")
 material = SubResource("ShaderMaterial_43w4t")
 position = Vector2(-847, 515)
 texture = ExtResource("2_6fbih")
+
+[node name="gameInfo" type="Control" parent="." unique_id=928589485]
+anchors_preset = 0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 65.0
+
+[node name="currancyGraphic" type="Sprite2D" parent="gameInfo" unique_id=1846794771]
+position = Vector2(217, 183)
+texture = ExtResource("4_4f5kr")
+
+[node name="endDayGraphic" type="Sprite2D" parent="gameInfo" unique_id=1052668119]
+position = Vector2(225, 185)
+texture = ExtResource("6_i2avg")
+
+[node name="endDay" type="Label" parent="gameInfo" unique_id=174043222]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 67.0
+offset_right = 351.0
+offset_bottom = 124.0
+text = "hours"
+label_settings = ExtResource("5_piegi")
+
+[node name="currencyLable" type="Label" parent="gameInfo" unique_id=1472623530]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 210.0
+offset_right = 200.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("2_36asn")
+theme_override_font_sizes/font_size = 40
+text = "999"
+label_settings = SubResource("LabelSettings_8jye8")
+horizontal_alignment = 1
+
+[node name="dayCounter" type="Label" parent="gameInfo" unique_id=516289340]
+layout_mode = 0
+offset_left = 182.0
+offset_top = -17.0
+offset_right = 361.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 40
+text = "Day: "
 
 [connection signal="pressed" from="Recipes" to="." method="_on_recipes_pressed"]
 [connection signal="pressed" from="Quests" to="." method="_on_quests_pressed"]
