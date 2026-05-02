@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 240
+var dayDuration = 90
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -554,8 +554,14 @@ func _onQuestCompleted(_quest: Quest):
 		var newIng:Item = ItemCreator.allIngredients.get(r)
 		giveIngredient(newIng)
 
+#this funciton might be useless
 func onIngredientGrinded(i: Item):
-	var crushedName:String = i.itemName + " powder"
+	var crushedName:String 
+	if(i.itemName == "shooting star"):
+		crushedName = "stardust"
+	else: 
+		crushedName = i.itemName + " powder"
+	
 	var crushedObj:Item = ItemCreator.allIngredients.get(crushedName)
 	
 	# If not unlocked, unlock it!

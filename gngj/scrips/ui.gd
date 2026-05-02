@@ -252,11 +252,7 @@ func _on_hud_options_pressed() -> void:
 		$Options.show()
 	
 func _on_end_of_day() -> void:
-	$Hud/gameInfo/endDay.hide()
-	$Hud/gameInfo/endDayGraphic.hide()
-	$Hud/gameInfo/dayCounter.hide()
-	$Hud/gameInfo/currancyGraphic.show()
-	$Hud/gameInfo/currencyLable.show()
+	$Hud/gameInfo.hide()
 	lastScreen.hide()
 	$endOfDayScreen.show()
 	$endOfDayScreen.displayShit(allIngredients, allPotions)
@@ -264,6 +260,13 @@ func _on_end_of_day() -> void:
 	lastScreen = $endOfDayScreen
 	
 func _on_end_of_day_screen_show_store() -> void:
+	$Hud/gameInfo.show()
+	$Hud/gameInfo/endDay.hide()
+	$Hud/gameInfo/endDayGraphic.hide()
+	$Hud/gameInfo/dayCounter.hide()
+	#$Hud/gameInfo/currancyGraphic.show()
+	#$Hud/gameInfo/currencyLable.show()
+	
 	$endOfDayScreen.hide()
 	$crowStore.show()
 	
