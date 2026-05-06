@@ -93,10 +93,10 @@ scale = Vector2(1.8844082, 2.04918)
 texture = ExtResource("5_21xkr")
 
 [node name="Label" type="Label" parent="gameWonScreen/Sprite2D" unique_id=1983663933]
-offset_left = -201.12416
-offset_top = -82.47202
-offset_right = 196.87584
-offset_bottom = 117.60801
+offset_left = -314.15698
+offset_top = -73.20002
+offset_right = 318.84302
+offset_bottom = 128.79999
 text = "YOU'VE MADE THE INVINCIBILITY POTION!!
 
 You are now the greatest potion maker in the land. 

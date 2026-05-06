@@ -36,7 +36,7 @@ func displayPotionsInInventory(potions: Variant, keyPotion: Variant):
 	potionForQuest = keyPotion
 	
 	for potion in potions: 
-		if(potion.amountOwned > 0 and potion.unlocked):
+		if(potion.amountOwned > 0 and potion.unlocked and !("Dud" in potion.itemName)):
 			$potionHotbar/HBoxContainer.add_child(potionButton)
 			potionButton.set_texture_normal(load(potion.sprite))
 			potionButton.set_material(potionShader)
