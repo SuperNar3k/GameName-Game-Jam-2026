@@ -2,7 +2,7 @@ extends Node
 #Setting variables to be called by the game
 var settings = {
 	"master_volume": 1.0,
-	"music_volume": 1.0,
+	"music_volume": 0.8,
 	"sfx_volume": 1.0,
 	"windowed": false,
 	"resolution": Vector2i(1920,1080)
