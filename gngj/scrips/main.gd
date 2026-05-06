@@ -79,8 +79,6 @@ func _process(_delta: float):
 
 func startOfDay():
 	
-	
-	
 	print("Start of day: ", day)
 	
 	
@@ -142,10 +140,15 @@ func startOfDay():
 		ingredient = ingredients.get("tears of trees")
 		ingredient.amountOwned = ingredient.amountOwned + 2
 	
-	var t
+	var timer = Timer.new()
 	for n in range(0, numOfNpcs):
-		t = get_tree().create_timer(range(10,dayDuration-60).pick_random())
-		t.timeout.connect(_onGenerateQuest)
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start(range(10,dayDuration-60).pick_random())
+		timer.timeout.connect(_onGenerateQuest)
+		timer.add_to_group("npcTimers")
+		
+		timer = Timer.new()
 		
 	#we only pop in quest we have not completed or quest who's rewards are due
 	for quest in activeQuests:
@@ -506,55 +509,6 @@ func _on_ui_quest_accepted(option: Variant):
 	questAccepted = option
 	optionChosen.emit()
 
-func _onAcceptQuest():
-	# If there's no space in the activeQuests list, do nothing
-	if activeQuests.size() > MAX_ACTIVE_QUESTS:
-		return false
-		
-	# If there's no quest in the store queue, do nothing
-	# Note: this should never happen, but is here to prevent an out-of-bounds exception
-	if storeQueue.size() == 0:
-		return false
-		
-	# Take the first quest in the store queue
-	var nextQuest = storeQueue[0]
-	storeQueue.remove_at(0)
-	activeQuests.append(nextQuest)
-
-	# Generate new quest and update queue
-	_onGenerateQuest()
-	_updateQueue()
-	return true
-
-#Never used this lol!
-func _onQuestCompleted(_quest: Quest):
-	# Mark as completed
-	_quest.questCompleted = true
-	
-	# Remove from active list
-	var i = activeQuests.find(_quest)
-	activeQuests.remove_at(i)
-	
-	# Add to pharmacyQuests list if there's space and if quest is repeatable
-	if _quest.isRepeatable and pharmacyQuests.size() <= MAX_PHARMACY_QUESTS:
-		pharmacyQuests.append(_quest)
-
-	### Give rewards
-	
-	# Reward money
-	currency += _quest.rewards[0]
-	
-	# Reward recipes (unlock them)
-	for r:String in _quest.rewards[1]:
-		var newPot:Item = ItemCreator.allPotions.get(r)
-		unlockPotion(newPot)
-	
-	# Reward ingredients
-	for r:String in _quest.rewards[2]:
-		var newIng:Item = ItemCreator.allIngredients.get(r)
-		giveIngredient(newIng)
-
-#this funciton might be useless
 func onIngredientGrinded(i: Item):
 	var crushedName:String 
 	if(i.itemName == "shooting star"):
@@ -838,15 +792,27 @@ func autoSave():
 	
 	var saveIngredients = {}
 	var savePotions = {}
+	var saveDuds = {}
 	var saveActiveQuests = {}
 	var savePharmacyQuests = {}
 	
 	
-	for potion in potions.values():
-		savePotions.set(potion.itemName, potion.amountOwned)
-		
 	for ingredient in ingredients.values():
 		saveIngredients.set(ingredient.itemName, ingredient.amountOwned)
+	
+	
+	#WORK ON THIS
+	for potion in potions.values():
+		if("Dud" in potion.itemName):
+			var dudPotion = {}
+			dudPotion.set("Dud recipe", potion.recipe)
+			dudPotion.set("Amount owned", potion.amountOwned)
+			
+			saveDuds.set(potion.itemName, dudPotion)
+		else: 
+			savePotions.set(potion.itemName, potion.amountOwned)
+		
+	
 		
 	for aQuest in activeQuests:
 		var questData = {}
@@ -877,6 +843,9 @@ func autoSave():
 	saveFile.store_line(jsonString)
 	
 	jsonString = JSON.stringify(savePotions)
+	saveFile.store_line(jsonString)
+	
+	jsonString = JSON.stringify(saveDuds)
 	saveFile.store_line(jsonString)
 	
 	jsonString = JSON.stringify(saveActiveQuests)
@@ -918,7 +887,7 @@ func loadGame():
 		ItemCreator.UnlockIngredient(ingredients, ingredient)
 		ingredients.get(ingredient).amountOwned = int(ingredientDict.get(ingredient))
 	
-	print("importing potions")
+	print("importing non-dud potions")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
 	var potionDict = json.data
@@ -928,8 +897,31 @@ func loadGame():
 		p.amountOwned = int(potionDict.get(potion))
 		p.unlocked = true
 		
+	print("importing dud potion")
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	var dudDict = json.data
+	for dud in dudDict.keys():
+		var d = dudDict.get(dud)
+		ItemCreator.UnlockPotion(potions,dud,d.get("Dud recipe"))
+		potions.get(dud).amountOwned = int(d.get("Amount owned"))
+		
+		var potionSprite
+		if(dudCounter%4 == 0):
+			potionSprite = "res://assets/potions/Dud Potion Large Round Bottle.PNG"
+		elif(dudCounter%4 == 1):
+			potionSprite = "res://assets/potions/Dud Potion round bottle long neck.PNG"
+		elif(dudCounter%4 == 2):
+			potionSprite = "res://assets/potions/Dud Potion Square Bottle.PNG"
+		else:
+			potionSprite = "res://assets/potions/Dud Potion Vial.PNG"
+			
+		potions.get(dud).sprite = potionSprite
+		
+		dudCounter += 1
+		
 	for NPC in NPCBirthingPod.allNPCs.values():
-		availableNPCS.append(NPC)	
+		availableNPCS.append(NPC)
 		
 	print("importing active quests")
 	jsonString = saveFile.get_line()
@@ -968,3 +960,17 @@ func loadGame():
 	
 	justLoaded = true
 	startOfDay()
+
+
+func _on_ui_pause_game() -> void:
+	print("Game paused, pausing all timers")
+	for timer in get_tree().get_nodes_in_group("npcTimers"):
+		timer.set_paused(true)
+	$dayTimer.set_paused(true)
+
+
+func _on_ui_resume_game() -> void:
+	print("Game resumed, unpausing all timers")
+	for timer in get_tree().get_nodes_in_group("npcTimers"):
+		timer.set_paused(false)
+	$dayTimer.set_paused(false)
