@@ -126,11 +126,11 @@ func _enable_all_buttons() -> void:
 					innerchild.disabled = false
 
 func endDay():
-	if $CauldronStation/IngredientDrawer.position.x < 860:
+	if $CauldronStation/IngredientDrawer.huh % 2 == 1:
 		$CauldronStation/IngredientDrawer._on_handle_pressed()
 		$CauldronStation/IngredientDrawer._redraw()
 		
-	if $GrindingStation/IngredientDrawer.position.x < 860:
+	if $GrindingStation/IngredientDrawer.huh % 2 == 1:
 		$GrindingStation/IngredientDrawer._on_handle_pressed()
 		$GrindingStation/IngredientDrawer._redraw()
 
@@ -194,6 +194,8 @@ func _on_grinding_station_go_back() -> void:
 	$GrindingStation.hide()
 	$BackRoom.show()
 	
+	$CauldronStation/IngredientDrawer._redraw()
+	
 	lastScreen = $BackRoom
 
 
@@ -201,6 +203,8 @@ func _on_cauldron_station_go_back() -> void:
 	$Hud.show_leftstuff()
 	$CauldronStation.hide()
 	$BackRoom.show()
+	
+	$GrindingStation/IngredientDrawer._redraw()
 	
 	lastScreen = $BackRoom
 
