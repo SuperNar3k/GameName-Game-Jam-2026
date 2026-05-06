@@ -347,11 +347,11 @@ func _on_back_btn_pressed() -> void:
 		$backimg.hide()
 
 func _on_exit_btn_pressed() -> void:
-	$AnimationPlayer.play_backwards()
-
+	if $ExitBtn.is_visible_in_tree() or $Book.position.y < 540:
+		$AnimationPlayer.play_backwards()
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	if $ExitBtn.is_visible_in_tree():
+	if $Book.position.y == 540:
 		$ExitBtn.hide()
 		$Sprite2D.hide()
 		$FwdBtn.hide()

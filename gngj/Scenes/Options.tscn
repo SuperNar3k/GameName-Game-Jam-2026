@@ -260,6 +260,7 @@ text = "QUIT GAME"
 [connection signal="value_changed" from="Sound/MasterVolumeSlider" to="." method="_on_master_value_changed"]
 [connection signal="toggled" from="Sound/MasterVolumeSlider/CheckBox" to="." method="_on_master_mute_toggled"]
 [connection signal="value_changed" from="Sound/MusicVolumeSlider" to="." method="_on_music_value_changed"]
+[connection signal="toggled" from="Sound/MusicVolumeSlider/CheckBox" to="." method="_on_music_mute_toggled"]
 [connection signal="value_changed" from="Sound/SFXVolumeSlider" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="toggled" from="Sound/SFXVolumeSlider/CheckBox" to="." method="_on_sfx_mute_toggled"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
