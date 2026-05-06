@@ -19,6 +19,8 @@ signal talkToNpc
 signal questAccepted(option)
 signal startGame
 signal loadGame
+signal pauseGame
+signal resumeGame
 signal correctPotionSelected
 signal buyItem(cost, item)
 signal grindIngredient(ingredient)
@@ -217,7 +219,8 @@ func _on_options_exit_options() -> void:
 		$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
 	else:
 		$Hud.show()
-		
+	
+	resumeGame.emit()
 	lastScreen.show()
 
 
@@ -250,6 +253,8 @@ func _on_hud_options_pressed() -> void:
 		$Hud.hide()
 		lastScreen.hide()
 		$Options.show()
+		
+		pauseGame.emit()
 	
 func _on_end_of_day() -> void:
 	$Hud/gameInfo.hide()
