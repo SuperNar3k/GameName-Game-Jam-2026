@@ -12,6 +12,8 @@ shader_parameter/allow_out_of_bounds = true
 shader_parameter/outline_thickness = 0.01
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lexk"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_diasw"]
 shader = ExtResource("1_2cnka")
 shader_parameter/allow_out_of_bounds = true
@@ -183,6 +185,18 @@ offset_left = 114.90991
 offset_top = -515.0
 offset_right = 301.9099
 offset_bottom = -265.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button" unique_id=1811222843]
 material = SubResource("ShaderMaterial_diasw")
@@ -193,6 +207,18 @@ offset_left = 321.90997
 offset_top = -515.0
 offset_right = 514.32495
 offset_bottom = -265.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button2" unique_id=1165341635]
 material = SubResource("ShaderMaterial_aj0c6")
@@ -203,6 +229,18 @@ offset_left = 533.9099
 offset_top = -515.0
 offset_right = 725.6599
 offset_bottom = -265.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button3" unique_id=2029367571]
 material = SubResource("ShaderMaterial_ng4e2")
@@ -213,6 +251,18 @@ offset_left = 745.9098
 offset_top = -513.0
 offset_right = 931.1648
 offset_bottom = -263.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button4" unique_id=1249055900]
 material = SubResource("ShaderMaterial_x1yx5")
@@ -223,6 +273,18 @@ offset_left = 119.90988
 offset_top = -236.99998
 offset_right = 304.40988
 offset_bottom = -11.999985
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button5" unique_id=2095696584]
 material = SubResource("ShaderMaterial_x1r3p")
@@ -233,6 +295,18 @@ offset_left = 322.90985
 offset_top = -237.99998
 offset_right = 513.21985
 offset_bottom = -12.999985
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button6" unique_id=1453559695]
 material = SubResource("ShaderMaterial_c44we")
@@ -243,6 +317,18 @@ offset_left = 534.9098
 offset_top = -236.0
 offset_right = 721.9098
 offset_bottom = -11.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button7" unique_id=1452846336]
 material = SubResource("ShaderMaterial_u04vu")
@@ -253,6 +339,18 @@ offset_left = 746.9098
 offset_top = -236.0
 offset_right = 931.8548
 offset_bottom = -11.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button8" unique_id=986886305]
 material = SubResource("ShaderMaterial_2wkxn")
@@ -263,6 +361,18 @@ offset_left = 118.90988
 offset_top = 14.0
 offset_right = 305.90988
 offset_bottom = 239.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button9" unique_id=1760386743]
 material = SubResource("ShaderMaterial_j4eo2")
@@ -273,6 +383,18 @@ offset_left = 322.90997
 offset_top = 12.999991
 offset_right = 512.07996
 offset_bottom = 237.99998
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button10" unique_id=1531189030]
 material = SubResource("ShaderMaterial_10s81")
@@ -283,6 +405,18 @@ offset_left = 535.91
 offset_top = 15.0
 offset_right = 722.91
 offset_bottom = 240.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button11" unique_id=1296017979]
 material = SubResource("ShaderMaterial_gnt7a")
@@ -293,6 +427,18 @@ offset_left = 747.9098
 offset_top = 14.000009
 offset_right = 931.1898
 offset_bottom = 239.00002
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button12" unique_id=1380748463]
 material = SubResource("ShaderMaterial_ysqe6")
@@ -303,6 +449,18 @@ offset_left = 115.90988
 offset_top = 266.0
 offset_right = 302.90988
 offset_bottom = 516.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button13" unique_id=543431242]
 material = SubResource("ShaderMaterial_61bjy")
@@ -313,6 +471,18 @@ offset_left = 324.90997
 offset_top = 266.0
 offset_right = 511.90997
 offset_bottom = 516.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button14" unique_id=38302373]
 material = SubResource("ShaderMaterial_3thna")
@@ -323,6 +493,18 @@ offset_left = 535.9099
 offset_top = 265.0
 offset_right = 725.80493
 offset_bottom = 515.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button15" unique_id=438747443]
 material = SubResource("ShaderMaterial_mt1t6")
@@ -333,6 +515,18 @@ offset_left = 748.9099
 offset_top = 265.0
 offset_right = 931.9249
 offset_bottom = 515.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3lexk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3lexk")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button16" unique_id=15037046]
 material = SubResource("ShaderMaterial_fro17")
