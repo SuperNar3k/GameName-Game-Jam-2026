@@ -707,6 +707,7 @@ func endOfDay():
 	# If potion making was in-progress, give ingredients back
 	for i in $ui/CauldronStation.held_ingredients:
 		giveIngredient(ingredients.get(i))
+	$ui/CauldronStation.held_ingredients.clear()
 	
 	music_fade()
 	
