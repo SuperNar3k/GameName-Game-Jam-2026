@@ -44,43 +44,49 @@ func _on_backButton_pressed() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if followMouse:
-		if done == false:
-			$liquid.look_at(get_global_mouse_position())
-			if recordRot != $liquid.rotation_degrees:
-				if !$sloshing.playing:
-					$sloshing.volume_db = 3
-					$sloshing.play()
-				if $sloshing.volume_db < 0:
-					$sloshing.volume_db = 5
-			if held_ingredients.size() > 0:
-				if recordRot < $liquid.rotation_degrees:
-					if !$brewing.playing:
-						$brewing.play()
-					if $brewing.volume_db < 0:
-						$brewing.volume_db = lerp($brewing.volume_db, 0.0, 1.0)
-					addedCook += delta
-					$liquid/waves.modulate = lerp(Color(0.573, 0.675, 0.737, 1.0), Color(0.725, 0.388, 0.141, 1.0), addedCook / 3)
-				recordRot = $liquid.rotation_degrees
-				if $liquid/waves.modulate.b <= .141:
-					done = true
-					held_ingredients.sort()
-					cookingDone.emit(held_ingredients)
-					$potionDone.play()
-					$AnimationPlayer.play_backwards("revert_color")
-	$brewing.volume_db = lerp($brewing.volume_db, -80.0, .08 * delta)
-	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
+	#Need 3 ingredients in Cauldron to stir
+	if held_ingredients.size() == 3:
+		#Currently grabbing the laddle
+		if followMouse:
+			if done == false: 
+				$liquid.look_at(get_global_mouse_position())
+				if recordRot != $liquid.rotation_degrees:
+					if !$sloshing.playing:
+						$sloshing.volume_db = 3
+						$sloshing.play()
+					if $sloshing.volume_db < 0:
+						$sloshing.volume_db = 5
+				if held_ingredients.size() > 0:
+					if recordRot < $liquid.rotation_degrees:
+						if !$brewing.playing:
+							$brewing.play()
+						if $brewing.volume_db < 0:
+							$brewing.volume_db = lerp($brewing.volume_db, 0.0, 1.0)
+						addedCook += delta
+						$liquid/waves.modulate = lerp(Color(0.573, 0.675, 0.737, 1.0), Color(0.725, 0.388, 0.141, 1.0), addedCook / 3)
+					recordRot = $liquid.rotation_degrees
+					if $liquid/waves.modulate.b <= .141:
+						done = true
+						held_ingredients.sort()
+						cookingDone.emit(held_ingredients)
+						$potionDone.play()
+						$AnimationPlayer.play_backwards("revert_color")
+		$brewing.volume_db = lerp($brewing.volume_db, -80.0, .08 * delta)
+		$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
 			
 func _on_hovered(hovered: bool, ref) -> void:
+	#Cauldron is not being stirred
 	if followMouse != true:
 		if hovered:
 			if $IngredientDrawer.held == null:
 				var strHold: String = ""
 				instance = spawn_test.instantiate()
 				add_child(instance)
+				#Loop until strHold = all ingredients in cauldron
 				for i in held_ingredients.size():
 					strHold = strHold + str(held_ingredients[i] + "\n")
 				instance.get_child(0).text = strHold
+	#Cauldron has no ingredients
 	if $IngredientDrawer.held == null:
 		if ref != null:
 			ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
@@ -88,24 +94,32 @@ func _on_hovered(hovered: bool, ref) -> void:
 		if instance != null:
 			instance.queue_free()
 
-
+#Triggered by dropping ingredients into cauldron
 func _on_drop_spot_pressed() -> void:
 	if !done:
+		#Player must be holding ingredient
 		if ($IngredientDrawer.held != null):
-			if allIngredients.get($IngredientDrawer.held).isGrindable:
-				var randPitch = randf_range(0.7, 1.1)
-				$heavysplash.pitch_scale = randPitch
-				$heavysplash.play(.22)
+			#Limits cauldron contents to 3 ingredients
+			if held_ingredients.size() < 3:
+				#Normal ingredients make heavy splash sound
+				if allIngredients.get($IngredientDrawer.held).isGrindable:
+					var randPitch = randf_range(0.7, 1.1)
+					$heavysplash.pitch_scale = randPitch
+					$heavysplash.play(.22)
+				#Crushed ingredients make light splash sound
+				else:
+					var randPitch = randf_range(0.9, 1.3)
+					$lightsplash.pitch_scale = randPitch
+					$lightsplash.play(.53)
+				#Add held ingredient to cauldron
+				held_ingredients.append($IngredientDrawer.held)
+				$IngredientDrawer.instance.queue_free()
+				$IngredientDrawer.held = null
+				$IngredientDrawer.show_buttons()
+				print("ingredients in cauldron: ", held_ingredients)
+				_on_hovered(true, null)
 			else:
-				var randPitch = randf_range(0.9, 1.3)
-				$lightsplash.pitch_scale = randPitch
-				$lightsplash.play(.53)
-			held_ingredients.append($IngredientDrawer.held)
-			$IngredientDrawer.instance.queue_free()
-			$IngredientDrawer.held = null
-			$IngredientDrawer.show_buttons()
-			print("ingredients in cauldron: ", held_ingredients)
-			_on_hovered(true, null)
+				print("reached the max of 3 ingredients in cauldron")
 		
 
 func hide_buttons():
