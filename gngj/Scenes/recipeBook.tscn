@@ -1338,9 +1338,9 @@ texture = ExtResource("3_gfmpn")
 
 [node name="LeftDesc" type="Label" parent="LeftSprite" unique_id=1275169040]
 offset_left = -231.005
-offset_top = 375.0
-offset_right = 221.995
-offset_bottom = 407.0
+offset_top = 280.0
+offset_right = 228.995
+offset_bottom = 312.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
 theme_override_font_sizes/font_size = 24
@@ -1370,10 +1370,10 @@ position = Vector2(285.995, 900)
 texture = ExtResource("3_gfmpn")
 
 [node name="RightDesc" type="Label" parent="RightSprite" unique_id=2017092086]
-offset_left = -245.995
-offset_top = 375.0
-offset_right = 229.005
-offset_bottom = 407.0
+offset_left = -226.995
+offset_top = 280.0
+offset_right = 233.005
+offset_bottom = 312.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
 theme_override_font_sizes/font_size = 24

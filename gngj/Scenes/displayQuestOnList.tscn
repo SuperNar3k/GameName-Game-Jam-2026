@@ -48,7 +48,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="potionNameLable" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1208371953]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(455, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_yfkir")
@@ -60,7 +60,7 @@ vertical_alignment = 1
 [node name="DaysUntilDueLable" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=762977107]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Days Until Due"
 label_settings = ExtResource("4_nm1tc")
 horizontal_alignment = 1
@@ -70,11 +70,11 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="npcName" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1137279697]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(455, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_o6lcf")
 theme_override_font_sizes/font_size = 30
-text = "NPC NAME"
+text = "mysterious cloaked noble woman"
 
 [node name="daysUntilDue" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=11665203]
 custom_minimum_size = Vector2(300, 0)

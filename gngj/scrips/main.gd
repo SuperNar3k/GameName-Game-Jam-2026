@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 90
+var dayDuration = 240
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -707,6 +707,7 @@ func endOfDay():
 	# If potion making was in-progress, give ingredients back
 	for i in $ui/CauldronStation.held_ingredients:
 		giveIngredient(ingredients.get(i))
+	$ui/CauldronStation.held_ingredients.clear()
 	
 	music_fade()
 	
