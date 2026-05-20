@@ -234,15 +234,21 @@ func _updateQueue():
 		$ui/FrontRoom/customer3.set_texture(null)
 		$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 	elif storeQueue.size() == 2:
-		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		var i: Texture2D = (load(storeQueue[0].npcQuestGiver.sprite))
+		if $ui/FrontRoom/NPC.get_texture_normal() != i:
+			$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+			$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer3.set_texture(null)
-		$ui/FrontRoom/AnimationPlayer.play("npc_fade")
+		#$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 	elif storeQueue.size() >= 3:
-		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		var i: Texture2D = (load(storeQueue[0].npcQuestGiver.sprite))
+		if $ui/FrontRoom/NPC.get_texture_normal() != i:
+			$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+			$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer3.set_texture(load(storeQueue[2].npcQuestGiver.sprite))
-		$ui/FrontRoom/AnimationPlayer.play("npc_fade")
+		#$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 
 	#Re-enable button which allows NPC interaction
 	if(storeQueue.size() > 0 && !inConversation):
@@ -288,7 +294,7 @@ func _on_greetNPC():
 			$ui/FrontRoom/potionHotbar.hide()
 			$ui/FrontRoom/givePotionButton.hide()
 			$ui/FrontRoom.clearInventory()
-			$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
+			$ui/FrontRoom/AnimationPlayerTalk.play_backwards("npc_talking")
  		
 			#Dialog for quest success
 			var randPitch = (randf_range(.8, 1.2))
@@ -520,7 +526,7 @@ func _on_greetNPC():
 	$ui/FrontRoom/Dialogue.visible = false
 	inConversation = false
 	noLongerInConversation.emit()
-	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
+	$ui/FrontRoom/AnimationPlayerTalk.play_backwards("npc_talking")
 	
 	print("displaying new npc if available")
 	storeQueue.pop_front()

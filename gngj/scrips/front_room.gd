@@ -63,7 +63,7 @@ func _on_backRoomButton_pressed() -> void:
 	toBackRoom.emit()
 	
 func _on_npcButton_pressed():
-	$AnimationPlayer.play("npc_talking")
+	$AnimationPlayerTalk.play("npc_talking")
 	talkToNpc.emit()	
 	
 func _on_questAccepted_pressed():
