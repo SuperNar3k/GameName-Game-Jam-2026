@@ -83,7 +83,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.5176324, 1),
 "update": 0,
-"values": [Vector2(285.995, 900), Vector2(285.995, -180)]
+"values": [Vector2(285, 900), Vector2(285, -180)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1337,9 +1337,9 @@ position = Vector2(-285.995, 900)
 texture = ExtResource("3_gfmpn")
 
 [node name="LeftDesc" type="Label" parent="LeftSprite" unique_id=1275169040]
-offset_left = -231.005
+offset_left = -228.005
 offset_top = 280.0
-offset_right = 228.995
+offset_right = 231.995
 offset_bottom = 312.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
@@ -1366,13 +1366,13 @@ theme = SubResource("Theme_gfmpn")
 alignment = 1
 
 [node name="RightSprite" type="Sprite2D" parent="." unique_id=227578063]
-position = Vector2(285.995, 900)
+position = Vector2(260, 900)
 texture = ExtResource("3_gfmpn")
 
 [node name="RightDesc" type="Label" parent="RightSprite" unique_id=2017092086]
-offset_left = -226.995
+offset_left = -233.995
 offset_top = 280.0
-offset_right = 233.005
+offset_right = 226.005
 offset_bottom = 312.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
@@ -1381,9 +1381,9 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="RightName" type="Label" parent="RightSprite" unique_id=241050334]
-offset_left = -288.995
+offset_left = -283.995
 offset_top = -191.0
-offset_right = 271.005
+offset_right = 276.005
 offset_bottom = -152.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rxxfk")
@@ -1391,9 +1391,9 @@ theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
 [node name="RightRecipe" type="VBoxContainer" parent="RightSprite" unique_id=98905427]
-offset_left = -290.995
+offset_left = -281.995
 offset_top = 118.0
-offset_right = 269.005
+offset_right = 278.005
 offset_bottom = 158.0
 theme = SubResource("Theme_nvrov")
 alignment = 1
