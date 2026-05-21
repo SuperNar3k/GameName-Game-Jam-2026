@@ -121,7 +121,13 @@ func startOfDay():
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		
+		unlockPotion(ItemCreator.allPotions.get("Animal Shape Potion"))
+		unlockPotion(ItemCreator.allPotions.get("Beauty Potion"))
+		unlockPotion(ItemCreator.allPotions.get("Charm Potion"))
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
+		unlockPotion(ItemCreator.allPotions.get("Toxic Resistance Potion"))
+		unlockPotion(ItemCreator.allPotions.get("Water Breathing Potion"))
+		unlockPotion(ItemCreator.allPotions.get("Water Walking Potion"))
 		
 		for NPC in NPCBirthingPod.allNPCs.values():
 			availableNPCS.append(NPC)

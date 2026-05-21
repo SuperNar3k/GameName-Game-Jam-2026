@@ -134,54 +134,60 @@ func _on_hovered(ref, hovered:bool):
 
 func _on_recipe_book_btn_pressed() -> void:
 	$bookopen.play()
-	#Displays the first set of recipes
+	#Checks pages until an unlocked page is found
 	page_index =  0
-	while page_index < 2:
-		if (allPotions.get(potionKeysSorted[page_index]).unlocked):
-			if (page_index % 2 == 0):
-				$LeftSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
-				$LeftSprite/LeftDesc.text = allPotions.get(potionKeysSorted[page_index]).description
-				$LeftSprite/LeftName.text = allPotions.get(potionKeysSorted[page_index]).itemName
-				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
-					var newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = j
-					$LeftSprite/LeftRecipe.add_child(newLabel)
-			else:
-				$RightSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
-				$RightSprite/RightDesc.text = allPotions.get(potionKeysSorted[page_index]).description
-				$RightSprite/RightName.text = allPotions.get(potionKeysSorted[page_index]).itemName
-				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
-					var newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = j
-					$RightSprite/RightRecipe.add_child(newLabel)
+	var page_found = false
+	while page_found == false:
+		if (!allPotions.get(potionKeysSorted[page_index]).unlocked) and (!allPotions.get(potionKeysSorted[page_index + 1]).unlocked):
+			page_index += 2
 		else:
-			if (page_index % 2 == 0):
-				$LeftSprite.set_texture(Texture2D)
-				$LeftSprite/LeftDesc.text = "???"
-				$LeftSprite/LeftName.text = "???"
-				for j in allPotions.get(potionKeysSorted[page_index]).recipe:
-					var newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = "???"
-					$LeftSprite/LeftRecipe.add_child(newLabel)
-			else:
-				$RightSprite.set_texture(Texture2D)
-				$RightSprite/RightDesc.text = "???"
-				$RightSprite/RightName.text = "???"
-				for ingred in allPotions.get(potionKeysSorted[page_index]).recipe:
-					var newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = "???"
-					$RightSprite/RightRecipe.add_child(newLabel)
-		page_index = page_index + 1
-					
-	page_index = 0
+			page_found = true
+	#var max_page = page_index + 2
+	#Displays the first set of recipes
+	if (allPotions.get(potionKeysSorted[page_index]).unlocked):
+		$LeftSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index]).sprite))
+		$LeftSprite/LeftDesc.text = allPotions.get(potionKeysSorted[page_index]).description
+		$LeftSprite/LeftName.text = allPotions.get(potionKeysSorted[page_index]).itemName
+		for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+			var newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = j
+			$LeftSprite/LeftRecipe.add_child(newLabel)
+	
+	else:
+		$LeftSprite.set_texture(Texture2D)
+		$LeftSprite/LeftDesc.text = "???"
+		$LeftSprite/LeftName.text = "???"
+		for j in allPotions.get(potionKeysSorted[page_index]).recipe:
+			var newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = "???"
+			$LeftSprite/LeftRecipe.add_child(newLabel)
+	
+	if (allPotions.get(potionKeysSorted[page_index+1]).unlocked):
+		$RightSprite.set_texture(load(allPotions.get(potionKeysSorted[page_index+1]).sprite))
+		$RightSprite/RightDesc.text = allPotions.get(potionKeysSorted[page_index+1]).description
+		$RightSprite/RightName.text = allPotions.get(potionKeysSorted[page_index+1]).itemName
+		for j in allPotions.get(potionKeysSorted[page_index+1]).recipe:
+			var newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = j
+			$RightSprite/RightRecipe.add_child(newLabel)
+
+	else:
+		$RightSprite.set_texture(Texture2D)
+		$RightSprite/RightDesc.text = "???"
+		$RightSprite/RightName.text = "???"
+		for ingred in allPotions.get(potionKeysSorted[page_index+1]).recipe:
+			var newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = "???"
+			$RightSprite/RightRecipe.add_child(newLabel)
+				
 	$AnimationPlayer.play("slide_up")
 	show()
 
@@ -208,64 +214,85 @@ func _on_fwd_btn_pressed() -> void:
 	$BackBtn.show()
 	$backimg.show()
 	
-	if(page_index%2 == 0):
-		page_index += 1
-	
-	var iStore = page_index + 2
-	var newLabel
-	while page_index < iStore:
-		page_index += 1
-		if(page_index < allPotions.size()):
-			if (allPotions.values()[page_index].unlocked):
-				if (page_index % 2 == 0):
-					$LeftSprite.set_texture(load(allPotions.values()[page_index].sprite))
-					$LeftSprite/LeftDesc.text = allPotions.values()[page_index].description
-					$LeftSprite/LeftName.text = allPotions.values()[page_index].itemName
-
-					for j in allPotions.values()[page_index].recipe:
-						newLabel = Label.new()
-						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-						newLabel.add_theme_color_override("font_color", "black")
-						newLabel.text = allIngredients.get(j).itemName
-						$LeftSprite/LeftRecipe.add_child(newLabel)
-				else:
-					$RightSprite.set_texture(load(allPotions.values()[page_index].sprite))
-					$RightSprite/RightDesc.text = allPotions.values()[page_index].description
-					$RightSprite/RightName.text = allPotions.values()[page_index].itemName
-
-					for j in allPotions.values()[page_index].recipe:
-						newLabel = Label.new()
-						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-						newLabel.add_theme_color_override("font_color", "black")
-						newLabel.text = allIngredients.get(j).itemName
-						$RightSprite/RightRecipe.add_child(newLabel)
-			else:
-				if (page_index % 2 == 0):
-					$LeftSprite.set_texture(Texture2D)
-					$LeftSprite/LeftDesc.text = "???"
-					$LeftSprite/LeftName.text = "???"
-
-					for ingred in allPotions.values()[page_index].recipe:
-						newLabel = Label.new()
-						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-						newLabel.add_theme_color_override("font_color", "black")
-						newLabel.text = "???"
-						$LeftSprite/LeftRecipe.add_child(newLabel)
-				else:
-					$RightSprite.set_texture(Texture2D)
-					$RightSprite/RightDesc.text = "???"
-					$RightSprite/RightName.text = "???"
-
-					for ingred in allPotions.values()[page_index].recipe:
-						newLabel = Label.new()
-						newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-						newLabel.add_theme_color_override("font_color", "black")
-						newLabel.text = "???"
-						$RightSprite/RightRecipe.add_child(newLabel)
+	#if(page_index%2 == 0):
+		#page_index += 1
+	if(page_index + 2 < allPotions.size()):
+		page_index += 2
+	var page_found = false
+	while page_found == false and page_index < allPotions.size() - 1:
+		if (!allPotions.get(potionKeysSorted[page_index]).unlocked) and (!allPotions.get(potionKeysSorted[page_index + 1]).unlocked):
+			page_index += 2
 		else:
-			break
+			page_found = true
+	#print(allPotions.values()[page_index].itemName)
+	#var iStore = page_index + 2
+	var newLabel
+
+	if (allPotions.values()[page_index].unlocked):
+		$LeftSprite.set_texture(load(allPotions.values()[page_index].sprite))
+		$LeftSprite/LeftDesc.text = allPotions.values()[page_index].description
+		$LeftSprite/LeftName.text = allPotions.values()[page_index].itemName
+
+		for j in allPotions.values()[page_index].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = allIngredients.get(j).itemName
+			$LeftSprite/LeftRecipe.add_child(newLabel)
+	
+	else:
+		if (page_index % 2 == 0):
+			$LeftSprite.set_texture(Texture2D)
+			$LeftSprite/LeftDesc.text = "???"
+			$LeftSprite/LeftName.text = "???"
 		
-	if page_index == allPotions.size() or page_index == allPotions.size()-1:
+		for ingred in allPotions.values()[page_index].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = "???"
+			$LeftSprite/LeftRecipe.add_child(newLabel)
+	
+	
+	if (allPotions.values()[page_index+1].unlocked):
+		$RightSprite.set_texture(load(allPotions.values()[page_index+1].sprite))
+		$RightSprite/RightDesc.text = allPotions.values()[page_index+1].description
+		$RightSprite/RightName.text = allPotions.values()[page_index+1].itemName
+
+		for j in allPotions.values()[page_index+1].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = allIngredients.get(j).itemName
+			$RightSprite/RightRecipe.add_child(newLabel)
+
+	else:
+		$RightSprite.set_texture(Texture2D)
+		$RightSprite/RightDesc.text = "???"
+		$RightSprite/RightName.text = "???"
+
+		for ingred in allPotions.values()[page_index+1].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = "???"
+			$RightSprite/RightRecipe.add_child(newLabel)
+	#else:
+		#break
+	#if (page_index < allPotions.size()-1):
+		#page_index += 1
+	#else:
+		#break
+	
+	
+	page_found = false
+	var temp_index = page_index + 1
+	while page_found == false and temp_index < allPotions.size()-1:
+		if (!allPotions.get(potionKeysSorted[temp_index+1]).unlocked):
+			temp_index += 1
+		else:
+			page_found = true
+	if !page_found:
 		$FwdBtn.hide()
 		$fwdimg.hide()
 
@@ -291,58 +318,76 @@ func _on_back_btn_pressed() -> void:
 	$fwdimg.show()
 	
 	
-	if(page_index%2 != 0):
-		page_index = page_index-1 
-	
-	var iStore = page_index - 2
+	#if(page_index%2 != 0):
+		#page_index = page_index-1 
+	if(page_index - 2 >= 0):
+		page_index -= 2
+		
+	var page_found = false
+	while page_found == false and page_index >= 0:
+		if (!allPotions.get(potionKeysSorted[page_index]).unlocked) and (!allPotions.get(potionKeysSorted[page_index + 1]).unlocked):
+			page_index -= 2
+		else:
+			page_found = true
+	print(allPotions.values()[page_index].itemName)
+	#var iStore = page_index - 2
 	var newLabel
 		
-	while page_index > iStore:
-		page_index = page_index-1
-		if allPotions.values()[page_index].unlocked:
-			if (page_index % 2 == 0):
-				$LeftSprite.set_texture(load(allPotions.values()[page_index].sprite))
-				$LeftSprite/LeftDesc.text = allPotions.values()[page_index].description
-				$LeftSprite/LeftName.text = allPotions.values()[page_index].itemName
-				for j in allPotions.values()[page_index].recipe:
-					newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = j
-					$LeftSprite/LeftRecipe.add_child(newLabel)
-			else:
-				$RightSprite.set_texture(load(allPotions.values()[page_index].sprite))
-				$RightSprite/RightDesc.text = allPotions.values()[page_index].description
-				$RightSprite/RightName.text = allPotions.values()[page_index].itemName
-				for j in allPotions.values()[page_index].recipe:
-					newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = j
-					$RightSprite/RightRecipe.add_child(newLabel)
-		else:
-			if (page_index % 2 == 0):
-				$LeftSprite.set_texture(Texture2D)
-				$LeftSprite/LeftDesc.text = "???"
-				$LeftSprite/LeftName.text = "???"
-				for j in allPotions.values()[page_index].recipe:
-					newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = "???"
-					$LeftSprite/LeftRecipe.add_child(newLabel)
-			else:
-				$RightSprite.set_texture(Texture2D)
-				$RightSprite/RightDesc.text = "???"
-				$RightSprite/RightName.text = "???"
-				for j in allPotions.values()[page_index].recipe:
-					newLabel = Label.new()
-					newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-					newLabel.add_theme_color_override("font_color", "black")
-					newLabel.text = "???"
-					$RightSprite/RightRecipe.add_child(newLabel)
+	if allPotions.values()[page_index].unlocked:
+		$LeftSprite.set_texture(load(allPotions.values()[page_index].sprite))
+		$LeftSprite/LeftDesc.text = allPotions.values()[page_index].description
+		$LeftSprite/LeftName.text = allPotions.values()[page_index].itemName
+		for j in allPotions.values()[page_index].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = j
+			$LeftSprite/LeftRecipe.add_child(newLabel)
 		
-	if page_index == 0:
+	else:
+		$LeftSprite.set_texture(Texture2D)
+		$LeftSprite/LeftDesc.text = "???"
+		$LeftSprite/LeftName.text = "???"
+		
+		for j in allPotions.values()[page_index].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = "???"
+			$LeftSprite/LeftRecipe.add_child(newLabel)
+		
+		
+	if allPotions.values()[page_index+1].unlocked:
+		$RightSprite.set_texture(load(allPotions.values()[page_index+1].sprite))
+		$RightSprite/RightDesc.text = allPotions.values()[page_index+1].description
+		$RightSprite/RightName.text = allPotions.values()[page_index+1].itemName
+		for j in allPotions.values()[page_index+1].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = j
+			$RightSprite/RightRecipe.add_child(newLabel)
+	
+	else:
+		$RightSprite.set_texture(Texture2D)
+		$RightSprite/RightDesc.text = "???"
+		$RightSprite/RightName.text = "???"
+		for j in allPotions.values()[page_index+1].recipe:
+			newLabel = Label.new()
+			newLabel.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+			newLabel.add_theme_color_override("font_color", "black")
+			newLabel.text = "???"
+			$RightSprite/RightRecipe.add_child(newLabel)
+		#page_index = page_index-1
+		
+	page_found = false
+	var temp_index = page_index - 1
+	while page_found == false and temp_index >= 0:
+		if (!allPotions.get(potionKeysSorted[temp_index]).unlocked):
+			temp_index -= 1
+		else:
+			page_found = true
+	if !page_found:
 		$BackBtn.hide()
 		$backimg.hide()
 
@@ -370,5 +415,25 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	else:
 		$ExitBtn.show()
 		$Sprite2D.show()
-		$FwdBtn.show()
-		$fwdimg.show()
+		
+		var page_found = false
+		var temp_index = page_index + 2
+		while page_found == false and temp_index < allPotions.size():
+			if (!allPotions.get(potionKeysSorted[temp_index]).unlocked):
+				temp_index += 1
+			else:
+				page_found = true
+				$FwdBtn.show()
+				$fwdimg.show()
+		
+		page_found = false
+		temp_index = page_index - 2
+		while page_found == false and temp_index >= 0:
+			if (!allPotions.get(potionKeysSorted[temp_index]).unlocked):
+				temp_index -= 1
+			else:
+				page_found = true
+				$BackBtn.show()
+				$backimg.show()
+		#$FwdBtn.show()
+		#$fwdimg.show()
