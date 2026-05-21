@@ -448,10 +448,10 @@ func Populate():
 	
 	createPotion(
 		"Water Walking Potion",										#ItemName
-		"Grants safe passage to those who need to walk across distances of water or other inhospitable terrains. Allows the drinker to gently float above the ground. ",		#Description
+		"Grants safe passage to those who need to walk across distances of water or other inhospitable terrains.",		#Description
 		0,															#AmountOwned
 		"res://assets/potions/Water Walking Potion.PNG",				#Sprite
-		["air's brevity", "dried ocean", "winter crystal"],							#Recipe
+		["air's brevity", "dried ocean", "leaf of a thousand leaves"],							#Recipe
 		0,
 		9															#CookLevelNeeded
 	)

@@ -12,12 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://4avexk3uhmp1" path="res://assets/ui/IMG_0834.PNG" id="8_q4q0n"]
 [ext_resource type="AudioStream" uid="uid://bwawb3xjlcb4m" path="res://assets/sound/new sound/Book Opening.wav" id="11_nf5bx"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjxqd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2olp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbrmg"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j186r"]
 shader = ExtResource("4_wbrmg")
 shader_parameter/allow_out_of_bounds = true
@@ -71,7 +65,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.5176324, 1),
 "update": 0,
-"values": [Vector2(-285.995, 900), Vector2(-285.995, -180)]
+"values": [Vector2(-5, 900), Vector2(-5, -180)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -83,7 +77,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.5176324, 1),
 "update": 0,
-"values": [Vector2(285, 900), Vector2(285, -180)]
+"values": [Vector2(565, 900), Vector2(565, -180)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -103,6 +97,12 @@ _data = {
 &"RESET": SubResource("Animation_5ak3s"),
 &"slide_up": SubResource("Animation_rxxfk")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjxqd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h2olp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wbrmg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q4q0n"]
 shader = ExtResource("4_wbrmg")
@@ -136,12 +136,12 @@ offset_bottom = 540.0
 color = Color(0, 0, 0, 0)
 
 [node name="Book" type="Sprite2D" parent="." unique_id=1350644997]
-position = Vector2(-960, 540)
+position = Vector2(-960, -540)
 texture = ExtResource("2_rxxfk")
 centered = false
-offset = Vector2(-280.84, 0)
 
 [node name="aButton" type="TextureButton" parent="Book" unique_id=1269564758]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 175.0
@@ -162,6 +162,7 @@ rotation = -0.08682512
 text = "A"
 
 [node name="bButton" type="TextureButton" parent="Book" unique_id=2132603758]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 228.0
@@ -182,6 +183,7 @@ rotation = -0.08682512
 text = "B"
 
 [node name="cButton" type="TextureButton" parent="Book" unique_id=291901701]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 281.0
@@ -202,6 +204,7 @@ rotation = -0.08682512
 text = "C"
 
 [node name="dButton" type="TextureButton" parent="Book" unique_id=461130448]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 334.0
@@ -222,6 +225,7 @@ rotation = -0.08682512
 text = "D"
 
 [node name="eButton" type="TextureButton" parent="Book" unique_id=839718291]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 389.0
@@ -242,6 +246,7 @@ rotation = -0.08682512
 text = "E"
 
 [node name="fButton" type="TextureButton" parent="Book" unique_id=1221343133]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 442.0
@@ -262,6 +267,7 @@ rotation = -0.08682512
 text = "F"
 
 [node name="gButton" type="TextureButton" parent="Book" unique_id=1500604307]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 495.0
@@ -282,6 +288,7 @@ rotation = -0.08682512
 text = "G"
 
 [node name="hButton" type="TextureButton" parent="Book" unique_id=27349716]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 283.0
 offset_top = 548.0
@@ -302,6 +309,7 @@ rotation = -0.08682512
 text = "H"
 
 [node name="iButton" type="TextureButton" parent="Book" unique_id=1741176062]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 281.0
 offset_top = 602.0
@@ -323,6 +331,7 @@ text = "I
 "
 
 [node name="jButton" type="TextureButton" parent="Book" unique_id=337525525]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 281.0
 offset_top = 655.0
@@ -343,6 +352,7 @@ rotation = -0.08682512
 text = "J"
 
 [node name="kButton" type="TextureButton" parent="Book" unique_id=1204780438]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 281.0
 offset_top = 708.0
@@ -363,6 +373,7 @@ rotation = -0.08682512
 text = "K"
 
 [node name="lButton" type="TextureButton" parent="Book" unique_id=674195821]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 281.0
 offset_top = 761.0
@@ -383,6 +394,7 @@ rotation = -0.08682512
 text = "L"
 
 [node name="mButton" type="TextureButton" parent="Book" unique_id=192923428]
+visible = false
 custom_minimum_size = Vector2(90, 0)
 offset_left = 281.0
 offset_top = 815.0
@@ -403,6 +415,7 @@ rotation = -0.08682512
 text = "M"
 
 [node name="nButton" type="TextureButton" parent="Book" unique_id=1058057139]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1494.0
 offset_top = 179.0
@@ -423,6 +436,7 @@ rotation = -0.08682512
 text = "N"
 
 [node name="oButton" type="TextureButton" parent="Book" unique_id=1286352841]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1494.0
 offset_top = 230.0
@@ -443,6 +457,7 @@ rotation = -0.08682512
 text = "O"
 
 [node name="pButton" type="TextureButton" parent="Book" unique_id=1569833591]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1494.0
 offset_top = 280.0
@@ -463,6 +478,7 @@ rotation = -0.08682512
 text = "P"
 
 [node name="qButton" type="TextureButton" parent="Book" unique_id=43894372]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1494.0
 offset_top = 332.0
@@ -483,6 +499,7 @@ rotation = -0.08682512
 text = "Q"
 
 [node name="rButton" type="TextureButton" parent="Book" unique_id=157987773]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1495.0
 offset_top = 383.0
@@ -503,6 +520,7 @@ rotation = -0.08682512
 text = "R"
 
 [node name="sButton" type="TextureButton" parent="Book" unique_id=231834142]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1495.0
 offset_top = 434.0
@@ -523,6 +541,7 @@ rotation = -0.08682512
 text = "S"
 
 [node name="tButton" type="TextureButton" parent="Book" unique_id=1799320516]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1495.0
 offset_top = 484.0
@@ -543,6 +562,7 @@ rotation = -0.08682512
 text = "T"
 
 [node name="uButton" type="TextureButton" parent="Book" unique_id=2042416460]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1495.0
 offset_top = 536.0
@@ -563,6 +583,7 @@ rotation = -0.08682512
 text = "U"
 
 [node name="vButton" type="TextureButton" parent="Book" unique_id=294161603]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1496.0
 offset_top = 584.0
@@ -583,6 +604,7 @@ rotation = -0.08682512
 text = "V"
 
 [node name="wButton" type="TextureButton" parent="Book" unique_id=1193547124]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1496.0
 offset_top = 635.0
@@ -603,6 +625,7 @@ rotation = -0.08682512
 text = "W"
 
 [node name="xButton" type="TextureButton" parent="Book" unique_id=1465355088]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1496.0
 offset_top = 685.0
@@ -623,6 +646,7 @@ rotation = -0.08682512
 text = "X"
 
 [node name="yButton" type="TextureButton" parent="Book" unique_id=2012756220]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1496.0
 offset_top = 737.0
@@ -643,6 +667,7 @@ rotation = -0.08682512
 text = "Y"
 
 [node name="zButton" type="TextureButton" parent="Book" unique_id=116757924]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 offset_left = 1496.0
 offset_top = 788.0
@@ -662,630 +687,84 @@ offset_bottom = 32.99997
 rotation = -0.08682512
 text = "Z"
 
-[node name="BookmarkContainer1" type="VBoxContainer" parent="Book" unique_id=1026793679]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=400350703]
 visible = false
-offset_left = 228.0
-offset_top = 85.0
-offset_right = 428.0
-offset_bottom = 945.0
-scale = Vector2(0.95, 0.95)
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 50
-
-[node name="aButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1957509586]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/aButton" unique_id=264240201]
-layout_mode = 0
-offset_left = 44.21054
-offset_top = 21.127254
-offset_right = 57.21055
-offset_bottom = 44.127254
-rotation = -0.08682512
-text = "A"
-
-[node name="cButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1191626825]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/cButton" unique_id=1839548820]
-layout_mode = 0
-offset_left = 44.21054
-offset_top = 21.127254
-offset_right = 57.21055
-offset_bottom = 44.127254
-rotation = -0.08682512
-text = "C"
-
-[node name="eButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=906540228]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/eButton" unique_id=1442308306]
-layout_mode = 0
-offset_left = 44.21054
-offset_top = 21.127258
-offset_right = 57.21055
-offset_bottom = 44.12726
-rotation = -0.08682512
-text = "E"
-
-[node name="gButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=2112963471]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/gButton" unique_id=1881754558]
-layout_mode = 0
-offset_left = 44.21051
-offset_top = 21.127258
-offset_right = 57.210518
-offset_bottom = 44.12726
-rotation = -0.08682512
-text = "G"
-
-[node name="iButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=164375901]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/iButton" unique_id=1107373957]
-layout_mode = 0
-offset_left = 44.21054
-offset_top = 21.127258
-offset_right = 57.21055
-offset_bottom = 44.12726
-rotation = -0.08682512
-text = "I"
-
-[node name="kButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=2146895903]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer1/kButton" unique_id=96415411]
-layout_mode = 0
-offset_left = 44.210526
-offset_top = 21.127258
-offset_right = 57.210533
-offset_bottom = 44.12726
-rotation = -0.08682512
-text = "K"
-
-[node name="mButton" type="TextureButton" parent="Book/BookmarkContainer1" unique_id=1116316760]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer1/mButton" unique_id=696513296]
-layout_mode = 0
-offset_left = 44.210526
-offset_top = 21.127258
-offset_right = 57.210533
-offset_bottom = 44.12726
-rotation = -0.08682512
-text = "M"
-
-[node name="BookmarkContainer2" type="VBoxContainer" parent="Book" unique_id=1618582259]
-visible = false
-offset_left = 245.00002
-offset_top = 149.0
-offset_right = 445.0
-offset_bottom = 949.0
-scale = Vector2(0.95, 0.95)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 50
-
-[node name="bButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=1447584109]
-clip_contents = true
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer2/bButton" unique_id=306932777]
-layout_mode = 0
-offset_left = 18.947357
-offset_top = 25.337826
-offset_right = 31.947365
-offset_bottom = 48.337826
-rotation = -0.08682512
-text = "B"
-
-[node name="dButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=1675601888]
-clip_contents = true
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer2/dButton" unique_id=2049831393]
-layout_mode = 0
-offset_left = 18.947357
-offset_top = 25.337826
-offset_right = 31.947365
-offset_bottom = 48.337826
-rotation = -0.08682512
-text = "D"
-
-[node name="fButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=408063011]
-clip_contents = true
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer2/fButton" unique_id=1766232350]
-layout_mode = 0
-offset_left = 18.947357
-offset_top = 25.33783
-offset_right = 31.947365
-offset_bottom = 48.33783
-rotation = -0.08682512
-text = "F"
-
-[node name="hButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=1477384312]
-clip_contents = true
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer2/hButton" unique_id=411791614]
-layout_mode = 0
-offset_left = 18.947327
-offset_top = 25.33783
-offset_right = 31.947334
-offset_bottom = 48.33783
-rotation = -0.08682512
-text = "H"
-
-[node name="jButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=469931478]
-clip_contents = true
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer2/jButton" unique_id=241701975]
-layout_mode = 0
-offset_left = 18.947357
-offset_top = 25.33783
-offset_right = 31.947365
-offset_bottom = 48.33783
-rotation = -0.08682512
-text = "J"
-
-[node name="lButton" type="TextureButton" parent="Book/BookmarkContainer2" unique_id=906045539]
-clip_contents = true
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_h2olp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer2/lButton" unique_id=1254608312]
-layout_mode = 0
-offset_left = 18.947342
-offset_top = 25.33783
-offset_right = 31.94735
-offset_bottom = 48.33783
-rotation = -0.08682512
-text = "L"
-
-[node name="BookmarkContainer4" type="VBoxContainer" parent="Book" unique_id=2102633227]
-visible = false
-offset_left = 1502.0
-offset_top = 136.0
-offset_right = 1702.0
-offset_bottom = 916.0
-size_flags_horizontal = 3
-theme_override_constants/separation = 50
-
-[node name="oButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=341001908]
-clip_contents = true
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer4/oButton" unique_id=1001550504]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 137.0
-offset_bottom = 46.0
-rotation = -0.08682512
-text = "O"
-
-[node name="qButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=109389763]
-clip_contents = true
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer4/qButton" unique_id=1380932768]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 137.0
-offset_bottom = 46.0
-rotation = -0.08682512
-text = "Q"
-
-[node name="sButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=2117784626]
-clip_contents = true
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer4/sButton" unique_id=40222867]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 137.0
-offset_bottom = 46.0
-rotation = -0.08682512
-text = "S"
-
-[node name="uButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=2062136916]
-clip_contents = true
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer4/uButton" unique_id=1094281521]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 137.0
-offset_bottom = 46.0
-rotation = -0.08682512
-text = "U"
-
-[node name="wButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=1313032220]
-clip_contents = true
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer4/wButton" unique_id=1562499386]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 140.0
-offset_bottom = 46.0
-rotation = -0.08682512
-text = "W"
-
-[node name="yButton" type="TextureButton" parent="Book/BookmarkContainer4" unique_id=735508808]
-clip_contents = true
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer4/yButton" unique_id=998545542]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 23.0
-offset_right = 137.0
-offset_bottom = 46.0
-rotation = -0.08682512
-text = "Y"
-
-[node name="BookmarkContainer3" type="VBoxContainer" parent="Book" unique_id=602043388]
-visible = false
-offset_left = 1491.0
-offset_top = 74.0
-offset_right = 1691.0
-offset_bottom = 994.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 50
-
-[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1081047776]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/nButton" unique_id=1429718333]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "N"
-
-[node name="pButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1051359773]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/pButton" unique_id=1183482401]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "P"
-
-[node name="rButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1631063600]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/rButton" unique_id=2132799450]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "R"
-
-[node name="tButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1144752543]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/tButton" unique_id=1074361856]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "T"
-
-[node name="vButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1663494853]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/vButton" unique_id=1648243297]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "V"
-
-[node name="xButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=1956635439]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer3/xButton" unique_id=162722835]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "X"
-
-[node name="zButton" type="TextureButton" parent="Book/BookmarkContainer3" unique_id=2042877446]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer3/zButton" unique_id=1018118798]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "Z"
-
-[node name="BookmarkContainer5" type="VBoxContainer" parent="Book" unique_id=1642312325]
-visible = false
-offset_left = 1492.0
-offset_top = 98.0
-offset_right = 1692.0
-offset_bottom = 898.0
-scale = Vector2(0.95, 0.95)
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.0
-
-[node name="nButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1018729798]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer5/nButton" unique_id=1923191402]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "N"
-
-[node name="pButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1233334958]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer5/pButton" unique_id=1820981092]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "P"
-
-[node name="rButton2" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=553866870]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer5/rButton2" unique_id=1590002393]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "R"
-
-[node name="tButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1788644743]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer5/tButton" unique_id=533216561]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "T"
-
-[node name="vButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1054925020]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer5/vButton" unique_id=1694485485]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "V"
-
-[node name="xButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=1127167907]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label2" type="Label" parent="Book/BookmarkContainer5/xButton" unique_id=1714536071]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "X"
-
-[node name="zButton" type="TextureButton" parent="Book/BookmarkContainer5" unique_id=268199696]
-custom_minimum_size = Vector2(50, 80)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-texture_normal = ExtResource("3_pjxqd")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Book/BookmarkContainer5/zButton" unique_id=180000515]
-layout_mode = 0
-offset_left = 129.47363
-offset_top = 25.473606
-offset_right = 142.47363
-offset_bottom = 48.473606
-rotation = -0.08682512
-text = "Z"
+material = SubResource("ShaderMaterial_j186r")
+position = Vector2(-45, -26)
+texture = ExtResource("4_nvrov")
+
+[node name="LeftSprite" type="Sprite2D" parent="." unique_id=1479250762]
+position = Vector2(-5, -180)
+texture = ExtResource("3_gfmpn")
+
+[node name="LeftDesc" type="Label" parent="LeftSprite" unique_id=1275169040]
+offset_left = -228.005
+offset_top = 280.0
+offset_right = 231.995
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="LeftName" type="Label" parent="LeftSprite" unique_id=2106939271]
+offset_left = -274.005
+offset_top = -191.0
+offset_right = 285.995
+offset_bottom = -152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="LeftRecipe" type="VBoxContainer" parent="LeftSprite" unique_id=774158458]
+offset_left = -276.005
+offset_top = 118.0
+offset_right = 283.995
+offset_bottom = 158.0
+theme = SubResource("Theme_gfmpn")
+alignment = 1
+
+[node name="RightSprite" type="Sprite2D" parent="." unique_id=227578063]
+position = Vector2(565, -180)
+texture = ExtResource("3_gfmpn")
+
+[node name="RightDesc" type="Label" parent="RightSprite" unique_id=2017092086]
+offset_left = -233.995
+offset_top = 280.0
+offset_right = 226.005
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RightName" type="Label" parent="RightSprite" unique_id=241050334]
+offset_left = -283.995
+offset_top = -191.0
+offset_right = 276.005
+offset_bottom = -152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxxfk")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="RightRecipe" type="VBoxContainer" parent="RightSprite" unique_id=98905427]
+offset_left = -281.995
+offset_top = 118.0
+offset_right = 278.005
+offset_bottom = 158.0
+theme = SubResource("Theme_nvrov")
+alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1081624250]
+libraries/ = SubResource("AnimationLibrary_gfmpn")
+
+[node name="paper" type="AudioStreamPlayer2D" parent="." unique_id=1152532029]
+stream = ExtResource("7_j186r")
+bus = &"SFX"
 
 [node name="BackBtn" type="Button" parent="." unique_id=795886714]
 visible = false
@@ -1326,85 +805,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wbrmg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wbrmg")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=400350703]
-visible = false
-material = SubResource("ShaderMaterial_j186r")
-position = Vector2(-45, -26)
-texture = ExtResource("4_nvrov")
-
-[node name="LeftSprite" type="Sprite2D" parent="." unique_id=1479250762]
-position = Vector2(-285.995, 900)
-texture = ExtResource("3_gfmpn")
-
-[node name="LeftDesc" type="Label" parent="LeftSprite" unique_id=1275169040]
-offset_left = -228.005
-offset_top = 280.0
-offset_right = 231.995
-offset_bottom = 312.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_rxxfk")
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="LeftName" type="Label" parent="LeftSprite" unique_id=2106939271]
-offset_left = -274.005
-offset_top = -191.0
-offset_right = 285.995
-offset_bottom = -152.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_rxxfk")
-theme_override_font_sizes/font_size = 30
-horizontal_alignment = 1
-
-[node name="LeftRecipe" type="VBoxContainer" parent="LeftSprite" unique_id=774158458]
-offset_left = -276.005
-offset_top = 118.0
-offset_right = 283.995
-offset_bottom = 158.0
-theme = SubResource("Theme_gfmpn")
-alignment = 1
-
-[node name="RightSprite" type="Sprite2D" parent="." unique_id=227578063]
-position = Vector2(260, 900)
-texture = ExtResource("3_gfmpn")
-
-[node name="RightDesc" type="Label" parent="RightSprite" unique_id=2017092086]
-offset_left = -233.995
-offset_top = 280.0
-offset_right = 226.005
-offset_bottom = 312.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_rxxfk")
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="RightName" type="Label" parent="RightSprite" unique_id=241050334]
-offset_left = -283.995
-offset_top = -191.0
-offset_right = 276.005
-offset_bottom = -152.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_rxxfk")
-theme_override_font_sizes/font_size = 30
-horizontal_alignment = 1
-
-[node name="RightRecipe" type="VBoxContainer" parent="RightSprite" unique_id=98905427]
-offset_left = -281.995
-offset_top = 118.0
-offset_right = 278.005
-offset_bottom = 158.0
-theme = SubResource("Theme_nvrov")
-alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1081624250]
-libraries/ = SubResource("AnimationLibrary_gfmpn")
-
-[node name="paper" type="AudioStreamPlayer2D" parent="." unique_id=1152532029]
-stream = ExtResource("7_j186r")
-bus = &"SFX"
-
 [node name="backimg" type="Sprite2D" parent="." unique_id=1147217930]
 visible = false
 material = SubResource("ShaderMaterial_q4q0n")
@@ -1422,7 +822,7 @@ texture = ExtResource("8_q4q0n")
 stream = ExtResource("11_nf5bx")
 bus = &"SFX"
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="FwdBtn" to="." method="_on_fwd_btn_pressed"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
