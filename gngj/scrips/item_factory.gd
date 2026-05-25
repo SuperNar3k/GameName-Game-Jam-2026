@@ -208,7 +208,7 @@ func Populate():
 	
 	createPotion(
 		"Fire Resistance Potion",										#ItemName
-		"An elixir that allows the drinker to penetrate and survive the hottest of fires. Resist calamity, dragons, and blacksmithing mishaps. ",		#Description
+		"An elixir that allows the drinker to penetrate and survive the hottest of fires. Resist calamity, dragons, and blacksmithing mishaps.",		#Description
 		0,															#AmountOwned
 		"res://assets/potions/Fire Resistance Potion.PNG",				#Sprite
 		["a thorny heart powder", "desert calm", "dried ocean"],							#Recipe
