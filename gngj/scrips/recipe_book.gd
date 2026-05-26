@@ -4,6 +4,7 @@ signal enable_outside_buttons
 signal stopAnimation
 signal backButtonPressed
 
+
 var allPotions : Dictionary # Dictionary of all potions
 var allIngredients : Dictionary # Dictionary of all ingredients
 var DudFound = false # Tracks if a dud has been found
@@ -203,13 +204,13 @@ func _on_exit_btn_pressed() -> void:
 		$fwdimg.hide()
 		$BackBtn.hide()
 		$backimg.hide()
-		
-		#Need this too. Sorry >.<
+	
 		backButtonPressed.emit()
 		$AnimationPlayer.play_backwards()
 		
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+		
 	if $Book.position.y == 540:
 		
 		page_index =  0
