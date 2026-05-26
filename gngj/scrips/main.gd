@@ -121,13 +121,13 @@ func startOfDay():
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		
-		unlockPotion(ItemCreator.allPotions.get("Animal Shape Potion"))
-		unlockPotion(ItemCreator.allPotions.get("Beauty Potion"))
-		unlockPotion(ItemCreator.allPotions.get("Charm Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Animal Shape Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Beauty Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Fog in a Bottle"))
+		#unlockPotion(ItemCreator.allPotions.get("Invisibility Potion"))
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
-		unlockPotion(ItemCreator.allPotions.get("Toxic Resistance Potion"))
-		unlockPotion(ItemCreator.allPotions.get("Water Breathing Potion"))
-		unlockPotion(ItemCreator.allPotions.get("Water Walking Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Water Breathing Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Water Walking Potion"))
 		
 		for NPC in NPCBirthingPod.allNPCs.values():
 			availableNPCS.append(NPC)
@@ -680,8 +680,14 @@ func unlockPotion(p: Item):
 		ItemCreator.UnlockPotion(potions, p.itemName, null)
 		potions.set(p.itemName, p)
 		p.unlocked = true
-		
 		print("potion: ", p.itemName, " unlocked")
+		var i = 0
+		for potion in ItemCreator.allPotions:
+			if potion == p.itemName:
+				break
+			else:
+				i += 1
+		$ui/RecipeBook._create_button(i)
 		
 		notificationQueue.append(p)
 		notificationQueue.append("Potion")
