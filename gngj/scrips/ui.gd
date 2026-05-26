@@ -29,7 +29,7 @@ signal cookingDone(heldIngredients, cookedLevel)
 signal finishedNotifying
 
 signal tutorialStep
-
+var inTutorial : bool = false
 
 
 func _ready() -> void:
@@ -338,11 +338,14 @@ func _on_grinding_station_grind_ingredient(_ingredient: Variant) -> void:
 
 
 func _on_hud_recipe_book_stop_animation() -> void:
-	tutorialStep.emit()
+	if(inTutorial):
+		tutorialStep.emit()
 
 
 func _on_hud_recipe_book_back_button_pressed() -> void:
-	tutorialStep.emit()
+	if(inTutorial):
+		tutorialStep.emit()
 	
 func _on_tutorial_button_pressed() -> void: 
-	tutorialStep.emit()
+	if(inTutorial):
+		tutorialStep.emit()

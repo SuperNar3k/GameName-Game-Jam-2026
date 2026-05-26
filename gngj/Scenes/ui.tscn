@@ -126,6 +126,7 @@ offset_bottom = -703.0
 [connection signal="showStore" from="endOfDayScreen" to="." method="_on_end_of_day_screen_show_store"]
 [connection signal="options_pressed" from="Hud" to="." method="_on_hud_options_pressed"]
 [connection signal="quest_pressed" from="Hud" to="." method="_on_hud_quest_pressed"]
+[connection signal="recipe_pressed" from="Hud" to="." method="_on_tutorial_button_pressed"]
 [connection signal="backButtonPressed" from="RecipeBook" to="." method="_on_hud_recipe_book_back_button_pressed"]
 [connection signal="stopAnimation" from="RecipeBook" to="." method="_on_hud_recipe_book_stop_animation"]
 [connection signal="returnToGame" from="questListScreen" to="." method="_on_quest_list_screen_return_to_game"]

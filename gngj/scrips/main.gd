@@ -214,6 +214,8 @@ func tutorialRoutine(Day : int):
 	
 	match Day: 
 		1: 
+			$ui.inTutorial = true
+
 			$ui/Hud/Quests.disabled = true
 			$ui/FrontRoom/goToBackroom.disabled = true
 			
@@ -321,8 +323,9 @@ func tutorialRoutine(Day : int):
 			
 			$ui/CauldronStation.inTutorial = false
 			$ui/CauldronStation/IngredientDrawer.inTutorial = false
-			$ui/CauldronStation/IngredientDrawer/Handle.disabled = false
+			$ui.inTutorial = false
 			
+			$ui/CauldronStation/IngredientDrawer/Handle.disabled = false
 			$ui/Hud/Quests.disabled = false
 			$ui/Hud/Recipes.disabled = false
 			$ui/FrontRoom/goToBackroom.disabled = false
