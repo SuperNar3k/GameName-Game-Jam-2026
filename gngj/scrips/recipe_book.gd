@@ -1,6 +1,8 @@
 extends Control
 
 signal enable_outside_buttons
+signal stopAnimation
+signal backButtonPressed
 
 var allPotions : Dictionary # Dictionary of all potions
 var allIngredients : Dictionary # Dictionary of all ingredients
@@ -194,16 +196,22 @@ func _on_back_btn_pressed() -> void:
 
 func _on_exit_btn_pressed() -> void:
 	if $ExitBtn.is_visible_in_tree() or $Book.position.y < 540:
-		$AnimationPlayer.play_backwards()
-
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	if $Book.position.y == 540:
+		
 		$ExitBtn.hide()
 		$Sprite2D.hide()
 		$FwdBtn.hide()
 		$fwdimg.hide()
 		$BackBtn.hide()
 		$backimg.hide()
+		
+		#Need this too. Sorry >.<
+		backButtonPressed.emit()
+		$AnimationPlayer.play_backwards()
+		
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	if $Book.position.y == 540:
+		
 		page_index =  0
 		backPressed = false
 		fwdPressed = false

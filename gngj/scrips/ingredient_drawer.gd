@@ -3,6 +3,10 @@ extends Sprite2D
 signal parent_buttons_hide
 signal parent_buttons_show
 
+var inTutorial : bool = false
+signal tutorialStep
+var step : int = 0
+
 var huh = 0
 var held = null
 var spawn_test = preload("res://Scenes/Spawn_Test.tscn")
@@ -137,6 +141,36 @@ func _on_drawer_button_pressed(pressed : int) -> void:
 								hide_buttons()
 								allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
 								get_child(pressed).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
+						
+						if(inTutorial):
+							match step: 
+								0: 
+									if(held == "earth"):
+										tutorialStep.emit()
+										step += 1
+									else:
+										allIngredients.get(allIngredients.keys()[pressed]).amountOwned += 1
+										held = null
+										instance.queue_free()
+								1:
+									if(held == "tears of trees"):
+										tutorialStep.emit()
+										step += 1 
+									else:
+										allIngredients.get(allIngredients.keys()[pressed]).amountOwned += 1
+										held = null
+										instance.queue_free()
+								2: 
+									if(held == "a thorny heart"):
+										tutorialStep.emit()
+										$Handle.disabled = false
+									else:
+										allIngredients.get(allIngredients.keys()[pressed]).amountOwned += 1
+										held = null
+										instance.queue_free()
+						
+								
+								
 						if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned == 0):
 							get_child(pressed).get_child(0).set_texture(Texture2D)
 		else:
@@ -179,6 +213,7 @@ func _on_handle_pressed() -> void:
 		page = 1
 		
 		_redraw()
+		
 	else:
 		$AnimationPlayer.play_backwards("Drawer_Slide")
 		huh = huh + 1
@@ -214,9 +249,16 @@ func _on_hovered(hovered: bool, ref, button) -> void:
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName):
+	
+	if(inTutorial):
+		tutorialStep.emit()
+		if(step == 0 or step == 2):
+			$Handle.disabled = true
+		
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and held == null:
-		$nextBtn.show()
-		$Sprite2D.show()
+		if(!inTutorial):
+			$nextBtn.show()
+			$Sprite2D.show()
 		var child = 0
 		while child < 16:
 			get_children()[child].disabled = false
