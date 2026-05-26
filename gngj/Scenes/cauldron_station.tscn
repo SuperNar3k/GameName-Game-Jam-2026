@@ -192,4 +192,5 @@ volume_db = 5.0
 [connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
 [connection signal="button_down" from="liquid/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="liquid/Button" to="." method="_on_button_button_up"]
+[connection signal="tutorialStep" from="IngredientDrawer" to="." method="_on_ingredient_drawer_tutorial_step"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

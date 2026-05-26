@@ -208,7 +208,7 @@ func Populate():
 	
 	createPotion(
 		"Fire Resistance Potion",										#ItemName
-		"An elixir that allows the drinker to penetrate and survive the hottest of fires. Resist calamity, dragons, and blacksmithing mishaps. ",		#Description
+		"An elixir that allows the drinker to penetrate and survive the hottest of fires. Resist calamity, dragons, and blacksmithing mishaps.",		#Description
 		0,															#AmountOwned
 		"res://assets/potions/Fire Resistance Potion.PNG",				#Sprite
 		["a thorny heart powder", "desert calm", "dried ocean"],							#Recipe
@@ -448,10 +448,10 @@ func Populate():
 	
 	createPotion(
 		"Water Walking Potion",										#ItemName
-		"Grants safe passage to those who need to walk across distances of water or other inhospitable terrains. Allows the drinker to gently float above the ground. ",		#Description
+		"Grants safe passage to those who need to walk across distances of water or other inhospitable terrains.",		#Description
 		0,															#AmountOwned
 		"res://assets/potions/Water Walking Potion.PNG",				#Sprite
-		["air's brevity", "dried ocean", "winter crystal"],							#Recipe
+		["air's brevity", "dried ocean", "leaf of a thousand leaves"],							#Recipe
 		0,
 		9															#CookLevelNeeded
 	)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c51ct2jpm0vk3"]
 
-[ext_resource type="Script" uid="uid://pgskssdt1qeo" path="res://Scenes/spawn_test.gd" id="2_ctqmk"]
+[ext_resource type="Script" uid="uid://pgskssdt1qeo" path="res://spawn_test.gd" id="2_ctqmk"]
 [ext_resource type="FontFile" uid="uid://dkmkssq7526u6" path="res://assets/fonts/label_settings/Gelasio-Italic-VariableFont_wght.ttf" id="2_ygc7h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tvr4k"]
