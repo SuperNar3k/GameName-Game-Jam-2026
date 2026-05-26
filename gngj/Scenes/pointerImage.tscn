@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://clvdxr3wkth4u"]
+
+[ext_resource type="Texture2D" uid="uid://cbwfdm2f8o0ag" path="res://assets/monke finger.webp" id="1_cytas"]
+[ext_resource type="Script" uid="uid://d1e5ilu0f24f2" path="res://scrips/pointerImage.gd" id="2_hstcs"]
+
+[sub_resource type="Animation" id="Animation_cytas"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vsah1"]
+resource_name = "pointRight"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hstcs"]
+resource_name = "pointUp"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsah1"]
+_data = {
+&"RESET": SubResource("Animation_cytas"),
+&"pointRight": SubResource("Animation_vsah1"),
+&"pointUp": SubResource("Animation_hstcs")
+}
+
+[node name="pointerImage" type="TextureRect" unique_id=213483614]
+offset_right = 200.0
+offset_bottom = 99.99777
+rotation = 1.5707964
+texture = ExtResource("1_cytas")
+expand_mode = 1
+script = ExtResource("2_hstcs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1753019156]
+libraries/ = SubResource("AnimationLibrary_vsah1")

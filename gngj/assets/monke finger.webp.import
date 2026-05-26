@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du2wx6q3ss83u"
-path="res://.godot/imported/Storm In a Bottle.PNG-063e4451c3cdc3bf94f59aab6d8380e0.ctex"
+uid="uid://cbwfdm2f8o0ag"
+path="res://.godot/imported/monke finger.webp-1489687e481f82b28a6eb5b45077e2e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/potions/Storm In a Bottle.PNG"
-dest_files=["res://.godot/imported/Storm In a Bottle.PNG-063e4451c3cdc3bf94f59aab6d8380e0.ctex"]
+source_file="res://assets/monke finger.webp"
+dest_files=["res://.godot/imported/monke finger.webp-1489687e481f82b28a6eb5b45077e2e9.ctex"]
 
 [params]
 

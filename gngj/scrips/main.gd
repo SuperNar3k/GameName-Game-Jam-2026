@@ -38,6 +38,7 @@ signal gameAutoSaved
 var saving = false
 var justLoaded = false
 
+signal tutorialStep
 
 var bellSFX = preload("res://assets/sound/Service Bell.wav")
 var buySFX = preload("res://assets/sound/Coin.wav")
@@ -51,6 +52,7 @@ var day6MUS = preload("res://assets/sound/music/Day 6- selection.mp3")
 var day7MUS = preload("res://assets/sound/music/Day 7 - selection.mp3")
 var day8MUS = preload("res://assets/sound/music/Day 8 _Full.mp3")
 
+	
 # Called when the game starts.
 func _ready() -> void:
 
@@ -76,13 +78,15 @@ func _ready() -> void:
 		activeQuests,
 		pharmacyQuests,
 		storeQueue,
-		potions
+		potions,
+		day
 	)
 	
 func _process(_delta: float):
 	notificationQueueHandler()
 	if(timerStarted == true):
 		$ui/Hud.updateTimer($dayTimer)
+		
 
 
 func startOfDay():
@@ -102,12 +106,16 @@ func startOfDay():
 	
 	$ui/Hud/gameInfo/dayCounter.text = "Day: " + str(day)
 	
+			
 	if(day == 1):
 		#$music.play()
 		$introLetter.show()
 		await ($introLetter.pressed)
 		
+		
 		$daymusic.play()
+		
+		tutorialRoutine(day)
 		
 		giveIngredient(ItemCreator.allIngredients.get("earth"))
 	
@@ -194,7 +202,126 @@ func startOfDay():
 	$ui/Hud.updateCurrency(currency)
 	$ui/Hud.updateTimer($dayTimer)
 	
+func tutorialRoutine(Day : int):
+	var pointerNode = preload("res://Scenes/pointerImage.tscn")
 	
+	match Day: 
+		1: 
+			$ui/Hud/Quests.disabled = true
+			$ui/FrontRoom/goToBackroom.disabled = true
+			
+			#Point at recipe book
+			var point = pointerNode.instantiate()
+			point.global_position = Vector2(1775,160)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			point.queue_free()
+			
+			await tutorialStep
+			
+			#Point at back room button
+			point = pointerNode.instantiate()
+			point.rotation_degrees = 270
+			point.global_position = Vector2(1700,800)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			point.queue_free()
+			
+			$ui/Hud/Recipes.disabled = true
+			$ui/Hud/Quests.disabled = true
+			$ui/BackRoom/RecipeBookBtn.disabled = true
+			$ui/BackRoom/toFrontRoomBtn.disabled = true
+			$ui/BackRoom/MortarandPestleBtn.disabled = true
+			
+			#Point at cauldron
+			point = pointerNode.instantiate()
+			point.rotation_degrees = 270
+			point.global_position = Vector2(200,450)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			point.queue_free()
+			$ui/CauldronStation/IngredientDrawer.inTutorial = true
+			
+			await tutorialStep
+			
+			#Point at dirt
+			point = pointerNode.instantiate()
+			point.global_position = Vector2(1230,280)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			$ui/CauldronStation.inTutorial = true
+			
+			#point at cauldron
+			point.rotation_degrees = 270
+			point.global_position = Vector2(500, 200)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			
+			#Point at tears of trees
+			point.rotation_degrees = 90
+			point.global_position = Vector2(1430, 550)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			
+			#point at cauldron
+			point.rotation_degrees = 270
+			point.global_position = Vector2(500, 200)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			
+			#Point at a thorny heart
+			point.rotation_degrees = 90
+			point.global_position = Vector2(1840, 280)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			
+			#point at cauldron
+			point.rotation_degrees = 270
+			point.global_position = Vector2(500, 200)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			
+			#point at drawer handle
+			point.rotation_degrees = 180
+			point.global_position = Vector2(850, 590)
+			point.playAnimation("pointRight")
+			
+			await tutorialStep
+			point.queue_free()
+			
+			#point at spoon
+			point = pointerNode.instantiate()
+			point.rotation_degrees = 270
+			$ui/CauldronStation/liquid.add_child(point)
+			point.global_position = Vector2(900, 400)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			point.queue_free()
+			
+			$ui/CauldronStation.inTutorial = false
+			$ui/CauldronStation/IngredientDrawer.inTutorial = false
+			$ui/CauldronStation/IngredientDrawer/Handle.disabled = false
+			
+			$ui/Hud/Quests.disabled = false
+			$ui/Hud/Recipes.disabled = false
+			$ui/FrontRoom/goToBackroom.disabled = false
+			$ui/BackRoom/RecipeBookBtn.disabled = false
+			$ui/BackRoom/toFrontRoomBtn.disabled = false
+			$ui/BackRoom/MortarandPestleBtn.disabled = false
 	
 func _onGenerateQuest():
 	print("Generating quest!")
@@ -992,3 +1119,6 @@ func _on_ui_resume_game() -> void:
 	for timer in get_tree().get_nodes_in_group("npcTimers"):
 		timer.set_paused(false)
 	$dayTimer.set_paused(false)
+
+func _on_ui_tutorial_step() -> void:
+	tutorialStep.emit()

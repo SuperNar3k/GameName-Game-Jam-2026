@@ -5,6 +5,9 @@ extends Control
 signal goBack
 signal cookingDone(held_ingredients)
 
+signal tutorialStep
+var inTutorial : bool = false
+
 var spawn_test = preload("res://Scenes/Spawn_Test.tscn")
 var instance
 
@@ -106,6 +109,9 @@ func _on_drop_spot_pressed() -> void:
 			$IngredientDrawer.show_buttons()
 			print("ingredients in cauldron: ", held_ingredients)
 			_on_hovered(true, null)
+			
+			if(inTutorial):
+				tutorialStep.emit()
 		
 
 func hide_buttons():
@@ -132,3 +138,9 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	done = false
 	held_ingredients.clear()
 	addedCook = 0
+	if(inTutorial):
+		tutorialStep.emit()
+
+
+func _on_ingredient_drawer_tutorial_step() -> void:
+	tutorialStep.emit()

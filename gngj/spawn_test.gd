@@ -1,9 +1,6 @@
 extends Sprite2D
 
-
-
 func _process(_delta):
-		
 	var x
 	var y
 	if(get_global_mouse_position().x + $Label.size.x > 1890):
@@ -15,7 +12,6 @@ func _process(_delta):
 		y = 150
 	else: 
 		y = get_global_mouse_position().y - 100
-	
 	
 	global_position = get_global_mouse_position()
 	$Label.global_position = Vector2(x, y)
