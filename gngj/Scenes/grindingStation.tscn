@@ -35,6 +35,9 @@ size = Vector2(57, 60.5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mnfot"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl0jk"]
+radius = 270.65
+
 [node name="GrindingStation" type="Control" unique_id=1247765081]
 layout_mode = 3
 anchors_preset = 8
@@ -92,7 +95,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_x1r3p")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x1r3p")
 
 [node name="fruitBowl" type="Sprite2D" parent="." unique_id=2061898976]
-position = Vector2(-451, -15)
+position = Vector2(-446, -2)
 
 [node name="Pestle" type="CharacterBody2D" parent="." unique_id=913269000 groups=["Pestle"]]
 position = Vector2(-37, 267)
@@ -127,11 +130,12 @@ volume_db = 5.0
 [node name="IngredientDrawer" parent="." unique_id=1675254955 instance=ExtResource("3_b08lm")]
 
 [node name="DropSpot" type="Button" parent="." unique_id=967202033]
+visible = false
 layout_mode = 0
-offset_left = -722.0
-offset_top = -272.0
-offset_right = -183.0
-offset_bottom = 270.0
+offset_left = -704.0
+offset_top = -266.0
+offset_right = -165.0
+offset_bottom = 276.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mnfot")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mnfot")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_mnfot")
@@ -147,7 +151,15 @@ bus = &"SFX"
 wait_time = 0.15
 one_shot = true
 
+[node name="dropPoint" type="Area2D" parent="." unique_id=1561502706]
+position = Vector2(-445, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dropPoint" unique_id=982991820]
+shape = SubResource("CircleShape2D_tl0jk")
+
 [connection signal="body_entered" from="GrindingArea" to="." method="_on_grinding_area_body_entered"]
 [connection signal="button_down" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_down"]
 [connection signal="button_up" from="Pestle/pickUp" to="Pestle" method="_on_pick_up_button_up"]
-[connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
+[connection signal="button_up" from="DropSpot" to="." method="_on_drop_spot_button_up"]
+[connection signal="mouse_entered" from="dropPoint" to="." method="_on_drop_point_mouse_entered"]
+[connection signal="mouse_exited" from="dropPoint" to="." method="_on_drop_point_mouse_exited"]
