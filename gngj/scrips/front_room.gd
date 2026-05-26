@@ -7,6 +7,7 @@ extends Control
 signal toBackRoom
 signal talkToNpc
 signal questAccepted(option)
+signal updateQueue
 
 var potionForQuest
 
@@ -62,7 +63,7 @@ func _on_backRoomButton_pressed() -> void:
 	toBackRoom.emit()
 	
 func _on_npcButton_pressed():
-	$AnimationPlayer.play("npc_talking")
+	$AnimationPlayerTalk.play("npc_talking")
 	talkToNpc.emit()	
 	
 func _on_questAccepted_pressed():
@@ -80,3 +81,9 @@ func _on_bellbtn_pressed() -> void:
 	var randPitch = randf_range(0.8, 1.2)
 	$bell.pitch_scale = randPitch
 	$bell.play(.14)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "npc_fade":
+		if $AnimationPlayer.current_animation_position == 0.0:
+			updateQueue.emit()

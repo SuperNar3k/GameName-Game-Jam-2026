@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 240
+var dayDuration = 90
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -55,7 +55,8 @@ var day8MUS = preload("res://assets/sound/music/Day 8 _Full.mp3")
 	
 # Called when the game starts.
 func _ready() -> void:
-
+	$ui/FrontRoom.updateQueue.connect(_updateQueue.bind())
+	
 	$ui/MainMenuScene/phys_buttons.open_button_pressed.connect(music_fade.bind())
 	$mmmusic.play()
 	$introLetter.hide()
@@ -128,7 +129,13 @@ func startOfDay():
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		
+		#unlockPotion(ItemCreator.allPotions.get("Animal Shape Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Beauty Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Fog in a Bottle"))
+		#unlockPotion(ItemCreator.allPotions.get("Invisibility Potion"))
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Water Breathing Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Water Walking Potion"))
 		
 		for NPC in NPCBirthingPod.allNPCs.values():
 			availableNPCS.append(NPC)
@@ -358,14 +365,23 @@ func _updateQueue():
 		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer2.set_texture(null)
 		$ui/FrontRoom/customer3.set_texture(null)
+		$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 	elif storeQueue.size() == 2:
-		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		var i: Texture2D = (load(storeQueue[0].npcQuestGiver.sprite))
+		if $ui/FrontRoom/NPC.get_texture_normal() != i:
+			$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+			$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer3.set_texture(null)
+		#$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 	elif storeQueue.size() >= 3:
-		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		var i: Texture2D = (load(storeQueue[0].npcQuestGiver.sprite))
+		if $ui/FrontRoom/NPC.get_texture_normal() != i:
+			$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+			$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer3.set_texture(load(storeQueue[2].npcQuestGiver.sprite))
+		#$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 
 	#Re-enable button which allows NPC interaction
 	if(storeQueue.size() > 0 && !inConversation):
@@ -411,7 +427,7 @@ func _on_greetNPC():
 			$ui/FrontRoom/potionHotbar.hide()
 			$ui/FrontRoom/givePotionButton.hide()
 			$ui/FrontRoom.clearInventory()
-			$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
+			$ui/FrontRoom/AnimationPlayerTalk.play_backwards("npc_talking")
  		
 			#Dialog for quest success
 			var randPitch = (randf_range(.8, 1.2))
@@ -643,11 +659,13 @@ func _on_greetNPC():
 	$ui/FrontRoom/Dialogue.visible = false
 	inConversation = false
 	noLongerInConversation.emit()
-	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
+	$ui/FrontRoom/AnimationPlayerTalk.play_backwards("npc_talking")
 	
 	print("displaying new npc if available")
 	storeQueue.pop_front()
-	_updateQueue()
+	
+	#after the animation finishes, _updateQueue() runs
+	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_fade")
 
 func _on_ui_quest_accepted(option: Variant):
 	questAccepted = option
@@ -789,8 +807,14 @@ func unlockPotion(p: Item):
 		ItemCreator.UnlockPotion(potions, p.itemName, null)
 		potions.set(p.itemName, p)
 		p.unlocked = true
-		
 		print("potion: ", p.itemName, " unlocked")
+		var i = 0
+		for potion in ItemCreator.allPotions:
+			if potion == p.itemName:
+				break
+			else:
+				i += 1
+		$ui/RecipeBook._create_button(i)
 		
 		notificationQueue.append(p)
 		notificationQueue.append("Potion")

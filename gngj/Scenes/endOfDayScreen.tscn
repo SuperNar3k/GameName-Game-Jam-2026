@@ -114,5 +114,5 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_k76cc")
 
 [node name="continueimg" type="Sprite2D" parent="." unique_id=1767228578]
 material = SubResource("ShaderMaterial_wb1r5")
-position = Vector2(-20, -21)
+position = Vector2(-45, -26)
 texture = ExtResource("6_weffq")
