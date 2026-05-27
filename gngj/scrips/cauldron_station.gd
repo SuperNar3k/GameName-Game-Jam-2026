@@ -22,6 +22,8 @@ var recordRot = 0
 var addedCook = 0.0
 var done = false
 
+var drop : bool = false
+
 var ingredientsDisplayed = ["","",""]
 
 # Called when the node enters the scene tree for the first time.
@@ -41,7 +43,7 @@ func _ready() -> void:
 	$ingredientsInCauldron/ingredient2.mouse_exited.connect(_on_hovered.bind(false,$ingredientsInCauldron/ingredient2))
 	$ingredientsInCauldron/ingredient3.mouse_entered.connect(_on_hovered.bind(true,$ingredientsInCauldron/ingredient3))
 	$ingredientsInCauldron/ingredient3.mouse_exited.connect(_on_hovered.bind(false,$ingredientsInCauldron/ingredient3))
-	
+	$DropSpot.hide()
 
 func __init__(_ItemCreator, _allPotions : Dictionary, _allIngredients : Dictionary, _potions : Dictionary) -> void:
 	# Set global dictionaries
@@ -136,43 +138,7 @@ func _on_hovered(hovered: bool, ref) -> void:
 
 
 func _on_drop_spot_pressed() -> void:
-	if !done:
-		if ($IngredientDrawer.held != null):
-			if allIngredients.get($IngredientDrawer.held).isGrindable:
-				var randPitch = randf_range(0.7, 1.1)
-				$heavysplash.pitch_scale = randPitch
-				$heavysplash.play(.22)
-			else:
-				var randPitch = randf_range(0.9, 1.3)
-				$lightsplash.pitch_scale = randPitch
-				$lightsplash.play(.53)
-			held_ingredients.append($IngredientDrawer.held)
-			$IngredientDrawer.instance.queue_free()
-			$IngredientDrawer.held = null
-			$IngredientDrawer.show_buttons()
-			print("ingredients in cauldron: ", held_ingredients)
-			_on_hovered(true, null)
-			
-			
-			var i = 0
-			for ing in held_ingredients:
-				var ingredient = allIngredients.get(ing)
-				match i: 
-					0:
-						$ingredientsInCauldron/ingredient1/image.set_texture(load(ingredient.sprite))
-						ingredientsDisplayed[0] = ing
-					1: 
-						$ingredientsInCauldron/ingredient2/image.set_texture(load(ingredient.sprite))
-						ingredientsDisplayed[1] = ing
-					2:
-						$ingredientsInCauldron/ingredient3/image.set_texture(load(ingredient.sprite))
-						ingredientsDisplayed[2] = ing
-						
-				i += 1
-			
-			if(inTutorial):
-				tutorialStep.emit()
-		
+	pass
 
 func hide_buttons():
 	$BackButton.hide()
@@ -202,3 +168,52 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 
 func _on_ingredient_drawer_tutorial_step() -> void:
 	tutorialStep.emit()
+
+
+func _on_drop_point_mouse_entered() -> void:
+	drop = true
+
+
+func _on_drop_point_mouse_exited() -> void:
+	drop = false
+
+func _input(event:InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed:
+			if drop == true:
+				if !done:
+					if ($IngredientDrawer.held != null):
+						if allIngredients.get($IngredientDrawer.held).isGrindable:
+							var randPitch = randf_range(0.7, 1.1)
+							$heavysplash.pitch_scale = randPitch
+							$heavysplash.play(.22)
+						else:
+							var randPitch = randf_range(0.9, 1.3)
+							$lightsplash.pitch_scale = randPitch
+							$lightsplash.play(.53)
+						held_ingredients.append($IngredientDrawer.held)
+						$IngredientDrawer.instance.queue_free()
+						$IngredientDrawer.held = null
+						$IngredientDrawer.show_buttons()
+						print("ingredients in cauldron: ", held_ingredients)
+						_on_hovered(true, null)
+						
+						
+						var i = 0
+						for ing in held_ingredients:
+							var ingredient = allIngredients.get(ing)
+							match i: 
+								0:
+									$ingredientsInCauldron/ingredient1/image.set_texture(load(ingredient.sprite))
+									ingredientsDisplayed[0] = ing
+								1: 
+									$ingredientsInCauldron/ingredient2/image.set_texture(load(ingredient.sprite))
+									ingredientsDisplayed[1] = ing
+								2:
+									$ingredientsInCauldron/ingredient3/image.set_texture(load(ingredient.sprite))
+									ingredientsDisplayed[2] = ing
+									
+							i += 1
+						
+						if(inTutorial):
+							tutorialStep.emit()
