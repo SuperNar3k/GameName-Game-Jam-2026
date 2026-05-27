@@ -44,7 +44,7 @@ func _create_button(pot_index) -> void:
 	
 	if "Dud" in allPotions.get(allPotions.keys()[pot_index]).itemName:
 		if !DudFound:
-			content_button.text = "Duds :("
+			content_button.text += "Duds :("
 			toc_container.add_child(content_button)
 			content_button.pressed.connect(_go_to_page.bind(pot_index))
 			DudFound = true
