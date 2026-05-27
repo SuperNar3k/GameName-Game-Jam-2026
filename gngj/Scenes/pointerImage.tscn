@@ -53,11 +53,65 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_2xarw"]
+resource_name = "pointUp2"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_horf7"]
+resource_name = "pointUp3"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u3f1e"]
+resource_name = "pointUp4"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vsah1"]
 _data = {
 &"RESET": SubResource("Animation_cytas"),
 &"pointRight": SubResource("Animation_vsah1"),
-&"pointUp": SubResource("Animation_hstcs")
+&"pointUp": SubResource("Animation_hstcs"),
+&"pointUp2": SubResource("Animation_2xarw"),
+&"pointUp3": SubResource("Animation_horf7"),
+&"pointUp4": SubResource("Animation_u3f1e")
 }
 
 [node name="pointerImage" type="TextureRect" unique_id=213483614]

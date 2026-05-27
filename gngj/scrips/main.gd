@@ -39,6 +39,7 @@ var saving = false
 var justLoaded = false
 
 signal tutorialStep
+signal cauldronTutorialComplete
 
 var bellSFX = preload("res://assets/sound/Service Bell.wav")
 var buySFX = preload("res://assets/sound/Coin.wav")
@@ -221,6 +222,8 @@ func tutorialRoutine(Day : int):
 	match Day: 
 		1: 
 			$ui.inTutorial = true
+			$ui/CauldronStation/IngredientDrawer.inTutorial = true
+			$ui/CauldronStation.inTutorial = true
 
 			$ui/Hud/Quests.disabled = true
 			$ui/FrontRoom/goToBackroom.disabled = true
@@ -261,71 +264,9 @@ func tutorialRoutine(Day : int):
 			
 			await tutorialStep
 			point.queue_free()
-			$ui/CauldronStation/IngredientDrawer.inTutorial = true
 			
-			await tutorialStep
-			
-			#Point at dirt
-			point = pointerNode.instantiate()
-			point.global_position = Vector2(1230,280)
-			add_child(point)
-			point.playAnimation("pointUp")
-			
-			await tutorialStep
-			$ui/CauldronStation.inTutorial = true
-			
-			#point at cauldron
-			point.rotation_degrees = 270
-			point.global_position = Vector2(500, 200)
-			point.playAnimation("pointUp")
-			
-			await tutorialStep
-			
-			#Point at tears of trees
-			point.rotation_degrees = 90
-			point.global_position = Vector2(1430, 550)
-			point.playAnimation("pointUp")
-			
-			await tutorialStep
-			
-			#point at cauldron
-			point.rotation_degrees = 270
-			point.global_position = Vector2(500, 200)
-			point.playAnimation("pointUp")
-			
-			await tutorialStep
-			
-			#Point at a thorny heart
-			point.rotation_degrees = 90
-			point.global_position = Vector2(1840, 280)
-			point.playAnimation("pointUp")
-			
-			await tutorialStep
-			
-			#point at cauldron
-			point.rotation_degrees = 270
-			point.global_position = Vector2(500, 200)
-			point.playAnimation("pointUp")
-			
-			await tutorialStep
-			
-			#point at drawer handle
-			point.rotation_degrees = 180
-			point.global_position = Vector2(850, 590)
-			point.playAnimation("pointRight")
-			
-			await tutorialStep
-			point.queue_free()
-			
-			#point at spoon
-			point = pointerNode.instantiate()
-			point.rotation_degrees = 270
-			$ui/CauldronStation/liquid.add_child(point)
-			point.global_position = Vector2(900, 400)
-			point.playAnimation("pointUp")
-			
-			await tutorialStep
-			point.queue_free()
+			$ui/CauldronStation.tutorialRoutine()
+			await cauldronTutorialComplete
 			
 			$ui/CauldronStation.inTutorial = false
 			$ui/CauldronStation/IngredientDrawer.inTutorial = false
@@ -338,6 +279,34 @@ func tutorialRoutine(Day : int):
 			$ui/BackRoom/RecipeBookBtn.disabled = false
 			$ui/BackRoom/toFrontRoomBtn.disabled = false
 			$ui/BackRoom/MortarandPestleBtn.disabled = false
+
+func tutorialMessedUp():
+	var step = $ui/CauldronStation/IngredientDrawer.step
+	var pointerNode = preload("res://Scenes/pointerImage.tscn")
+	var point = pointerNode.instantiate()
+	
+	match step: 
+		#messed up putting the dirt in 
+		0: 
+			#points at dirt
+			point = pointerNode.instantiate()
+			point.global_position = Vector2(1230,280)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+		#messed up puttin the tears of trees in
+		1:
+			#Point at tears of trees
+			point.rotation_degrees = 90
+			point.global_position = Vector2(1430, 550)
+			point.playAnimation("pointUp")
+			
+		#messed up puttin the thorny heart in 
+		2: 
+			#Point at a thorny heart
+			point.rotation_degrees = 90
+			point.global_position = Vector2(1840, 280)
+			point.playAnimation("pointUp")
 	
 func _onGenerateQuest():
 	print("Generating quest!")
@@ -1155,3 +1124,7 @@ func _on_ui_resume_game() -> void:
 
 func _on_ui_tutorial_step() -> void:
 	tutorialStep.emit()
+
+
+func _on_ui_tutorial_cauldron_station_complete() -> void:
+	cauldronTutorialComplete.emit()

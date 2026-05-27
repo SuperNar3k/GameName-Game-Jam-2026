@@ -5,6 +5,7 @@ signal parent_buttons_show
 
 var inTutorial : bool = false
 signal tutorialStep
+signal tutorialSwapVision
 var step : int = 0
 
 var huh = 0
@@ -160,31 +161,7 @@ func _on_drawer_button_down(button_down : int) -> void:
 								get_child(button_down).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
 
 						if(inTutorial):
-							match step: 
-								0: 
-									if(held == "earth"):
-										tutorialStep.emit()
-										step += 1
-									else:
-										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
-										held = null
-										instance.queue_free()
-								1:
-									if(held == "tears of trees"):
-										tutorialStep.emit()
-										step += 1 
-									else:
-										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
-										held = null
-										instance.queue_free()
-								2: 
-									if(held == "a thorny heart"):
-										tutorialStep.emit()
-										$Handle.disabled = false
-									else:
-										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
-										held = null
-										instance.queue_free()
+							tutorialSwapVision.emit()
 				
 						if (allIngredients.get(allIngredients.keys()[button_down]).amountOwned == 0):
 							get_child(button_down).get_child(0).set_texture(Texture2D)
@@ -200,13 +177,16 @@ func _on_drawer_button_up(button_up : int) -> void:
 			_redraw()
 			show_buttons()
 	else:
-		if held == allIngredients.keys()[button_up]:
-			held = null
-			instance.queue_free()
-			allIngredients.get(allIngredients.keys()[button_up]).amountOwned += 1
-			#_on_hovered(true, get_child(button_up).get_child(0), button_up)
-			_redraw()
-			show_buttons()
+				if held == allIngredients.keys()[button_up]:
+					held = null
+					instance.queue_free()
+					allIngredients.get(allIngredients.keys()[button_up]).amountOwned += 1
+					#_on_hovered(true, get_child(button_up).get_child(0), button_up)
+					_redraw()
+					show_buttons()
+					
+					if(inTutorial):
+						tutorialSwapVision.emit()
 #func inst(pos):
 	
 	#instance.position = pos
@@ -270,15 +250,15 @@ func _on_hovered(hovered: bool, ref, button) -> void:
 
 func _on_animation_player_animation_finished(_anim_name: StringName):
 	
-	if(inTutorial):
-		tutorialStep.emit()
-		if(step == 0 or step == 2):
-			$Handle.disabled = true
 		
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and held == null:
-		if(!inTutorial):
+		if(!inTutorial):	
 			$nextBtn.show()
 			$Sprite2D.show()
+		
+		else:
+			tutorialStep.emit()
+		
 		var child = 0
 		while child < 16:
 			get_children()[child].disabled = false
