@@ -157,10 +157,12 @@ rotation = 0.77823955
 texture = ExtResource("6_l5v4h")
 
 [node name="Button" type="Button" parent="liquid" unique_id=765800098]
-offset_left = 411.5
-offset_top = -28.0
-offset_right = 553.71
-offset_bottom = 72.0
+offset_left = 287.5
+offset_top = -7.0000057
+offset_right = 429.71002
+offset_bottom = 92.99999
+rotation = -0.26922694
+scale = Vector2(1.9706203, 1.3443189)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4t13b")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4t13b")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_4t13b")
