@@ -370,6 +370,7 @@ shape = SubResource("CircleShape2D_chp45")
 [connection signal="button_down" from="liquid/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="liquid/Button" to="." method="_on_button_button_up"]
 [connection signal="tutorialStep" from="IngredientDrawer" to="." method="_on_ingredient_drawer_tutorial_step"]
+[connection signal="tutorialSwapVision" from="IngredientDrawer" to="." method="tutorialSwapVision"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="dropPoint" to="." method="_on_drop_point_mouse_entered"]
 [connection signal="mouse_exited" from="dropPoint" to="." method="_on_drop_point_mouse_exited"]

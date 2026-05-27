@@ -29,6 +29,8 @@ signal cookingDone(heldIngredients, cookedLevel)
 signal finishedNotifying
 
 signal tutorialStep
+signal tutorialCauldronStationComplete
+signal tutorialMessedUp
 var inTutorial : bool = false
 
 
@@ -349,3 +351,11 @@ func _on_hud_recipe_book_back_button_pressed() -> void:
 func _on_tutorial_button_pressed() -> void: 
 	if(inTutorial):
 		tutorialStep.emit()
+
+
+func _on_cauldron_station_tutorial_messed_up() -> void:
+	tutorialMessedUp.emit()
+
+
+func _on_cauldron_station_tutorial_complete() -> void:
+	tutorialCauldronStationComplete.emit()
