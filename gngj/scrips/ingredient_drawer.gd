@@ -192,21 +192,21 @@ func _on_drawer_button_down(button_down : int) -> void:
 
 func _on_drawer_button_up(button_up : int) -> void:
 	if page != 1:
-				if held == allIngredients.keys()[button_up+16]:
-					held = null
-					instance.queue_free()
-					allIngredients.get(allIngredients.keys()[button_up+16]).amountOwned += 1
-					_on_hovered(true, get_child(button_up).get_child(0), button_up)
-					_redraw()
-					show_buttons()
+		if held == allIngredients.keys()[button_up+16]:
+			held = null
+			instance.queue_free()
+			allIngredients.get(allIngredients.keys()[button_up+16]).amountOwned += 1
+			#_on_hovered(true, get_child(button_up).get_child(0), button_up)
+			_redraw()
+			show_buttons()
 	else:
-				if held == allIngredients.keys()[button_up]:
-					held = null
-					instance.queue_free()
-					allIngredients.get(allIngredients.keys()[button_up]).amountOwned += 1
-					_on_hovered(true, get_child(button_up).get_child(0), button_up)
-					_redraw()
-					show_buttons()
+		if held == allIngredients.keys()[button_up]:
+			held = null
+			instance.queue_free()
+			allIngredients.get(allIngredients.keys()[button_up]).amountOwned += 1
+			#_on_hovered(true, get_child(button_up).get_child(0), button_up)
+			_redraw()
+			show_buttons()
 #func inst(pos):
 	
 	#instance.position = pos
@@ -239,6 +239,8 @@ func _on_hovered(hovered: bool, ref, button) -> void:
 		if hovered:
 			var ing
 			if button == -1:
+				if instance != null:
+					instance.queue_free()
 				instance = spawn_test.instantiate()
 				add_child(instance)
 				instance.get_child(0).text = "Next Drawer"
@@ -252,6 +254,8 @@ func _on_hovered(hovered: bool, ref, button) -> void:
 							ing = allIngredients.get(allIngredients.keys()[button])
 				else:
 					return
+				if instance != null:
+					instance.queue_free()
 				instance = spawn_test.instantiate()
 				if ing != null:
 					add_child(instance)
