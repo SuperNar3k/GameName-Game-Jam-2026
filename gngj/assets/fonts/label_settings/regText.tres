@@ -1,8 +1,8 @@
 [gd_resource type="LabelSettings" format=3 uid="uid://bgk07qtqte5ia"]
 
-[ext_resource type="FontFile" uid="uid://b04hda25cjhj" path="res://assets/fonts/ArefRuqaaInk-Bold.ttf" id="1_en24t"]
+[ext_resource type="FontFile" uid="uid://doq1j00jwu06p" path="res://assets/fonts/ArefRuqaaInk-Regular.ttf" id="1_en24t"]
 
 [resource]
 font = ExtResource("1_en24t")
-font_size = 28
-font_color = Color(0, 0, 0.119271405, 0.58431375)
+font_size = 40
+font_color = Color(0, 0, 0, 1)
