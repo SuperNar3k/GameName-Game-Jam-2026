@@ -129,10 +129,16 @@ func startOfDay():
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		
-		#unlockPotion(ItemCreator.allPotions.get("Animal Shape Potion"))
+		## UNLOCK ALL POTIONS ##
+		#for potion in ItemCreator.allPotions.keys():
+			#unlockPotion(ItemCreator.allPotions.get(potion))
+		
+		#unlockPotion(ItemCreator.allPotions.get("Speak With Animals Potion"))
 		#unlockPotion(ItemCreator.allPotions.get("Beauty Potion"))
 		#unlockPotion(ItemCreator.allPotions.get("Fog in a Bottle"))
+		#unlockPotion(ItemCreator.allPotions.get("Invincibility Potion"))
 		#unlockPotion(ItemCreator.allPotions.get("Invisibility Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Healing Potion"))
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
 		#unlockPotion(ItemCreator.allPotions.get("Water Breathing Potion"))
 		#unlockPotion(ItemCreator.allPotions.get("Water Walking Potion"))
