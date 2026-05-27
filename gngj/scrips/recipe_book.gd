@@ -38,6 +38,7 @@ func _create_button(pot_index) -> void:
 	var toc_container = $ToCBG/TableofContents/AspectRatioContainer/VBoxContainer
 	var content_button = Button.new()
 	
+	content_button.custom_minimum_size = Vector2(300.0, 0.0)
 	content_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	content_button.text = "➥ "
 	
@@ -162,6 +163,7 @@ func _on_recipe_book_btn_pressed() -> void:
 	_go_to_page(page_index)
 	$AnimationPlayer.play("slide_up")
 	show()
+	$ToCBG.size.y = $ToCBG/TableofContents/AspectRatioContainer/VBoxContainer.size.y + 55
 
 
 func _on_fwd_btn_pressed() -> void:
