@@ -1,6 +1,9 @@
 extends Control
 
 signal enable_outside_buttons
+signal stopAnimation
+signal backButtonPressed
+
 
 var allPotions : Dictionary # Dictionary of all potions
 var allIngredients : Dictionary # Dictionary of all ingredients

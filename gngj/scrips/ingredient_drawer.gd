@@ -3,6 +3,10 @@ extends Sprite2D
 signal parent_buttons_hide
 signal parent_buttons_show
 
+var inTutorial : bool = false
+signal tutorialStep
+var step : int = 0
+
 var huh = 0
 var held = null
 var spawn_test = preload("res://Scenes/Spawn_Test.tscn")
@@ -55,108 +59,154 @@ func _ready() -> void:
 	$nextBtn.mouse_entered.connect(_on_hovered.bind(true, $Sprite2D, -1))
 	$nextBtn.mouse_exited.connect(_on_hovered.bind(false, $Sprite2D, -1))
 	
-	$Button.pressed.connect(_on_drawer_button_pressed.bind(0))
-	$Button2.pressed.connect(_on_drawer_button_pressed.bind(1))
-	$Button3.pressed.connect(_on_drawer_button_pressed.bind(2))
-	$Button4.pressed.connect(_on_drawer_button_pressed.bind(3))
-	$Button5.pressed.connect(_on_drawer_button_pressed.bind(4))
-	$Button6.pressed.connect(_on_drawer_button_pressed.bind(5))
-	$Button7.pressed.connect(_on_drawer_button_pressed.bind(6))
-	$Button8.pressed.connect(_on_drawer_button_pressed.bind(7))
-	$Button9.pressed.connect(_on_drawer_button_pressed.bind(8))
-	$Button10.pressed.connect(_on_drawer_button_pressed.bind(9))
-	$Button11.pressed.connect(_on_drawer_button_pressed.bind(10))
-	$Button12.pressed.connect(_on_drawer_button_pressed.bind(11))
-	$Button13.pressed.connect(_on_drawer_button_pressed.bind(12))
-	$Button14.pressed.connect(_on_drawer_button_pressed.bind(13))
-	$Button15.pressed.connect(_on_drawer_button_pressed.bind(14))
-	$Button16.pressed.connect(_on_drawer_button_pressed.bind(15))
+	$Button.button_down.connect(_on_drawer_button_down.bind(0))
+	$Button2.button_down.connect(_on_drawer_button_down.bind(1))
+	$Button3.button_down.connect(_on_drawer_button_down.bind(2))
+	$Button4.button_down.connect(_on_drawer_button_down.bind(3))
+	$Button5.button_down.connect(_on_drawer_button_down.bind(4))
+	$Button6.button_down.connect(_on_drawer_button_down.bind(5))
+	$Button7.button_down.connect(_on_drawer_button_down.bind(6))
+	$Button8.button_down.connect(_on_drawer_button_down.bind(7))
+	$Button9.button_down.connect(_on_drawer_button_down.bind(8))
+	$Button10.button_down.connect(_on_drawer_button_down.bind(9))
+	$Button11.button_down.connect(_on_drawer_button_down.bind(10))
+	$Button12.button_down.connect(_on_drawer_button_down.bind(11))
+	$Button13.button_down.connect(_on_drawer_button_down.bind(12))
+	$Button14.button_down.connect(_on_drawer_button_down.bind(13))
+	$Button15.button_down.connect(_on_drawer_button_down.bind(14))
+	$Button16.button_down.connect(_on_drawer_button_down.bind(15))
+	
+	$Button.button_up.connect(_on_drawer_button_up.bind(0))
+	$Button2.button_up.connect(_on_drawer_button_up.bind(1))
+	$Button3.button_up.connect(_on_drawer_button_up.bind(2))
+	$Button4.button_up.connect(_on_drawer_button_up.bind(3))
+	$Button5.button_up.connect(_on_drawer_button_up.bind(4))
+	$Button6.button_up.connect(_on_drawer_button_up.bind(5))
+	$Button7.button_up.connect(_on_drawer_button_up.bind(6))
+	$Button8.button_up.connect(_on_drawer_button_up.bind(7))
+	$Button9.button_up.connect(_on_drawer_button_up.bind(8))
+	$Button10.button_up.connect(_on_drawer_button_up.bind(9))
+	$Button11.button_up.connect(_on_drawer_button_up.bind(10))
+	$Button12.button_up.connect(_on_drawer_button_up.bind(11))
+	$Button13.button_up.connect(_on_drawer_button_up.bind(12))
+	$Button14.button_up.connect(_on_drawer_button_up.bind(13))
+	$Button15.button_up.connect(_on_drawer_button_up.bind(14))
+	$Button16.button_up.connect(_on_drawer_button_up.bind(15))
 	
 func __init__(_allIngredients : Dictionary, _wantGrinded : bool) -> void:
 	# Set global dictionaries
 	allIngredients = _allIngredients
 	wantGrinded = _wantGrinded
 	
-func _on_drawer_button_pressed(pressed : int) -> void:
+func _on_drawer_button_down(button_down : int) -> void:
 	#if instance != null:
 		#if instance.get_child(0) != null:
 			#instance.get_child(0).queue_free()
 	if grabbingAllowed:
 		if(held == null):
 			if page != 1:
-				if pressed + 16 < 30:
-					if (allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned > 0):
+				if button_down + 16 < 30:
+					if (allIngredients.get(allIngredients.keys()[button_down+16]).amountOwned > 0):
 						if (wantGrinded):
-							var ref = allIngredients.get(allIngredients.keys()[pressed+16])
+							var ref = allIngredients.get(allIngredients.keys()[button_down+16])
 							if instance != null:
 								instance.queue_free()
 							instance = spawn_test.instantiate()
 							add_child(instance)
-							instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed+16]).sprite))  
-							held = allIngredients.keys()[pressed+16]
+							instance.set_texture(load(allIngredients.get(allIngredients.keys()[button_down+16]).sprite))  
+							held = allIngredients.keys()[button_down+16]
 							hide_buttons()
-							allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
+							allIngredients.get(allIngredients.keys()[button_down+16]).amountOwned -= 1
 							instance.get_child(0).text = (ref.itemName + "\n" + str(ref.amountOwned))
-							get_child(pressed).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
+							get_child(button_down).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
 						else:
-							if (allIngredients.get(allIngredients.keys()[pressed+16]).isGrindable):
-								var ref = allIngredients.get(allIngredients.keys()[pressed+16])
+							if (allIngredients.get(allIngredients.keys()[button_down+16]).isGrindable):
+								#var ref = allIngredients.get(allIngredients.keys()[button_down+16])
 								if instance != null:
 									instance.queue_free()
 								instance = spawn_test.instantiate()
 								add_child(instance)
-								instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed+16]).sprite))  
-								held = allIngredients.keys()[pressed+16]
+								instance.set_texture(load(allIngredients.get(allIngredients.keys()[button_down+16]).sprite))  
+								held = allIngredients.keys()[button_down+16]
 								hide_buttons()
-								allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned -= 1
-								get_child(pressed).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
-						if (allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned == 0):
-							get_child(pressed).get_child(0).set_texture(Texture2D)
+								allIngredients.get(allIngredients.keys()[button_down+16]).amountOwned -= 1
+								get_child(button_down).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
+						if (allIngredients.get(allIngredients.keys()[button_down+16]).amountOwned == 0):
+							get_child(button_down).get_child(0).set_texture(Texture2D)
 			else:
-				if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned > 0):
+				if (allIngredients.get(allIngredients.keys()[button_down]).amountOwned > 0):
 						if (wantGrinded):
-							var ref = allIngredients.get(allIngredients.keys()[pressed])
+							#var ref = allIngredients.get(allIngredients.keys()[button_down])
 							if instance != null:
 								instance.queue_free()
 							instance = spawn_test.instantiate()
 							add_child(instance)
-							instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed]).sprite))  
-							held = allIngredients.keys()[pressed]
+							instance.set_texture(load(allIngredients.get(allIngredients.keys()[button_down]).sprite))  
+							held = allIngredients.keys()[button_down]
 							hide_buttons()
-							allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
-							get_child(pressed).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
+							allIngredients.get(allIngredients.keys()[button_down]).amountOwned -= 1
+							get_child(button_down).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
 						else:
-							if (allIngredients.get(allIngredients.keys()[pressed]).isGrindable):
-								var ref = allIngredients.get(allIngredients.keys()[pressed])
+							if (allIngredients.get(allIngredients.keys()[button_down]).isGrindable):
+								#var ref = allIngredients.get(allIngredients.keys()[button_down])
 								if instance != null:
 									instance.queue_free()
 								instance = spawn_test.instantiate()
 								add_child(instance)
-								instance.set_texture(load(allIngredients.get(allIngredients.keys()[pressed]).sprite))  
-								held = allIngredients.keys()[pressed]
+								instance.set_texture(load(allIngredients.get(allIngredients.keys()[button_down]).sprite))  
+								held = allIngredients.keys()[button_down]
 								hide_buttons()
-								allIngredients.get(allIngredients.keys()[pressed]).amountOwned -= 1
-								get_child(pressed).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
-						if (allIngredients.get(allIngredients.keys()[pressed]).amountOwned == 0):
-							get_child(pressed).get_child(0).set_texture(Texture2D)
-		else:
-			if page != 1:
-				if held == allIngredients.keys()[pressed+16]:
-					held = null
-					instance.queue_free()
-					allIngredients.get(allIngredients.keys()[pressed+16]).amountOwned += 1
-					_on_hovered(true, get_child(pressed).get_child(0), pressed)
-					_redraw()
-					show_buttons()
-			else:
-				if held == allIngredients.keys()[pressed]:
-					held = null
-					instance.queue_free()
-					allIngredients.get(allIngredients.keys()[pressed]).amountOwned += 1
-					_on_hovered(true, get_child(pressed).get_child(0), pressed)
-					_redraw()
-					show_buttons()
+								allIngredients.get(allIngredients.keys()[button_down]).amountOwned -= 1
+								get_child(button_down).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
 
+						if(inTutorial):
+							match step: 
+								0: 
+									if(held == "earth"):
+										tutorialStep.emit()
+										step += 1
+									else:
+										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
+										held = null
+										instance.queue_free()
+								1:
+									if(held == "tears of trees"):
+										tutorialStep.emit()
+										step += 1 
+									else:
+										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
+										held = null
+										instance.queue_free()
+								2: 
+									if(held == "a thorny heart"):
+										tutorialStep.emit()
+										$Handle.disabled = false
+									else:
+										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
+										held = null
+										instance.queue_free()
+				
+						if (allIngredients.get(allIngredients.keys()[button_down]).amountOwned == 0):
+							get_child(button_down).get_child(0).set_texture(Texture2D)
+		
+
+func _on_drawer_button_up(button_up : int) -> void:
+	if page != 1:
+				if held == allIngredients.keys()[button_up+16]:
+					held = null
+					instance.queue_free()
+					allIngredients.get(allIngredients.keys()[button_up+16]).amountOwned += 1
+					_on_hovered(true, get_child(button_up).get_child(0), button_up)
+					_redraw()
+					show_buttons()
+	else:
+				if held == allIngredients.keys()[button_up]:
+					held = null
+					instance.queue_free()
+					allIngredients.get(allIngredients.keys()[button_up]).amountOwned += 1
+					_on_hovered(true, get_child(button_up).get_child(0), button_up)
+					_redraw()
+					show_buttons()
 #func inst(pos):
 	
 	#instance.position = pos
@@ -179,6 +229,7 @@ func _on_handle_pressed() -> void:
 		page = 1
 		
 		_redraw()
+		
 	else:
 		$AnimationPlayer.play_backwards("Drawer_Slide")
 		huh = huh + 1
@@ -214,9 +265,16 @@ func _on_hovered(hovered: bool, ref, button) -> void:
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName):
+	
+	if(inTutorial):
+		tutorialStep.emit()
+		if(step == 0 or step == 2):
+			$Handle.disabled = true
+		
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and held == null:
-		$nextBtn.show()
-		$Sprite2D.show()
+		if(!inTutorial):
+			$nextBtn.show()
+			$Sprite2D.show()
 		var child = 0
 		while child < 16:
 			get_children()[child].disabled = false

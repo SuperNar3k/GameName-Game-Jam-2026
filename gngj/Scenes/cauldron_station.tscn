@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://c1gwq37n5wiwm" path="res://assets/sound/Liquid Pour Cup.wav" id="10_v4hfa"]
 [ext_resource type="AudioStream" uid="uid://cr2e4xee65b1m" path="res://assets/sound/new sound/Cauldron Add Heavy.wav" id="12_cy4qc"]
 [ext_resource type="AudioStream" uid="uid://cnicmwh34iold" path="res://assets/sound/new sound/Cauldron Add Light.wav" id="13_omp8q"]
+[ext_resource type="LabelSettings" uid="uid://bgk07qtqte5ia" path="res://assets/fonts/label_settings/regText.tres" id="14_chp45"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lc2wf"]
 radius = 41.225906
@@ -71,6 +72,27 @@ _data = {
 &"RESET": SubResource("Animation_x1ou3"),
 &"revert_color": SubResource("Animation_4t13b")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1oq8"]
+shader = ExtResource("5_x1ou3")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wberw"]
+shader = ExtResource("5_x1ou3")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wp7j5"]
+shader = ExtResource("5_x1ou3")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_chp45"]
+radius = 447.52
 
 [node name="CauldronStation" type="Control" unique_id=520231267]
 layout_mode = 3
@@ -189,7 +211,165 @@ volume_db = 5.0
 stream = ExtResource("13_omp8q")
 volume_db = 5.0
 
+[node name="ingredientsInCauldron" type="Control" parent="." unique_id=1372458333]
+anchors_preset = 0
+offset_left = -1162.0
+offset_top = -263.0
+offset_right = -1122.0
+offset_bottom = -223.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ingredientsInCauldron" unique_id=868016800]
+layout_mode = 0
+offset_left = 223.0
+offset_top = -283.0
+offset_right = 461.0
+offset_bottom = -215.0
+text = "In Cauldron:"
+label_settings = ExtResource("14_chp45")
+
+[node name="ingredient1" type="AspectRatioContainer" parent="ingredientsInCauldron" unique_id=5934914]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -236.0
+offset_right = 337.0
+offset_bottom = -86.0
+metadata/_edit_group_ = true
+
+[node name="image" type="TextureRect" parent="ingredientsInCauldron/ingredient1" unique_id=1674212696]
+material = SubResource("ShaderMaterial_j1oq8")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Border" type="Control" parent="ingredientsInCauldron/ingredient1/image" unique_id=188580940]
+visible = false
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 125.0
+offset_right = 129.0
+offset_bottom = 245.0
+metadata/_edit_group_ = true
+
+[node name="line" type="Polygon2D" parent="ingredientsInCauldron/ingredient1/image/Border" unique_id=1807721931]
+position = Vector2(6, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 120, 0, 120, 10, 0, 10)
+
+[node name="line2" type="Polygon2D" parent="ingredientsInCauldron/ingredient1/image/Border" unique_id=512049478]
+position = Vector2(6, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 120, 0, 120, 10, 0, 10)
+
+[node name="line3" type="Polygon2D" parent="ingredientsInCauldron/ingredient1/image/Border" unique_id=484527641]
+position = Vector2(6, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 120, 0, 120)
+
+[node name="line4" type="Polygon2D" parent="ingredientsInCauldron/ingredient1/image/Border" unique_id=1810260287]
+position = Vector2(116, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 120, 0, 120)
+
+[node name="ingredient2" type="AspectRatioContainer" parent="ingredientsInCauldron" unique_id=2129134297]
+layout_mode = 0
+offset_left = 187.0
+offset_top = -106.0
+offset_right = 337.0
+offset_bottom = 44.0
+metadata/_edit_group_ = true
+
+[node name="image" type="TextureRect" parent="ingredientsInCauldron/ingredient2" unique_id=1023861876]
+material = SubResource("ShaderMaterial_wberw")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Border" type="Control" parent="ingredientsInCauldron/ingredient2/image" unique_id=2035715246]
+visible = false
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 125.0
+offset_right = 129.0
+offset_bottom = 245.0
+metadata/_edit_group_ = true
+
+[node name="line" type="Polygon2D" parent="ingredientsInCauldron/ingredient2/image/Border" unique_id=1475738433]
+position = Vector2(6, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 120, 0, 120, 10, 0, 10)
+
+[node name="line2" type="Polygon2D" parent="ingredientsInCauldron/ingredient2/image/Border" unique_id=1622933454]
+position = Vector2(6, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 120, 0, 120, 10, 0, 10)
+
+[node name="line3" type="Polygon2D" parent="ingredientsInCauldron/ingredient2/image/Border" unique_id=1493834498]
+position = Vector2(6, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 120, 0, 120)
+
+[node name="line4" type="Polygon2D" parent="ingredientsInCauldron/ingredient2/image/Border" unique_id=1118700752]
+position = Vector2(116, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 120, 0, 120)
+
+[node name="ingredient3" type="AspectRatioContainer" parent="ingredientsInCauldron" unique_id=1952107390]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 24.0
+offset_right = 337.0
+offset_bottom = 174.0
+metadata/_edit_group_ = true
+
+[node name="image" type="TextureRect" parent="ingredientsInCauldron/ingredient3" unique_id=1062147533]
+material = SubResource("ShaderMaterial_wp7j5")
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Border" type="Control" parent="ingredientsInCauldron/ingredient3/image" unique_id=692641521]
+visible = false
+anchors_preset = 0
+offset_left = 9.0
+offset_top = 125.0
+offset_right = 129.0
+offset_bottom = 245.0
+metadata/_edit_group_ = true
+
+[node name="line" type="Polygon2D" parent="ingredientsInCauldron/ingredient3/image/Border" unique_id=2097301928]
+position = Vector2(6, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 120, 0, 120, 10, 0, 10)
+
+[node name="line2" type="Polygon2D" parent="ingredientsInCauldron/ingredient3/image/Border" unique_id=2105445419]
+position = Vector2(6, 0)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 120, 0, 120, 10, 0, 10)
+
+[node name="line3" type="Polygon2D" parent="ingredientsInCauldron/ingredient3/image/Border" unique_id=1325891949]
+position = Vector2(6, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 120, 0, 120)
+
+[node name="line4" type="Polygon2D" parent="ingredientsInCauldron/ingredient3/image/Border" unique_id=3426144]
+position = Vector2(116, -110)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 0, 10, 0, 10, 120, 0, 120)
+
+[node name="dropPoint" type="Area2D" parent="." unique_id=1018025873]
+position = Vector2(-410, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dropPoint" unique_id=1273151504]
+shape = SubResource("CircleShape2D_chp45")
+
 [connection signal="pressed" from="DropSpot" to="." method="_on_drop_spot_pressed"]
 [connection signal="button_down" from="liquid/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="liquid/Button" to="." method="_on_button_button_up"]
+[connection signal="tutorialStep" from="IngredientDrawer" to="." method="_on_ingredient_drawer_tutorial_step"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="mouse_entered" from="dropPoint" to="." method="_on_drop_point_mouse_entered"]
+[connection signal="mouse_exited" from="dropPoint" to="." method="_on_drop_point_mouse_exited"]
