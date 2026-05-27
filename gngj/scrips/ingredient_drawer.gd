@@ -159,32 +159,32 @@ func _on_drawer_button_down(button_down : int) -> void:
 								allIngredients.get(allIngredients.keys()[button_down]).amountOwned -= 1
 								get_child(button_down).get_child(0).material.set_shader_parameter("outline_thickness", 0.0)
 
-							if(inTutorial):
-								match step: 
-									0: 
-										if(held == "earth"):
-											tutorialStep.emit()
-											step += 1
-										else:
-											allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
-											held = null
-											instance.queue_free()
-									1:
-										if(held == "tears of trees"):
-											tutorialStep.emit()
-											step += 1 
-										else:
-											allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
-											held = null
-											instance.queue_free()
-									2: 
-										if(held == "a thorny heart"):
-											tutorialStep.emit()
-											$Handle.disabled = false
-										else:
-											allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
-											held = null
-											instance.queue_free()
+						if(inTutorial):
+							match step: 
+								0: 
+									if(held == "earth"):
+										tutorialStep.emit()
+										step += 1
+									else:
+										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
+										held = null
+										instance.queue_free()
+								1:
+									if(held == "tears of trees"):
+										tutorialStep.emit()
+										step += 1 
+									else:
+										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
+										held = null
+										instance.queue_free()
+								2: 
+									if(held == "a thorny heart"):
+										tutorialStep.emit()
+										$Handle.disabled = false
+									else:
+										allIngredients.get(allIngredients.keys()[button_down]).amountOwned += 1
+										held = null
+										instance.queue_free()
 				
 						if (allIngredients.get(allIngredients.keys()[button_down]).amountOwned == 0):
 							get_child(button_down).get_child(0).set_texture(Texture2D)
