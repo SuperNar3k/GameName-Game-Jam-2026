@@ -6,6 +6,7 @@ var allPotions : Dictionary # Dictionary of all potions
 var allIngredients : Dictionary # Dictionary of all ingredients
 var DudFound = false # Tracks if a dud has been found
 var tableOfContents : Dictionary # Dictionary (keys are all 26 letters, values are the page_index for that letter)
+var firstOpen = true # Tracks if the book has been opened before
 
 var page_index : int = 0 # Int representing the current page index
 
@@ -15,8 +16,8 @@ var fwdPressed = false
 
 func _ready() -> void:
 	hide()
-	$ExitBtn.mouse_entered.connect(_on_hovered.bind($Sprite2D, true))
-	$ExitBtn.mouse_exited.connect(_on_hovered.bind($Sprite2D, false))
+	$ExitBtn.mouse_entered.connect(_on_hovered.bind($exitimg, true))
+	$ExitBtn.mouse_exited.connect(_on_hovered.bind($exitimg, false))
 	$BackBtn.mouse_entered.connect(_on_hovered.bind($backimg, true))
 	$BackBtn.mouse_exited.connect(_on_hovered.bind($backimg, false))
 	$FwdBtn.mouse_entered.connect(_on_hovered.bind($fwdimg, true))
@@ -31,8 +32,11 @@ func __init__(
 	allIngredients = _allIngredients
 
 func _create_button(pot_index) -> void:
-	var toc_container = $TableofContents/AspectRatioContainer/VBoxContainer
+	var toc_container = $ToCBG/TableofContents/AspectRatioContainer/VBoxContainer
 	var content_button = Button.new()
+	
+	content_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	content_button.text = "➥ "
 	
 	if "Dud" in allPotions.get(allPotions.keys()[pot_index]).itemName:
 		if !DudFound:
@@ -43,10 +47,10 @@ func _create_button(pot_index) -> void:
 			return
 		else:
 			return
-	
-	content_button.text = allPotions.get(allPotions.keys()[pot_index]).itemName
+
+	content_button.text += allPotions.get(allPotions.keys()[pot_index]).itemName
 	toc_container.add_child(content_button)
-	var i = 1
+	var i = 0
 	while i < toc_container.get_children().size():
 		if toc_container.get_child(i).text < content_button.text:
 			if "Dud" in toc_container.get_child(i).text:
@@ -58,9 +62,10 @@ func _create_button(pot_index) -> void:
 	content_button.pressed.connect(_go_to_page.bind(pot_index))
 
 func _go_to_page(given_index : int):
-	var randPitch = (randf_range(0.8, 1.2))
-	$paper.pitch_scale = randPitch
-	$paper.play(.41)
+	if !$bookopen.playing:
+		var randPitch = (randf_range(0.8, 1.2))
+		$paper.pitch_scale = randPitch
+		$paper.play(.41)
 	#delete previous page infos
 	for child in $LeftSprite/LeftRecipe.get_children():
 		child.queue_free()
@@ -132,20 +137,25 @@ func _go_to_page(given_index : int):
 	_check_fwd_hide()
 	_check_back_hide()
 
+
 func _on_hovered(ref, hovered:bool):
 	ref.material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+
 
 func _on_recipe_book_btn_pressed() -> void:
 	$bookopen.play()
 	#Checks pages until an unlocked page is found
-	page_index =  0
-	var page_found = false
-	while page_found == false:
-		if (!allPotions.get(allPotions.keys()[page_index]).unlocked) and (!allPotions.get(allPotions.keys()[page_index + 1]).unlocked):
-			page_index += 2
-		else:
-			page_found = true
+	if firstOpen:
+		page_index =  0
+		var page_found = false
+		while page_found == false:
+			if (!allPotions.get(allPotions.keys()[page_index]).unlocked) and (!allPotions.get(allPotions.keys()[page_index + 1]).unlocked):
+				page_index += 2
+			else:
+				page_found = true
+		firstOpen = false
 	
+	$exitimg.show()
 	_go_to_page(page_index)
 	$AnimationPlayer.play("slide_up")
 	show()
@@ -193,18 +203,19 @@ func _on_back_btn_pressed() -> void:
 	_check_back_hide()
 
 func _on_exit_btn_pressed() -> void:
+	for child in $ToCBG/TableofContents/AspectRatioContainer/VBoxContainer.get_children():
+		child.disabled = true
+	$ExitBtn.hide()
+	$FwdBtn.hide()
+	$BackBtn.hide()
 	if $ExitBtn.is_visible_in_tree() or $Book.position.y < 540:
 		$AnimationPlayer.play_backwards()
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if $Book.position.y == 540:
-		$ExitBtn.hide()
-		$Sprite2D.hide()
-		$FwdBtn.hide()
+		$exitimg.hide()
 		$fwdimg.hide()
-		$BackBtn.hide()
 		$backimg.hide()
-		page_index =  0
 		backPressed = false
 		fwdPressed = false
 		for child in $LeftSprite/LeftRecipe.get_children():
@@ -214,8 +225,9 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		enable_outside_buttons.emit()
 		hide()
 	else:
+		for child in $ToCBG/TableofContents/AspectRatioContainer/VBoxContainer.get_children():
+			child.disabled = false
 		$ExitBtn.show()
-		$Sprite2D.show()
 		
 		var page_found = false
 		var temp_index = page_index + 2
