@@ -22,6 +22,8 @@ var recordRot = 0
 var addedCook = 0.0
 var done = false
 
+var ingredientsDisplayed = ["","",""]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$liquid/Button.mouse_entered.connect(_on_hovered.bind(true, $liquid/handle))
@@ -31,8 +33,15 @@ func _ready() -> void:
 	$IngredientDrawer.parent_buttons_hide.connect(hide_buttons)
 	$IngredientDrawer.parent_buttons_show.connect(show_buttons)
 	backButton.pressed.connect(_on_backButton_pressed)
-	$DropSpot.mouse_entered.connect(_on_hovered.bind(true, null))
-	$DropSpot.mouse_exited.connect(_on_hovered.bind(false, null))
+	#$DropSpot.mouse_entered.connect(_on_hovered.bind(true, null))
+	#$DropSpot.mouse_exited.connect(_on_hovered.bind(false, null))
+	$ingredientsInCauldron/ingredient1.mouse_entered.connect(_on_hovered.bind(true,$ingredientsInCauldron/ingredient1))
+	$ingredientsInCauldron/ingredient1.mouse_exited.connect(_on_hovered.bind(false,$ingredientsInCauldron/ingredient1))
+	$ingredientsInCauldron/ingredient2.mouse_entered.connect(_on_hovered.bind(true,$ingredientsInCauldron/ingredient2))
+	$ingredientsInCauldron/ingredient2.mouse_exited.connect(_on_hovered.bind(false,$ingredientsInCauldron/ingredient2))
+	$ingredientsInCauldron/ingredient3.mouse_entered.connect(_on_hovered.bind(true,$ingredientsInCauldron/ingredient3))
+	$ingredientsInCauldron/ingredient3.mouse_exited.connect(_on_hovered.bind(false,$ingredientsInCauldron/ingredient3))
+	
 
 func __init__(_ItemCreator, _allPotions : Dictionary, _allIngredients : Dictionary, _potions : Dictionary) -> void:
 	# Set global dictionaries
@@ -71,6 +80,19 @@ func _process(delta: float) -> void:
 					cookingDone.emit(held_ingredients)
 					$potionDone.play()
 					$AnimationPlayer.play_backwards("revert_color")
+					
+					$ingredientsInCauldron/ingredient1/image.set_texture(null)
+					$ingredientsInCauldron/ingredient2/image.set_texture(null)
+					$ingredientsInCauldron/ingredient3/image.set_texture(null)
+					
+					var i = 0
+					while i < ingredientsDisplayed.size():
+						ingredientsDisplayed[i] = ""
+						i = i+1
+					
+					if(inTutorial):
+						tutorialStep.emit()
+					
 	$brewing.volume_db = lerp($brewing.volume_db, -80.0, .08 * delta)
 	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
 			
@@ -78,16 +100,37 @@ func _on_hovered(hovered: bool, ref) -> void:
 	if followMouse != true:
 		if hovered:
 			if $IngredientDrawer.held == null:
-				var strHold: String = ""
-				instance = spawn_test.instantiate()
-				add_child(instance)
-				for i in held_ingredients.size():
-					strHold = strHold + str(held_ingredients[i] + "\n")
-				instance.get_child(0).text = strHold
-	if $IngredientDrawer.held == null:
-		if ref != null:
-			ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
+				
+				#if we're hovering the spoon or back button
+				if ref == $liquid/handle or ref == $Sprite2D:
+					ref.material.set_shader_parameter("outline_thickness", 5.0)
+				
+				#if we're hoving the ingredients
+				else:
+					instance = spawn_test.instantiate()
+					add_child(instance)
+					
+					if ref == $ingredientsInCauldron/ingredient1 and ingredientsDisplayed[0] != "": 
+						$ingredientsInCauldron/ingredient1/image.material.set_shader_parameter("outline_thickness", 5.0)
+						instance.get_child(0).text = ingredientsDisplayed[0]
+					elif ref == $ingredientsInCauldron/ingredient2 and ingredientsDisplayed[1] != "": 
+						instance.get_child(0).text = ingredientsDisplayed[1]
+						$ingredientsInCauldron/ingredient2/image.material.set_shader_parameter("outline_thickness", 5.0)
+					elif ref == $ingredientsInCauldron/ingredient3 and ingredientsDisplayed[2] != "": 
+						instance.get_child(0).text = ingredientsDisplayed[2]
+						$ingredientsInCauldron/ingredient3/image.material.set_shader_parameter("outline_thickness", 5.0)
+							
 	if !hovered:
+		if ref == $liquid/handle or ref == $Sprite2D:
+			ref.material.set_shader_parameter("outline_thickness", 0.0)
+		else:
+			if ref == $ingredientsInCauldron/ingredient1: 
+				$ingredientsInCauldron/ingredient1/image.material.set_shader_parameter("outline_thickness", 0.0)
+			elif ref == $ingredientsInCauldron/ingredient2: 
+				$ingredientsInCauldron/ingredient2/image.material.set_shader_parameter("outline_thickness", 0.0)
+			else:
+				$ingredientsInCauldron/ingredient3/image.material.set_shader_parameter("outline_thickness", 0.0)
+				
 		if instance != null:
 			instance.queue_free()
 
@@ -109,6 +152,23 @@ func _on_drop_spot_pressed() -> void:
 			$IngredientDrawer.show_buttons()
 			print("ingredients in cauldron: ", held_ingredients)
 			_on_hovered(true, null)
+			
+			
+			var i = 0
+			for ing in held_ingredients:
+				var ingredient = allIngredients.get(ing)
+				match i: 
+					0:
+						$ingredientsInCauldron/ingredient1/image.set_texture(load(ingredient.sprite))
+						ingredientsDisplayed[0] = ing
+					1: 
+						$ingredientsInCauldron/ingredient2/image.set_texture(load(ingredient.sprite))
+						ingredientsDisplayed[1] = ing
+					2:
+						$ingredientsInCauldron/ingredient3/image.set_texture(load(ingredient.sprite))
+						ingredientsDisplayed[2] = ing
+						
+				i += 1
 			
 			if(inTutorial):
 				tutorialStep.emit()
@@ -138,8 +198,6 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	done = false
 	held_ingredients.clear()
 	addedCook = 0
-	if(inTutorial):
-		tutorialStep.emit()
 
 
 func _on_ingredient_drawer_tutorial_step() -> void:
