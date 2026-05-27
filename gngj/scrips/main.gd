@@ -668,7 +668,7 @@ func onIngredientGrinded(i: Item):
 	createdItem(crushedObj, "Ingredient")
 	
 	# Decrease quantity by 1
-	i.amountOwned -= 1
+	#i.amountOwned -= 1
 	
 	return crushedObj
 

@@ -75,13 +75,14 @@ func _on_grinding_area_body_entered(_body: Node2D) -> void:
 			crushedName = bowlIngredient + " powder"
 
 		if crushedName in allIngredients:
-			grindIngredient.emit(allIngredients.get(bowlIngredient))
+			#grindIngredient.emit(allIngredients.get(bowlIngredient))
 			$fruitBowl.set_texture(load(allIngredients.get(crushedName).sprite))
 
 
 func _on_drop_spot_button_up() -> void:
 	$fruitBowl.texture = null
-	allIngredients.get(bowlIngredient).amountOwned += 1
+	#allIngredients.get(bowlIngredient).amountOwned += 1
+	grindIngredient.emit(allIngredients.get(bowlIngredient))
 	bowlIngredient = null
 	$IngredientDrawer.grabbingAllowed = true
 	$IngredientDrawer._redraw()
