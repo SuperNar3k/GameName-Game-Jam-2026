@@ -5,8 +5,18 @@ extends Control
 signal goBack
 signal cookingDone(held_ingredients)
 
+signal tutorialIngredientsInCauldron
+signal tutorialComplete
 signal tutorialStep
+signal tutorialMessedUp
 var inTutorial : bool = false
+var cauldronPointer
+var dirtPointer
+var tearsPointer
+var thornyPointer
+var pointersLeft 
+var showIng :bool = true
+
 
 var spawn_test = preload("res://Scenes/Spawn_Test.tscn")
 var instance
@@ -93,7 +103,7 @@ func _process(delta: float) -> void:
 						i = i+1
 					
 					if(inTutorial):
-						tutorialStep.emit()
+						tutorialComplete.emit()
 					
 	$brewing.volume_db = lerp($brewing.volume_db, -80.0, .08 * delta)
 	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
@@ -166,10 +176,6 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	addedCook = 0
 
 
-func _on_ingredient_drawer_tutorial_step() -> void:
-	tutorialStep.emit()
-
-
 func _on_drop_point_mouse_entered() -> void:
 	drop = true
 
@@ -191,6 +197,14 @@ func _input(event:InputEvent) -> void:
 							var randPitch = randf_range(0.9, 1.3)
 							$lightsplash.pitch_scale = randPitch
 							$lightsplash.play(.53)
+							
+						if(inTutorial):
+							tutorialDeletePointer($IngredientDrawer.held)
+							tutorialSwapVision()
+							
+							if(pointersLeft.size() == 1):
+								tutorialDeletePointer("cauldron")
+							
 						held_ingredients.append($IngredientDrawer.held)
 						$IngredientDrawer.instance.queue_free()
 						$IngredientDrawer.held = null
@@ -198,7 +212,7 @@ func _input(event:InputEvent) -> void:
 						print("ingredients in cauldron: ", held_ingredients)
 						_on_hovered(true, null)
 						
-						
+			
 						var i = 0
 						for ing in held_ingredients:
 							var ingredient = allIngredients.get(ing)
@@ -215,5 +229,85 @@ func _input(event:InputEvent) -> void:
 									
 							i += 1
 						
-						if(inTutorial):
-							tutorialStep.emit()
+
+func tutorialRoutine():
+	var pointerNode = preload("res://Scenes/pointerImage.tscn")
+	
+	await tutorialStep
+	
+	cauldronPointer = pointerNode.instantiate()
+	add_child(cauldronPointer)
+	dirtPointer = pointerNode.instantiate()
+	add_child(dirtPointer)
+	tearsPointer = pointerNode.instantiate()
+	add_child(tearsPointer)
+	thornyPointer = pointerNode.instantiate()
+	add_child(thornyPointer)
+	
+	pointersLeft = [cauldronPointer, dirtPointer, tearsPointer, thornyPointer]
+	
+	#point at cauldron
+	cauldronPointer.rotation_degrees = 270
+	cauldronPointer.global_position = Vector2(500, 200)
+	cauldronPointer.playAnimation("pointUp")
+	cauldronPointer.hide()
+	
+	#Point at dirt
+	dirtPointer.global_position = Vector2(1230,280)
+	dirtPointer.playAnimation("pointUp2")
+	
+	#Point at a thorny heart
+	thornyPointer.global_position = Vector2(1840, 280)
+	thornyPointer.playAnimation("pointUp3")
+	
+	#Point at tears of trees
+	tearsPointer.global_position = Vector2(1430, 550)
+	tearsPointer.playAnimation("pointUp4")
+	
+	await tutorialIngredientsInCauldron
+	
+	#point at spoon
+	var point = pointerNode.instantiate()
+	point.rotation_degrees = 270
+	$liquid.add_child(point)
+	point.global_position = Vector2(900, 400)
+	point.playAnimation("pointUp")
+
+	await tutorialComplete
+	point.queue_free()
+
+func _on_ingredient_drawer_tutorial_step() -> void:
+	tutorialStep.emit()
+
+
+func tutorialDeletePointer(ingredient : String):
+	match ingredient: 
+		"cauldron":
+			cauldronPointer.queue_free()
+			tutorialIngredientsInCauldron.emit()
+		"earth":
+			pointersLeft.erase(dirtPointer)
+			dirtPointer.queue_free()
+			
+		"tears of trees":
+			pointersLeft.erase(tearsPointer)
+			tearsPointer.queue_free()
+		
+		"a thorny heart":
+			pointersLeft.erase(thornyPointer)
+			thornyPointer.queue_free()
+
+
+func tutorialSwapVision(): 
+	showIng = !showIng
+	var i = 1
+	if(showIng):
+		pointersLeft[0].hide()
+		while(i < pointersLeft.size()):
+			pointersLeft[i].show()
+			i += 1
+	else: 
+		pointersLeft[0].show()
+		while(i < pointersLeft.size()):
+			pointersLeft[i].hide()
+			i += 1
