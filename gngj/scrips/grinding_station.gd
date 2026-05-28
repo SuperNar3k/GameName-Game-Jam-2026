@@ -114,3 +114,10 @@ func _input(event:InputEvent) -> void:
 						$IngredientDrawer.show_buttons()
 						grindDone = false
 						grindLVL = 0
+				else:
+					if grindLVL < 30:
+						$fruitBowl.texture = null
+						allIngredients.get(bowlIngredient).amountOwned += 1
+						bowlIngredient = null
+						$IngredientDrawer.grabbingAllowed = true
+						$IngredientDrawer._redraw()
