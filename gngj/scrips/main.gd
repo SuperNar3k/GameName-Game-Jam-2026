@@ -1043,6 +1043,13 @@ func loadGame():
 		potions.set(potion, p)
 		p.amountOwned = int(potionDict.get(potion))
 		p.unlocked = true
+		var i = 0
+		for buttpotion in ItemCreator.allPotions:
+			if buttpotion == p.itemName:
+				break
+			else:
+				i += 1
+		$ui/RecipeBook._create_button(i)
 		
 	print("importing dud potion")
 	jsonString = saveFile.get_line()
