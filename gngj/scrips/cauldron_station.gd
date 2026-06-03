@@ -40,7 +40,11 @@ func __init__(_ItemCreator, _allPotions : Dictionary, _allIngredients : Dictiona
 	$IngredientDrawer.__init__(_allIngredients, true)
 
 func _on_backButton_pressed() -> void:
+	# Exit scene with transition
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	goBack.emit()
+	$"../SceneTransition".fadeOut()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

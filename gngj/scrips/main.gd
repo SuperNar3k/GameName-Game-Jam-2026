@@ -713,7 +713,10 @@ func endOfDay():
 	
 	$ui/RecipeBook._on_exit_btn_pressed()
 	# End day in UI
+	$"ui/SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	$ui.endDay()
+	$"ui/SceneTransition".fadeOut()
 	
 	# Increment day
 	day += 1;

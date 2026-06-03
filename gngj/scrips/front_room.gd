@@ -59,7 +59,11 @@ func clearInventory():
 	get_tree().call_group("stuffToDelete","queue_free")
 	
 func _on_backRoomButton_pressed() -> void:
+	# Exit scene with transition
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	toBackRoom.emit()
+	$"../SceneTransition".fadeOut()
 	
 func _on_npcButton_pressed():
 	$AnimationPlayer.play("npc_talking")

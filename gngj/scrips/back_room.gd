@@ -46,12 +46,24 @@ func _on_backRoomButton_pressed(_name: String) -> void:
 			toBookShelf.emit()
 		"r":
 			toRecipeBook.emit()
-		"c":
+		"c": 
+			# Cauldron Station
+			$"../SceneTransition".fadeIn()
+			await get_tree().create_timer(0.2).timeout
 			toCauldronStation.emit()
-		"g":
+			$"../SceneTransition".fadeOut()
+		"g": 
+			# Grind Station
+			$"../SceneTransition".fadeIn()
+			await get_tree().create_timer(0.2).timeout
 			toGrindStation.emit()
-		"f":
+			$"../SceneTransition".fadeOut()
+		"f": 
+			# Front
+			$"../SceneTransition".fadeIn()
+			await get_tree().create_timer(0.2).timeout
 			toFront.emit()
+			$"../SceneTransition".fadeOut()
 
 func got_hovered(btn: String, hovered: bool):
 	if btn == "recipe_book":

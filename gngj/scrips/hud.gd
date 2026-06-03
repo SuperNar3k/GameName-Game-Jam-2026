@@ -32,11 +32,14 @@ func _on_quests_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	options_pressed.emit()
-	
+	$"../SceneTransition".fadeOut()
+
 func updateCurrency(currency: Variant):
 	$gameInfo/currencyLable.text = str(currency) 
-	
+
 func updateTimer(timer: Timer):
 	var hours_left = floor((timer.time_left / 240) * 8)
 	$gameInfo/endDay.text = str(int(hours_left) + 1) + " hours"
