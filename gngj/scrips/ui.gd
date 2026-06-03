@@ -339,11 +339,6 @@ func _on_grinding_station_grind_ingredient(_ingredient: Variant) -> void:
 	grindIngredient.emit(_ingredient)
 
 
-func _on_hud_recipe_book_stop_animation() -> void:
-	if(inTutorial):
-		tutorialStep.emit()
-
-
 func _on_hud_recipe_book_back_button_pressed() -> void:
 	if(inTutorial):
 		tutorialStep.emit()

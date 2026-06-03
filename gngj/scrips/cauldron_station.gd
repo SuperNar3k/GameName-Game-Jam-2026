@@ -64,7 +64,11 @@ func __init__(_ItemCreator, _allPotions : Dictionary, _allIngredients : Dictiona
 	$IngredientDrawer.__init__(_allIngredients, true)
 
 func _on_backButton_pressed() -> void:
+	# Exit scene with transition
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	goBack.emit()
+	$"../SceneTransition".fadeOut()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -109,6 +113,7 @@ func _process(delta: float) -> void:
 	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
 			
 func _on_hovered(hovered: bool, ref) -> void:
+	#Cauldron is not being stirred
 	if followMouse != true:
 		if hovered:
 			if $IngredientDrawer.held == null:
@@ -146,7 +151,7 @@ func _on_hovered(hovered: bool, ref) -> void:
 		if instance != null:
 			instance.queue_free()
 
-
+#Triggered by dropping ingredients into cauldron
 func _on_drop_spot_pressed() -> void:
 	pass
 
@@ -198,21 +203,22 @@ func _input(event:InputEvent) -> void:
 							$lightsplash.pitch_scale = randPitch
 							$lightsplash.play(.53)
 							
+						
+						held_ingredients.append($IngredientDrawer.held)
+						$IngredientDrawer.instance.queue_free()
+						$IngredientDrawer.show_buttons()
+						print("ingredients in cauldron: ", held_ingredients)
+						_on_hovered(true, null)
+						
 						if(inTutorial):
 							tutorialDeletePointer($IngredientDrawer.held)
 							tutorialSwapVision()
 							
 							if(pointersLeft.size() == 1):
 								tutorialDeletePointer("cauldron")
-							
-						held_ingredients.append($IngredientDrawer.held)
-						$IngredientDrawer.instance.queue_free()
-						$IngredientDrawer.held = null
-						$IngredientDrawer.show_buttons()
-						print("ingredients in cauldron: ", held_ingredients)
-						_on_hovered(true, null)
-						
 			
+						$IngredientDrawer.held = null
+						
 						var i = 0
 						for ing in held_ingredients:
 							var ingredient = allIngredients.get(ing)
@@ -233,7 +239,10 @@ func _input(event:InputEvent) -> void:
 func tutorialRoutine():
 	var pointerNode = preload("res://Scenes/pointerImage.tscn")
 	
+	$liquid/Button.disabled = true
 	await tutorialStep
+	$IngredientDrawer/Handle.hide()
+	
 	
 	cauldronPointer = pointerNode.instantiate()
 	add_child(cauldronPointer)
@@ -266,7 +275,11 @@ func tutorialRoutine():
 	
 	await tutorialIngredientsInCauldron
 	
+	#We close the drawer for the player 
+	$IngredientDrawer._on_handle_pressed()
+	
 	#point at spoon
+	$liquid/Button.disabled = false
 	var point = pointerNode.instantiate()
 	point.rotation_degrees = 270
 	$liquid.add_child(point)
@@ -275,6 +288,20 @@ func tutorialRoutine():
 
 	await tutorialComplete
 	point.queue_free()
+	
+	$IngredientDrawer.inTutorial = false
+	$IngredientDrawer/Handle.show()
+
+	
+		
+
+	
+
+	
+	
+	#$IngredientDrawer.show_buttons()
+	#$IngredientDrawer._redraw()
+	
 
 func _on_ingredient_drawer_tutorial_step() -> void:
 	tutorialStep.emit()

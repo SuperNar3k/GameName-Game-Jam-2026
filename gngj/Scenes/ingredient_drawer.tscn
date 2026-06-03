@@ -176,7 +176,6 @@ _data = {
 
 [node name="IngredientDrawer" type="Sprite2D" unique_id=1675254955]
 material = SubResource("ShaderMaterial_tl0jk")
-position = Vector2(840, 0)
 texture = ExtResource("2_msq4k")
 script = ExtResource("3_msq4k")
 

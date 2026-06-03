@@ -116,8 +116,14 @@ func _ready() -> void:
 	
 func __init__(_allIngredients):
 	allIngredients = _allIngredients
+
+# Transition to new day
 func _on_continueButton_pressed() -> void:
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	newDay.emit()
+	$"../SceneTransition".fadeOut()
+	
 
 func _on_buyIngredient(ingredient : String):
 	print("Player wants to buy "+ingredient)
