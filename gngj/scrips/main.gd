@@ -32,7 +32,7 @@ var inConversation = false
 
 signal noLongerNotifying
 var inNotification = false
-var notificationQueue = []
+var notificationQueue = {}
 
 signal gameAutoSaved
 var saving = false
@@ -676,8 +676,8 @@ func giveIngredient(i: Item):
 		
 		print("ingredient: ", i.itemName, " unlocked")
 		
-		notificationQueue.append(i)
-		notificationQueue.append("Ingredient")
+		var info = ["Unlock", "Ingredient", i]
+		notificationQueue.set(i.itemName, info)
 		
 	# Increase quantity by 1
 	if(i.itemName != "earth"):
@@ -693,12 +693,19 @@ func notificationQueueHandler():
 	if(notificationQueue.size() > 0):
 		if(!inNotification):
 			inNotification = true
-			var item = notificationQueue[0]
-			var type = notificationQueue[1]
-			$ui/Notification/Popup.newItemUnlocked(item,type)
+			
+			var itemName = notificationQueue.keys()[0]
+			var info = notificationQueue.get(itemName)
+			var item = info[2]
+			var type = info[1]
+			
+			if(info[0] == "Unlock"):
+				$ui/Notification/Popup.newItemUnlocked(item,type)
+			else:
+				$ui/Notification/Popup.itemMade(item, type)
+			
 			await noLongerNotifying
-			notificationQueue.pop_front()
-			notificationQueue.pop_front()
+			notificationQueue.erase(itemName)
 	
 
 #TO-DO: TESTING NEEDS TO BE DONE ON THIS FUCNTION
@@ -775,11 +782,12 @@ func unlockPotion(p: Item):
 				i += 1
 		$ui/RecipeBook._create_button(i)
 		
-		notificationQueue.append(p)
-		notificationQueue.append("Potion")
+		var info = ["Unlock", "Potion", p]
+		notificationQueue.set(p.itemName, info)
 
 func createdItem(i: Item, type: String):
-	$ui/Notification/Popup.itemMade(i, type)
+	var info = ["Create", type, i]
+	notificationQueue.set(i.itemName, info)
 
 
 #TO-DO: LOGIC FOR WHEN DAY ENDS AND PLAYER IS IN THE MIDDLE OF MAKING STUFF
