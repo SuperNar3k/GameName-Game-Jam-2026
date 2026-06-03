@@ -117,18 +117,15 @@ func startOfDay():
 		
 		$daymusic.play()
 		
+		giveIngredient(ItemCreator.allIngredients.get("earth"))
+		ItemCreator.allIngredients.get("earth").amountOwned = 1
+		giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
+		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
+		
+		
 		tutorialRoutine(day)
 		
-		giveIngredient(ItemCreator.allIngredients.get("earth"))
-	
-		giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
-		giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
-	
-		giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
-		giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
-	
-		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
-		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
+		
 		
 		## UNLOCK ALL POTIONS ##
 		#for potion in ItemCreator.allPotions.keys():
@@ -224,6 +221,7 @@ func tutorialRoutine(Day : int):
 			$ui.inTutorial = true
 			$ui/CauldronStation/IngredientDrawer.inTutorial = true
 			$ui/CauldronStation.inTutorial = true
+			$ui/RecipeBook.inTutorial = true
 
 			$ui/Hud/Quests.disabled = true
 			$ui/FrontRoom/goToBackroom.disabled = true
@@ -265,11 +263,13 @@ func tutorialRoutine(Day : int):
 			await tutorialStep
 			point.queue_free()
 			
+			#Let the cauldron do the cauldron tutorial
 			$ui/CauldronStation.tutorialRoutine()
 			await cauldronTutorialComplete
 			
 			$ui/CauldronStation.inTutorial = false
 			$ui/CauldronStation/IngredientDrawer.inTutorial = false
+			$ui/RecipeBook.inTutorial = false
 			$ui.inTutorial = false
 			
 			$ui/CauldronStation/IngredientDrawer/Handle.disabled = false
@@ -280,33 +280,14 @@ func tutorialRoutine(Day : int):
 			$ui/BackRoom/toFrontRoomBtn.disabled = false
 			$ui/BackRoom/MortarandPestleBtn.disabled = false
 
-func tutorialMessedUp():
-	var step = $ui/CauldronStation/IngredientDrawer.step
-	var pointerNode = preload("res://Scenes/pointerImage.tscn")
-	var point = pointerNode.instantiate()
-	
-	match step: 
-		#messed up putting the dirt in 
-		0: 
-			#points at dirt
-			point = pointerNode.instantiate()
-			point.global_position = Vector2(1230,280)
-			add_child(point)
-			point.playAnimation("pointUp")
+
+			ItemCreator.allIngredients.get("earth").amountOwned = 9999
+			ItemCreator.allIngredients.get("tears of trees").amountOwned = 4
+			giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
+			giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
+			giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
 			
-		#messed up puttin the tears of trees in
-		1:
-			#Point at tears of trees
-			point.rotation_degrees = 90
-			point.global_position = Vector2(1430, 550)
-			point.playAnimation("pointUp")
 			
-		#messed up puttin the thorny heart in 
-		2: 
-			#Point at a thorny heart
-			point.rotation_degrees = 90
-			point.global_position = Vector2(1840, 280)
-			point.playAnimation("pointUp")
 	
 func _onGenerateQuest():
 	print("Generating quest!")

@@ -253,7 +253,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName):
 	
 		
 	if $AnimationPlayer.current_animation_position == $AnimationPlayer.current_animation_length and held == null:
-		if(!inTutorial):	
+		if(!inTutorial):
 			$nextBtn.show()
 			$Sprite2D.show()
 		
@@ -336,11 +336,14 @@ func hide_buttons():
 		#child += 1
 	$Handle.hide()
 	parent_buttons_hide.emit()
+	
+	
 func show_buttons():
 	if $AnimationPlayer.is_playing():
 		showOnCompleted = true
 	else:
-		$nextBtn.show()
-		$Sprite2D.show()
 		$Handle.show()
-		parent_buttons_show.emit()
+		if(!inTutorial):
+			$nextBtn.show()
+			$Sprite2D.show()
+			parent_buttons_show.emit()
