@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 240
+var dayDuration = 90
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -812,6 +812,37 @@ func endOfDay():
 	
 	
 	$ui/RecipeBook._on_exit_btn_pressed()
+	
+	#clearing grinding station when day ends
+	if $ui/GrindingStation/fruitBowl.texture == null:
+		pass
+	else:
+		$ui/GrindingStation/fruitBowl.texture = null
+		$ui/GrindingStation.allIngredients.get($ui/GrindingStation.bowlIngredient).amountOwned += 1
+		$ui/GrindingStation.bowlIngredient = null
+		$ui/GrindingStation/IngredientDrawer.grabbingAllowed = true
+	
+	#clearing cauldron station when day ends
+
+	
+
+	
+	if $ui/CauldronStation/ingredientsInCauldron/ingredient1/image.texture != null:
+		$ui/CauldronStation/ingredientsInCauldron/ingredient1/image.set_texture(null)
+		$ui/CauldronStation/IngredientDrawer.allIngredients.get($ui/CauldronStation.held_ingredients[0]).amountOwned += 1
+		$ui/CauldronStation/AnimationPlayer.play_backwards("revert_color")
+		$ui/CauldronStation.ingredientsDisplayed[0] = ""
+		if $ui/CauldronStation/ingredientsInCauldron/ingredient2/image.texture != null:
+			$ui/CauldronStation/ingredientsInCauldron/ingredient2/image.set_texture(null)
+			$ui/CauldronStation/IngredientDrawer.allIngredients.get($ui/CauldronStation.held_ingredients[1]).amountOwned += 1
+			$ui/CauldronStation.ingredientsDisplayed[1] = ""
+			if $ui/CauldronStation/ingredientsInCauldron/ingredient3/image.texture != null:
+				$ui/CauldronStation/ingredientsInCauldron/ingredient3/image.set_texture(null)
+				$ui/CauldronStation/IngredientDrawer.allIngredients.get($ui/CauldronStation.held_ingredients[2]).amountOwned += 1
+				$ui/CauldronStation.ingredientsDisplayed[2] = ""
+
+	$ui/CauldronStation.held_ingredients.clear()
+	
 	# End day in UI
 	$ui.endDay()
 	
