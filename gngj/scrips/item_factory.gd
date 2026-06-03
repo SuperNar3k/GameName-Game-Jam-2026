@@ -65,12 +65,12 @@ func Populate():
 		#value
 		#grindable
 	
-	createIngredient("earth", "dirt", 9999, "res://assets/ingredients/earth.PNG", 0, false)
+	createIngredient("earth", "dirt", 0, "res://assets/ingredients/earth.PNG", 0, false)
 	createIngredient("leaf of a thousand leaves", "fern", 0, "res://assets/ingredients/a leaf of a thousand leaves.PNG", 1, true)
 	createIngredient("leaf of a thousand leaves powder", "crushed fern", 0, "res://assets/ingredients/a leaf of a thousand leaves powder.PNG", 1, false)
 	createIngredient("a thorny heart", "cactus", 0, "res://assets/ingredients/a thorny heart.PNG", 1, true)
 	createIngredient("a thorny heart powder", "crushed cactus", 0, "res://assets/ingredients/a thorny heart powder.PNG", 1, false)
-	createIngredient("tears of trees", "string of pearls", 4, "res://assets/ingredients/tears of trees.PNG", 1, true)
+	createIngredient("tears of trees", "string of pearls", 0, "res://assets/ingredients/tears of trees.PNG", 1, true)
 	createIngredient("tears of trees powder", "crushed string of pearls", 0, "res://assets/ingredients/tears of trees powder.PNG", 1, false)
 	createIngredient("air's brevity", "feather", 0, "res://assets/ingredients/air's brevity.PNG", 2, false)
 	createIngredient("desert calm", "aloe", 0, "res://assets/ingredients/desert calm.PNG", 2, true)

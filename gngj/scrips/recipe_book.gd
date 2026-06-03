@@ -17,6 +17,9 @@ var page_index : int = 0 # Int representing the current page index
 var backPressed = false
 var fwdPressed = false
 
+var inTutorial = false
+signal tutorialStep
+
 func _ready() -> void:
 	hide()
 	$ExitBtn.mouse_entered.connect(_on_hovered.bind($exitimg, true))
@@ -215,6 +218,8 @@ func _on_exit_btn_pressed() -> void:
 	$BackBtn.hide()
 	if $ExitBtn.is_visible_in_tree() or $Book.position.y < 540:
 		$AnimationPlayer.play_backwards()
+	
+	
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if $Book.position.y == 540:
@@ -229,6 +234,9 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 			child.queue_free()
 		enable_outside_buttons.emit()
 		hide()
+		
+		if(inTutorial):
+			tutorialStep.emit()
 	else:
 		for child in $ToCBG/TableofContents/AspectRatioContainer/VBoxContainer.get_children():
 			child.disabled = false
