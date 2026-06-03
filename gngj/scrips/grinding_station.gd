@@ -10,6 +10,8 @@ var grindDone = false
 var allIngredients
 var bowlIngredient = null
 
+var drop : bool = false
+
 var grindSFX = preload("res://assets/sound/Grind Stone.wav")
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +21,7 @@ func _ready() -> void:
 	$BackButton.mouse_entered.connect(_on_hovered.bind(true, $Sprite2D))
 	$BackButton.mouse_exited.connect(_on_hovered.bind(false, $Sprite2D))
 	backButton.pressed.connect(_on_backButton_pressed)
+	$DropSpot.hide()
 	
 func __init__(_allIngredients : Dictionary) -> void:
 	# Set global dictionaries
@@ -42,24 +45,6 @@ func _process(_delta: float) -> void:
 func _on_hovered(hovered: bool, ref) -> void:
 	ref.material.set_shader_parameter("outline_thickness", 5.0 if hovered else 0.0)
 
-
-func _on_drop_spot_pressed() -> void:
-	if $fruitBowl.texture == null:
-		if ($IngredientDrawer.held != null):
-			bowlIngredient = $IngredientDrawer.held
-			$fruitBowl.set_texture(load(allIngredients.get(bowlIngredient).sprite))
-			$IngredientDrawer.instance.queue_free()
-			$IngredientDrawer.held = null
-			$IngredientDrawer.grabbingAllowed = false
-			$IngredientDrawer.show_buttons()
-			grindDone = false
-			grindLVL = 0
-	else:
-		$fruitBowl.texture = null
-		allIngredients.get(bowlIngredient).amountOwned += 1
-		bowlIngredient = null
-		$IngredientDrawer.grabbingAllowed = true
-		$IngredientDrawer._redraw()
 	
 func hide_buttons():
 	$BackButton.hide()
@@ -86,7 +71,7 @@ func _on_grinding_area_body_entered(_body: Node2D) -> void:
 			$TweenTimer.start()
 	if grindLVL == 30 and grindDone == false:
 		grindDone = true
-		
+		$DropSpot.show()
 		# Check if grinding is possible
 		var crushedName:String 
 		if(bowlIngredient == "shooting star"):
@@ -95,5 +80,49 @@ func _on_grinding_area_body_entered(_body: Node2D) -> void:
 			crushedName = bowlIngredient + " powder"
 
 		if crushedName in allIngredients:
-			grindIngredient.emit(allIngredients.get(bowlIngredient))
+			#grindIngredient.emit(allIngredients.get(bowlIngredient))
 			$fruitBowl.set_texture(load(allIngredients.get(crushedName).sprite))
+
+
+func _on_drop_spot_button_up() -> void:
+	$fruitBowl.texture = null
+	#allIngredients.get(bowlIngredient).amountOwned += 1
+	grindIngredient.emit(allIngredients.get(bowlIngredient))
+	bowlIngredient = null
+	$IngredientDrawer.grabbingAllowed = true
+	$IngredientDrawer._redraw()
+	$DropSpot.hide()
+
+
+
+
+
+func _on_drop_point_mouse_entered() -> void:
+	drop = true
+
+func _on_drop_point_mouse_exited() -> void:
+	drop = false
+
+
+
+func _input(event:InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed:
+			if drop == true:
+				if $fruitBowl.texture == null:
+					if ($IngredientDrawer.held != null):
+						bowlIngredient = $IngredientDrawer.held
+						$fruitBowl.set_texture(load(allIngredients.get(bowlIngredient).sprite))
+						$IngredientDrawer.instance.queue_free()
+						$IngredientDrawer.held = null
+						$IngredientDrawer.grabbingAllowed = false
+						$IngredientDrawer.show_buttons()
+						grindDone = false
+						grindLVL = 0
+				else:
+					if grindLVL < 30:
+						$fruitBowl.texture = null
+						allIngredients.get(bowlIngredient).amountOwned += 1
+						bowlIngredient = null
+						$IngredientDrawer.grabbingAllowed = true
+						$IngredientDrawer._redraw()

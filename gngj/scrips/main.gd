@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 90
+var dayDuration = 240
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -38,14 +38,26 @@ signal gameAutoSaved
 var saving = false
 var justLoaded = false
 
+signal tutorialStep
+signal cauldronTutorialComplete
 
 var bellSFX = preload("res://assets/sound/Service Bell.wav")
 var buySFX = preload("res://assets/sound/Coin.wav")
 
+var day1MUS = preload("res://assets/sound/music/Day 1 New.mp3")
+var day2MUS = preload("res://assets/sound/music/Day 2 New - selection.mp3")
+var day3MUS = preload("res://assets/sound/music/Day 3 - selection.mp3")
+var day4MUS = preload("res://assets/sound/music/Day 4 - selection.mp3")
+var day5MUS = preload("res://assets/sound/music/Day 5 - selection.mp3")
+var day6MUS = preload("res://assets/sound/music/Day 6- selection.mp3")
+var day7MUS = preload("res://assets/sound/music/Day 7 - selection.mp3")
+var day8MUS = preload("res://assets/sound/music/Day 8 _Full.mp3")
 
+	
 # Called when the game starts.
 func _ready() -> void:
-
+	$ui/FrontRoom.updateQueue.connect(_updateQueue.bind())
+	
 	$ui/MainMenuScene/phys_buttons.open_button_pressed.connect(music_fade.bind())
 	$mmmusic.play()
 	$introLetter.hide()
@@ -68,18 +80,18 @@ func _ready() -> void:
 		activeQuests,
 		pharmacyQuests,
 		storeQueue,
-		potions
+		potions,
+		day
 	)
 	
 func _process(_delta: float):
 	notificationQueueHandler()
 	if(timerStarted == true):
 		$ui/Hud.updateTimer($dayTimer)
+		
 
 
 func startOfDay():
-	
-	
 	
 	print("Start of day: ", day)
 	
@@ -96,12 +108,16 @@ func startOfDay():
 	
 	$ui/Hud/gameInfo/dayCounter.text = "Day: " + str(day)
 	
+			
 	if(day == 1):
 		#$music.play()
 		$introLetter.show()
 		await ($introLetter.pressed)
 		
-		$day1music.play()
+		
+		$daymusic.play()
+		
+		tutorialRoutine(day)
 		
 		giveIngredient(ItemCreator.allIngredients.get("earth"))
 	
@@ -114,25 +130,46 @@ func startOfDay():
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		giveIngredient(ItemCreator.allIngredients.get("tears of trees"))
 		
+		## UNLOCK ALL POTIONS ##
+		#for potion in ItemCreator.allPotions.keys():
+			#unlockPotion(ItemCreator.allPotions.get(potion))
+		
+		#unlockPotion(ItemCreator.allPotions.get("Speak With Animals Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Beauty Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Fog in a Bottle"))
+		#unlockPotion(ItemCreator.allPotions.get("Invincibility Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Invisibility Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Healing Potion"))
 		unlockPotion(ItemCreator.allPotions.get("Heat Resistance Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Water Breathing Potion"))
+		#unlockPotion(ItemCreator.allPotions.get("Water Walking Potion"))
 		
 		for NPC in NPCBirthingPod.allNPCs.values():
 			availableNPCS.append(NPC)
 	else:
+		$AnimationPlayer.play("RESET")
+		#$AnimationPlayer.current_animation_position = 0.0
 		if day == 2:
-			$day2music.play()
+			$daymusic.stream = day2MUS
+			$daymusic.play()
 		if day == 3:
-			$day3music.play()
+			$daymusic.stream = day3MUS
+			$daymusic.play()
 		if day == 4:
-			$day4music.play()
+			$daymusic.stream = day4MUS
+			$daymusic.play()
 		if day == 5:
-			$day5music.play()
+			$daymusic.stream = day5MUS
+			$daymusic.play()
 		if day == 6:
-			$day6music.play()
+			$daymusic.stream = day6MUS
+			$daymusic.play()
 		if day == 7:
-			$day7music.play()
+			$daymusic.stream = day7MUS
+			$daymusic.play()
 		if day > 7:
-			$day8music.play()
+			$daymusic.stream = day8MUS
+			$daymusic.play()
 		var ingredient = ingredients.get("leaf of a thousand leaves")
 		ingredient.amountOwned = ingredient.amountOwned + 2
 		
@@ -142,10 +179,15 @@ func startOfDay():
 		ingredient = ingredients.get("tears of trees")
 		ingredient.amountOwned = ingredient.amountOwned + 2
 	
-	var t
+	var timer = Timer.new()
 	for n in range(0, numOfNpcs):
-		t = get_tree().create_timer(range(10,dayDuration-60).pick_random())
-		t.timeout.connect(_onGenerateQuest)
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start(range(10,dayDuration-60).pick_random())
+		timer.timeout.connect(_onGenerateQuest)
+		timer.add_to_group("npcTimers")
+		
+		timer = Timer.new()
 		
 	#we only pop in quest we have not completed or quest who's rewards are due
 	for quest in activeQuests:
@@ -174,7 +216,97 @@ func startOfDay():
 	$ui/Hud.updateCurrency(currency)
 	$ui/Hud.updateTimer($dayTimer)
 	
+func tutorialRoutine(Day : int):
+	var pointerNode = preload("res://Scenes/pointerImage.tscn")
 	
+	match Day: 
+		1: 
+			$ui.inTutorial = true
+			$ui/CauldronStation/IngredientDrawer.inTutorial = true
+			$ui/CauldronStation.inTutorial = true
+
+			$ui/Hud/Quests.disabled = true
+			$ui/FrontRoom/goToBackroom.disabled = true
+			
+			#Point at recipe book
+			var point = pointerNode.instantiate()
+			point.global_position = Vector2(1775,160)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			point.queue_free()
+			
+			await tutorialStep
+			
+			#Point at back room button
+			point = pointerNode.instantiate()
+			point.rotation_degrees = 270
+			point.global_position = Vector2(1700,800)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			point.queue_free()
+			
+			$ui/Hud/Recipes.disabled = true
+			$ui/Hud/Quests.disabled = true
+			$ui/BackRoom/RecipeBookBtn.disabled = true
+			$ui/BackRoom/toFrontRoomBtn.disabled = true
+			$ui/BackRoom/MortarandPestleBtn.disabled = true
+			
+			#Point at cauldron
+			point = pointerNode.instantiate()
+			point.rotation_degrees = 270
+			point.global_position = Vector2(200,450)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+			await tutorialStep
+			point.queue_free()
+			
+			$ui/CauldronStation.tutorialRoutine()
+			await cauldronTutorialComplete
+			
+			$ui/CauldronStation.inTutorial = false
+			$ui/CauldronStation/IngredientDrawer.inTutorial = false
+			$ui.inTutorial = false
+			
+			$ui/CauldronStation/IngredientDrawer/Handle.disabled = false
+			$ui/Hud/Quests.disabled = false
+			$ui/Hud/Recipes.disabled = false
+			$ui/FrontRoom/goToBackroom.disabled = false
+			$ui/BackRoom/RecipeBookBtn.disabled = false
+			$ui/BackRoom/toFrontRoomBtn.disabled = false
+			$ui/BackRoom/MortarandPestleBtn.disabled = false
+
+func tutorialMessedUp():
+	var step = $ui/CauldronStation/IngredientDrawer.step
+	var pointerNode = preload("res://Scenes/pointerImage.tscn")
+	var point = pointerNode.instantiate()
+	
+	match step: 
+		#messed up putting the dirt in 
+		0: 
+			#points at dirt
+			point = pointerNode.instantiate()
+			point.global_position = Vector2(1230,280)
+			add_child(point)
+			point.playAnimation("pointUp")
+			
+		#messed up puttin the tears of trees in
+		1:
+			#Point at tears of trees
+			point.rotation_degrees = 90
+			point.global_position = Vector2(1430, 550)
+			point.playAnimation("pointUp")
+			
+		#messed up puttin the thorny heart in 
+		2: 
+			#Point at a thorny heart
+			point.rotation_degrees = 90
+			point.global_position = Vector2(1840, 280)
+			point.playAnimation("pointUp")
 	
 func _onGenerateQuest():
 	print("Generating quest!")
@@ -211,14 +343,23 @@ func _updateQueue():
 		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer2.set_texture(null)
 		$ui/FrontRoom/customer3.set_texture(null)
+		$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 	elif storeQueue.size() == 2:
-		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		var i: Texture2D = (load(storeQueue[0].npcQuestGiver.sprite))
+		if $ui/FrontRoom/NPC.get_texture_normal() != i:
+			$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+			$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer3.set_texture(null)
+		#$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 	elif storeQueue.size() >= 3:
-		$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+		var i: Texture2D = (load(storeQueue[0].npcQuestGiver.sprite))
+		if $ui/FrontRoom/NPC.get_texture_normal() != i:
+			$ui/FrontRoom/NPC.set_texture_normal(load(storeQueue[0].npcQuestGiver.sprite))
+			$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 		$ui/FrontRoom/customer2.set_texture(load(storeQueue[1].npcQuestGiver.sprite))
 		$ui/FrontRoom/customer3.set_texture(load(storeQueue[2].npcQuestGiver.sprite))
+		#$ui/FrontRoom/AnimationPlayer.play("npc_fade")
 
 	#Re-enable button which allows NPC interaction
 	if(storeQueue.size() > 0 && !inConversation):
@@ -264,7 +405,7 @@ func _on_greetNPC():
 			$ui/FrontRoom/potionHotbar.hide()
 			$ui/FrontRoom/givePotionButton.hide()
 			$ui/FrontRoom.clearInventory()
-			$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
+			$ui/FrontRoom/AnimationPlayerTalk.play_backwards("npc_talking")
  		
 			#Dialog for quest success
 			var randPitch = (randf_range(.8, 1.2))
@@ -496,65 +637,18 @@ func _on_greetNPC():
 	$ui/FrontRoom/Dialogue.visible = false
 	inConversation = false
 	noLongerInConversation.emit()
-	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_talking")
+	$ui/FrontRoom/AnimationPlayerTalk.play_backwards("npc_talking")
 	
 	print("displaying new npc if available")
 	storeQueue.pop_front()
-	_updateQueue()
+	
+	#after the animation finishes, _updateQueue() runs
+	$ui/FrontRoom/AnimationPlayer.play_backwards("npc_fade")
 
 func _on_ui_quest_accepted(option: Variant):
 	questAccepted = option
 	optionChosen.emit()
 
-func _onAcceptQuest():
-	# If there's no space in the activeQuests list, do nothing
-	if activeQuests.size() > MAX_ACTIVE_QUESTS:
-		return false
-		
-	# If there's no quest in the store queue, do nothing
-	# Note: this should never happen, but is here to prevent an out-of-bounds exception
-	if storeQueue.size() == 0:
-		return false
-		
-	# Take the first quest in the store queue
-	var nextQuest = storeQueue[0]
-	storeQueue.remove_at(0)
-	activeQuests.append(nextQuest)
-
-	# Generate new quest and update queue
-	_onGenerateQuest()
-	_updateQueue()
-	return true
-
-#Never used this lol!
-func _onQuestCompleted(_quest: Quest):
-	# Mark as completed
-	_quest.questCompleted = true
-	
-	# Remove from active list
-	var i = activeQuests.find(_quest)
-	activeQuests.remove_at(i)
-	
-	# Add to pharmacyQuests list if there's space and if quest is repeatable
-	if _quest.isRepeatable and pharmacyQuests.size() <= MAX_PHARMACY_QUESTS:
-		pharmacyQuests.append(_quest)
-
-	### Give rewards
-	
-	# Reward money
-	currency += _quest.rewards[0]
-	
-	# Reward recipes (unlock them)
-	for r:String in _quest.rewards[1]:
-		var newPot:Item = ItemCreator.allPotions.get(r)
-		unlockPotion(newPot)
-	
-	# Reward ingredients
-	for r:String in _quest.rewards[2]:
-		var newIng:Item = ItemCreator.allIngredients.get(r)
-		giveIngredient(newIng)
-
-#this funciton might be useless
 func onIngredientGrinded(i: Item):
 	var crushedName:String 
 	if(i.itemName == "shooting star"):
@@ -574,7 +668,7 @@ func onIngredientGrinded(i: Item):
 	createdItem(crushedObj, "Ingredient")
 	
 	# Decrease quantity by 1
-	i.amountOwned -= 1
+	#i.amountOwned -= 1
 	
 	return crushedObj
 
@@ -691,8 +785,14 @@ func unlockPotion(p: Item):
 		ItemCreator.UnlockPotion(potions, p.itemName, null)
 		potions.set(p.itemName, p)
 		p.unlocked = true
-		
 		print("potion: ", p.itemName, " unlocked")
+		var i = 0
+		for potion in ItemCreator.allPotions:
+			if potion == p.itemName:
+				break
+			else:
+				i += 1
+		$ui/RecipeBook._create_button(i)
 		
 		notificationQueue.append(p)
 		notificationQueue.append("Potion")
@@ -740,6 +840,7 @@ func endOfDay():
 	# If potion making was in-progress, give ingredients back
 	for i in $ui/CauldronStation.held_ingredients:
 		giveIngredient(ingredients.get(i))
+	$ui/CauldronStation.held_ingredients.clear()
 	
 	music_fade()
 	
@@ -757,22 +858,22 @@ func _on_intro_letter_pressed() -> void:
 func music_fade():
 	if $mmmusic.playing == true:
 		_on_animation_player_animation_finished("mm_music_fade_anim")
-	if $day1music.playing == true:
-		_on_animation_player_animation_finished("day1_music_fade_anim")
-	if $day2music.playing == true:
-		_on_animation_player_animation_finished("day2_music_fade_anim")
-	if $day3music.playing == true:
-		_on_animation_player_animation_finished("day3_music_fade_anim")
-	if $day4music.playing == true:
-		_on_animation_player_animation_finished("day4_music_fade_anim")
-	if $day5music.playing == true:
-		_on_animation_player_animation_finished("day5_music_fade_anim")
-	if $day6music.playing == true:
-		_on_animation_player_animation_finished("day6_music_fade_anim")
-	if $day7music.playing == true:
-		_on_animation_player_animation_finished("day7_music_fade_anim")
-	if $day8music.playing == true:
-		_on_animation_player_animation_finished("day8_music_fade_anim")
+	if $daymusic.playing == true:
+		$AnimationPlayer.play("day1_music_fade_anim")
+	#if $daymusic.playing == true:
+		#_on_animation_player_animation_finished("day2_music_fade_anim")
+	#if $daymusic.playing == true:
+		#_on_animation_player_animation_finished("day3_music_fade_anim")
+	#if $daymusic.playing == true:
+		#_on_animation_player_animation_finished("day4_music_fade_anim")
+	#if $daymusic.playing == true:
+		#_on_animation_player_animation_finished("day5_music_fade_anim")
+	#if $daymusic.playing == true:
+		#_on_animation_player_animation_finished("day6_music_fade_anim")
+	#if $daymusic.playing == true:
+		#_on_animation_player_animation_finished("day7_music_fade_anim")
+	#if $daymusic.playing == true:
+		#_on_animation_player_animation_finished("day8_music_fade_anim")
 
 func _on_mmmusic_finished() -> void:
 	$mmmusic.play()
@@ -782,54 +883,54 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "mm_music_fade_anim":
 		$mmmusic.stop()
 	if anim_name == "day1_music_fade_anim":
-		$day1music.stop()
-	if anim_name == "day2_music_fade_anim":
-		$day2music.stop()
-	if anim_name == "day3_music_fade_anim":
-		$day3music.stop()
-	if anim_name == "day4_music_fade_anim":
-		$day4music.stop()
-	if anim_name == "day5_music_fade_anim":
-		$day5music.stop()
-	if anim_name == "day6_music_fade_anim":
-		$day6music.stop()
-	if anim_name == "day7_music_fade_anim":
-		$day7music.stop()
-	if anim_name == "day8_music_fade_anim":
-		$day8music.stop()
-	else:
-		pass
+		$daymusic.stop()
+	#if anim_name == "day2_music_fade_anim":
+		#$daymusic.stop()
+	#if anim_name == "day3_music_fade_anim":
+		#$daymusic.stop()
+	#if anim_name == "day4_music_fade_anim":
+		#$daymusic.stop()
+	#if anim_name == "day5_music_fade_anim":
+		#$daymusic.stop()
+	#if anim_name == "day6_music_fade_anim":
+		#$daymusic.stop()
+	#if anim_name == "day7_music_fade_anim":
+		#$daymusic.stop()
+	#if anim_name == "day8_music_fade_anim":
+		#$daymusic.stop()
+	#else:
+		#pass
 
 
 func _on_day_1_music_finished() -> void:
-	$day1music.play()
+	$daymusic.play()
 
 
-func _on_day_2_music_finished() -> void:
-	$day2music.play()
-
-
-func _on_day_3_music_finished() -> void:
-	$day3music.play()
-
-
-func _on_day_4_music_finished() -> void:
-	$day4music.play()
-
-func _on_day_5_music_finished() -> void:
-	$day5music.play()
-
-
-func _on_day_6_music_finished() -> void:
-	$day6music.play()
-
-
-func _on_day_7_music_finished() -> void:
-	$day7music.play()
-
-
-func _on_day_8_music_finished() -> void:
-	$day8music.play()
+#func _on_day_2_music_finished() -> void:
+	#$day2music.play()
+#
+#
+#func _on_day_3_music_finished() -> void:
+	#$day3music.play()
+#
+#
+#func _on_day_4_music_finished() -> void:
+	#$day4music.play()
+#
+#func _on_day_5_music_finished() -> void:
+	#$day5music.play()
+#
+#
+#func _on_day_6_music_finished() -> void:
+	#$day6music.play()
+#
+#
+#func _on_day_7_music_finished() -> void:
+	#$day7music.play()
+#
+#
+#func _on_day_8_music_finished() -> void:
+	#$day8music.play()
 
 func autoSave():
 	print("auto saving game")
@@ -842,15 +943,27 @@ func autoSave():
 	
 	var saveIngredients = {}
 	var savePotions = {}
+	var saveDuds = {}
 	var saveActiveQuests = {}
 	var savePharmacyQuests = {}
 	
 	
-	for potion in potions.values():
-		savePotions.set(potion.itemName, potion.amountOwned)
-		
 	for ingredient in ingredients.values():
 		saveIngredients.set(ingredient.itemName, ingredient.amountOwned)
+	
+	
+	#WORK ON THIS
+	for potion in potions.values():
+		if("Dud" in potion.itemName):
+			var dudPotion = {}
+			dudPotion.set("Dud recipe", potion.recipe)
+			dudPotion.set("Amount owned", potion.amountOwned)
+			
+			saveDuds.set(potion.itemName, dudPotion)
+		else: 
+			savePotions.set(potion.itemName, potion.amountOwned)
+		
+	
 		
 	for aQuest in activeQuests:
 		var questData = {}
@@ -881,6 +994,9 @@ func autoSave():
 	saveFile.store_line(jsonString)
 	
 	jsonString = JSON.stringify(savePotions)
+	saveFile.store_line(jsonString)
+	
+	jsonString = JSON.stringify(saveDuds)
 	saveFile.store_line(jsonString)
 	
 	jsonString = JSON.stringify(saveActiveQuests)
@@ -922,7 +1038,7 @@ func loadGame():
 		ItemCreator.UnlockIngredient(ingredients, ingredient)
 		ingredients.get(ingredient).amountOwned = int(ingredientDict.get(ingredient))
 	
-	print("importing potions")
+	print("importing non-dud potions")
 	jsonString = saveFile.get_line()
 	json.parse(jsonString)
 	var potionDict = json.data
@@ -931,9 +1047,39 @@ func loadGame():
 		potions.set(potion, p)
 		p.amountOwned = int(potionDict.get(potion))
 		p.unlocked = true
+		var i = 0
+		for buttpotion in ItemCreator.allPotions:
+			if buttpotion == p.itemName:
+				break
+			else:
+				i += 1
+		$ui/RecipeBook._create_button(i)
+		
+	print("importing dud potion")
+	jsonString = saveFile.get_line()
+	json.parse(jsonString)
+	var dudDict = json.data
+	for dud in dudDict.keys():
+		var d = dudDict.get(dud)
+		ItemCreator.UnlockPotion(potions,dud,d.get("Dud recipe"))
+		potions.get(dud).amountOwned = int(d.get("Amount owned"))
+		
+		var potionSprite
+		if(dudCounter%4 == 0):
+			potionSprite = "res://assets/potions/Dud Potion Large Round Bottle.PNG"
+		elif(dudCounter%4 == 1):
+			potionSprite = "res://assets/potions/Dud Potion round bottle long neck.PNG"
+		elif(dudCounter%4 == 2):
+			potionSprite = "res://assets/potions/Dud Potion Square Bottle.PNG"
+		else:
+			potionSprite = "res://assets/potions/Dud Potion Vial.PNG"
+			
+		potions.get(dud).sprite = potionSprite
+		
+		dudCounter += 1
 		
 	for NPC in NPCBirthingPod.allNPCs.values():
-		availableNPCS.append(NPC)	
+		availableNPCS.append(NPC)
 		
 	print("importing active quests")
 	jsonString = saveFile.get_line()
@@ -972,3 +1118,24 @@ func loadGame():
 	
 	justLoaded = true
 	startOfDay()
+
+
+func _on_ui_pause_game() -> void:
+	print("Game paused, pausing all timers")
+	for timer in get_tree().get_nodes_in_group("npcTimers"):
+		timer.set_paused(true)
+	$dayTimer.set_paused(true)
+
+
+func _on_ui_resume_game() -> void:
+	print("Game resumed, unpausing all timers")
+	for timer in get_tree().get_nodes_in_group("npcTimers"):
+		timer.set_paused(false)
+	$dayTimer.set_paused(false)
+
+func _on_ui_tutorial_step() -> void:
+	tutorialStep.emit()
+
+
+func _on_ui_tutorial_cauldron_station_complete() -> void:
+	cauldronTutorialComplete.emit()

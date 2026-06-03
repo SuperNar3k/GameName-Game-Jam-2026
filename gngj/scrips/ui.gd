@@ -4,6 +4,7 @@ var ItemCreator
 var allPotions
 var allIngredients
 var quests
+var day
 
 var activeQuests
 var pharmacyQuests
@@ -19,12 +20,18 @@ signal talkToNpc
 signal questAccepted(option)
 signal startGame
 signal loadGame
+signal pauseGame
+signal resumeGame
 signal correctPotionSelected
 signal buyItem(cost, item)
 signal grindIngredient(ingredient)
 signal cookingDone(heldIngredients, cookedLevel)
 signal finishedNotifying
 
+signal tutorialStep
+signal tutorialCauldronStationComplete
+signal tutorialMessedUp
+var inTutorial : bool = false
 
 
 func _ready() -> void:
@@ -72,7 +79,8 @@ func ref_storage(
 	_activeQuests,
 	_pharmacyQuests,
 	_storeQueue,
-	_potions
+	_potions,
+	_day
 ) -> void:
 	ItemCreator = _ItemCreator
 	allPotions = _allPotions
@@ -82,6 +90,7 @@ func ref_storage(
 	pharmacyQuests = _pharmacyQuests
 	storeQueue = _storeQueue
 	potions = _potions
+	day = _day
 	
 	$RecipeBook.__init__(_allPotions, _allIngredients)
 	$GrindingStation.__init__(_allIngredients)
@@ -124,11 +133,11 @@ func _enable_all_buttons() -> void:
 					innerchild.disabled = false
 
 func endDay():
-	if $CauldronStation/IngredientDrawer.position.x < 860:
+	if $CauldronStation/IngredientDrawer.huh % 2 == 1:
 		$CauldronStation/IngredientDrawer._on_handle_pressed()
 		$CauldronStation/IngredientDrawer._redraw()
 		
-	if $GrindingStation/IngredientDrawer.position.x < 860:
+	if $GrindingStation/IngredientDrawer.huh % 2 == 1:
 		$GrindingStation/IngredientDrawer._on_handle_pressed()
 		$GrindingStation/IngredientDrawer._redraw()
 
@@ -160,6 +169,9 @@ func _on_main_menu_scene_load_game():
 		
 		
 func _on_front_room_to_back_room() -> void:
+	if(day == 1):
+		tutorialStep.emit()
+	
 	$FrontRoom.hide()
 	$BackRoom.show()
 	
@@ -180,6 +192,9 @@ func _on_back_room_to_grind_station() -> void:
 
 
 func _on_back_room_to_cauldron_station() -> void:
+	if(day == 1):
+		tutorialStep.emit()
+	
 	$Hud.hide_leftstuff()
 	$BackRoom.hide()
 	$CauldronStation.show()
@@ -192,6 +207,8 @@ func _on_grinding_station_go_back() -> void:
 	$GrindingStation.hide()
 	$BackRoom.show()
 	
+	$CauldronStation/IngredientDrawer._redraw()
+	
 	lastScreen = $BackRoom
 
 
@@ -199,6 +216,8 @@ func _on_cauldron_station_go_back() -> void:
 	$Hud.show_leftstuff()
 	$CauldronStation.hide()
 	$BackRoom.show()
+	
+	$GrindingStation/IngredientDrawer._redraw()
 	
 	lastScreen = $BackRoom
 
@@ -217,7 +236,8 @@ func _on_options_exit_options() -> void:
 		$MainMenuScene/phys_buttons/follower/CollisionShape2D.set_deferred("disabled", false)
 	else:
 		$Hud.show()
-		
+	
+	resumeGame.emit()
 	lastScreen.show()
 
 
@@ -234,12 +254,18 @@ func _on_main_menu_scene_display_credits() -> void:
 	$credits.show()
 
 func _on_hud_quest_pressed() -> void:
+	if(day == 1):
+		tutorialStep.emit()
+		
 	$questListScreen/ColorRect.show()
 	$questListScreen/AnimationPlayer.play("slide_up")
 	
 	$questListScreen.displayShit(activeQuests, pharmacyQuests, allPotions)
 	
 func _on_quest_list_screen_return_to_game() -> void:
+	
+	if(day == 1):
+		tutorialStep.emit()
 	
 	$questListScreen/returnButton.hide()
 	$questListScreen/Sprite2D2.hide()
@@ -250,6 +276,8 @@ func _on_hud_options_pressed() -> void:
 		$Hud.hide()
 		lastScreen.hide()
 		$Options.show()
+		
+		pauseGame.emit()
 	
 func _on_end_of_day() -> void:
 	$Hud/gameInfo.hide()
@@ -309,3 +337,25 @@ func _on_notification_finished_playing() -> void:
 
 func _on_grinding_station_grind_ingredient(_ingredient: Variant) -> void:
 	grindIngredient.emit(_ingredient)
+
+
+func _on_hud_recipe_book_stop_animation() -> void:
+	if(inTutorial):
+		tutorialStep.emit()
+
+
+func _on_hud_recipe_book_back_button_pressed() -> void:
+	if(inTutorial):
+		tutorialStep.emit()
+	
+func _on_tutorial_button_pressed() -> void: 
+	if(inTutorial):
+		tutorialStep.emit()
+
+
+func _on_cauldron_station_tutorial_messed_up() -> void:
+	tutorialMessedUp.emit()
+
+
+func _on_cauldron_station_tutorial_complete() -> void:
+	tutorialCauldronStationComplete.emit()

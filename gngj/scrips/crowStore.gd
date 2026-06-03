@@ -130,36 +130,52 @@ func _on_buyIngredient(ingredient : String):
 	match ingredient: 
 		"leaf of a thousand leaves":
 			buy.emit(1, ingredient)
+			updateHover(ingredient)
 		"a thorny heart":
 			buy.emit(1, ingredient)
+			updateHover(ingredient)
 		"tears of trees":
 			buy.emit(1, ingredient)
+			updateHover(ingredient)
 		"air's brevity":
 			buy.emit(2, ingredient)
+			updateHover(ingredient)
 		"desert calm":
 			buy.emit(2, ingredient)
+			updateHover(ingredient)
 		"dried ocean":
 			buy.emit(2, ingredient)
+			updateHover(ingredient)
 		"ear of the sea":
 			buy.emit(2, ingredient)
+			updateHover(ingredient)
 		"gaia's teeth":
 			buy.emit(2, ingredient)
+			updateHover(ingredient)
 		"dragon's egg":
 			buy.emit(3, ingredient)
+			updateHover(ingredient)
 		"spring crystal":
 			buy.emit(3, ingredient)
+			updateHover(ingredient)
 		"string of lovers":
 			buy.emit(3, ingredient)
+			updateHover(ingredient)
 		"venus's eyelashes":
 			buy.emit(3, ingredient)
+			updateHover(ingredient)
 		"winter crystal":
 			buy.emit(3, ingredient)
+			updateHover(ingredient)
 		"psychic stone":
 			buy.emit(4, ingredient)
+			updateHover(ingredient)
 		"shattered sky":
 			buy.emit(5, ingredient)
+			updateHover(ingredient)
 		"shooting star":
 			buy.emit(6, ingredient)
+			updateHover(ingredient)
 				
 	checkIfTooBroke()
 	print("player bought "+ingredient)
@@ -182,6 +198,8 @@ func _on_mouse_entered(button: Variant, ingred_name):
 	instance.get_child(0).text = (ingred.itemName + "\nOwned: " + str(ingred.amountOwned))
 	button.material.set_shader_parameter("outline_thickness", 5.0)
 
+func updateHover(ingredient: String):
+	instance.get_child(0).text = (ingredient + "\nOwned: " + str(allIngredients.get(ingredient).amountOwned))
 
 func _on_mouse_exited(button: Variant, ingred_name):
 	if instance != null:
