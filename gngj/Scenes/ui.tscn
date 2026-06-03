@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://p73w6eq3dno8" path="res://Scenes/questListScreen.tscn" id="12_4vbiv"]
 [ext_resource type="PackedScene" uid="uid://dejhrlp1mqime" path="res://Scenes/hud.tscn" id="13_3r70p"]
 [ext_resource type="PackedScene" uid="uid://ctbfso3nbohqd" path="res://Scenes/notification.tscn" id="14_8fs27"]
+[ext_resource type="PackedScene" uid="uid://cr4tsf1f0eyjt" path="res://Scenes/sceneTransition.tscn" id="15_kuui0"]
+[ext_resource type="Script" uid="uid://dboatb3qm51df" path="res://scrips/scene_transition.gd" id="16_smy1h"]
 
 [node name="ui" type="Control" unique_id=1513356]
 layout_mode = 3
@@ -103,6 +105,10 @@ grow_vertical = 1
 layout_mode = 1
 offset_top = -703.0
 offset_bottom = -703.0
+
+[node name="SceneTransition" parent="." unique_id=677148256 instance=ExtResource("15_kuui0")]
+layout_mode = 1
+script = ExtResource("16_smy1h")
 
 [connection signal="displayCredits" from="MainMenuScene" to="." method="_on_main_menu_scene_display_credits"]
 [connection signal="displayOptions" from="MainMenuScene" to="." method="_on_main_menu_scene_display_options"]

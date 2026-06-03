@@ -29,7 +29,12 @@ func __init__(_allIngredients : Dictionary) -> void:
 	$IngredientDrawer.__init__(_allIngredients, false)
 	
 func _on_backButton_pressed() -> void:
+	# Play fade in & fade out transition
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	goBack.emit()
+	$"../SceneTransition".fadeOut()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

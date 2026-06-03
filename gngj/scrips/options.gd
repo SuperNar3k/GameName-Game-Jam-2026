@@ -15,9 +15,12 @@ func _ready() -> void:
 	$Sound/SFXVolumeSlider/Label.text = "%d%%" % int(round(SettingsManager.settings.sfx_volume * 100))
 	
 	
-
+# Exit Options (with transition)
 func _on_exitButton_pressed() -> void: 
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	exitOptions.emit()
+	$"../SceneTransition".fadeOut()
 
 #Change master volume
 func _on_master_value_changed(value: float):

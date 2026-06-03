@@ -51,9 +51,13 @@ func _ready() -> void:
 func _on_hovered(boom:bool):
 	$continueimg.material.set_shader_parameter("outline_thickness", 5.0 if boom else 0.0)
 
+# Transition to store
 func _on_continueButton_pressed(): 
 	get_tree().call_group("itemToDelete", "queue_free")
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	showStore.emit()
+	$"../SceneTransition".fadeOut()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

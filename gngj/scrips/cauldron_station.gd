@@ -64,7 +64,11 @@ func __init__(_ItemCreator, _allPotions : Dictionary, _allIngredients : Dictiona
 	$IngredientDrawer.__init__(_allIngredients, true)
 
 func _on_backButton_pressed() -> void:
+	# Exit scene with transition
+	$"../SceneTransition".fadeIn()
+	await get_tree().create_timer(0.2).timeout
 	goBack.emit()
+	$"../SceneTransition".fadeOut()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -109,6 +113,7 @@ func _process(delta: float) -> void:
 	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
 			
 func _on_hovered(hovered: bool, ref) -> void:
+	#Cauldron is not being stirred
 	if followMouse != true:
 		if hovered:
 			if $IngredientDrawer.held == null:
@@ -146,7 +151,7 @@ func _on_hovered(hovered: bool, ref) -> void:
 		if instance != null:
 			instance.queue_free()
 
-
+#Triggered by dropping ingredients into cauldron
 func _on_drop_spot_pressed() -> void:
 	pass
 
