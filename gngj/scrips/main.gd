@@ -117,6 +117,13 @@ func startOfDay():
 		
 		$daymusic.play()
 		
+		## UNLOCK ALL INGREDIENTS ##
+		#for ingred in ItemCreator.allIngredients.keys():
+			#giveIngredient(ItemCreator.allIngredients.get(ingred))
+		#ItemCreator.allIngredients.get("earth").amountOwned = 2
+		#ItemCreator.allIngredients.get("a thorny heart").amountOwned = 2
+		#ItemCreator.allIngredients.get("tears of trees").amountOwned = 2
+			
 		giveIngredient(ItemCreator.allIngredients.get("earth"))
 		ItemCreator.allIngredients.get("earth").amountOwned = 1
 		giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
