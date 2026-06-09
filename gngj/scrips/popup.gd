@@ -3,6 +3,7 @@ extends Control
 #globals
 var sec = 3
 signal finishedPlaying
+var inMidAnimation : bool
 
 #Called when the node enters the scene tree for the first time.
 func newItemUnlocked(item: Item, type: String):
@@ -14,6 +15,7 @@ func newItemUnlocked(item: Item, type: String):
 	$popupTimer.start(sec)
 	$".".show()
 	$popupAnimation.play("moveIn")
+	inMidAnimation = true
 
 func itemMade(item: Item, type : String):
 	
@@ -23,13 +25,17 @@ func itemMade(item: Item, type : String):
 	$itemSprite.set_texture(load(item.sprite))
 	$popupTimer.start(sec)
 	$".".show()
+	inMidAnimation = true
 	$popupAnimation.play("moveIn")
 
 func onTimerTimeout() -> void:
+	inMidAnimation = true
 	$popupAnimation.play("moveOut")
 	
 
 func onPopupAnimationFinished(anim_name: StringName) -> void:
+	inMidAnimation = false
 	if anim_name == "moveOut":
 		$".".hide()
 		finishedPlaying.emit()
+		
