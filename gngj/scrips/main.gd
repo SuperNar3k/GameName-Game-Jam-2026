@@ -226,19 +226,22 @@ func tutorialRoutine(Day : int):
 	
 	match Day: 
 		1: 
+	
 			$ui.inTutorial = true
 			$ui/CauldronStation/IngredientDrawer.inTutorial = true
 			$ui/CauldronStation.inTutorial = true
 			$ui/RecipeBook.inTutorial = true
 
-			$ui/Hud/Quests.disabled = true
+			$ui/Hud/Quests.hide()
 			$ui/FrontRoom/goToBackroom.disabled = true
+			
 			
 			#Point at recipe book
 			var point = pointerNode.instantiate()
 			point.global_position = Vector2(1775,160)
 			add_child(point)
 			point.playAnimation("pointUp")
+			point.add_to_group("pointers")
 			
 			await tutorialStep
 			point.queue_free()
@@ -251,12 +254,13 @@ func tutorialRoutine(Day : int):
 			point.global_position = Vector2(1700,800)
 			add_child(point)
 			point.playAnimation("pointUp")
+			point.add_to_group("pointers")
+
+			
 			
 			await tutorialStep
 			point.queue_free()
 			
-			$ui/Hud/Recipes.disabled = true
-			$ui/Hud/Quests.disabled = true
 			$ui/BackRoom/RecipeBookBtn.disabled = true
 			$ui/BackRoom/toFrontRoomBtn.disabled = true
 			$ui/BackRoom/MortarandPestleBtn.disabled = true
@@ -267,6 +271,9 @@ func tutorialRoutine(Day : int):
 			point.global_position = Vector2(200,450)
 			add_child(point)
 			point.playAnimation("pointUp")
+			point.add_to_group("pointers")
+			
+			
 			
 			await tutorialStep
 			point.queue_free()
@@ -281,13 +288,13 @@ func tutorialRoutine(Day : int):
 			$ui.inTutorial = false
 			
 			$ui/CauldronStation/IngredientDrawer/Handle.disabled = false
-			$ui/Hud/Quests.disabled = false
 			$ui/Hud/Recipes.disabled = false
 			$ui/FrontRoom/goToBackroom.disabled = false
 			$ui/BackRoom/RecipeBookBtn.disabled = false
 			$ui/BackRoom/toFrontRoomBtn.disabled = false
 			$ui/BackRoom/MortarandPestleBtn.disabled = false
 
+			$ui/Hud/Quests.show()
 
 			ItemCreator.allIngredients.get("earth").amountOwned = 9999
 			ItemCreator.allIngredients.get("tears of trees").amountOwned = 4
@@ -1150,17 +1157,41 @@ func loadGame():
 
 
 func _on_ui_pause_game() -> void:
-	print("Game paused, pausing all timers")
+	
+	$dayTimer.set_paused(true)
+	
+	#NPC timer logic
 	for timer in get_tree().get_nodes_in_group("npcTimers"):
 		timer.set_paused(true)
-	$dayTimer.set_paused(true)
+		
+	#Notification Logic
+	$ui/Notification.hide()
+	if ($ui/Notification/Popup.inMidAnimation):
+		$ui/Notification/Popup/popupAnimation.pause()
+		
+	$ui/Notification/Popup/popupTimer.set_paused(true)
+	
+	#Pointers in tutorial logic
+	get_tree().call_group("pointers","hide")
 
 
 func _on_ui_resume_game() -> void:
-	print("Game resumed, unpausing all timers")
+	
+	$dayTimer.set_paused(false)
+	
+	#NPC timer logic againe
 	for timer in get_tree().get_nodes_in_group("npcTimers"):
 		timer.set_paused(false)
-	$dayTimer.set_paused(false)
+		
+	#Notification logic againe
+	$ui/Notification.show()
+	if ($ui/Notification/Popup.inMidAnimation):
+		$ui/Notification/Popup/popupAnimation.play()
+	$ui/Notification/Popup/popupTimer.set_paused(false)
+	
+	#Pointers in tutorial logic
+	get_tree().call_group("pointers","show")
+
 
 func _on_ui_tutorial_step() -> void:
 	tutorialStep.emit()

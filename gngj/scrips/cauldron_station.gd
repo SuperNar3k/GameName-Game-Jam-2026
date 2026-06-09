@@ -254,12 +254,19 @@ func tutorialRoutine():
 	
 	cauldronPointer = pointerNode.instantiate()
 	add_child(cauldronPointer)
+	cauldronPointer.add_to_group("pointers")
+	
 	dirtPointer = pointerNode.instantiate()
 	add_child(dirtPointer)
+	dirtPointer.add_to_group("pointers")
+	
 	tearsPointer = pointerNode.instantiate()
 	add_child(tearsPointer)
+	tearsPointer.add_to_group("pointers")
+	
 	thornyPointer = pointerNode.instantiate()
 	add_child(thornyPointer)
+	thornyPointer.add_to_group("pointers")
 	
 	pointersLeft = [cauldronPointer, dirtPointer, tearsPointer, thornyPointer]
 	
