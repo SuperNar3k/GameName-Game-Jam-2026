@@ -128,6 +128,7 @@ stream = ExtResource("8_aj0c6")
 volume_db = 5.0
 
 [node name="IngredientDrawer" parent="." unique_id=1675254955 instance=ExtResource("3_b08lm")]
+position = Vector2(846, 0)
 
 [node name="DropSpot" type="Button" parent="." unique_id=967202033]
 visible = false
