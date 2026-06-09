@@ -32,6 +32,7 @@ signal tutorialStep
 signal tutorialCauldronStationComplete
 signal tutorialMessedUp
 var inTutorial : bool = false
+var bookTut = true
 
 
 func _ready() -> void:
@@ -105,6 +106,9 @@ func _on_button_pressed(button_pressed: String) -> void:
 	if (button_pressed == "RecipeBook"):
 		_disable_all_buttons()
 		$RecipeBook._on_recipe_book_btn_pressed()
+		if(inTutorial and bookTut):
+			tutorialStep.emit()
+			bookTut = false
 	if (button_pressed == "Cauldron"):
 		pass
 	if (button_pressed == "MortarandPestle"):
@@ -344,7 +348,7 @@ func _on_hud_recipe_book_back_button_pressed() -> void:
 		tutorialStep.emit()
 	
 func _on_tutorial_button_pressed() -> void: 
-	if(inTutorial):
+	if(inTutorial and $RecipeBook.inTutorial):
 		tutorialStep.emit()
 
 

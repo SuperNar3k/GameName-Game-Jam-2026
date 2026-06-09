@@ -29,6 +29,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tcskm"]
 
 [node name="Options" type="Control" unique_id=953978234]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

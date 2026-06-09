@@ -329,6 +329,7 @@ shader_parameter/outline_thickness = 0.01
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [node name="RecipeBook" type="Control" unique_id=496628637]
+z_index = 1
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

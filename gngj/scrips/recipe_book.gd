@@ -222,6 +222,7 @@ func _on_exit_btn_pressed() -> void:
 	
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	# Book Closed
 	if $Book.position.y == 540:
 		$exitimg.hide()
 		$fwdimg.hide()
@@ -237,6 +238,8 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		
 		if(inTutorial):
 			tutorialStep.emit()
+			inTutorial = false
+	# Book Opened
 	else:
 		for child in $ToCBG/TableofContents/AspectRatioContainer/VBoxContainer.get_children():
 			child.disabled = false
