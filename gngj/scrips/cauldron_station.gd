@@ -157,8 +157,11 @@ func _on_drop_spot_pressed() -> void:
 
 func hide_buttons():
 	$BackButton.hide()
+	$Sprite2D.hide()
 func show_buttons():
 	$BackButton.show()
+	$Sprite2D.show()
+	
 	
 
 func _on_button_button_down() -> void:
@@ -240,8 +243,13 @@ func tutorialRoutine():
 	var pointerNode = preload("res://Scenes/pointerImage.tscn")
 	
 	$liquid/Button.disabled = true
+	$Sprite2D.hide()
+	$BackButton.hide()
+	
 	await tutorialStep
+	
 	$IngredientDrawer/Handle.hide()
+	
 	
 	
 	cauldronPointer = pointerNode.instantiate()
@@ -291,8 +299,8 @@ func tutorialRoutine():
 	
 	$IngredientDrawer.inTutorial = false
 	$IngredientDrawer/Handle.show()
-
-	
+	$BackButton.show()
+	$Sprite2D.show()
 		
 
 	
