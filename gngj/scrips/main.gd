@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 240
+var dayDuration = 71
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1
@@ -865,10 +865,6 @@ func endOfDay():
 		if q.daysUntilDue == 0:
 			activeQuests.erase(q)
 			pharmacyQuests.erase(q)
-			
-		#all else will comeback the next day
-		else:
-			q.daysUntilDue -= 1
 			
 	storeQueue.clear()
 	_updateQueue()
