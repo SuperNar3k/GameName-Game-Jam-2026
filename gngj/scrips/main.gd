@@ -3,7 +3,7 @@ extends Node2D
 #GLOBAL VARIABLES
 var currency = 10
 var day = 1
-var dayDuration = 71
+var dayDuration = 240
 var timerStarted = false
 var numOfNpcs = 3
 var dudCounter = 1

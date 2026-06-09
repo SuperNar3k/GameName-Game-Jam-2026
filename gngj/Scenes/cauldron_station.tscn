@@ -170,7 +170,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_4t13b")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4t13b")
 
 [node name="IngredientDrawer" parent="." unique_id=1675254955 instance=ExtResource("3_hhgs4")]
-position = Vector2(874, 0)
+position = Vector2(846, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=464737476]
 material = SubResource("ShaderMaterial_pg281")
