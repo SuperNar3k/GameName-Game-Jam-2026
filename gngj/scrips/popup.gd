@@ -16,7 +16,8 @@ func newItemUnlocked(item: Item, type: String):
 	$popupAnimation.play("moveIn")
 
 func itemMade(item: Item, type : String):
-
+	
+	$AudioStreamPlayer2D.play(.11)
 	$contTitle/titleLabel.set_text(type + " Created!")
 	$contName/nameLabel.set_text(item.itemName)
 	$itemSprite.set_texture(load(item.sprite))

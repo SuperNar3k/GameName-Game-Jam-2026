@@ -2,12 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du2wx6q3ss83u"
-<<<<<<< HEAD
+uid="uid://birif43geuvf1"
 path="res://.godot/imported/Storm In a Bottle.PNG-063e4451c3cdc3bf94f59aab6d8380e0.ctex"
-=======
-path="res://.godot/imported/Storm In a Bottle.PNG-aba0471202541fcf823ccd0dce2ba839.ctex"
->>>>>>> 8f2b88caab262be41113a0313bf9d4281267b9d7
 metadata={
 "vram_texture": false
 }
@@ -15,11 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/potions/Storm In a Bottle.PNG"
-<<<<<<< HEAD
 dest_files=["res://.godot/imported/Storm In a Bottle.PNG-063e4451c3cdc3bf94f59aab6d8380e0.ctex"]
-=======
-dest_files=["res://.godot/imported/Storm In a Bottle.PNG-aba0471202541fcf823ccd0dce2ba839.ctex"]
->>>>>>> 8f2b88caab262be41113a0313bf9d4281267b9d7
 
 [params]
 

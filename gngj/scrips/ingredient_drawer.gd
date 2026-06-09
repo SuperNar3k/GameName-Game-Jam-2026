@@ -343,7 +343,9 @@ func show_buttons():
 		showOnCompleted = true
 	else:
 		$Handle.show()
+		
 		if(!inTutorial):
 			$nextBtn.show()
 			$Sprite2D.show()
 			parent_buttons_show.emit()
+			
