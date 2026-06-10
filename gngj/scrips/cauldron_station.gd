@@ -72,48 +72,51 @@ func _on_backButton_pressed() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if followMouse:
-		if done == false:
-			$liquid.look_at(get_global_mouse_position())
-			if recordRot != $liquid.rotation_degrees:
-				if !$sloshing.playing:
-					$sloshing.volume_db = 3
-					$sloshing.play()
-				if $sloshing.volume_db < 0:
-					$sloshing.volume_db = 5
-			if held_ingredients.size() > 0:
-				if recordRot < $liquid.rotation_degrees:
-					if !$brewing.playing:
-						$brewing.play()
-					if $brewing.volume_db < 0:
-						$brewing.volume_db = lerp($brewing.volume_db, 0.0, 1.0)
-					addedCook += delta
-					$liquid/waves.modulate = lerp(Color(0.573, 0.675, 0.737, 1.0), Color(0.725, 0.388, 0.141, 1.0), addedCook / 3)
-				recordRot = $liquid.rotation_degrees
-				if $liquid/waves.modulate.b <= .141:
-					done = true
-					held_ingredients.sort()
-					cookingDone.emit(held_ingredients)
-					$potionDone.play()
-					$AnimationPlayer.play_backwards("revert_color")
-					
-					$ingredientsInCauldron/ingredient1/image.set_texture(null)
-					$ingredientsInCauldron/ingredient2/image.set_texture(null)
-					$ingredientsInCauldron/ingredient3/image.set_texture(null)
-					
-					var i = 0
-					while i < ingredientsDisplayed.size():
-						ingredientsDisplayed[i] = ""
-						i = i+1
-					
-					if(inTutorial):
-						tutorialComplete.emit()
-					
-	$brewing.volume_db = lerp($brewing.volume_db, -80.0, .08 * delta)
-	$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
+	# Need 3 ingredients in Cauldron to stir
+	if held_ingredients.size() == 3:
+		# If currently grabbing the laddle
+		if followMouse:
+			if done == false:
+				$liquid.look_at(get_global_mouse_position())
+				if recordRot != $liquid.rotation_degrees:
+					if !$sloshing.playing:
+						$sloshing.volume_db = 3
+						$sloshing.play()
+					if $sloshing.volume_db < 0:
+						$sloshing.volume_db = 5
+				if held_ingredients.size() > 0:
+					if recordRot < $liquid.rotation_degrees:
+						if !$brewing.playing:
+							$brewing.play()
+						if $brewing.volume_db < 0:
+							$brewing.volume_db = lerp($brewing.volume_db, 0.0, 1.0)
+						addedCook += delta
+						$liquid/waves.modulate = lerp(Color(0.573, 0.675, 0.737, 1.0), Color(0.725, 0.388, 0.141, 1.0), addedCook / 3)
+					recordRot = $liquid.rotation_degrees
+					if $liquid/waves.modulate.b <= .141:
+						done = true
+						held_ingredients.sort()
+						cookingDone.emit(held_ingredients)
+						$potionDone.play()
+						$AnimationPlayer.play_backwards("revert_color")
+						
+						$ingredientsInCauldron/ingredient1/image.set_texture(null)
+						$ingredientsInCauldron/ingredient2/image.set_texture(null)
+						$ingredientsInCauldron/ingredient3/image.set_texture(null)
+						
+						var i = 0
+						while i < ingredientsDisplayed.size():
+							ingredientsDisplayed[i] = ""
+							i = i+1
+						
+						if(inTutorial):
+							tutorialComplete.emit()
+						
+		$brewing.volume_db = lerp($brewing.volume_db, -80.0, .08 * delta)
+		$sloshing.volume_db = lerp($sloshing.volume_db, -80.0, .15 * delta)
 			
 func _on_hovered(hovered: bool, ref) -> void:
-	#Cauldron is not being stirred
+	# Cauldron is not being stirred
 	if followMouse != true:
 		if hovered:
 			if $IngredientDrawer.held == null:
@@ -122,7 +125,7 @@ func _on_hovered(hovered: bool, ref) -> void:
 				if ref == $liquid/handle or ref == $Sprite2D:
 					ref.material.set_shader_parameter("outline_thickness", 5.0)
 				
-				#if we're hoving the ingredients
+				#if we're hovering the ingredients
 				else:
 					instance = spawn_test.instantiate()
 					add_child(instance)
@@ -196,48 +199,53 @@ func _input(event:InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed:
 			if drop == true:
 				if !done:
+					# Player must be holding ingredient
 					if ($IngredientDrawer.held != null):
-						if allIngredients.get($IngredientDrawer.held).isGrindable:
-							var randPitch = randf_range(0.7, 1.1)
-							$heavysplash.pitch_scale = randPitch
-							$heavysplash.play(.22)
-						else:
-							var randPitch = randf_range(0.9, 1.3)
-							$lightsplash.pitch_scale = randPitch
-							$lightsplash.play(.53)
+						# Limits cauldron contents to 3 ingredients
+						if held_ingredients.size() < 3:
+							# Normal ingredients make heavy splash sound
+							if allIngredients.get($IngredientDrawer.held).isGrindable:
+								var randPitch = randf_range(0.7, 1.1)
+								$heavysplash.pitch_scale = randPitch
+								$heavysplash.play(.22)
+							# Crushed ingredients make light splash sound
+							else:
+								var randPitch = randf_range(0.9, 1.3)
+								$lightsplash.pitch_scale = randPitch
+								$lightsplash.play(.53)
+								
+							# Add held ingredient to cauldron
+							held_ingredients.append($IngredientDrawer.held)
+							$IngredientDrawer.instance.queue_free()
+							$IngredientDrawer.show_buttons()
+							print("ingredients in cauldron: ", held_ingredients)
+							_on_hovered(true, null)
 							
-						
-						held_ingredients.append($IngredientDrawer.held)
-						$IngredientDrawer.instance.queue_free()
-						$IngredientDrawer.show_buttons()
-						print("ingredients in cauldron: ", held_ingredients)
-						_on_hovered(true, null)
-						
-						if(inTutorial):
-							tutorialDeletePointer($IngredientDrawer.held)
-							tutorialSwapVision()
+							if(inTutorial):
+								tutorialDeletePointer($IngredientDrawer.held)
+								tutorialSwapVision()
+								
+								if(pointersLeft.size() == 1):
+									tutorialDeletePointer("cauldron")
+				
+							$IngredientDrawer.held = null
 							
-							if(pointersLeft.size() == 1):
-								tutorialDeletePointer("cauldron")
-			
-						$IngredientDrawer.held = null
-						
-						var i = 0
-						for ing in held_ingredients:
-							var ingredient = allIngredients.get(ing)
-							match i: 
-								0:
-									$ingredientsInCauldron/ingredient1/image.set_texture(load(ingredient.sprite))
-									ingredientsDisplayed[0] = ing
-								1: 
-									$ingredientsInCauldron/ingredient2/image.set_texture(load(ingredient.sprite))
-									ingredientsDisplayed[1] = ing
-								2:
-									$ingredientsInCauldron/ingredient3/image.set_texture(load(ingredient.sprite))
-									ingredientsDisplayed[2] = ing
-									
-							i += 1
-						
+							var i = 0
+							for ing in held_ingredients:
+								var ingredient = allIngredients.get(ing)
+								match i: 
+									0:
+										$ingredientsInCauldron/ingredient1/image.set_texture(load(ingredient.sprite))
+										ingredientsDisplayed[0] = ing
+									1: 
+										$ingredientsInCauldron/ingredient2/image.set_texture(load(ingredient.sprite))
+										ingredientsDisplayed[1] = ing
+									2:
+										$ingredientsInCauldron/ingredient3/image.set_texture(load(ingredient.sprite))
+										ingredientsDisplayed[2] = ing
+										
+								i += 1
+							
 
 func tutorialRoutine():
 	var pointerNode = preload("res://Scenes/pointerImage.tscn")
