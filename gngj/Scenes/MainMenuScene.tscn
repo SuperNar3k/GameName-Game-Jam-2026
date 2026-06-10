@@ -4,6 +4,89 @@
 [ext_resource type="PackedScene" uid="uid://0nauyx3wsvbo" path="res://Scenes/mm_physics_buttons.tscn" id="2_47sjk"]
 [ext_resource type="Texture2D" uid="uid://bnfyxdhaxsp7" path="res://assets/background/main menu/mainbg.PNG" id="2_mxhvt"]
 [ext_resource type="Texture2D" uid="uid://x8pmvhnqsegd" path="res://assets/ui/IMG_0828.PNG" id="4_gmxq7"]
+[ext_resource type="Texture2D" uid="uid://d22hv1e3q56ir" path="res://assets/background/save-screen/satin background.PNG" id="5_06svm"]
+[ext_resource type="Texture2D" uid="uid://bkwlvx1d4ybl8" path="res://assets/background/save-screen/save 1.PNG" id="6_12npo"]
+[ext_resource type="Shader" uid="uid://bydnl4nf1golv" path="res://assets/shaders/highlight.gdshader" id="6_opcln"]
+[ext_resource type="FontFile" uid="uid://c3lkj8eno8uqv" path="res://assets/fonts/label_settings/Amarante-Regular.ttf" id="7_i4kjn"]
+[ext_resource type="Texture2D" uid="uid://c61k7gxggslxf" path="res://assets/background/save-screen/save 2.PNG" id="7_m73vm"]
+[ext_resource type="Texture2D" uid="uid://dhsti71gdiqaf" path="res://assets/background/save-screen/save 3.PNG" id="8_i4kjn"]
+[ext_resource type="LabelSettings" uid="uid://1v4uegg6u74e" path="res://assets/fonts/label_settings/timeText.tres" id="8_opcln"]
+[ext_resource type="Texture2D" uid="uid://b48go8g7ybwun" path="res://assets/background/save-screen/choose a potion text.png" id="9_12npo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ylgr"]
+shader = ExtResource("6_opcln")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opcln"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ylgr"]
+font = ExtResource("7_i4kjn")
+font_size = 72
+font_color = Color(0.3254902, 0.3019608, 0.3529412, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ken5u"]
+shader = ExtResource("6_opcln")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ylgr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ken5u"]
+font = ExtResource("7_i4kjn")
+font_size = 72
+font_color = Color(0.3254902, 0.3019608, 0.3529412, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpk5n"]
+shader = ExtResource("6_opcln")
+shader_parameter/allow_out_of_bounds = true
+shader_parameter/outline_thickness = 0.01
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ken5u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpk5n"]
+font = ExtResource("7_i4kjn")
+font_size = 72
+font_color = Color(0.3254902, 0.3019608, 0.3529412, 1)
+
+[sub_resource type="Animation" id="Animation_opcln"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7ylgr"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ken5u"]
+_data = {
+&"RESET": SubResource("Animation_opcln"),
+&"fade_to_normal": SubResource("Animation_7ylgr")
+}
 
 [node name="MainMenuScene" type="Control" unique_id=1432645101]
 layout_mode = 3
@@ -20,110 +103,6 @@ script = ExtResource("1_sb72h")
 position = Vector2(0, 2)
 texture = ExtResource("2_mxhvt")
 
-[node name="MainMenu" type="Control" parent="." unique_id=343162974]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="MainMenu" unique_id=2026833369]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -170.5
-offset_top = -143.5
-offset_right = 170.5
-offset_bottom = 143.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer" unique_id=1619641912]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="Label" type="Label" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=384957750]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 56
-text = "Potion Seller"
-
-[node name="StartButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1417157990]
-custom_minimum_size = Vector2(300, 80)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Start Game"
-
-[node name="LoadButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=913679296]
-custom_minimum_size = Vector2(300, 80)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Load Game"
-
-[node name="OptionsButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1320423570]
-custom_minimum_size = Vector2(350, 65)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Options"
-
-[node name="Line2D" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/OptionsButton" unique_id=921261677]
-visible = false
-position = Vector2(0, -1)
-points = PackedVector2Array(57, 65.5, 57, 96.5)
-width = 6.0
-default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
-
-[node name="Line2D2" type="Line2D" parent="MainMenu/CenterContainer/VBoxContainer/OptionsButton" unique_id=1703213219]
-visible = false
-position = Vector2(220, -0.5)
-points = PackedVector2Array(57, 65.5, 57, 96.5)
-width = 6.0
-default_color = Color(0.5647059, 0.42352942, 0.19607843, 1)
-
-[node name="ExitButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer" unique_id=1796738148]
-custom_minimum_size = Vector2(350, 65)
-layout_mode = 2
-size_flags_stretch_ratio = 0.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "Exit"
-
-[node name="CenterContainer2" type="CenterContainer" parent="MainMenu" unique_id=525538320]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -40.0
-offset_right = 1530.0
-offset_bottom = 900.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="CreditsButton" type="Button" parent="MainMenu/CenterContainer2" unique_id=932328]
-custom_minimum_size = Vector2(150, 60)
-layout_mode = 2
-text = "Credits"
-
-[node name="testEndOfDay" type="Button" parent="." unique_id=797078144]
-visible = false
-layout_mode = 0
-offset_left = 462.0
-offset_top = -96.0
-offset_right = 592.0
-offset_bottom = 31.0
-text = "Test End Of Day
-"
-
 [node name="phys_buttons" parent="." unique_id=1086510356 instance=ExtResource("2_47sjk")]
 position = Vector2(216, -529)
 
@@ -132,27 +111,159 @@ position = Vector2(-289, -274)
 texture = ExtResource("4_gmxq7")
 
 [node name="gameFileSelectScreen" type="Control" parent="." unique_id=1862025264]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="savebg" type="Sprite2D" parent="gameFileSelectScreen" unique_id=308806724]
+texture = ExtResource("5_06svm")
+
+[node name="save1" type="Sprite2D" parent="gameFileSelectScreen" unique_id=697776894]
+material = SubResource("ShaderMaterial_7ylgr")
+position = Vector2(-611, 0)
+texture = ExtResource("6_12npo")
+
+[node name="selectButton" type="Button" parent="gameFileSelectScreen/save1" unique_id=519898765]
+offset_left = -283.0
+offset_top = -397.0
+offset_right = 317.0
+offset_bottom = 403.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_opcln")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_opcln")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_opcln")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_opcln")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_opcln")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="gameFileSelectScreen/save1" unique_id=781062652]
+offset_left = -188.92325
+offset_top = 27.371822
+offset_right = 221.7338
+offset_bottom = 247.34686
+rotation = 0.17198342
+
+[node name="VBoxContainer" type="VBoxContainer" parent="gameFileSelectScreen/save1/AspectRatioContainer" unique_id=2029183174]
+layout_mode = 2
+
+[node name="dayLabel" type="Label" parent="gameFileSelectScreen/save1/AspectRatioContainer/VBoxContainer" unique_id=868301077]
+layout_mode = 2
+text = "Day 0"
+label_settings = SubResource("LabelSettings_7ylgr")
+horizontal_alignment = 1
+
+[node name="timeLabel" type="Label" parent="gameFileSelectScreen/save1/AspectRatioContainer/VBoxContainer" unique_id=638334025]
+layout_mode = 2
+text = "0%"
+label_settings = ExtResource("8_opcln")
+horizontal_alignment = 1
+
+[node name="save2" type="Sprite2D" parent="gameFileSelectScreen" unique_id=1087111226]
+material = SubResource("ShaderMaterial_ken5u")
+texture = ExtResource("7_m73vm")
+
+[node name="selectButton" type="Button" parent="gameFileSelectScreen/save2" unique_id=244484064]
+offset_left = -220.0
+offset_top = -400.0
+offset_right = 205.0
+offset_bottom = 400.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ylgr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7ylgr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7ylgr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7ylgr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7ylgr")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="gameFileSelectScreen/save2" unique_id=1080806392]
+offset_left = -151.40498
+offset_top = 23.526611
+offset_right = 142.62724
+offset_bottom = 281.56067
+rotation = -0.05005371
+
+[node name="VBoxContainer" type="VBoxContainer" parent="gameFileSelectScreen/save2/AspectRatioContainer" unique_id=733817775]
+layout_mode = 2
+
+[node name="dayLabel" type="Label" parent="gameFileSelectScreen/save2/AspectRatioContainer/VBoxContainer" unique_id=1683989498]
+layout_mode = 2
+text = "Day 0"
+label_settings = SubResource("LabelSettings_ken5u")
+horizontal_alignment = 1
+
+[node name="timeLabel" type="Label" parent="gameFileSelectScreen/save2/AspectRatioContainer/VBoxContainer" unique_id=1352857757]
+layout_mode = 2
+text = "0%"
+label_settings = ExtResource("8_opcln")
+horizontal_alignment = 1
+
+[node name="save3" type="Sprite2D" parent="gameFileSelectScreen" unique_id=1846019987]
+material = SubResource("ShaderMaterial_fpk5n")
+position = Vector2(580, 0)
+texture = ExtResource("8_i4kjn")
+
+[node name="selectButton" type="Button" parent="gameFileSelectScreen/save3" unique_id=346132689]
+offset_left = -289.0
+offset_top = -372.0
+offset_right = 286.0
+offset_bottom = 378.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ken5u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ken5u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ken5u")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ken5u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ken5u")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="gameFileSelectScreen/save3" unique_id=1264687906]
+offset_left = -211.42061
+offset_top = 79.88782
+offset_right = 206.88383
+offset_bottom = 315.76038
+rotation = -0.21042727
+
+[node name="VBoxContainer" type="VBoxContainer" parent="gameFileSelectScreen/save3/AspectRatioContainer" unique_id=1830184442]
+layout_mode = 2
+
+[node name="dayLabel" type="Label" parent="gameFileSelectScreen/save3/AspectRatioContainer/VBoxContainer" unique_id=236581332]
+layout_mode = 2
+text = "Day 0"
+label_settings = SubResource("LabelSettings_fpk5n")
+horizontal_alignment = 1
+
+[node name="timeLabel" type="Label" parent="gameFileSelectScreen/save3/AspectRatioContainer/VBoxContainer" unique_id=1094827741]
+layout_mode = 2
+text = "0%"
+label_settings = ExtResource("8_opcln")
+horizontal_alignment = 1
+
+[node name="selecttxt" type="Sprite2D" parent="gameFileSelectScreen" unique_id=1786542536]
+texture = ExtResource("9_12npo")
+
 [node name="newGameButton" type="Button" parent="gameFileSelectScreen" unique_id=1165485612]
 layout_mode = 0
-offset_left = -144.0
-offset_top = -174.0
-offset_right = 141.0
-offset_bottom = -82.0
+offset_left = 150.0
+offset_top = -542.0
+offset_right = 435.0
+offset_bottom = -450.0
 theme_override_font_sizes/font_size = 30
 text = "NEW GAME"
 
 [node name="loadGameButton" type="Button" parent="gameFileSelectScreen" unique_id=1074560441]
 visible = false
 layout_mode = 0
-offset_left = -142.0
-offset_top = 21.0
-offset_right = 143.0
-offset_bottom = 113.0
+offset_left = 152.0
+offset_top = -347.0
+offset_right = 437.0
+offset_bottom = -255.0
 theme_override_font_sizes/font_size = 30
 text = "LOAD GAME
 "
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=150432332]
+visible = false
+layout_mode = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=374756770]
+libraries/ = SubResource("AnimationLibrary_ken5u")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
