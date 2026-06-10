@@ -4,6 +4,8 @@ signal recipe_pressed
 signal quest_pressed
 signal options_pressed
 
+var spawn_test = preload("res://Scenes/Spawn_Test.tscn")
+var instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,8 +22,27 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _on_hovered(guy, hovered):
+func _on_hovered(guy, hovered: bool):
+	
 	guy.get_child(0).material.set_shader_parameter("outline_thickness", 3.0 if hovered else 0.0)
+	
+	if !hovered:
+		instance.queue_free()
+	else:
+	
+		instance = spawn_test.instantiate()
+		
+		if guy == $Recipes:
+			add_child(instance)
+			instance.get_child(0).set_text("Recipes")
+		elif guy == $Quests:
+			add_child(instance)
+			instance.get_child(0).set_text("Quests")
+		elif guy == $Options:
+			add_child(instance)
+			instance.get_child(0).set_text("Options")
+
+
 
 func _on_recipes_pressed() -> void:
 	recipe_pressed.emit()
