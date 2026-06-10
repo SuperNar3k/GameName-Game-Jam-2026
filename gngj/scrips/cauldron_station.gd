@@ -215,20 +215,20 @@ func _input(event:InputEvent) -> void:
 								$lightsplash.play(.53)
 								
 							# Add held ingredient to cauldron
-							held_ingredients.append($IngredientDrawer.held)
+							var addedIngredient = $IngredientDrawer.held
+							$IngredientDrawer.held = null
+							held_ingredients.append(addedIngredient)
 							$IngredientDrawer.instance.queue_free()
 							$IngredientDrawer.show_buttons()
 							print("ingredients in cauldron: ", held_ingredients)
 							_on_hovered(true, null)
 							
 							if(inTutorial):
-								tutorialDeletePointer($IngredientDrawer.held)
+								tutorialDeletePointer(addedIngredient)
 								tutorialSwapVision()
 								
 								if(pointersLeft.size() == 1):
 									tutorialDeletePointer("cauldron")
-				
-							$IngredientDrawer.held = null
 							
 							var i = 0
 							for ing in held_ingredients:
