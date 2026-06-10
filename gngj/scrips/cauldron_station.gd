@@ -197,7 +197,11 @@ func _input(event:InputEvent) -> void:
 			if drop == true:
 				if !done:
 					if ($IngredientDrawer.held != null):
-						if allIngredients.get($IngredientDrawer.held).isGrindable:
+						
+						var addedIngredient = $IngredientDrawer.held
+						$IngredientDrawer.held = null
+						
+						if allIngredients.get(addedIngredient).isGrindable:
 							var randPitch = randf_range(0.7, 1.1)
 							$heavysplash.pitch_scale = randPitch
 							$heavysplash.play(.22)
@@ -207,20 +211,18 @@ func _input(event:InputEvent) -> void:
 							$lightsplash.play(.53)
 							
 						
-						held_ingredients.append($IngredientDrawer.held)
+						held_ingredients.append(addedIngredient)
 						$IngredientDrawer.instance.queue_free()
 						$IngredientDrawer.show_buttons()
 						print("ingredients in cauldron: ", held_ingredients)
 						_on_hovered(true, null)
 						
 						if(inTutorial):
-							tutorialDeletePointer($IngredientDrawer.held)
+							tutorialDeletePointer(addedIngredient)
 							tutorialSwapVision()
 							
 							if(pointersLeft.size() == 1):
 								tutorialDeletePointer("cauldron")
-			
-						$IngredientDrawer.held = null
 						
 						var i = 0
 						for ing in held_ingredients:
