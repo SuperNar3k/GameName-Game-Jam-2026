@@ -39,6 +39,7 @@ signal gameAutoSaved
 var saving = false
 var justLoaded = false
 
+var inTutorial = false
 signal tutorialStep
 signal cauldronTutorialComplete
 
@@ -222,6 +223,8 @@ func startOfDay():
 	$ui/Hud.updateTimer($dayTimer)
 	
 func tutorialRoutine(Day : int):
+	
+	inTutorial = true
 	var pointerNode = preload("res://Scenes/pointerImage.tscn")
 	
 	match Day: 
@@ -301,6 +304,8 @@ func tutorialRoutine(Day : int):
 			giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
 			giveIngredient(ItemCreator.allIngredients.get("leaf of a thousand leaves"))
 			giveIngredient(ItemCreator.allIngredients.get("a thorny heart"))
+			
+			inTutorial = false
 			
 			
 	
@@ -1160,15 +1165,18 @@ func _on_ui_pause_game() -> void:
 	for timer in get_tree().get_nodes_in_group("npcTimers"):
 		timer.set_paused(true)
 		
+	
 	#Notification Logic
-	$ui/Notification.hide()
-	if ($ui/Notification/Popup.inMidAnimation):
-		$ui/Notification/Popup/popupAnimation.pause()
-		
-	$ui/Notification/Popup/popupTimer.set_paused(true)
+	if(inNotification):
+		$ui/Notification.hide()
+		if ($ui/Notification/Popup.inMidAnimation):
+			$ui/Notification/Popup/popupAnimation.pause()
+			
+		$ui/Notification/Popup/popupTimer.set_paused(true)
 	
 	#Pointers in tutorial logic
-	get_tree().call_group("pointers","hide")
+	if(inTutorial):
+		get_tree().call_group("pointers","hide")
 
 
 func _on_ui_resume_game() -> void:
@@ -1180,13 +1188,19 @@ func _on_ui_resume_game() -> void:
 		timer.set_paused(false)
 		
 	#Notification logic againe
-	$ui/Notification.show()
-	if ($ui/Notification/Popup.inMidAnimation):
-		$ui/Notification/Popup/popupAnimation.play()
-	$ui/Notification/Popup/popupTimer.set_paused(false)
+	if(inNotification):
+		$ui/Notification.show()
+		if ($ui/Notification/Popup.inMidAnimation):
+			$ui/Notification/Popup/popupAnimation.play()
+		$ui/Notification/Popup/popupTimer.set_paused(false)
 	
 	#Pointers in tutorial logic
-	get_tree().call_group("pointers","show")
+	if(inTutorial):
+		get_tree().call_group("pointers","show")
+		#Quick check to make sure that the cauldronPointer doesn't get unhidden if player pauses 
+		#during that step
+		if (day == 1 && get_tree().get_nodes_in_group("pointers").size() > 1):
+			$ui/CauldronStation.cauldronPointer.hide()
 
 
 func _on_ui_tutorial_step() -> void:
